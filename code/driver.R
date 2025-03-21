@@ -6,7 +6,8 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 
 ## Data Cycle Changes
 
-# dc_output <- check_dc(dc_tbl,
+# dc_output <- check_dc(dc_tbl = read_codeset('pedsnet_dc_table', 'cccccc') %>%
+#                         filter(!check_id %in% c('ml', 'mv', 'ma', 'co_ml_covid')),
 #                       omop_or_pcornet = 'omop',
 #                       prev_db_string = 'v56',
 #                       current_db_string = 'v57',

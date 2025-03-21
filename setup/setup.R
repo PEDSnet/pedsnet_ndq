@@ -20,15 +20,16 @@ library(lubridate)
 source(file.path('setup', 'argos_wrapper.R'))
 
 ###' `Set site name` ###
-site <- 'lurie'
+site <- 'my site' ## if a site column exists in your CDM,
+                  ## make sure this matches how it is represented there
 
 # Establish connection to database
 initialize_session(session_name = 'ndq_assessment',
                    db_conn = Sys.getenv('PEDSNET_BASE_CONFIG'),
                    is_json = TRUE,
-                   cdm_schema = 'lurie_pedsnet', ## replace with location of CDM data
-                   results_schema = 'ndq_test', ## replace with location of results schema
-                                               ## MUST BE STORED ON SAME DATABASE AS CDM
+                   cdm_schema = 'my_cdm_schema', ## replace with location of CDM data
+                   results_schema = 'my_results_schema', ## replace with location of results schema
+                                                         ## MUST BE STORED ON SAME DATABASE AS CDM
                    retain_intermediates = FALSE,
                    db_trace = FALSE, ## set to TRUE for SQL code to print to the console (like verbose)
                    results_tag = '')

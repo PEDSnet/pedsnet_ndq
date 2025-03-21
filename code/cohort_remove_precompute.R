@@ -4,7 +4,7 @@ remove_precompute <- function(checkpoint){
   rslt_schm <- config('results_schema')
 
   ck1_list <- c('c19_dx_lab_current', 'c19_dx_lab_prev', 'payer_with_date',
-               'op_pv_spec', 'op_cs_spec','pdl_pts', 'ip_admit', 'geocode_cohort',
+               'op_prov_spec', 'op_cs_spec','pdl_pts', 'ip_admit', 'geocode_cohort',
                 'fips_tract', 'fips_block_group', 'lohis_tract','lohis_block_group')
 
   ck2_list <- c('procs_drugs', 'procs_drugs_labs', 'icu_transfer', 'payer_w_pid',
@@ -24,15 +24,15 @@ remove_precompute <- function(checkpoint){
   if(checkpoint == 1){
     drop_tbls(tbl_list = ck1_list)
     cli::cli_inform(str_wrap(paste0('The following tables have been removed from
-                                    your results_schema: ', ck1_list)))
+                                    your results_schema: ', paste(ck1_list, collapse = ', '))))
   }else if(checkpoint == 2){
     drop_tbls(tbl_list = ck2_list)
     cli::cli_inform(str_wrap(paste0('The following tables have been removed from
-                                    your results_schema: ', ck2_list)))
+                                    your results_schema: ', paste(ck2_list, collapse = ', '))))
   }else if(checkpoint == 3){
     drop_tbls(tbl_list = ck3_list)
     cli::cli_inform(str_wrap(paste0('The following tables have been removed from
-                                    your results_schema: ', ck3_list)))
+                                    your results_schema: ', paste(ck3_list, collapse = ', '))))
   }
 
 }

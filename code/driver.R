@@ -1,6 +1,6 @@
 
 ################### PRECOMPUTE TABLES 1 ######################
-source('precompute_tables_1.R')
+source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 ##############################################################
 
 
@@ -85,7 +85,7 @@ remove_precompute(checkpoint = 1)
 ##############################################
 
 ################### PRECOMPUTE TABLES 2 ######################
-source('precompute_tables_2.R')
+source(file.path(getwd(), 'code', 'precompute_tables_2.R'))
 ##############################################################
 
 ## Patient Facts
@@ -161,13 +161,13 @@ remove_precompute(checkpoint = 2)
 ##############################################
 
 ################### PRECOMPUTE TABLES 3 ######################
-source('precompute_tables_3.R')
+source(file.path(getwd(), 'code', 'precompute_tables_3.R'))
 ##############################################################
 
 ## Facts Over Time
 
-fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table') %>%
-                          filter(schema != 'result'),
+fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc') %>%
+                          filter(check_id != 'voml'),
                         omop_or_pcornet = 'omop',
                         compute_method = 'loop',
                         time_span = list('2024-01-01', today()), ## CHANGE THIS
@@ -176,3 +176,9 @@ fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table') %>%
                         check_string = 'fot')
 
 output_tbl_append(fot_output, 'fot_output', file = TRUE)
+
+######### CLEANUP CHECKPOINT #################
+remove_precompute(checkpoint = 3)
+##############################################
+
+

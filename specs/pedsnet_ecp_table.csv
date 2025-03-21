@@ -1,0 +1,26 @@
+check_id,cohort_definition,cohort_schema,cohort_table,schema,table,concept_field,conceptset_name,filter_logic
+hemoglobin,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_hemoglobin,
+platelet_count,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_platelets,
+anc,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_anc,
+scr,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_creatinine_serum,
+sodium,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_sodium,
+alanine_transaminase,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_alanine_transaminase,
+urine_protein_qual,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_urine_protein_qual,
+rapid_strep,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_rapid_strep,
+flu,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_influenza,
+rsv,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_rsv,
+head_circumference,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_head_circumference,
+smoking_tobacco,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,observation,observation_concept_id,ecp_smoking_tobacco,
+height,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_height,
+weight,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_weight,
+tract_2010,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,fips_tract,geocode_year,ecp_2010_geocode,"ndigit_fips == 11, geocode_year == 2010"
+tract_2020,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,fips_tract,geocode_year,ecp_2020_geocode,"ndigit_fips == 11, geocode_year == 2020"
+block_group_2010,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,fips_block_group,geocode_year,ecp_2010_geocode,"ndigit_fips == 12, geocode_year == 2010"
+block_group_2020,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,fips_block_group,geocode_year,ecp_2020_geocode,"ndigit_fips == 12, geocode_year == 2020"
+twoplus_lohis_tract_2010,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,lohis_tract,geocode_year,ecp_2010_geocode,"geocode_year == 2010, ngeo_lohis > 1"
+twoplus_lohis_tract_2020,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,lohis_tract,geocode_year,ecp_2020_geocode,"geocode_year == 2020, ngeo_lohis > 1"
+twoplus_lohis_cbg_2010,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,lohis_block_group,geocode_year,ecp_2010_geocode,"geocode_year == 2010, ngeo_lohis > 1"
+twoplus_lohis_cbg_2020,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,lohis_block_group,geocode_year,ecp_2020_geocode,"geocode_year == 2020, ngeo_lohis > 1"
+blood_culture_labs,Patients with an inpatient admission (9201 or 2000000048),result,ip_admit,cdm,measurement,measurement_concept_id,ecp_blood_culture_labs,
+blood_culture_px,Patients with an inpatient admission (9201 or 2000000048),result,ip_admit,cdm,procedure_occurrence,procedure_concept_id,ecp_blood_culture_px,
+cholesterol,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_cholesterol_all,

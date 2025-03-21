@@ -1,0 +1,22 @@
+concept_id,concept_code,concept_name,vocabulary_id
+40772688,LP16772-3,Platelet,LOINC
+36205024,LP256136-5,Platelet | Bld-Ser-Plas,LOINC
+4267147,61928009,Platelet count,SNOMED
+4310103,8574009,Platelet estimate,SNOMED
+40779159,LP14597-6,Platelets,LOINC
+36310193,LA19726-1,Platelets,LOINC
+40786570,LP41375-4,Platelets | Bld-Ser-Plas,LOINC
+44787167,LP181025-0,Platelets | Blood capillary,LOINC
+37071943,LP393219-3,Platelets | Blood capillary | Hematology and Cell counts,LOINC
+37037425,LP393218-5,Platelets | Blood | Hematology and Cell counts,LOINC
+40654106,LG32892-8,Platelets|Number Concentration (count/vol)|Moment in time|Blood,LOINC
+40654107,LG32923-1,Platelets|Number Concentration (count/vol)|Moment in time|Blood - cord,LOINC
+40654108,LG32776-3,Platelets|Number Concentration (count/vol)|Moment in time|Plasma,LOINC
+37058547,LP393224-3,Platelets | Plasma | Hematology and Cell counts,LOINC
+3007461,26515-7,Platelets [#/volume] in Blood,LOINC
+3024929,777-3,Platelets [#/volume] in Blood by Automated count,LOINC
+3031586,49497-1,Platelets [#/volume] in Blood by Estimate,LOINC
+3010834,778-1,Platelets [#/volume] in Blood by Manual count,LOINC
+44787107,74464-9,Platelets [#/volume] in Capillary blood by Manual count,LOINC
+3006297,26516-5,Platelets [#/volume] in Plasma,LOINC
+3016682,13056-7,Platelets [#/volume] in Plasma by Automated count,LOINC

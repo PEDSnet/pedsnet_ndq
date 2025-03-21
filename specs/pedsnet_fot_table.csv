@@ -1,0 +1,32 @@
+﻿check_id,check_description,schema,table,date_field,filter_logic
+im,all immunizations,cdm,immunization,immunization_date,
+im_covid19,covid19 immunizations,result,c19_imm,immunization_date,
+vi,all visits,cdm,visit_occurrence,visit_start_date,
+vo_office,outpatient visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 9202
+vo_labs,outpatient lab visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 2000000469
+vo_th,telehealth visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 581399
+vo_oa,other ambulatory visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 44814711
+vip,inpatient visits (9201 or 2000000048),cdm,visit_occurrence,visit_start_date,"visit_concept_id %in% c(9201, 2000000048)"
+ved,emergency department visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 9203
+vob,observation visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 2000000088
+co,all conditions,cdm,condition_occurrence,condition_start_date,
+prvo,outpatient procedures,result,prvo,procedure_date,
+adt_picu,picu,cdm,adt_occurrence,adt_date,service_concept_id == 2000000078
+adt_nicu,nicu,cdm,adt_occurrence,adt_date,service_concept_id == 2000000080
+adt_cicu,cicu,cdm,adt_occurrence,adt_date,service_concept_id == 2000000079
+dp,prescription drugs,cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000177
+ip,inpatient administration drugs,cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000180
+cop,outpatient conditions (primary and secondary),cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)"
+ci,inpatient conditions (primary and secondary),cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000092, 2000000093, 2000000094, 2000000098, 2000000099, 2000000100)"
+ced,ED conditions (primary and secondary),cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000001280, 2000001281, 2000001282, 2000001283, 2000001284, 2000001285)"
+cop_cb,outpatient billed conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000096, 2000000097, 2000000102, 2000000103)"
+cop_cc,outpatient ordered conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000095, 2000000101)"
+ci_cc,inpatient ordered conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000092, 2000000098)"
+ci_cb,inpatient billed conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000099, 2000000100, 2000000093, 2000000094)"
+voml,outpatient (9202) labs,result,voml,measurement_date,
+vodi,outpatient med admins,result,vodi,drug_exposure_start_date,
+vipdp,inpatient prescriptions,result,vipdp,drug_exposure_start_date,
+ma_ht,height,cdm,measurement,measurement_date,measurement_concept_id == 3023540
+ma_wt,weight,cdm,measurement,measurement_date,measurement_concept_id == 3013762
+mv_sbp,systolic blood pressure,cdm,measurement,measurement_date,"measurement_concept_id %in% c(3018586, 3035856, 3009395, 3004249)"
+mv_dbp,diastolic blood pressure,cdm,measurement,measurement_date,"measurement_concept_id %in% c(3034703, 3019962, 3013940, 3012888)"

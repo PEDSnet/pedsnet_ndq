@@ -1,0 +1,7 @@
+concept_id,concept_code,concept_name,vocabulary_id
+3009966,18262-6,Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay,LOINC
+3007070,2085-9,Cholesterol in HDL [Mass/volume] in Serum or Plasma,LOINC
+3028437,2089-1,Cholesterol in LDL [Mass/volume] in Serum or Plasma,LOINC
+3007352,2091-7,Cholesterol in VLDL [Mass/volume] in Serum or Plasma,LOINC
+3027114,2093-3,Cholesterol [Mass/volume] in Serum or Plasma,LOINC
+3044491,43396-1,Cholesterol non HDL [Mass/volume] in Serum or Plasma,LOINC

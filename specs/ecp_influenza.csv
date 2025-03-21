@@ -1,0 +1,59 @@
+concept_id,concept_code,concept_name,vocabulary_id
+3029905,50711-1,Influenza virus A polymerase RNA [Identifier] in Isolate by Sequencing,LOINC
+3029994,50706-1,Influenza virus A polymerase A RNA [Presence] in Isolate by Sequencing,LOINC
+3030205,50708-7,Influenza virus A polymerase B2 RNA [Presence] in Isolate by Sequencing,LOINC
+3030291,50707-9,Influenza virus A polymerase B1 cDNA [Presence] in Isolate by Sequencing,LOINC
+3039888,53251-5,Influenza virus B RNA [#/volume] (viral load) in Specimen by NAA with probe detection,LOINC
+3042219,53250-7,Influenza virus A RNA [#/volume] (viral load) in Specimen by NAA with probe detection,LOINC
+3044170,44265-7,Influenza virus A H6 RNA [Units/volume] (viral load) in Specimen by NAA with probe detection,LOINC
+3046387,44266-5,Influenza virus A H7 RNA [Units/volume] (viral load) in Specimen by NAA with probe detection,LOINC
+3046850,44263-2,Influenza virus A RNA [Units/volume] (viral load) in Specimen by NAA with probe detection,LOINC
+3046999,44264-0,Influenza virus A H5 RNA [Units/volume] (viral load) in Specimen by NAA with probe detection,LOINC
+21492987,80381-7,Influenza virus A and B Ag panel - Upper respiratory specimen by Rapid immunoassay,LOINC
+21492988,80382-5,Influenza virus A Ag [Presence] in Upper respiratory specimen by Rapid immunoassay,LOINC
+21492989,80383-3,Influenza virus B Ag [Presence] in Upper respiratory specimen by Rapid immunoassay,LOINC
+36204612,LP65712-9,Influenza virus A polymerase | Isolate,LOINC
+36205250,LP65708-7,Influenza virus A polymerase A | Isolate,LOINC
+36208701,LP65710-3,Influenza virus A polymerase B2 | Isolate,LOINC
+36676235,772835009,Detection of Influenza A virus using PCR - polymerase chain reaction technique,SNOMED
+37037474,LP378486-7,Influenza virus A polymerase B1 cDNA | Isolate | Microbiology,LOINC
+37045231,LP378487-5,Influenza virus A polymerase B2 RNA | Isolate | Microbiology,LOINC
+37052392,LP378488-3,Influenza virus A polymerase RNA | Isolate | Microbiology,LOINC
+37059233,LP378485-9,Influenza virus A polymerase A RNA | Isolate | Microbiology,LOINC
+40483307,445346006,Detection of avian influenza A using polymerase chain reaction technique,SNOMED
+40483371,445403009,Detection of Influenza A virus subtype H1N1 using polymerase chain reaction technique,SNOMED
+40759145,56024-3,Influenza virus A N1 RNA [Units/volume] (viral load) in Specimen by NAA with probe detection,LOINC
+40772278,LP113797-7,Influenza virus A polymerase RNA | Isolate,LOINC
+40784865,LP65709-5,Influenza virus A polymerase B1 | Isolate,LOINC
+40795425,LP113795-1,Influenza virus A polymerase A RNA | Isolate,LOINC
+40795426,LP113796-9,Influenza virus A polymerase B2 RNA | Isolate,LOINC
+43054990,72356-9,Influenza virus A and B Ag [Identifier] in Specimen by Rapid immunoassay,LOINC
+43054997,72366-8,Influenza virus A and B Ag [Identifier] in Nose by Rapid immunoassay,LOINC
+43054998,72367-6,Influenza virus A+B Ag [Presence] in Nose by Rapid immunoassay,LOINC
+44805771,8.18951E+14,Influenza A virus antiviral resistance measurement by ribonucleic acid analysis,SNOMED
+46236737,77027-1,Influenza virus A H3 RNA [Presence] in Nasopharynx by NAA with probe detection,LOINC
+3044938,34487-9,Influenza virus A RNA [Presence] in Specimen by NAA with probe detection,LOINC
+46235756,76077-7,Influenza virus A RNA [Presence] in Bronchoalveolar lavage by NAA with probe detection,LOINC
+3032731,49524-2,Influenza virus A H3 RNA [Presence] in Specimen by NAA with probe detection,LOINC
+3038288,40982-1,Influenza virus B RNA [Presence] in Specimen by NAA with probe detection,LOINC
+37020635,92142-9,Influenza virus A RNA [Presence] in Respiratory system specimen by NAA with probe detection,LOINC
+37021252,92141-1,Influenza virus B RNA [Presence] in Respiratory system specimen by NAA with probe detection,LOINC
+46235757,76078-5,Influenza virus A RNA [Presence] in Nasopharynx by NAA with probe detection,LOINC
+3003740,31864-2,Influenza virus B Ag [Presence] in Specimen,LOINC
+46235759,76080-1,Influenza virus B RNA [Presence] in Nasopharynx by NAA with probe detection,LOINC
+21493335,82169-4,Influenza virus A H3 RNA [Presence] in Nasopharynx by NAA with non-probe detection,LOINC
+21493336,82170-2,Influenza virus B RNA [Presence] in Nasopharynx by NAA with non-probe detection,LOINC
+3026784,5860-2,Influenza virus A Ag [Presence] in Throat by Immunoassay,LOINC
+21493332,82166-0,Influenza virus A RNA [Presence] in Nasopharynx by NAA with non-probe detection,LOINC
+3043362,46083-2,Influenza virus B Ag [Presence] in Nasopharynx by Immunoassay,LOINC
+36660307,94394-4,Influenza virus A H3 RNA [Presence] in Lower respiratory specimen by NAA with probe detection,LOINC
+3011688,5866-9,Influenza virus B Ag [Presence] in Specimen by Immunoassay,LOINC
+3024940,5864-4,Influenza virus B Ag [Presence] in Throat by Immunoassay,LOINC
+21493334,82168-6,Influenza virus A H1 2009 pandemic RNA [Presence] in Nasopharynx by NAA with non-probe detection,LOINC
+40758594,55465-9,Influenza virus A H1 2009 pandemic RNA [Presence] in Specimen by NAA with probe detection,LOINC
+3030120,49521-8,Influenza virus A H1 RNA [Presence] in Specimen by NAA with probe detection,LOINC
+3046524,46082-4,Influenza virus A Ag [Presence] in Nasopharynx by Immunoassay,LOINC
+40765199,62462-7,Influenza virus A+B RNA [Presence] in Specimen by NAA with probe detection,LOINC
+37021392,92808-5,Influenza virus A H3 RNA [Presence] in Upper respiratory specimen by NAA with probe detection,LOINC
+3028459,5862-8,Influenza virus A Ag [Presence] in Specimen by Immunoassay,LOINC
+46236738,77028-9,Influenza virus A H1 2009 pandemic RNA [Presence] in Nasopharynx by NAA with probe detection,LOINC

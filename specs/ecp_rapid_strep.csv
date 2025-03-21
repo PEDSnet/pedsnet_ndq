@@ -1,0 +1,10 @@
+concept_id,concept_code,concept_name,vocabulary_id
+3008350,6556-5,Deprecated Streptococcus pyogenes Ag [Presence] in Throat by Immunoassay,LOINC
+3017906,6558-1,Streptococcus pyogenes Ag [Presence] in Specimen by Immunoassay,LOINC
+3033319,18481-2,Streptococcus pyogenes Ag [Presence] in Throat,LOINC
+21491660,78012-2,Streptococcus pyogenes Ag [Presence] in Throat by Rapid immunoassay,LOINC
+3032732,49610-9,Streptococcus pyogenes DNA [Identifier] in Specimen by NAA with probe detection,LOINC
+40763543,60489-2,Streptococcus pyogenes DNA [Presence] in Throat by NAA with probe detection,LOINC
+43055233,72268-6,Streptococcus pyogenes exotoxin B speB gene [Presence] in Specimen by NAA with probe detection,LOINC
+3009769,5036-9,Streptococcus pyogenes rRNA [Presence] in Specimen by Probe,LOINC
+40771489,68954-7,Streptococcus pyogenes rRNA [Presence] in Throat by Probe,LOINC

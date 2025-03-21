@@ -43,12 +43,22 @@ output_tbl_append(vs_output, 'vs_output', file = TRUE)
 uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
                         filter(!check_id %in% c('ml', 'mlu')),
                       by_year = FALSE,
-                      produce_mapped_list=FALSE,
+                      produce_mapped_list = TRUE,
                       unmapped_values = c(44814650L,0L,
                                           44814653L, 44814649L),
                       check_string = 'uc')
 
 output_tbl_append(uc_output, 'uc_output', file = TRUE)
+
+uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
+                              filter(!check_id %in% c('ml', 'mlu')),
+                           by_year = TRUE,
+                           produce_mapped_list = FALSE,
+                           unmapped_values = c(44814650L,0L,
+                                               44814653L, 44814649L),
+                           check_string = 'uc')
+
+output_tbl_append(uc_output_year, 'uc_by_year', file = TRUE)
 
 ## MF Visit ID
 

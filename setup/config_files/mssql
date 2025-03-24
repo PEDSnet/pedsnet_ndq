@@ -1,0 +1,13 @@
+{
+    "src_name" : "odbc",
+    "src_args" : {
+          "Driver": "ODBC Driver 18 for SQL Server",
+          "Server": "my.database.server",
+          "Port": 1433,
+          "Database": "my_database",
+          "UID": "my_username",
+          "PWD": "my_password",
+          "Trusted_Connection": "N/A",
+          "TrustServerCertificate": "yes"
+     }
+ }

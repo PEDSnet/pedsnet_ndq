@@ -1,0 +1,16 @@
+{
+   "src_name" : "Postgres",
+   "src_args" : {
+         "host"     : "my.database.server",
+         "port"     : 5432,
+         "dbname"   : "my_database",
+         "user"     : "my_username",
+         "password" : "my_password",
+         "sslmode"  : "require",
+         "options"  : "-c search_path=",
+         "bigint": "numeric"
+    },
+    "post_connect_sql": [
+        
+    ]
+}

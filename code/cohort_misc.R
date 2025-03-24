@@ -69,7 +69,8 @@ output_tbl_append <- function(data, name = NA, local = FALSE,
 
   if (is.na(name)) name <- quo_name(enquo(data))
 
-  if(db_exists_table(config('db_src'), name = intermed_name(name))) {
+  if(db_exists_table(config('db_src'), name = intermed_name(name,
+                                                            temporary = FALSE))) {
 
     tmp <- results_tbl(name) %>% collect()
     new_tbl <-

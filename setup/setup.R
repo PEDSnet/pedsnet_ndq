@@ -3,8 +3,8 @@
 #' This will ensure the working directory is populated appropriately
 
 # Load required packages
-devtools::install_github('PEDSnet/argos')
-devtools::install_github('PEDSnet/ndq')
+# devtools::install_github('PEDSnet/argos')
+# devtools::install_github('PEDSnet/ndq')
 library(argos)
 library(srcr)
 library(ndq)
@@ -20,15 +20,15 @@ library(lubridate)
 source(file.path('setup', 'argos_wrapper.R'))
 
 ###' `Set site name` ###
-site <- 'my site' ## if a site column exists in your CDM,
+site <- 'colorado' ## if a site column exists in your CDM,
                   ## make sure this matches how it is represented there
 
 # Establish connection to database
 initialize_session(session_name = 'ndq_assessment',
                    db_conn = Sys.getenv('PEDSNET_BASE_CONFIG'),
                    is_json = TRUE,
-                   cdm_schema = 'my_cdm_schema', ## replace with location of CDM data
-                   results_schema = 'my_results_schema', ## replace with location of results schema
+                   cdm_schema = paste0(site, '_pedsnet'), ## replace with location of CDM data
+                   results_schema = 'dqa_rox', ## replace with location of results schema
                                                          ## MUST BE STORED ON SAME DATABASE AS CDM
                    retain_intermediates = FALSE,
                    db_trace = FALSE, ## set to TRUE for SQL code to print to the console (like verbose)
@@ -36,7 +36,7 @@ initialize_session(session_name = 'ndq_assessment',
 
 ###' `Set additional configs` ###
 
-config('site', site)
+config('qry_site', site)
 
 config('current_version','v57') ## set current instantiation PEDSnet version
 

@@ -17,8 +17,8 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 #                       prev_rslt_schema = config('results_schema'),
 #                       check_string = 'dc')
 #
-# output_tbl_append(dc_output, 'dc_output', file = TRUE)
-
+# output_tbl_append(dc_output$dc_counts, 'dc_output', file = TRUE)
+# output_tbl_append(dc_output$dc_meta, 'dc_meta', file = TRUE)
 
 ## Vocabulary Conformance
 
@@ -50,6 +50,9 @@ uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
                       check_string = 'uc')
 
 output_tbl_append(uc_output, 'uc_output', file = TRUE)
+
+mapped_list <- results_tbl('uc_grpd')
+output_tbl_append(mapped_list, 'uc_grpd', file = TRUE)
 
 uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
                               filter(!check_id %in% c('ml', 'mlu')),
@@ -186,7 +189,17 @@ fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc') %>%
                         lookback_months=1,
                         check_string = 'fot')
 
-output_tbl_append(fot_output, 'fot_output', file = TRUE)
+fot_visit_denom <- fot_output %>%
+  filter(check_name == 'fot_vi') %>%
+  select(site, month_start, month_end,
+         row_cts, row_visits, row_pts) %>%
+  rename('total_pt' = row_pts,
+         'total_visit' = row_visits,
+         'total_row' = row_cts)
+
+fot_w_denom <- fot_output %>% left_join(fot_visit_denom)
+
+output_tbl_append(fot_w_denom, 'fot_output', file = TRUE)
 
 ######### CLEANUP CHECKPOINT #################
 remove_precompute(checkpoint = 3)

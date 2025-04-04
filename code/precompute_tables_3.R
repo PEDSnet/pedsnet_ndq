@@ -1,5 +1,5 @@
 
-site_nm <- config('site')
+site_nm <- config('qry_site')
 
 ## Outpatient Labs
 # site_voml <- cdm_tbl('measurement_labs') %>%

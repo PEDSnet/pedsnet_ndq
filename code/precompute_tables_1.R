@@ -1,5 +1,5 @@
 
-site_nm <- config('site')
+site_nm <- config('qry_site')
 
 ## Data Cycle Changes
 # c19_dx_lab_current <-
@@ -41,31 +41,31 @@ op_cs_spec <- cdm_tbl('visit_occurrence') %>%
 output_tbl(op_cs_spec, 'op_cs_spec')
 
 ## Best Mapped Concepts & Expected Concepts Present
-# valid_ftf_dx <- cdm_tbl('visit_occurrence') %>%
-#   add_site() %>% filter(site == site_nm) %>%
-#   select(person_id, visit_occurrence_id, visit_concept_id) %>%
-#   filter(visit_concept_id %in% c(9201, 9202, 9203, 581399, 2000000048)) %>%
-#   inner_join(select(cdm_tbl('condition_occurrence'), person_id,
-#                     visit_occurrence_id)) %>%
-#   select(person_id) %>%
-#   compute_new()
-#
-# valid_demo <- cdm_tbl('person') %>%
-#   add_site() %>% filter(site == site_nm) %>%
-#   inner_join(valid_ftf_dx) %>%
-#   filter(!is.na(birth_date) &
-#            !gender_concept_id %in% c(44814650, 44814653, 44814649)) %>%
-#   distinct(site, person_id, location_id) %>% compute_new()
-#
-# output_tbl(valid_demo %>% select(-location_id), 'geocode_cohort')
-#
-# ## Geocoding metrics (with cohort)
-# geocode_tbls <- prep_geocodes(person_tbl = valid_demo)
-#
-# output_tbl(geocode_tbls$tract_level, 'fips_tract')
-# output_tbl(geocode_tbls$block_group_level, 'fips_block_group')
-# output_tbl(geocode_tbls$lohis_tract, 'lohis_tract')
-# output_tbl(geocode_tbls$lohis_bg, 'lohis_block_group')
+valid_ftf_dx <- cdm_tbl('visit_occurrence') %>%
+  add_site() %>% filter(site == site_nm) %>%
+  select(person_id, visit_occurrence_id, visit_concept_id) %>%
+  filter(visit_concept_id %in% c(9201, 9202, 9203, 581399, 2000000048)) %>%
+  inner_join(select(cdm_tbl('condition_occurrence'), person_id,
+                    visit_occurrence_id)) %>%
+  select(person_id) %>%
+  compute_new()
+
+valid_demo <- cdm_tbl('person') %>%
+  add_site() %>% filter(site == site_nm) %>%
+  inner_join(valid_ftf_dx) %>%
+  filter(!is.na(birth_date) &
+           !gender_concept_id %in% c(44814650, 44814653, 44814649)) %>%
+  distinct(site, person_id, location_id) %>% compute_new()
+
+output_tbl(valid_demo %>% select(-location_id), 'geocode_cohort')
+
+## Geocoding metrics (with cohort)
+geocode_tbls <- prep_geocodes(person_tbl = valid_demo)
+
+output_tbl(geocode_tbls$tract_level, 'fips_tract')
+output_tbl(geocode_tbls$block_group_level, 'fips_block_group')
+output_tbl(geocode_tbls$lohis_tract, 'lohis_tract')
+output_tbl(geocode_tbls$lohis_bg, 'lohis_block_group')
 
 ## Expected Concepts Present
 pcd <- cdm_tbl('procedure_occurrence') %>% add_site() %>% filter(site == site_nm) %>%

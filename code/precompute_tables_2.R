@@ -1,5 +1,5 @@
 
-site_nm <- config('site')
+site_nm <- config('qry_site')
 
 ## Patient Facts
 procs_drugs <-
@@ -10,12 +10,8 @@ procs_drugs <-
 
 output_tbl(procs_drugs, 'procs_drugs')
 
-# procs_drugs_labs <-
-#   dplyr::union(site_cdm_tbl('procedure_occurrence') %>% add_site() %>% filter(site == site_nm) %>%
-#                  select(person_id,visit_occurrence_id),
-#                site_cdm_tbl('drug_exposure') %>% add_site() %>% filter(site == site_nm) %>%
-#                  select(person_id,visit_occurrence_id)) %>%
-#   dplyr::union(site_cdm_tbl('measurement_labs') %>% add_site() %>% filter(site == site_nm) %>%
+# procs_drugs_labs <- results_tbl('procs_drugs') %>%
+#   dplyr::union(cdm_tbl('measurement_labs') %>% add_site() %>% filter(site == site_nm) %>%
 #                  select(person_id,visit_occurrence_id))
 #
 # output_tbl(procs_drugs_labs, 'procs_drugs_labs')

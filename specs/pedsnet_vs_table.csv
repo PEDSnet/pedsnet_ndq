@@ -5,3 +5,4 @@ ob_cid,cdm,observation,valueset_observation,observation_concept_id,
 im_route_cid,cdm,immunization,valueset_imm_route,imm_route_concept_id,
 pd_race_cid,cdm,person,valueset_race,race_concept_id,
 pd_eth_cid,cdm,person,valueset_ethnicity,ethnicity_concept_id,
+hvs_values,cdm,observation,valueset_hvs,value_as_concept_id,"observation_concept_id %in% c(37116643, 40192426, 40192517)"

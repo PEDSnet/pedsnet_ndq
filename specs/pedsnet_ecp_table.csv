@@ -24,3 +24,7 @@ twoplus_lohis_cbg_2020,"Patients with a valid sex, valid DOB, and at least one f
 blood_culture_labs,Patients with an inpatient admission (9201 or 2000000048),result,ip_admit,cdm,measurement,measurement_concept_id,ecp_blood_culture_labs,
 blood_culture_px,Patients with an inpatient admission (9201 or 2000000048),result,ip_admit,cdm,procedure_occurrence,procedure_concept_id,ecp_blood_culture_px,
 cholesterol,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,measurement,measurement_concept_id,ecp_cholesterol_all,
+hvs_all,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,observation,observation_concept_id,ecp_hvs,
+hvs_food_insecurity,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,observation,observation_concept_id,ecp_hvs,observation_concept_id == 37116643
+hvs_q1,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,observation,observation_concept_id,ecp_hvs,observation_concept_id == 40192426
+hvs_q2,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,observation,observation_concept_id,ecp_hvs,observation_concept_id == 40192517

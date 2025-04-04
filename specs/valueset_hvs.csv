@@ -1,0 +1,4 @@
+concept_id,concept_name,domain_id,vocabulary_id,concept_code
+4188539,Yes,Meas Value,SNOMED,373066001
+4188540,No,Meas Value,SNOMED,373067005
+44814653,Unknown,Observation,PCORnet,Generic-UN

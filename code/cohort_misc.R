@@ -125,3 +125,33 @@ find_specialty <- function(visits,
                        TRUE ~ 0L)) %>%
     select(-prov_specialty, -cs_specialty)
 }
+
+
+#' Function to re-assign output from data cycle changes function
+#'      for ease of visualization
+#' @param tbl table that contains the output from the DC check + anomaly detection
+#' @return table with all of the original columns from original `tbl` + a column `plot_prop`
+#'        which contains the value of `prop_total_change` if the value is not an outlier
+#'        and the value of the most extreme `prop_total_change` that is NOT an outlier
+#'              if the original value is an outlier
+dc_suppress_outlier<-function(tbl){
+  all_bounds<-tbl%>%filter(!is.na(lower_tail),!is.na(upper_tail))%>%
+    distinct(check_name, application, lower_tail,upper_tail)
+  tbl_ranked<-tbl%>%
+    filter(anomaly_yn!='outlier')%>%
+    group_by(application)%>%
+    summarise(min_not_outlier=min(prop_total_change),
+              max_not_outlier=max(prop_total_change))%>%
+    ungroup()
+  total_bounds<-tbl%>%filter(site=='total')%>%select(-upper_tail, -lower_tail)%>%
+    inner_join(all_bounds, by = c('check_name','application'))
+
+  tbl%>%filter(site!='total')%>%
+    bind_rows(total_bounds)%>%
+    left_join(tbl_ranked, by = 'application')%>%
+    mutate(plot_prop=case_when((anomaly_yn=='outlier'|site=='total')&prop_total_change<lower_tail~min_not_outlier,
+                               (anomaly_yn=='outlier'|site=='total')&prop_total_change>upper_tail~max_not_outlier,
+                               TRUE~prop_total_change))%>%
+    select(-c(min_not_outlier, max_not_outlier))
+}
+

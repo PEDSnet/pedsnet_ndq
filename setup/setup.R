@@ -5,6 +5,7 @@
 # Load required packages
 # devtools::install_github('PEDSnet/argos')
 # devtools::install_github('PEDSnet/ndq')
+# devtools::install_github('ssdqa/ssdqa.gen')
 library(argos)
 library(srcr)
 library(ndq)
@@ -15,12 +16,13 @@ library(stringr)
 library(DBI)
 library(dbplyr)
 library(lubridate)
+library(ssdqa.gen)
 
 # Source file with wrapper function
 source(file.path('setup', 'argos_wrapper.R'))
 
 ###' `Set site name` ###
-site <- 'colorado' ## if a site column exists in your CDM,
+site <- 'my_site' ## if a site column exists in your CDM,
                   ## make sure this matches how it is represented there
 
 # Establish connection to database
@@ -29,7 +31,7 @@ initialize_session(session_name = 'ndq_assessment',
                    is_json = TRUE,
                    cdm_schema = paste0(site, '_pedsnet'), ## replace with location of CDM data
                    results_schema = 'dqa_rox', ## replace with location of results schema
-                                                         ## MUST BE STORED ON SAME DATABASE AS CDM
+                                               ## MUST BE STORED ON SAME DATABASE AS CDM
                    retain_intermediates = FALSE,
                    db_trace = FALSE, ## set to TRUE for SQL code to print to the console (like verbose)
                    results_tag = '')

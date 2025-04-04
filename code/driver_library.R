@@ -115,14 +115,16 @@ pf_output_ip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                          visit_type_string = 'inpatient',
                          omop_or_pcornet = 'omop',
                          visit_tbl=cdm_tbl('visit_occurrence') %>%
-                           filter(visit_concept_id %in% c(9201L,2000000048L)),
+                           filter(visit_concept_id %in% c(9201L,2000000048L),
+                                  visit_source_concept_id != 2000001590),
                          check_string='pf')
 
 pf_output_lip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                             filter(!grepl('ml', check_id)),
                           visit_type_string = 'long_inpatient',
                           omop_or_pcornet = 'omop',
-                          visit_tbl = results_tbl('ip_two'),
+                          visit_tbl = results_tbl('ip_two') %>%
+                            filter(visit_source_concept_id != 2000001590),
                           check_string='pf')
 
 pf_output_op <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
@@ -130,7 +132,8 @@ pf_output_op <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                          visit_type_string = 'outpatient',
                          omop_or_pcornet = 'omop',
                          visit_tbl=cdm_tbl('visit_occurrence') %>%
-                           filter(visit_concept_id %in% c(9202L,581399L)),
+                           filter(visit_concept_id %in% c(9202L,581399L),
+                                  visit_source_concept_id != 2000001590),
                          check_string='pf')
 
 pf_output_ed <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
@@ -138,14 +141,23 @@ pf_output_ed <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                          visit_type_string = 'emergency',
                          omop_or_pcornet = 'omop',
                          visit_tbl=cdm_tbl('visit_occurrence') %>%
-                           filter(visit_concept_id %in% c(9203L,2000000048L)),
+                           filter(visit_concept_id %in% c(9203L,2000000048L),
+                                  visit_source_concept_id != 2000001590),
                          check_string='pf')
+
+pf_output_cld <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc'),
+                          visit_type_string = 'cancelled',
+                          omop_or_pcornet = 'omop',
+                          visit_tbl=cdm_tbl('visit_occurrence') %>%
+                            filter(visit_source_concept_id == 2000001590),
+                          check_string='pf')
 
 pf_combined <- pf_output_all %>%
   union(pf_output_ip) %>%
   union(pf_output_lip) %>%
   union(pf_output_op) %>%
-  union(pf_output_ed)
+  union(pf_output_ed) %>%
+  union(pf_output_cld)
 
 output_tbl_append(pf_combined, 'pf_output')
 

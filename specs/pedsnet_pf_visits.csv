@@ -1,0 +1,10 @@
+﻿visit_type,visit_concept_id,visit_source_concept_id
+inpatient,9201,
+inpatient,2000000048,
+long_inpatient,9201,
+long_inpatient,2000000048,
+outpatient,9202,
+outpatient,581399,
+emergency,9203,
+emergency,2000000048,
+cancelled,,2000001590

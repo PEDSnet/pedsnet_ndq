@@ -207,7 +207,7 @@ fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc') %>%
                         compute_method = 'loop',
                         time_span = list('2009-01-01', today()),
                         time_period = 'month',
-                        lookback_months=1,
+                        lookback_interval=1,
                         check_string = 'fot')
 
 fot_visit_denom <- fot_output %>%

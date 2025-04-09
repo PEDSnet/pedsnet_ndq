@@ -3,3 +3,4 @@
 .Rproj.user
 *.html
 *results*
+*.DS_Store*

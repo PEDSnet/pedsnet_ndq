@@ -17,7 +17,7 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 #                       prev_rslt_schema = config('results_schema'),
 #                       check_string = 'dc')
 #
-# output_tbl_append(dc_output$dc_counts, 'dc_output', file = TRUE)
+# output_tbl_append(dc_output$dc_cts, 'dc_output', file = TRUE)
 # output_tbl_append(dc_output$dc_meta, 'dc_meta', file = TRUE)
 
 ## Vocabulary Conformance

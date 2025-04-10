@@ -7,7 +7,7 @@ drt,drug route,cdm,drug_exposure,route_concept_id,route_source_value,drug_exposu
 co,conditions,cdm,condition_occurrence,condition_concept_id,condition_source_value,condition_start_date,
 co_scid,condition source,cdm,condition_occurrence,condition_source_concept_id,condition_source_value,condition_start_date,
 ml,all labs,cdm,measurement_labs,measurement_concept_id,measurement_source_value,measurement_date,
-mlu,lab units,cdm,measurement_labs,unit_concept_id,unit_source_value,measurement_date,"value_as_number != 9999, !is.na(value_as_number)"
+mlu,lab units,cdm,measurement_labs,unit_concept_id,unit_source_value,measurement_date,"value_as_number != 9999 & !is.na(value_as_number)"
 im,immunizations,cdm,immunization,immunization_concept_id,immunization_source_value,immunization_date,
 imu,immunization dose unit,cdm,immunization,imm_dose_unit_concept_id,imm_dose_unit_source_value,immunization_date,
 imrt,immunization route,cdm,immunization,imm_route_concept_id,imm_route_source_value,immunization_date,

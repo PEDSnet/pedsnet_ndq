@@ -6,7 +6,7 @@ vo_office,outpatient visits,cdm,visit_occurrence,visit_start_date,visit_concept_
 vo_labs,outpatient lab visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 2000000469
 vo_th,telehealth visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 581399
 vo_oa,other ambulatory visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 44814711
-vip,inpatient visits (9201 or 2000000048),cdm,visit_occurrence,visit_start_date,"visit_concept_id %in% c(9201, 2000000048)"
+vip_ipcombined,inpatient visits (9201 or 2000000048),cdm,visit_occurrence,visit_start_date,"visit_concept_id %in% c(9201, 2000000048)"
 ved,emergency department visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 9203
 vob,observation visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 2000000088
 co,all conditions,cdm,condition_occurrence,condition_start_date,

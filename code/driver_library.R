@@ -19,6 +19,9 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 #
 # output_tbl_append(dc_output$dc_cts, 'dc_output', file = TRUE)
 # output_tbl_append(dc_output$dc_meta, 'dc_meta', file = TRUE)
+#
+# dc_mapping_file <- read_codeset("dc_mappings", 'cc')
+# output_tbl(dc_mapping_file, 'dc_mappings')
 
 ## Vocabulary Conformance
 
@@ -170,6 +173,10 @@ pf_combined <- pf_output_all %>%
 
 output_tbl_append(pf_combined, 'pf_output')
 
+# PF Mapping Descriptions (for Shiny app)
+pf_mapping_file <- read_codeset('pf_mappings', 'cc')
+output_tbl(pf_mapping_file, 'pf_mappings')
+
 
 ## Domain Concordance
 
@@ -185,10 +192,14 @@ dcon_output_visit <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'c
                                 omop_or_pcornet = 'omop',
                                 check_string='dcon')
 
-dcon_combined <- dcon_output_pt %>%
-  union(dcon_output_visit)
+dcon_combined <- dcon_output_pt[[1]] %>%
+  union(dcon_output_visit[[1]])
+
+dcon_meta <- dcon_output_pt[[2]] %>%
+  union(dcon_output_visit[[2]])
 
 output_tbl_append(dcon_combined, 'dcon_output', file = TRUE)
+output_tbl(dcon_meta, 'dcon_meta', file = TRUE)
 
 
 ######### CLEANUP CHECKPOINT #################
@@ -226,4 +237,13 @@ output_tbl_append(fot_w_denom, 'fot_output', file = TRUE)
 remove_precompute(checkpoint = 3)
 ##############################################
 
+# Output mapping table
+new_mapping <- create_check_metadata(check_tbls = c('dc_output', 'ecp_output',
+                                                    'bmc_output', 'dcon_output',
+                                                    'pf_output', 'mf_visitid_output',
+                                                    'fot_output', 'uc_output',
+                                                    'vc_output', 'vs_output'),
+                                     metadata_file = read_codeset('dqa_check_descriptions', 'cc'),
+                                     rslt_source = 'remote')
 
+output_tbl(new_mapping, 'dqa_check_metadata')

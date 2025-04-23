@@ -1,0 +1,7 @@
+Label,Description
+Labels with `_all` suffix,All visit types included
+Labels with `_outpatient` suffix,"Only outpatient visit types included. These are defined as clinician outpatient visits, lab and radiology visits, as well telehealth visits. Visit_concept_id's include 9202, 581399. Cancelled visits are excluded from this category."
+Labels with `_inpatient` suffix,Only inpatient visit types included. These are defined as inpatient visits and combined ED to inpatient visits. Visit concept_id's include 9201 and 2000000048. Cancelled visits are excluded from this category.
+Labels with `_long_inpatient` suffix,Only inpatient visits greater than 2 days included. These are defined as inpatient visits and combined ED to inpatient visits with a visit_start_date and visit_end_date greater than 2 days apart. Visit concept_id's include 9201 and 2000000048. Cancelled visits are excluded from this category.
+Labels with `_emergency` suffix,Only emergency department visit types included. These are defined as ED visit types and combined ED to inpatient visits. Visit concept_id's include 9203 and 2000000048. Cancelled visits are excluded from this category.
+Labels with `_cancelled` suffix,Only cancelled visit types are included. These are defined as any visit type that was indicated as cancelled in the source system but still had at least one fact type associated. Includes visits were visit_source_concept_id is 2000001590.

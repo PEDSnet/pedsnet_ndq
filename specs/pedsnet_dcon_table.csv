@@ -1,27 +1,27 @@
-﻿cohort_id,check_id,check_description,schema,table,date_field,concept_field,conceptset_name,filter_logic,time_between_events
-ckd_dx,ckd_dx_htn_rx,ckd diagnosis and antihypertensive prescription,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_ckd,,730.5
-htn_rx,ckd_dx_htn_rx,ckd diagnosis and antihypertensive prescription,cdm,drug_exposure,drug_exposure_start_date,drug_concept_id,rx_htn,,730.5
-asthma_dx,asthma_dx_broncho_rx,asthma diagnosis and bronchodilator (albuterol) prescription,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_asthma,,90
-broncho_rx,asthma_dx_broncho_rx,asthma diagnosis and bronchodilator (albuterol) prescription,cdm,drug_exposure,drug_exposure_start_date,drug_concept_id,rx_albuterol,,90
-leukemia_dx,leukemia_dx_onco_spec,leukemia diagnosis and oncology specialty visit,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_leukemia_lymphoma,,90
-onco_spec,leukemia_dx_onco_spec,leukemia diagnosis and oncology specialty visit,result,oncology_specialties,visit_start_date,,,,90
-nephsyn_dx,nephsyn_dx_neph_spec,nephrotic syndrome diagnosis and nephrology specialty visit,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_nephrotic_syndrome,,730.5
-neph_spec,nephsyn_dx_neph_spec,nephrotic syndrome diagnosis and nephrology specialty visit,result,nephrology_specialties,visit_start_date,,,,730.5
-frac_dx,frac_dx_img_px,fracture diagnosis and imaging procedure,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_fracture,,90
-img_px,frac_dx_img_px,fracture diagnosis and imaging procedure,cdm,procedure_occurrence,procedure_date,procedure_concept_id,px_radiologic,,90
-t1d_dx,t1d_dx_insulin_rx,t1d diagnosis and insulin drug exposure,cdm,condition_occurrence,condition_start_date,condition_concept_id,T1D_SNOMED_codes,,90
-insulin_rx,t1d_dx_insulin_rx,t1d diagnosis and insulin drug exposure,cdm,drug_exposure,drug_exposure_start_date,drug_concept_id,insulin,,90
-flu_dx,flu_dx_flu_neg_lab,flu diagnosis and negative flu lab,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_influenza,,14
-flu_neg_lab,flu_dx_flu_neg_lab,flu diagnosis and negative flu lab,cdm,measurement,measurement_date,measurement_concept_id,lab_influenza,"value_as_concept_id %in% c(9189,9190,45878583,45884153)",14
-flu_dx,flu_dx_flu_pos_lab,flu diagnosis and positive flu lab,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_influenza,,14
-flu_pos_lab,flu_dx_flu_pos_lab,flu diagnosis and positive flu lab,cdm,measurement,measurement_date,measurement_concept_id,lab_influenza,"value_as_concept_id %in% c(9191,4126681,45884084,45878745,4328749,45876384,45881666)",14
-rsv_dx,rsv_dx_rsv_neg_lab,rsv diagnosis and negative rsv lab,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_rsv,,14
-rsv_neg_lab,rsv_dx_rsv_neg_lab,rsv diagnosis and negative rsv lab,cdm,measurement,measurement_date,measurement_concept_id,lab_rsv,"value_as_concept_id %in% c(9189,9190,45878583,45884153)",14
-rsv_dx,rsv_dx_rsv_pos_lab,rsv diagnosis and positive rsv lab,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_rsv,,14
-rsv_pos_lab,rsv_dx_rsv_pos_lab,rsv diagnosis and positive rsv lab,cdm,measurement,measurement_date,measurement_concept_id,lab_rsv,"value_as_concept_id %in% c(9191,4126681,45884084,45878745,4328749,45876384,45881666)",14
-ED_visits,ED_visits_ED_conds,ED visits and ED condition headers,cdm,visit_occurrence,visit_start_date,,,visit_concept_id == 9203,
-ED_conds,ED_visits_ED_conds,ED visits and ED condition headers,cdm,condition_occurrence,condition_start_date,,,"condition_type_concept_id %in% c(2000001280,2000001281,2000001282,2000001283,2000001284,2000001285)",
-IP_visits,IP_visits_IP_conds,IP visits and IP condition headers,cdm,visit_occurrence,visit_start_date,,,visit_concept_id == 9201,
-IP_conds,IP_visits_IP_conds,IP visits and IP condition headers,cdm,condition_occurrence,condition_start_date,,,"condition_type_concept_id %in% c(2000000092,2000000093, 2000000094,2000000098, 2000000099,2000000100)",
-OP_visits,OP_visits_OP_conds,OP visits and OP condition headers,cdm,visit_occurrence,visit_start_date,,,visit_concept_id == 9202,
-OP_conds,OP_visits_OP_conds,OP visits and OP condition headers,cdm,condition_occurrence,condition_start_date,,,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)",
+cohort_id,check_id,cohort_description,schema,table,date_field,concept_field,conceptset_name,filter_logic,time_between_events
+ckd_dx,ckd_dx_htn_rx,ckd diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_ckd,,730.5
+htn_rx,ckd_dx_htn_rx,antihypertensive prescription,cdm,drug_exposure,drug_exposure_start_date,drug_concept_id,rx_htn,,730.5
+asthma_dx,asthma_dx_broncho_rx,asthma diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_asthma,,90
+broncho_rx,asthma_dx_broncho_rx,bronchodilator (albuterol) prescription,cdm,drug_exposure,drug_exposure_start_date,drug_concept_id,rx_albuterol,,90
+leukemia_dx,leukemia_dx_onco_spec,leukemia diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_leukemia_lymphoma,,90
+onco_spec,leukemia_dx_onco_spec,oncology specialty visit,result,oncology_specialties,visit_start_date,,,,90
+nephsyn_dx,nephsyn_dx_neph_spec,nephrotic syndrome diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_nephrotic_syndrome,,730.5
+neph_spec,nephsyn_dx_neph_spec,nephrology specialty visit,result,nephrology_specialties,visit_start_date,,,,730.5
+frac_dx,frac_dx_img_px,fracture diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_fracture,,90
+img_px,frac_dx_img_px,imaging procedure,cdm,procedure_occurrence,procedure_date,procedure_concept_id,px_radiologic,,90
+t1d_dx,t1d_dx_insulin_rx,t1d diagnosis ,cdm,condition_occurrence,condition_start_date,condition_concept_id,T1D_SNOMED_codes,,90
+insulin_rx,t1d_dx_insulin_rx,insulin drug exposure,cdm,drug_exposure,drug_exposure_start_date,drug_concept_id,insulin,,90
+flu_neg_lab,flu_neg_lab_flu_dx,negative flu lab,cdm,measurement,measurement_date,measurement_concept_id,lab_influenza,"value_as_concept_id %in% c(9189,9190,45878583,45884153)",14
+flu_dx,flu_dx_flu_neg_lab,flu diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_influenza,,14
+flu_pos_lab,flu_pos_lab_flu_dx,positive flu lab,cdm,measurement,measurement_date,measurement_concept_id,lab_influenza,"value_as_concept_id %in% c(9191,4126681,45884084,45878745,4328749,45876384,45881666)",14
+flu_dx,flu_pos_lab_flu_dx,flu diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_influenza,,14
+rsv_neg_lab,rsv_neg_lab_rsv_dx,negative rsv lab,cdm,measurement,measurement_date,measurement_concept_id,lab_rsv,"value_as_concept_id %in% c(9189,9190,45878583,45884153)",14
+rsv_dx,rsv_neg_lab_rsv_dx,rsv diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_rsv,,14
+rsv_pos_lab,rsv_pos_lab_rsv_dx,positive rsv lab,cdm,measurement,measurement_date,measurement_concept_id,lab_rsv,"value_as_concept_id %in% c(9191,4126681,45884084,45878745,4328749,45876384,45881666)",14
+rsv_dx,rsv_pos_lab_rsv_dx,rsv diagnosis,cdm,condition_occurrence,condition_start_date,condition_concept_id,dx_rsv,,14
+ED_visits,ED_visits_ED_conds,ED visits,cdm,visit_occurrence,visit_start_date,,,visit_concept_id == 9203,
+ED_conds,ED_visits_ED_conds,ED condition headers,cdm,condition_occurrence,condition_start_date,,,"condition_type_concept_id %in% c(2000001280,2000001281,2000001282,2000001283,2000001284,2000001285)",
+IP_visits,IP_visits_IP_conds,IP visits,cdm,visit_occurrence,visit_start_date,,,visit_concept_id == 9201,
+IP_conds,IP_visits_IP_conds,IP condition headers,cdm,condition_occurrence,condition_start_date,,,"condition_type_concept_id %in% c(2000000092,2000000093, 2000000094,2000000098, 2000000099,2000000100)",
+OP_visits,OP_visits_OP_conds,OP visits,cdm,visit_occurrence,visit_start_date,,,visit_concept_id == 9202,
+OP_conds,OP_visits_OP_conds,OP condition headers,cdm,condition_occurrence,condition_start_date,,,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)",

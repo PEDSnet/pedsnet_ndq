@@ -238,12 +238,30 @@ remove_precompute(checkpoint = 3)
 ##############################################
 
 # Output mapping table
+
+check_type_mapping <- tibble('check_type_short' = c('dc', 'ecp', 'bmc', 'dcon',
+                                                    'pf', 'mf_visitid', 'fot', 'uc',
+                                                    'vc', 'vs'),
+                             'check_type' = c('Data Cycle Changes', 'Expected Concepts Present',
+                                              'Best Mapped Concepts', 'Domain Concordance',
+                                              'Person Facts/Records', 'Missing Field: Visit ID', 'Facts Over Time',
+                                              'Unmapped Concepts', 'Vocabulary Conformance',
+                                              'Value Set Conformance'),
+                             'check_category' = c('Consistency', 'Correctness', 'Correctness',
+                                                  'Concordance', 'Completeness', 'Completeness',
+                                                  'Consistency', 'Completeness', 'Conformance',
+                                                  'Conformance'))
+
 new_mapping <- create_check_metadata(check_tbls = c('dc_output', 'ecp_output',
                                                     'bmc_output', 'dcon_output',
                                                     'pf_output', 'mf_visitid_output',
                                                     'fot_output', 'uc_output',
                                                     'vc_output', 'vs_output'),
-                                     metadata_file = read_codeset('dqa_check_descriptions', 'cc'),
-                                     rslt_source = 'remote')
+                                     metadata_file = read_codeset('dqa_check_descriptions', 'cc') %>%
+                                       left_join(check_type_mapping) %>% mutate(check_type_long = check_type,
+                                                                                check_type = check_type_short), #%>%
+                                       # select(-c(check_type_short)),
+                                     rslt_source = 'remote') %>% mutate(check_type = check_type_long) %>%
+  select(-check_type_long)
 
 output_tbl(new_mapping, 'dqa_check_metadata')

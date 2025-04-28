@@ -1,0 +1,20 @@
+﻿concept_id,concept_code,concept_name,vocabulary_id,form_type
+37021250,91967-0,When I was in pain I talked about my pain in past 7 days [PROMIS],LOINC,self_report
+37020071,91964-7,When I was in pain I moved slower in past 7 days [PROMIS],LOINC,self_report
+37020041,91969-6,When I was in pain I asked for medicine in past 7 days [PROMIS],LOINC,self_report
+37020067,91935-7,PROMIS pediatric pain behavior - version 1.0 T-score,LOINC,self_report
+37021351,91938-1,When I was in pain I lay down in past 7 days [PROMIS],LOINC,self_report
+37021507,91939-9,WhenI was in pain I asked for someone to help me in past 7 days [PROMIS],LOINC,self_report
+40764508,61747-2,When I was in pain I protected the part of my body that hurt in past 7 days [PROMIS],LOINC,self_report
+37021184,91941-5,When I was in pain it showed on my face in past 7 days [PROMIS],LOINC,self_report
+37021378,91955-5,When I was in pain I had to stop what I was doing in past 7 days [PROMIS],LOINC,self_report
+37021071,92609-7,PROMIS pediatric short form - pain behavior 8a - version 1.0 raw score,LOINC,self_report
+40764489,61728-2,When I was in pain I called out for someone to help me in past 7 days [PROMIS],LOINC,self_report
+40764475,61714-2,When I was in pain I became irritable in past 7 days [PROMIS],LOINC,self_report
+40764476,61715-9,When I was in pain I grimaced in past 7 days [PROMIS],LOINC,self_report
+40764478,61717-5,When I was in pain I moved extremely slowly in past 7 days [PROMIS],LOINC,self_report
+40764488,61727-4,When I was in pain I moved stiffly in the past 7 days [PROMIS],LOINC,self_report
+40764499,61738-1,When I was in pain I isolated myself from others in past 7 days [PROMIS],LOINC,self_report
+40764507,61746-4,When I was in pain I thrashed in past 7 days [PROMIS],LOINC,self_report
+46236692,77832-4,PROMIS short form - pain behavior 7a - version 1.0 raw score,LOINC,self_report
+46236716,77856-3,PROMIS pain behavior - version 1.0 Tscore,LOINC,self_report

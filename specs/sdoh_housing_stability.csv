@@ -1,0 +1,9 @@
+﻿concept_id,concept_code,concept_name,vocabulary_id,instrument,answers,concept_group
+1001607,93157-6,"How often do you need to have someone help you when you read instructions, pamphlets, or other written material from your doctor or pharmacy [SILS]",LOINC,Single Item Literacy Screener,"Never, Rarely, Sometimes, Often, Patient declines to respond, Patient unable to respond",Health Literacy
+42869557,71802-3,Housing status,LOINC,AHC HRSN Living Situation,"I have a steady place to live; I have a place to live today, but I am worried about losing it in the future; I do not have a steady place to live; Patient unable to answer; Patient declined",Housing Stability
+1989510,98976-4,Behind on rent or mortgage in past 12 months,LOINC,Children's Health Watch Housing Stability Vital Signs,"Yes, No, Patient unable to answer, Patient declined",Housing Stability
+1617013,96778-6,Problems with place where you live,LOINC,AHC HRSN Living Situation,"Pests, such as bugs, ants or mice; Mold; Lead paint or pipes; Lack of heat; Oven or stove not working; Smolke detectors missing or not working; Water leaks; None of the above; Patient unable to answer; Patient declined;",Housing Stability
+1989298,98977-2,Number of residential moves in past 12 months,LOINC,Children's Health Watch Housing Stability Vital Signs,NA,Housing Stability
+1989298,98977-2,Number of residential moves in past 12 months,LOINC,Children's Health Watch Housing Stability Vital Signs,NA,Housing Stability
+1988631,98978-0,Homeless in past 12 months,LOINC,Children's Health Watch Housing Stability Vital Signs,"Yes, No, Patient unable to answer, Patient declined",Housing Stability
+1988631,98978-0,Homeless in past 12 months,LOINC,Children's Health Watch Housing Stability Vital Signs,"Yes, No, Patient unable to answer, Patient declined",Housing Stability

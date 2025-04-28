@@ -1,0 +1,32 @@
+concept_id,concept_code,concept_name,vocabulary_id
+45876662,LA6270-8,Never,LOINC
+45876672,LA10066-1,Rarely,LOINC
+45882528,LA10082-8,Sometimes,LOINC
+45882536,LA9933-8,Always,LOINC
+45884455,LA10044-8,Often,LOINC
+1620541,LA31993-1,I have a steady place to live,LOINC
+1620991,LA31994-9,"I have a place to live today, but I am worried about losing it in the future",LOINC
+1621285,LA31995-6,"I do not have a steady place to live (I am temporarily staying with others, in a hotel, in a shelter, living outside on the street, on a beach, in a car, abandoned building, bus or train station, or in a park)",LOINC
+36307721,LA18838-5,Patient lives in hotel,LOINC
+36308039,LA18837-7,Patient lives in nursing home,LOINC
+36309086,LA18836-9,Patient lives in hospital,LOINC
+36309495,LA18839-3,Patient lives in own home,LOINC
+36310234,LA18835-1,Patient is homeless,LOINC
+37079289,LA30190-5,"I do not have housing (staying with others, in a hotel, in a shelter, living outside on the street, on a beach, in a car, or in a park)",LOINC
+37079361,LA30122-8,I choose not to answer this question,LOINC
+37079501,LA30189-7,I have housing,LOINC
+45877994,LA33-6,Yes,LOINC
+45878245,LA32-8,No,LOINC
+1620304,LA32000-4,Smoke detectors missing or not working,LOINC
+1620572,LA31999-8,Oven or stove not working,LOINC
+1620583,LA32001-2,Water leaks,LOINC
+1620632,LA31998-0,Lack of heat,LOINC
+1621120,LA31997-2,Lead paint or pipes,LOINC
+1621241,LA31996-4,"Pests such as bugs, ants, or mice",LOINC
+1989923,LA32691-0,Bug infestation,LOINC
+1990020,LA32694-4,Inadequate heat,LOINC
+1990083,LA32696-9,No or non-working smoke detectors,LOINC
+1990098,LA32695-1,Non-functioning oven/stove,LOINC
+1990241,LA32693-6,Lead paint/pipes,LOINC
+36307605,LA28580-1,Mold,LOINC
+45878802,LA9-3,None of the above,LOINC

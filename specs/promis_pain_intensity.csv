@@ -1,0 +1,5 @@
+﻿concept_id,concept_code,concept_name,vocabulary_id,form_type
+44817149,75260-0,What is your level of pain right now [PROMIS],LOINC,self_report
+44817150,75261-8,How intense was your average pain in the past 7 days [PROMIS],LOINC,self_report
+44817151,75262-6,How intense was your pain at its worse in the past 7 days [PROMIS],LOINC,self_report
+46236685,77825-8,PROMIS short form - pain intensity 3a - version 1.0 raw score,LOINC,self_report

@@ -1,0 +1,27 @@
+concept_id,concept_code,concept_name,vocabulary_id
+45877849,LA18377-4,Not quite so much now,LOINC
+45878094,LA18376-6,As much as I always could,LOINC
+45878095,LA18378-2,Definitely not so much now,LOINC
+45883172,LA6568-5,Not at all,LOINC
+45879387,LA18380-8,Rather less than I used to,LOINC
+45879388,LA18382-4,Hardly at all,LOINC
+45880856,LA18381-6,Definitely less than I used to,LOINC
+45885323,LA18379-0,As much as I ever could,LOINC
+45880857,LA18386-5,"No, never",LOINC
+45880858,LA18384-0,"Yes, some of the time",LOINC
+45880859,LA18385-7,Not very often,LOINC
+45885120,LA18383-2,"Yes, most of the time",LOINC
+45877850,LA18389-9,"Yes, very often",LOINC
+45879997,LA18388-1,"Yes, sometimes",LOINC
+45884598,LA14751-4,Hardly ever,LOINC
+45885119,LA18387-3,"No, not at all",LOINC
+45879389,LA18391-5,"No, not much",LOINC
+45885324,LA18390-7,"Yes, quite a lot",LOINC
+45877851,LA18394-9,"No, most of the time I have coped quite well",LOINC
+45879390,LA18392-3,"Yes, most of the time I haven't been able to cope at all",LOINC
+45881507,LA18393-1,"Yes, sometimes I haven't been coping as well as usual",LOINC
+45885325,LA18395-6,"No, have been coping as well as ever",LOINC
+45879391,LA18396-4,"Yes, quite often",LOINC
+45885326,LA18397-2,Only occasionally,LOINC
+45876662,LA6270-8,Never,LOINC
+45882528,LA10082-8,Sometimes,LOINC

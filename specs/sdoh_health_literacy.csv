@@ -1,0 +1,2 @@
+﻿concept_id,concept_code,concept_name,vocabulary_id,instrument,answers,concept_group
+1001607,93157-6,"How often do you need to have someone help you when you read instructions, pamphlets, or other written material from your doctor or pharmacy [SILS]",LOINC,Single Item Literacy Screener,"Never, Rarely, Sometimes, Often, Patient declines to respond, Patient unable to respond",Health Literacy

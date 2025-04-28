@@ -1,0 +1,7 @@
+concept_id,concept_code,concept_name,vocabulary_id
+45877983,LA6751-7,Moderate,LOINC
+45879046,LA131-5,No pain,LOINC
+45883535,LA6752-5,Mild,LOINC
+45883536,LA6750-9,Severe,LOINC
+45883841,LA13958-6,Very severe,LOINC
+45885102,LA13879-4,Had no pain,LOINC

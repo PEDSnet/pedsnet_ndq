@@ -1,0 +1,33 @@
+﻿concept_id,concept_code,concept_name,vocabulary_id,form_type
+37021219,91987-8,PROMIS parent proxy anxiety - version 2.0 T-score,LOINC,parent_proxy
+37021438,91989-4,My child felt worried in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
+37020901,91991-0,My child worried when he or she was at home in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
+37020446,91992-8,My child worried when he or she went to bed at night in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
+37021464,91994-4,My child felt scared in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
+37019868,91995-1,My child felt like something awful might happen in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
+37020642,91997-7,My child felt nervous in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
+37021578,92000-9,My child worried about what could happen to him or her in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
+37020187,92001-7,My child got scared really easy in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
+37020274,92614-7,PROMIS parent proxy short form - anxiety 8a - version 2.0 raw score,LOINC,parent_proxy
+40764818,62057-5,I felt scared in past 7 days [PROMIS],LOINC,self_report
+40764705,61944-5,I felt nervous in past 7 days [PROMIS],LOINC,self_report
+40764699,61938-7,I felt worried in past 7 days [PROMIS],LOINC,self_report
+40764816,62055-9,I felt like something awful might happen in past 7 days [PROMIS],LOINC,self_report
+40764819,62058-3,I worried about what could happen to me in past 7 days [PROMIS],LOINC,self_report
+40764822,62061-7,I worried when I went to bed at night in past 7 days [PROMIS],LOINC,self_report
+40764825,62064-1,I thought about scary things in past 7 days [PROMIS],LOINC,self_report
+40764826,62065-8,I was afraid that I would make mistakes in past 7 days [PROMIS],LOINC,self_report
+46236705,77845-6,PROMIS pediatric short form - emotional distress - anxiety 8a - version 1.0 raw score,LOINC,self_report
+46236609,77873-8,PROMIS pediatric emotional distress - anxiety - version 1.0 Tscore,LOINC,self_report
+40764817,62056-7,I got scared really easy in past 7 days [PROMIS],LOINC,self_report
+40764824,62063-3,I worried when I was at home in past 7 days [PROMIS],LOINC,self_report
+21492057,78170-8,PROMIS pediatric short form - emotional distress - anxiety 8b - version 1.1 raw score,LOINC,self_report
+40764703,61942-9,My worries overwhelmed me in past 7 days [PROMIS],LOINC,self_report
+40764684,61923-9,I felt fearful in past 7 days [PROMIS],LOINC,self_report
+40764702,61941-1,I found it hard to focus on anything other than my anxiety in past 7 days [PROMIS],LOINC,self_report
+40764710,61949-4,I felt uneasy in past 7 days [PROMIS],LOINC,self_report
+46236681,77820-9,PROMIS short form - emotional distress - anxiety 4a - version 1.0 raw score,LOINC,self_report
+46236766,77862-1,PROMIS emotional distress - anxiety - version 1.0 Tscore,LOINC,self_report
+40764687,61926-2,I felt anxious in past 7 days [PROMIS],LOINC,self_report
+40764711,61950-2,I felt tense in past 7 days [PROMIS],LOINC,self_report
+46236696,77836-5,PROMIS short form - emotional distress - anxiety 7a - version 1.0 raw score,LOINC,self_report

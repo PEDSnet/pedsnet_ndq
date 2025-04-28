@@ -1,0 +1,16 @@
+concept_id,concept_code,concept_name,vocabulary_id
+45878074,LA13955-2,With some trouble,LOINC
+45879122,LA13956-0,With a lot of trouble,LOINC
+45881489,LA13957-8,Not able to do,LOINC
+45885103,LA13953-7,With no trouble,LOINC
+45885104,LA13954-5,With a little trouble,LOINC
+45876385,LA13909-9,Somewhat,LOINC
+45877927,LA13947-9,Very little,LOINC
+45878064,LA11911-7,Quite a lot,LOINC
+45879119,LA13868-7,Cannot do,LOINC
+45883172,LA6568-5,Not at all,LOINC
+45879120,LA13919-8,With much difficulty,LOINC
+45880588,LA13921-4,Without any difficulty,LOINC
+45881487,LA13918-0,With a little difficulty,LOINC
+45881488,LA13920-6,With some difficulty,LOINC
+45882739,LA13912-3,Unable to do,LOINC

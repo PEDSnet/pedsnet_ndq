@@ -1,0 +1,11 @@
+concept_id,concept_code,concept_name,vocabulary_id
+45877994,LA33-6,Yes,LOINC
+45878245,LA32-8,No,LOINC
+45878994,LA6570-1,More than half the days,LOINC
+45879886,LA6569-3,Several days,LOINC
+45882010,LA6571-9,Nearly every day,LOINC
+45883172,LA6568-5,Not at all,LOINC
+42530924,LA6572-7,Not difficult at all,LOINC
+45877108,LA6573-5,Somewhat difficult,LOINC
+45883817,LA6574-3,Extremely difficult,LOINC
+45884578,LA6575-0,Very difficult,LOINC

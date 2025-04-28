@@ -1,0 +1,27 @@
+﻿concept_id,concept_code,concept_name,vocabulary_id,form_type
+40764732,61971-8,I felt unhappy in past 7 days [PROMIS],LOINC,self_report
+40764852,62091-4,I felt alone in past 7 days [PROMIS],LOINC,self_report
+40764853,62092-2,I could not stop feeling sad in past 7 days [PROMIS],LOINC,self_report
+40764856,62095-5,I felt stressed in past 7 days [PROMIS],LOINC,self_report
+46236707,77847-2,PROMIS pediatric short form - depressive symptoms - version 1.0 raw score,LOINC,self_report
+40765080,62339-7,I felt sad in the past 7 days [PROMIS.PEDS],LOINC,self_report
+40764727,61966-8,I felt lonely in past 7 days [PROMIS],LOINC,self_report
+40764847,62086-4,I felt too sad to eat in past 7 days [PROMIS],LOINC,self_report
+40764848,62087-2,I didn't care about anything in past 7 days [PROMIS],LOINC,self_report
+40764849,62088-0,I wanted to be by myself in past 7 days [PROMIS],LOINC,self_report
+40764850,62089-8,I thought that my life was bad in past 7 days [PROMIS],LOINC,self_report
+40764851,62090-6,It was hard for me to have fun in past 7 days [PROMIS],LOINC,self_report
+40764854,62093-0,I felt like I couldn't do anything right in past 7 days [PROMIS],LOINC,self_report
+40764855,62094-8,I felt everything in my life went wrong in past 7 days [PROMIS],LOINC,self_report
+40764857,62096-3,Being sad made it hard for me to do things with my friends in past 7 days [PROMIS],LOINC,self_report
+37021054,90950-7,PROMIS pediatric short form - depressive symptoms 8a - version 2.0 raw score,LOINC,self_report
+40764714,61953-6,I felt worthless in past 7 days [PROMIS],LOINC,self_report
+40764716,61955-1,I felt helpless in past 7 days [PROMIS],LOINC,self_report
+40764728,61967-6,I felt depressed in past 7 days [PROMIS],LOINC,self_report
+40764734,61973-4,I felt hopeless in past 7 days [PROMIS],LOINC,self_report
+46236682,77821-7,PROMIS short form - emotional distress - depression 4a - version 1.0 raw score,LOINC,self_report
+46236765,77861-3,PROMIS emotional distress - depression - version 1.0 Tscore,LOINC,self_report
+40764715,61954-4,I felt that I had nothing to look forward to in past 7 days [PROMIS],LOINC,self_report
+40764720,61959-3,I felt sad in past 7 days [PROMIS],LOINC,self_report
+40764723,61962-7,I felt like a failure in past 7 days [PROMIS],LOINC,self_report
+46236695,77835-7,PROMIS short form - emotional distress - depression 8b - version 1.0 raw score,LOINC,self_report

@@ -27,6 +27,7 @@ cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000048,visit_e
 cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000088,visit_ov,vob,observation visit types
 cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id ==  38000177,drug_rx,dp,drug prescriptions
 cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 38000180,drug_ip,di,inpatient drug administrations
+cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 32865,drug_pr,dpr,patient reported drugs
 cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(44786630,44786631)",procedures_billed,pb,billed procedures
 cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(2000001494,38000275)",procedures_ordered,po,ordered procedures
 cdm,procedure_occurrence,cdm,procedure_occurrence,,procedures,pr,procedures

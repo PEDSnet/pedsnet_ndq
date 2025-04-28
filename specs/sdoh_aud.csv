@@ -1,0 +1,4 @@
+﻿concept_id,concept_code,concept_name,vocabulary_id,instrument,answers,concept_group
+40771104,68519-8,How many standard drinks containing alcohol do you have on a typical day,LOINC,Alcohol Use Disorder Identification Test - Consumption [AUDIT-C],"Patient does not drink, 1 or 2, 3 or 4, 5 or 6, 7 to 9, 10 or more, Patient unable to answer, Patient refused / declined",Alcohol Use
+40771105,68520-6,How often do you have 6 or more drinks on 1 occasion,LOINC,Alcohol Use Disorder Identification Test - Consumption [AUDIT-C],"Never, Less than monthly, Monthly, Weekly, Daily or almost daily, Patient unable to answer, Patient refused / declined",Alcohol Use
+40771103,68518-0,How often do you have a drink containing alcohol,LOINC,Alcohol Use Disorder Identification Test - Consumption [AUDIT-C],"Never, Monthly or less, 2-4 time a month, 2-3 times a week, 4 or more times a week, Patient unable to answer, Patient refused / declined",Alcohol Use

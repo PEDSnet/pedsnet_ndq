@@ -60,12 +60,12 @@ valid_demo <- cdm_tbl('person') %>%
 output_tbl(valid_demo %>% select(-location_id), 'geocode_cohort')
 
 ## Geocoding metrics (with cohort)
-geocode_tbls <- prep_geocodes(person_tbl = valid_demo)
-
-output_tbl(geocode_tbls$tract_level, 'fips_tract')
-output_tbl(geocode_tbls$block_group_level, 'fips_block_group')
-output_tbl(geocode_tbls$lohis_tract, 'lohis_tract')
-output_tbl(geocode_tbls$lohis_bg, 'lohis_block_group')
+# geocode_tbls <- prep_geocodes(person_tbl = valid_demo)
+#
+# output_tbl(geocode_tbls$tract_level, 'fips_tract')
+# output_tbl(geocode_tbls$block_group_level, 'fips_block_group')
+# output_tbl(geocode_tbls$lohis_tract, 'lohis_tract')
+# output_tbl(geocode_tbls$lohis_bg, 'lohis_block_group')
 
 ## Expected Concepts Present
 pcd <- cdm_tbl('procedure_occurrence') %>% add_site() %>% filter(site == site_nm) %>%

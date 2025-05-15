@@ -1,9 +1,4 @@
 concept_id,concept_code,concept_name,vocabulary_id
-45876662,LA6270-8,Never,LOINC
-45876672,LA10066-1,Rarely,LOINC
-45882528,LA10082-8,Sometimes,LOINC
-45882536,LA9933-8,Always,LOINC
-45884455,LA10044-8,Often,LOINC
 1620541,LA31993-1,I have a steady place to live,LOINC
 1620991,LA31994-9,"I have a place to live today, but I am worried about losing it in the future",LOINC
 1621285,LA31995-6,"I do not have a steady place to live (I am temporarily staying with others, in a hotel, in a shelter, living outside on the street, on a beach, in a car, abandoned building, bus or train station, or in a park)",LOINC

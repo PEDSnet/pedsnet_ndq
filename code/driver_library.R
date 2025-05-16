@@ -49,7 +49,7 @@ uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
                       by_year = FALSE,
                       produce_mapped_list = TRUE,
                       unmapped_values = c(44814650L,0L,
-                                          44814653L, 44814649L),
+                                          44814653L, 44814649L, NA),
                       check_string = 'uc')
 
 output_tbl_append(uc_output, 'uc_output', file = TRUE)
@@ -62,7 +62,7 @@ uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>
                            by_year = TRUE,
                            produce_mapped_list = FALSE,
                            unmapped_values = c(44814650L,0L,
-                                               44814653L, 44814649L),
+                                               44814653L, 44814649L, NA),
                            check_string = 'uc')
 
 output_tbl_append(uc_output_year, 'uc_by_year', file = TRUE)
@@ -171,7 +171,7 @@ pf_combined <- pf_output_all %>%
   union(pf_output_ed) %>%
   union(pf_output_cld)
 
-output_tbl_append(pf_combined, 'pf_output')
+output_tbl_append(pf_combined, 'pf_output', file = TRUE)
 
 # PF Mapping Descriptions (for Shiny app)
 pf_mapping_file <- read_codeset('pf_mappings', 'cc')
@@ -223,7 +223,7 @@ fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc') %>%
 
 fot_visit_denom <- fot_output %>%
   filter(check_name == 'fot_vi') %>%
-  select(site, month_start, month_end,
+  select(site, time_end, time_start,
          row_cts, row_visits, row_pts) %>%
   rename('total_pt' = row_pts,
          'total_visit' = row_visits,

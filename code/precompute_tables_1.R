@@ -72,8 +72,11 @@ pcd <- cdm_tbl('procedure_occurrence') %>% add_site() %>% filter(site == site_nm
   select(person_id) %>% distinct()
 drg <- cdm_tbl('drug_exposure') %>% add_site() %>% filter(site == site_nm) %>%
   select(person_id) %>% distinct()
-ml <- cdm_tbl('measurement_labs') %>% add_site() %>% filter(site == site_nm) %>%
+# ml <- cdm_tbl('measurement_labs') %>% add_site() %>% filter(site == site_nm) %>%
+#   select(person_id) %>% distinct()
+ml <- cdm_tbl('measurement') %>% add_site() %>% filter(site == site_nm) %>%
   select(person_id) %>% distinct()
+
 
 pdl_pts <- pcd %>%
   inner_join(drg) %>%

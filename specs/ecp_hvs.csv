@@ -1,4 +1,4 @@
 concept_id,concept_code,concept_name,vocabulary_id
 37116643,733423003,Food insecurity,SNOMED
-40192426,hvs_2,Within the past 12 months, were you worried whether the food you had bought just didn't last and you didn't have money to get more?,SNOMED
-40192517,hvs_1,Within the past 12 months, were you worried whether your food would run out before you got money to buy more?,SNOMED
+40192426,hvs_2,"Within the past 12 months, were you worried whether the food you had bought just didn't last and you didn't have money to get more?",SNOMED
+40192517,hvs_1,"Within the past 12 months, were you worried whether your food would run out before you got money to buy more?",SNOMED

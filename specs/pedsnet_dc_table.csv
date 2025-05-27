@@ -6,7 +6,7 @@ cdm,adt_occurrence,cdm,adt_occurrence,,adt_occurrence,adt,full adt occurrence ta
 cdm,device_exposure,cdm,device_exposure,,device_exposure,de,full device exposure
 cdm,immunization,cdm,immunization,,immunization,im,full immunizations
 cdm,visit_occurrence,cdm,visit_occurrence,,visit_occurrence,vi,full visit table
-cdm,measurement,cdm,measurement,,measurement_vitals,mv,full vitals
+cdm,measurement_vitals,cdm,measurement_vitals,,measurement_vitals,mv,full vitals
 cdm,measurement_labs,cdm,measurement_labs,,measurement_labs,ml,full labs
 cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)",condition_outpatient,cop,outpatient condition headers
 cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000092, 2000000093, 2000000094, 2000000098, 2000000099, 2000000100)",condition_inpatient,ci,inpatient condition headers

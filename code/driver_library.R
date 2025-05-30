@@ -6,27 +6,25 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 
 ## Data Cycle Changes
 
-# dc_output <- check_dc(dc_tbl = read_codeset('pedsnet_dc_table', 'cccccc') %>%
-#                         filter(!check_id %in% c('ml', 'mv', 'ma', 'co_ml_covid')),
-#                       omop_or_pcornet = 'omop',
-#                       prev_db_string = 'v56',
-#                       current_db_string = 'v57',
-#                       prev_ct_src = 'cdm',
-#                       prev_db = config('db_src_prev'),
-#                       prev_rslt_tbl = 'dc_output',
-#                       prev_rslt_schema = config('results_schema'),
-#                       check_string = 'dc')
-#
-# output_tbl_append(dc_output$dc_cts, 'dc_output', file = TRUE)
-# output_tbl_append(dc_output$dc_meta, 'dc_meta', file = TRUE)
-#
-# dc_mapping_file <- read_codeset("dc_mappings", 'cc')
-# output_tbl(dc_mapping_file, 'dc_mappings')
+dc_output <- check_dc(dc_tbl = read_codeset('pedsnet_dc_table', 'cccccc'),
+                      omop_or_pcornet = 'omop',
+                      prev_db_string = 'v58',
+                      current_db_string = 'v58',
+                      prev_ct_src = 'cdm',
+                      prev_db = config('db_src'),
+                      prev_rslt_tbl = NULL,
+                      prev_rslt_schema = config('cdm_schema'),
+                      check_string = 'dc')
+
+output_tbl_append(dc_output$dc_cts, 'dc_output', file = TRUE)
+output_tbl_append(dc_output$dc_meta, 'dc_meta', file = TRUE)
+
+dc_mapping_file <- read_codeset("dc_mappings", 'cc')
+output_tbl(dc_mapping_file, 'dc_mappings')
 
 ## Vocabulary Conformance
 
-vc_output <- check_vc(vc_tbl = read_codeset('pedsnet_vc_table', 'ccccc') %>%
-                        filter(check_id != 'ml_cid'),
+vc_output <- check_vc(vc_tbl = read_codeset('pedsnet_vc_table', 'ccccc'),
                       omop_or_pcornet = 'omop',
                       null_values = c(44814650L,0L,44814653L,44814649L),
                       check_string = 'vc')
@@ -44,8 +42,7 @@ output_tbl_append(vs_output, 'vs_output', file = TRUE)
 
 ## Unmapped Concepts
 
-uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
-                        filter(!check_id %in% c('ml', 'mlu')),
+uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc'),
                       by_year = FALSE,
                       produce_mapped_list = TRUE,
                       unmapped_values = c(44814650L,0L,
@@ -57,8 +54,7 @@ output_tbl_append(uc_output, 'uc_output', file = TRUE)
 mapped_list <- results_tbl('uc_grpd')
 output_tbl_append(mapped_list, 'uc_grpd', file = TRUE)
 
-uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
-                              filter(!check_id %in% c('ml', 'mlu')),
+uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc'),
                            by_year = TRUE,
                            produce_mapped_list = FALSE,
                            unmapped_values = c(44814650L,0L,
@@ -69,8 +65,7 @@ output_tbl_append(uc_output_year, 'uc_by_year', file = TRUE)
 
 ## MF Visit ID
 
-mf_output <- check_mf_visitid(mf_tbl = read_codeset('pedsnet_mf_table', 'ccccc') %>%
-                                filter(check_id != 'ml'),
+mf_output <- check_mf_visitid(mf_tbl = read_codeset('pedsnet_mf_table', 'ccccc'),
                               omop_or_pcornet = 'omop',
                               visit_tbl = cdm_tbl('visit_occurrence'),
                               check_string = 'mf_visitid')
@@ -79,8 +74,7 @@ output_tbl_append(mf_output, 'mf_visitid_output', file = TRUE)
 
 ## Best Mapped Concepts
 
-bmc_output <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc') %>%
-                          filter(!grepl('fips', check_id)),
+bmc_output <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc'),
                         omop_or_pcornet = 'omop',
                         concept_tbl = vocabulary_tbl('concept'),
                         check_string='bmc')

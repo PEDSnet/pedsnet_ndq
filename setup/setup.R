@@ -5,7 +5,7 @@
 # Load required packages
 # devtools::install_github('PEDSnet/argos')
 # devtools::install_github('PEDSnet/ndq')
-# devtools::install_github('ssdqa/ssdqa.gen')
+# devtools::install_github('ssdqa/squba.gen')
 library(argos)
 library(srcr)
 library(ndq)
@@ -16,7 +16,8 @@ library(stringr)
 library(DBI)
 library(dbplyr)
 library(lubridate)
-library(ssdqa.gen)
+library(squba.gen)
+library(RPresto)
 
 # Source file with wrapper function
 source(file.path('setup', 'argos_wrapper.R'))
@@ -30,17 +31,17 @@ initialize_session(session_name = 'ndq_assessment',
                    db_conn = Sys.getenv('PEDSNET_BASE_CONFIG'),
                    is_json = TRUE,
                    cdm_schema = paste0(site, '_pedsnet'), ## replace with location of CDM data
-                   results_schema = 'dqa_rox', ## replace with location of results schema
-                                               ## MUST BE STORED ON SAME DATABASE AS CDM
+                   results_schema = 'my_dq_schema', ## replace with location of results schema
+                                                    ## MUST BE STORED ON SAME DATABASE AS CDM
                    retain_intermediates = FALSE,
                    db_trace = FALSE, ## set to TRUE for SQL code to print to the console (like verbose)
                    results_tag = '')
 
 ###' `Set additional configs` ###
 
-config('qry_site', site)
+argos::config('qry_site', site)
 
-config('current_version','v57') ## set current instantiation PEDSnet version
+argos::config('current_version','v58') ## set current instantiation PEDSnet version
 
 # location of prior CDM or results data (for data cycle changes check)
 # config('db_src_prev', srcr(Sys.getenv('PEDSNET_PREV_CONFIG')))

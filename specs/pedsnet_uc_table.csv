@@ -7,13 +7,8 @@ du,drug dose unit,cdm,drug_exposure,dose_unit_concept_id,dose_unit_source_value,
 drt,drug route,cdm,drug_exposure,route_concept_id,route_source_value,drug_exposure_start_date,
 co,conditions,cdm,condition_occurrence,condition_concept_id,condition_source_value,condition_start_date,
 co_scid,condition source,cdm,condition_occurrence,condition_source_concept_id,condition_source_value,condition_start_date,
-ml,all labs,cdm,measurement_labs,measurement_concept_id,measurement_source_value,measurement_date,
-mlu,lab units,cdm,measurement_labs,unit_concept_id,unit_source_value,measurement_date,value_as_number != 9999 & !is.na(value_as_number)
-im,immunizations,cdm,immunization,immunization_concept_id,immunization_source_value,immunization_date,
-imu,immunization dose unit,cdm,immunization,imm_dose_unit_concept_id,imm_dose_unit_source_value,immunization_date,
-imrt,immunization route,cdm,immunization,imm_route_concept_id,imm_route_source_value,immunization_date,
+ms,all measurements,cdm,measurement,measurement_concept_id,measurement_source_value,measurement_date,
+msu,measurement units,cdm,measurement,unit_concept_id,unit_source_value,measurement_date,value_as_number != 9999 & !is.na(value_as_number)
 pr,all procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,
 po,ordered procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(2000001494,38000275)"
 pb,billed procedure,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(44786630L,44786631)"
-vpc,payer plan class,result,payer_with_date,payer_class,plan_name,visit_start_date,
-vpt,payer plan type,result,payer_with_date,payer_type,plan_name,visit_start_date,

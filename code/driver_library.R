@@ -102,15 +102,14 @@ source(file.path(getwd(), 'code', 'precompute_tables_2.R'))
 ## Patient Facts
 ####### All Visits
 pf_output_all <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                            filter(!grepl('ml', check_id) & check_id != 'icu'),
+                            filter(check_id != 'icu'),
                           visit_type_filter = 'all',
                           visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci'),
                           omop_or_pcornet = 'omop',
                           visit_tbl=cdm_tbl('visit_occurrence'),
                           check_string='pf')
 ####### Inpatient Visits
-pf_output_ip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                           filter(!grepl('ml', check_id)),
+pf_output_ip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc'),
                          visit_type_filter = 'inpatient',
                          visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                            select(-visit_source_concept_id),
@@ -119,8 +118,7 @@ pf_output_ip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                            filter(visit_source_concept_id != 2000001590),
                          check_string='pf')
 ####### Inpatient Visits > 2 Days
-pf_output_lip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                            filter(!grepl('ml', check_id)),
+pf_output_lip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc'),
                           visit_type_filter = 'long_inpatient',
                           visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                             select(-visit_source_concept_id),
@@ -130,7 +128,7 @@ pf_output_lip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                           check_string='pf')
 ####### Outpatient Visits
 pf_output_op <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                           filter(!grepl('ml', check_id) & check_id != 'icu'),
+                           filter(check_id != 'icu'),
                          visit_type_filter = 'outpatient',
                          visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                            select(-visit_source_concept_id),
@@ -140,7 +138,7 @@ pf_output_op <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                          check_string='pf')
 ####### Emergency Department Visits
 pf_output_ed <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                           filter(!grepl('ml', check_id) & check_id != 'icu'),
+                           filter(check_id != 'icu'),
                          visit_type_filter = 'emergency',
                          visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                            select(-visit_source_concept_id),
@@ -149,8 +147,7 @@ pf_output_ed <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                            filter(visit_source_concept_id != 2000001590),
                          check_string='pf')
 ####### Cancelled Visits
-pf_output_cld <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                            filter(!grepl('ml', check_id)),
+pf_output_cld <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc'),
                           visit_type_filter = 'cancelled',
                           visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                             select(-visit_concept_id),
@@ -206,8 +203,7 @@ source(file.path(getwd(), 'code', 'precompute_tables_3.R'))
 
 ## Facts Over Time
 
-fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc') %>%
-                          filter(check_id != 'voml'),
+fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc'),
                         omop_or_pcornet = 'omop',
                         compute_method = 'loop',
                         time_span = list('2009-01-01', today()),

@@ -34,6 +34,7 @@ initialize_session(session_name = 'ndq_assessment',
                    cdm_schema = paste0(site, '_pedsnet'), ## replace with location of CDM data
                    results_schema = 'my_dq_schema', ## replace with location of results schema
                                                     ## MUST BE STORED ON SAME DATABASE AS CDM
+                   vocabulary_schema = 'vocabulary',
                    retain_intermediates = FALSE,
                    db_trace = FALSE, ## set to TRUE for SQL code to print to the console (like verbose)
                    results_tag = '')

@@ -17,7 +17,8 @@ library(DBI)
 library(dbplyr)
 library(lubridate)
 library(squba.gen)
-library(RPresto)
+# library(RPresto)
+library(RPostgres)
 
 # Source file with wrapper function
 source(file.path('setup', 'argos_wrapper.R'))
@@ -58,3 +59,23 @@ for (fn in list.files('code', 'cohort_.+\\.R', full.names = TRUE)){
   source(fn)
   }
 rm(fn)
+
+
+assignInNamespace(x = 'get_data_type',
+                  value = get_data_type <- function(obj){
+                    if (is.factor(obj)) return("TEXT")
+                    if (inherits(obj, "POSIXt")) return("TIMESTAMPTZ")
+                    if (inherits(obj, "Date")) return("DATE")
+                    if (inherits(obj, "difftime")) return("TIME")
+                    if (inherits(obj, "integer64")) return("BIGINT")
+                    switch(typeof(obj),
+                           integer = "INTEGER",
+                           double = "DOUBLE PRECISION",
+                           character = "VARCHAR",
+                           logical = "BOOLEAN",
+                           list = "BYTEA",
+                           stop("Unsupported type", call. = FALSE)
+                    )
+                  },
+                  ns = 'RPostgres')
+

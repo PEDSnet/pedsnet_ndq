@@ -25,3 +25,5 @@ IP_visits,IP_visits_IP_conds,IP visits,cdm,visit_occurrence,visit_start_date,,,v
 IP_conds,IP_visits_IP_conds,IP condition headers,cdm,condition_occurrence,condition_start_date,,,"condition_type_concept_id %in% c(2000000092,2000000093, 2000000094,2000000098, 2000000099,2000000100)",
 OP_visits,OP_visits_OP_conds,OP visits,cdm,visit_occurrence,visit_start_date,,,visit_concept_id == 9202,
 OP_conds,OP_visits_OP_conds,OP condition headers,cdm,condition_occurrence,condition_start_date,,,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)",
+gp_visits,gp_visits_wc_codes,General practice specialty visits,result,gp_specialties,visit_start_date,,,,
+wc_codes,gp_visits_wc_codes,Visis with well-child codes,result,wc_code,visit_start_date,,,,

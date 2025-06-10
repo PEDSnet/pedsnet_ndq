@@ -5,12 +5,13 @@ remove_precompute <- function(checkpoint){
 
   ck1_list <- c('c19_dx_lab_current', 'c19_dx_lab_prev', 'payer_with_date',
                'op_prov_spec', 'op_cs_spec','pdl_pts', 'ip_admit', 'geocode_cohort',
-                'fips_tract', 'fips_block_group', 'lohis_tract','lohis_block_group')
+                'fips_tract', 'fips_block_group', 'lohis_tract','lohis_block_group',
+               'gest_age_cohort')
 
   ck2_list <- c('procs_drugs', 'procs_drugs_labs', 'icu_transfer', 'payer_w_pid',
                 'ip_two', 'nephrology_specialties', 'oncology_specialties')
 
-  ck3_list <- c('voml', 'vipdp', 'vodi', 'prvo', 'c19_imm')
+  ck3_list <- c('voml', 'vipdp', 'vodi', 'prvo', 'c19_imm', 'gp_specialties', 'wc_codes')
 
   drop_tbls <- function(tbl_list,
                         schema = rslt_schm){

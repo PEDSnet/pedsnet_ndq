@@ -58,7 +58,7 @@ mapped_list <- results_tbl('uc_grpd')
 output_tbl_append(mapped_list, 'uc_grpd', file = TRUE)
 
 uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
-                              filter(!check_id %in% c('ml', 'mlu')),
+                              filter(!check_id %in% c('ml', 'mlu', 'gest_age')),
                            by_year = TRUE,
                            produce_mapped_list = FALSE,
                            unmapped_values = c(44814650L,0L,
@@ -80,13 +80,22 @@ output_tbl_append(mf_output, 'mf_visitid_output', file = TRUE)
 ## Best Mapped Concepts
 
 bmc_output <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc') %>%
-                          filter(!grepl('fips', check_id)),
+                          filter(!grepl('fips|gest_age', check_id)),
                         omop_or_pcornet = 'omop',
                         concept_tbl = vocabulary_tbl('concept'),
                         check_string='bmc')
 
-output_tbl_append(bmc_output$bmc_counts, 'bmc_output', file = TRUE)
-output_tbl_append(bmc_output$bmc_concepts, 'bmc_concepts', file = TRUE)
+bmc_output2 <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc') %>%
+                          filter(grepl('fips|gest_age', check_id)),
+                        omop_or_pcornet = 'omop',
+                        concept_tbl = NULL,
+                        check_string='bmc')
+
+bmc_counts_final <- bmc_output$bmc_counts %>% union(bmc_output2$bmc_counts)
+bmc_concepts_final <- bmc_output$bmc_concepts %>% union(bmc_output2$bmc_concepts)
+
+output_tbl_append(bmc_counts_final, 'bmc_output', file = TRUE)
+output_tbl_append(bmc_concepts_final, 'bmc_concepts', file = TRUE)
 
 ## Expected Concepts Present
 
@@ -144,6 +153,18 @@ pf_output_op <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                          visit_tbl=cdm_tbl('visit_occurrence') %>%
                            filter(visit_source_concept_id != 2000001590),
                          check_string='pf')
+
+####### Primary Care Visits (Specialty)
+pf_output_pc <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
+                           filter(!grepl('ml', check_id) & check_id != 'icu'),
+                         visit_type_filter = 'primary_care',
+                         visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
+                           select(-visit_source_concept_id),
+                         omop_or_pcornet = 'omop',
+                         visit_tbl=results_tbl('gp_specialties') %>%
+                           filter(visit_source_concept_id != 2000001590),
+                         check_string='pf')
+
 ####### Emergency Department Visits
 pf_output_ed <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                            filter(!grepl('ml', check_id) & check_id != 'icu'),
@@ -169,7 +190,8 @@ pf_combined <- pf_output_all %>%
   union(pf_output_lip) %>%
   union(pf_output_op) %>%
   union(pf_output_ed) %>%
-  union(pf_output_cld)
+  union(pf_output_cld) %>%
+  union(pf_output_pc)
 
 output_tbl_append(pf_combined, 'pf_output', file = TRUE)
 

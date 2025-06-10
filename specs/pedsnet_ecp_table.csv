@@ -45,3 +45,4 @@ promis_pain_behavior,"Patients with a valid sex, valid DOB, and at least one fac
 promis_pain_intensity,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,observation,observation_concept_id,promis_pain_intensity,
 promis_pain_interference,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,observation,observation_concept_id,promis_pain_interference,
 promis_physical_function,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,observation,observation_concept_id,promis_physical_function,
+kidney_biopsy,"Patients with at least one nephrology specialty visit",result,nephrology_specialties,cdm,procedure_occurrence,procedure_concept_id,px_kidney_biopsy,

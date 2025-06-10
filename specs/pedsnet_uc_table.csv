@@ -17,3 +17,4 @@ po,ordered procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_so
 pb,billed procedure,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(44786630L,44786631)"
 vpc,payer plan class,result,payer_with_date,payer_class,plan_name,visit_start_date,
 vpt,payer plan type,result,payer_with_date,payer_type,plan_name,visit_start_date,
+gest_age,gestational age (when first visit occurs at <= 2 years old),result,gest_age_cohort,pn_gestational_age,ga_group,birth_date,

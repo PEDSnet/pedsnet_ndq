@@ -25,6 +25,22 @@ payer_with_date <- cdm_tbl('visit_payer') %>%
 
 output_tbl(payer_with_date, 'payer_with_date')
 
+gest_age_cohort <- cdm_tbl('visit_occurrence') %>%
+  add_site() %>% filter(site == site_nm) %>%
+  select(site, person_id, visit_start_date) %>%
+  group_by(site, person_id) %>%
+  filter(visit_start_date == min(visit_start_date)) %>%
+  distinct() %>%
+  inner_join(cdm_tbl('person') %>% select(person_id, birth_date, pn_gestational_age)) %>%
+  mutate(age_first_visit = sql(calc_days_between_dates('birth_date', 'visit_start_date')),
+         age_first_visit = as.numeric(age_first_visit) / 365.25) %>%
+  filter(age_first_visit <= 2) %>% mutate(ga_group = case_when(pn_gestational_age == 0 | is.na(pn_gestational_age) ~ 'Null/0 Gestational Age',
+                                                               pn_gestational_age >= 20 | pn_gestational_age <= 45 ~ '20-45 Weeks (Expected Range)',
+                                                               pn_gestational_age < 20 ~ 'Less than 20 weeks (Short Term)',
+                                                               pn_gestational_age > 45 ~ 'Greater than 45 weeks (Long Term)'))
+
+output_tbl(gest_age_cohort, 'gest_age_cohort')
+
 ## Best Mapped Concepts
 op_prov_spec <- cdm_tbl('visit_occurrence') %>%
   add_site() %>% filter(site == site_nm) %>%
@@ -87,3 +103,8 @@ ip_admit <- cdm_tbl('visit_occurrence') %>%
   add_site() %>% filter(site == site_nm) %>%
   filter(visit_concept_id %in% c(9201, 2000000048)) %>%
   distinct(person_id) %>% output_tbl('ip_admit')
+
+neph_spec_prep <- find_specialty(visits = cdm_tbl('visit_occurrence') %>%
+                                   add_site() %>% filter(site == site_nm),
+                                 specialty_conceptset = load_codeset('nephrology'))
+output_tbl(neph_spec_prep, 'nephrology_specialties')

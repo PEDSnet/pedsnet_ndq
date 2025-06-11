@@ -25,7 +25,7 @@ concept_id,concept_name,domain_id,vocabulary_id,concept_code
 2000001470,Uveitis,Observation,PEDSnet,PEDSnet Generated
 2000001473,Physicians Global Assessment of Current Disease Status,Observation,PEDSnet,PEDSnet Generated
 2000001478,Extent of Macroscopic Lower GI Disease,Observation,PEDSnet,PEDSnet Generated
-2000001484,Crohn’s disease Phenotype,Observation,PEDSnet,PEDSnet Generated
+2000001484,Crohn's disease Phenotype,Observation,PEDSnet,PEDSnet Generated
 2000001411,COVID-19 Cohort Status,Observation,PEDSnet,PEDSnet Generated
 4108138,Ventilator rate,Observation,SNOMED,250876000
 4215838,Inspiratory pressure setting,Observation,SNOMED,417071008

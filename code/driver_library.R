@@ -76,7 +76,7 @@ output_tbl_append(mf_output, 'mf_visitid_output', file = TRUE)
 
 bmc_output <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc'),
                         omop_or_pcornet = 'omop',
-                        concept_tbl = vocabulary_tbl('concept'),
+                        concept_tbl = NULL, #vocabulary_tbl('concept'),
                         check_string='bmc')
 
 output_tbl_append(bmc_output$bmc_counts, 'bmc_output', file = TRUE)

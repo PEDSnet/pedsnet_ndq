@@ -4,6 +4,5 @@ co_cscid,cdm,condition_occurrence,"ICD9,ICD9CM,ICD10,ICD10CM",condition_source_c
 dt_cause_cid,cdm,death,"SNOMED, OMOP Extension",cause_concept_id,
 co_cid,cdm,condition_occurrence,"SNOMED,OMOP Extension",condition_concept_id,
 dr_cid,cdm,drug_exposure,"RxNorm, RxNorm Extension, NDC",drug_concept_id,
-dr_dose,cdm,drug_exposure,UCUM,dose_unit_concept_id,
 pr_pscid,cdm,procedure_occurrence,"ICD10CM,CPT4,ICD9CM,ICD10,ICD9,ICD10PCS,ICD9Proc,HCPCS",procedure_source_concept_id,
 ms_cid,cdm,measurement,"LOINC, SNOMED, PEDSnet",measurement_concept_id,

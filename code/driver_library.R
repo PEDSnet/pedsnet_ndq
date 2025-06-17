@@ -51,8 +51,9 @@ uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc'),
 
 output_tbl_append(uc_output, 'uc_output', file = TRUE)
 
-mapped_list <- results_tbl('uc_grpd')
+mapped_list <- results_tbl('uc_grpd') %>% collect()
 output_tbl_append(mapped_list, 'uc_grpd', file = TRUE)
+rm(mapped_list)
 
 uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc'),
                            by_year = TRUE,

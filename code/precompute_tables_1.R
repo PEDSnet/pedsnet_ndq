@@ -2,19 +2,19 @@
 site_nm <- config('qry_site')
 
 ## Data Cycle Changes
-# c19_dx_lab_current <-
-#   cdm_tbl('condition_occurrence') %>%
-#   add_site() %>% filter(site == site_nm) %>%
-#   inner_join(load_codeset('c19_dx'),
-#              by=c('condition_concept_id'='concept_id')) %>%
-#   select(person_id) %>%
-#   inner_join(cdm_tbl('measurement'),
-#              by='person_id') %>%
-#   inner_join(load_codeset('c19_viral_labs'),
-#              by=c('measurement_concept_id'='concept_id')) %>%
-#   distinct(person_id)
-#
-# output_tbl(c19_dx_lab_current, 'c19_dx_lab_current')
+c19_dx_lab_current <-
+  cdm_tbl('condition_occurrence') %>%
+  add_site() %>% filter(site == site_nm) %>%
+  inner_join(load_codeset('c19_dx'),
+             by=c('condition_concept_id'='concept_id')) %>%
+  select(person_id) %>%
+  inner_join(cdm_tbl('measurement_labs'),
+             by='person_id') %>%
+  inner_join(load_codeset('c19_viral_labs'),
+             by=c('measurement_concept_id'='concept_id')) %>%
+  distinct(person_id)
+
+output_tbl(c19_dx_lab_current, 'c19_dx_lab_current')
 
 ## Unmapped Concepts
 payer_with_date <- cdm_tbl('visit_payer') %>%
@@ -76,12 +76,16 @@ valid_demo <- cdm_tbl('person') %>%
 output_tbl(valid_demo %>% select(-location_id), 'geocode_cohort')
 
 ## Geocoding metrics (with cohort)
-# geocode_tbls <- prep_geocodes(person_tbl = valid_demo)
-#
-# output_tbl(geocode_tbls$tract_level, 'fips_tract')
-# output_tbl(geocode_tbls$block_group_level, 'fips_block_group')
-# output_tbl(geocode_tbls$lohis_tract, 'lohis_tract')
-# output_tbl(geocode_tbls$lohis_bg, 'lohis_block_group')
+geocode_tbls <- prep_geocodes(person_tbl = valid_demo)
+
+output_tbl(geocode_tbls$tract_level %>% mutate(batch=row_number()%%200), 'fips_tract',
+           chunk.fields=c('batch'))
+output_tbl(geocode_tbls$block_group_level %>% mutate(batch=row_number()%%200), 'fips_block_group',
+           chunk.fields=c('batch'))
+output_tbl(geocode_tbls$lohis_tract %>% ungroup() %>% mutate(batch=row_number()%%100), 'lohis_tract',
+           chunk.fields=c('batch'))
+output_tbl(geocode_tbls$lohis_bg %>% ungroup() %>% mutate(batch=row_number()%%100), 'lohis_block_group',
+           chunk.fields=c('batch'))
 
 ## Expected Concepts Present
 pcd <- cdm_tbl('procedure_occurrence') %>% add_site() %>% filter(site == site_nm) %>%
@@ -90,7 +94,7 @@ drg <- cdm_tbl('drug_exposure') %>% add_site() %>% filter(site == site_nm) %>%
   select(person_id) %>% distinct()
 # ml <- cdm_tbl('measurement_labs') %>% add_site() %>% filter(site == site_nm) %>%
 #   select(person_id) %>% distinct()
-ml <- cdm_tbl('measurement') %>% add_site() %>% filter(site == site_nm) %>%
+ml <- cdm_tbl('measurement_labs') %>% add_site() %>% filter(site == site_nm) %>%
   select(person_id) %>% distinct()
 
 

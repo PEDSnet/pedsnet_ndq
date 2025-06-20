@@ -6,27 +6,25 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 
 ## Data Cycle Changes
 
-# dc_output <- check_dc(dc_tbl = read_codeset('pedsnet_dc_table', 'cccccc') %>%
-#                         filter(!check_id %in% c('ml', 'mv', 'ma', 'co_ml_covid')),
-#                       omop_or_pcornet = 'omop',
-#                       prev_db_string = 'v56',
-#                       current_db_string = 'v57',
-#                       prev_ct_src = 'cdm',
-#                       prev_db = config('db_src_prev'),
-#                       prev_rslt_tbl = 'dc_output',
-#                       prev_rslt_schema = config('results_schema'),
-#                       check_string = 'dc')
-#
-# output_tbl_append(dc_output$dc_cts, 'dc_output', file = TRUE)
-# output_tbl_append(dc_output$dc_meta, 'dc_meta', file = TRUE)
-#
-# dc_mapping_file <- read_codeset("dc_mappings", 'cc')
-# output_tbl(dc_mapping_file, 'dc_mappings')
+dc_output <- check_dc(dc_tbl = read_codeset('pedsnet_dc_table', 'cccccc'),
+                      omop_or_pcornet = 'omop',
+                      prev_db_string = 'v58',
+                      current_db_string = 'v58',
+                      prev_ct_src = 'cdm',
+                      prev_db = config('db_src'),
+                      prev_rslt_tbl = 'dc_output',
+                      prev_rslt_schema = config('cdm_schema'),
+                      check_string = 'dc')
+
+output_tbl_append(dc_output$dc_cts, 'dc_output', file = TRUE)
+output_tbl_append(dc_output$dc_meta, 'dc_meta', file = TRUE)
+
+dc_mapping_file <- read_codeset("dc_mappings", 'cc')
+output_tbl(dc_mapping_file, 'dc_mappings')
 
 ## Vocabulary Conformance
 
-vc_output <- check_vc(vc_tbl = read_codeset('pedsnet_vc_table', 'ccccc') %>%
-                        filter(check_id != 'ml_cid'),
+vc_output <- check_vc(vc_tbl = read_codeset('pedsnet_vc_table', 'ccccc'),
                       omop_or_pcornet = 'omop',
                       null_values = c(44814650L,0L,44814653L,44814649L),
                       check_string = 'vc')
@@ -44,21 +42,21 @@ output_tbl_append(vs_output, 'vs_output', file = TRUE)
 
 ## Unmapped Concepts
 
-uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
-                        filter(!check_id %in% c('ml', 'mlu')),
+uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc'),
                       by_year = FALSE,
-                      produce_mapped_list = TRUE,
+                      produce_mapped_list = FALSE,
                       unmapped_values = c(44814650L,0L,
                                           44814653L, 44814649L, NA),
                       check_string = 'uc')
 
-output_tbl_append(uc_output, 'uc_output', file = TRUE)
+output_tbl_append(uc_output %>%
+                    mutate(unmapped_prop = ifelse(is.nan(unmapped_prop), as.numeric(NA),
+                                                  unmapped_prop)), 'uc_output', file = TRUE)
 
 mapped_list <- results_tbl('uc_grpd')
 output_tbl_append(mapped_list, 'uc_grpd', file = TRUE)
 
-uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
-                              filter(!check_id %in% c('ml', 'mlu', 'gest_age')),
+uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc'),
                            by_year = TRUE,
                            produce_mapped_list = FALSE,
                            unmapped_values = c(44814650L,0L,
@@ -69,8 +67,7 @@ output_tbl_append(uc_output_year, 'uc_by_year', file = TRUE)
 
 ## MF Visit ID
 
-mf_output <- check_mf_visitid(mf_tbl = read_codeset('pedsnet_mf_table', 'ccccc') %>%
-                                filter(check_id != 'ml'),
+mf_output <- check_mf_visitid(mf_tbl = read_codeset('pedsnet_mf_table', 'ccccc'),
                               omop_or_pcornet = 'omop',
                               visit_tbl = cdm_tbl('visit_occurrence'),
                               check_string = 'mf_visitid')
@@ -99,8 +96,7 @@ output_tbl_append(bmc_concepts_final, 'bmc_concepts', file = TRUE)
 
 ## Expected Concepts Present
 
-ecp_output <- check_ecp(ecp_tbl = read_codeset('pedsnet_ecp_table', 'ccccc') %>%
-                          filter(!grepl('2010|2020', check_id)),
+ecp_output <- check_ecp(ecp_tbl = read_codeset('pedsnet_ecp_table', 'ccccc'),
                         omop_or_pcornet = 'omop',
                         check_string = 'ecp')
 
@@ -117,15 +113,14 @@ source(file.path(getwd(), 'code', 'precompute_tables_2.R'))
 ## Patient Facts
 ####### All Visits
 pf_output_all <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                            filter(!grepl('ml', check_id) & check_id != 'icu'),
+                            filter(check_id != 'icu'),
                           visit_type_filter = 'all',
                           visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci'),
                           omop_or_pcornet = 'omop',
                           visit_tbl=cdm_tbl('visit_occurrence'),
                           check_string='pf')
 ####### Inpatient Visits
-pf_output_ip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                           filter(!grepl('ml', check_id)),
+pf_output_ip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc'),
                          visit_type_filter = 'inpatient',
                          visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                            select(-visit_source_concept_id),
@@ -134,8 +129,7 @@ pf_output_ip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                            filter(visit_source_concept_id != 2000001590),
                          check_string='pf')
 ####### Inpatient Visits > 2 Days
-pf_output_lip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                            filter(!grepl('ml', check_id)),
+pf_output_lip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc'),
                           visit_type_filter = 'long_inpatient',
                           visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                             select(-visit_source_concept_id),
@@ -145,7 +139,7 @@ pf_output_lip <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                           check_string='pf')
 ####### Outpatient Visits
 pf_output_op <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                           filter(!grepl('ml', check_id) & check_id != 'icu'),
+                           filter(check_id != 'icu'),
                          visit_type_filter = 'outpatient',
                          visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                            select(-visit_source_concept_id),
@@ -156,7 +150,7 @@ pf_output_op <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
 
 ####### Primary Care Visits (Specialty)
 pf_output_pc <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                           filter(!grepl('ml', check_id) & check_id != 'icu'),
+                           filter(check_id != 'icu'),
                          visit_type_filter = 'primary_care',
                          visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                            select(-visit_source_concept_id),
@@ -167,7 +161,7 @@ pf_output_pc <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
 
 ####### Emergency Department Visits
 pf_output_ed <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                           filter(!grepl('ml', check_id) & check_id != 'icu'),
+                           filter(check_id != 'icu'),
                          visit_type_filter = 'emergency',
                          visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                            select(-visit_source_concept_id),
@@ -176,8 +170,7 @@ pf_output_ed <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
                            filter(visit_source_concept_id != 2000001590),
                          check_string='pf')
 ####### Cancelled Visits
-pf_output_cld <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc') %>%
-                            filter(!grepl('ml', check_id)),
+pf_output_cld <- check_pf(pf_tbl = read_codeset('pedsnet_pf_table', 'ccccc'),
                           visit_type_filter = 'cancelled',
                           visit_type_tbl = read_codeset('pedsnet_pf_visits', 'ci') %>%
                             select(-visit_concept_id),
@@ -234,10 +227,9 @@ source(file.path(getwd(), 'code', 'precompute_tables_3.R'))
 
 ## Facts Over Time
 
-fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc') %>%
-                          filter(check_id != 'voml'),
+fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc'),
                         omop_or_pcornet = 'omop',
-                        compute_method = 'loop',
+                        compute_method = 'group',
                         time_span = list('2009-01-01', today()),
                         time_period = 'month',
                         lookback_interval=1,
@@ -253,7 +245,8 @@ fot_visit_denom <- fot_output %>%
 
 fot_w_denom <- fot_output %>% left_join(fot_visit_denom)
 
-output_tbl_append(fot_w_denom, 'fot_output', file = TRUE)
+output_tbl_append(fot_w_denom %>% mutate(batch = row_number()%%100), 'fot_output', file = TRUE,
+                  chunk.fields = c('batch'))
 
 ######### CLEANUP CHECKPOINT #################
 remove_precompute(checkpoint = 3)

@@ -26,10 +26,10 @@ ci_cb,inpatient billed conditions,cdm,condition_occurrence,condition_start_date,
 voml,outpatient (9202) labs,result,voml,measurement_date,
 vodi,outpatient med admins,result,vodi,drug_exposure_start_date,
 vipdp,inpatient prescriptions,result,vipdp,drug_exposure_start_date,
-ma_ht,height,cdm,measurement,measurement_date,measurement_concept_id == 3023540
-ma_wt,weight,cdm,measurement,measurement_date,measurement_concept_id == 3013762
-mv_sbp,systolic blood pressure,cdm,measurement,measurement_date,"measurement_concept_id %in% c(3018586, 3035856, 3009395, 3004249)"
-mv_dbp,diastolic blood pressure,cdm,measurement,measurement_date,"measurement_concept_id %in% c(3034703, 3019962, 3013940, 3012888)"
+ma_ht,height,cdm,measurement_anthro,measurement_date,measurement_concept_id == 3023540
+ma_wt,weight,cdm,measurement_anthro,measurement_date,measurement_concept_id == 3013762
+mv_sbp,systolic blood pressure,cdm,measurement_vitals,measurement_date,"measurement_concept_id %in% c(3018586, 3035856, 3009395, 3004249)"
+mv_dbp,diastolic blood pressure,cdm,measurement_vitals,measurement_date,"measurement_concept_id %in% c(3034703, 3019962, 3013940, 3012888)"
 dpr,patient reported drugs,cdm,drug_exposure,drug_exposure_order_date,drug_type_concept_id == 32865
 sdoh_aud,SDOH - Alcohol Use Disorder,cdm,observation,observation_date,"observation_concept_id %in% c(40771104, 40771105, 40771103)"
 sdoh_food_insecurity,SDOH - Food Insecurity,cdm,observation,observation_date,"observation_concept_id %in% c(36304041, 36306143)"

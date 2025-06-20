@@ -2,14 +2,14 @@
 site_nm <- config('qry_site')
 
 ## Outpatient Labs
-# site_voml <- cdm_tbl('measurement_labs') %>%
-#   add_site() %>% filter(site == site_nm) %>%
-#   inner_join(select(cdm_tbl('visit_occurrence'),
-#                     visit_occurrence_id, visit_concept_id)) %>%
-#   filter(visit_concept_id == 9202L)
-#
-# output_tbl(site_voml, paste0('voml'),
-#            indexes = c('person_id', 'visit_occurrence_id'))
+site_voml <- cdm_tbl('measurement_labs') %>%
+  add_site() %>% filter(site == site_nm) %>%
+  inner_join(select(cdm_tbl('visit_occurrence'),
+                    visit_occurrence_id, visit_concept_id)) %>%
+  filter(visit_concept_id == 9202L)
+
+output_tbl(site_voml, paste0('voml'),
+           indexes = c('person_id', 'visit_occurrence_id'))
 
 ## Outpatient Med Admin
 site_vodi <- cdm_tbl('drug_exposure') %>%

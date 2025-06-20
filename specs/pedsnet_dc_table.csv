@@ -32,7 +32,7 @@ cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in
 cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(2000001494,38000275)",procedures_ordered,po,ordered procedures
 cdm,procedure_occurrence,cdm,procedure_occurrence,,procedures,pr,procedures
 cdm,measurement_anthro,cdm,measurement_anthro,,measurement_anthro,ma,measured anthropometrics
-result,c19_dx_lab_current,result,c19_dx_lab_prev,,covid19_dx_labs,co_ml_covid,c19 diagnosed patients with labs
+result,c19_dx_lab_current,result,c19_dx_lab_current,,covid19_dx_labs,co_ml_covid,c19 diagnosed patients with labs
 cdm,care_site,cdm,care_site,,care_site,cs,full care site table
 cdm,provider,cdm,provider,,provider,pv,full provider table
 cdm,specialty,cdm,specialty,,specialty,sp,full specialty table

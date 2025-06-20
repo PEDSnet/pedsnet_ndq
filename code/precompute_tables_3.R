@@ -13,8 +13,7 @@ site_voml <- cdm_tbl('measurement') %>%
                     visit_occurrence_id, visit_concept_id)) %>%
   filter(visit_concept_id == 9202L)
 
-output_tbl(site_voml, paste0('voml'),
-           indexes = c('person_id', 'visit_occurrence_id'))
+output_tbl(site_voml, paste0('voml'))
 
 ## Outpatient Med Admin
 site_vodi <- cdm_tbl('drug_exposure') %>%
@@ -24,8 +23,7 @@ site_vodi <- cdm_tbl('drug_exposure') %>%
                     visit_occurrence_id, visit_concept_id)) %>%
   filter(visit_concept_id == 9202L)
 
-output_tbl(site_vodi, paste0('vodi'),
-           indexes = c('person_id', 'visit_occurrence_id'))
+output_tbl(site_vodi, paste0('vodi'))
 
 ## Inpatient Prescriptions
 site_vipdp <- cdm_tbl('drug_exposure') %>%
@@ -35,8 +33,7 @@ site_vipdp <- cdm_tbl('drug_exposure') %>%
                     visit_occurrence_id, visit_concept_id)) %>%
   filter(visit_concept_id %in% c(9201L, 2000000048L))
 
-output_tbl(site_vipdp, paste0('vipdp'),
-           indexes = c('person_id', 'visit_occurrence_id'))
+output_tbl(site_vipdp, paste0('vipdp'))
 
 ## Outpatient Procedures
 site_prvo <- cdm_tbl('procedure_occurrence') %>%
@@ -45,8 +42,7 @@ site_prvo <- cdm_tbl('procedure_occurrence') %>%
                     visit_occurrence_id, visit_concept_id)) %>%
   filter(visit_concept_id == 9202L)
 
-output_tbl(site_prvo, paste0('prvo'),
-           indexes = c('person_id', 'visit_occurrence_id'))
+output_tbl(site_prvo, paste0('prvo'))
 
 ## COVID19 Immunizations
 c19_imm <- cdm_tbl('drug_exposure') %>%

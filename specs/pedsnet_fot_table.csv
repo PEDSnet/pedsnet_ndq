@@ -1,5 +1,5 @@
 check_id,check_description,schema,table,date_field,filter_logic
-im_covid19,covid19 immunizations,result,c19_imm,immunization_date,
+im_covid19,covid19 immunizations,result,c19_imm,drug_exposure_start_date,
 vi,all visits,cdm,visit_occurrence,visit_start_date,
 vo_office,outpatient visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 9202
 vo_labs,outpatient lab visits,cdm,visit_occurrence,visit_start_date,visit_concept_id == 2000000469

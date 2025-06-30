@@ -52,6 +52,8 @@ uc_output <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
                                           44814653L, 44814649L, NA),
                       check_string = 'uc')
 
+uc_output <- uc_output %>% mutate(unmapped_prop = ifelse(is.na(unmapped_prop), 0, unmapped_prop))
+
 output_tbl_append(uc_output, 'uc_output', file = TRUE)
 
 mapped_list <- results_tbl('uc_grpd')

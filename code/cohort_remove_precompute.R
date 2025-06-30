@@ -6,12 +6,7 @@ remove_precompute <- function(checkpoint){
   ck1_list <- c('c19_dx_lab_current', 'c19_dx_lab_prev', 'payer_with_date',
                'op_prov_spec', 'op_cs_spec','pdl_pts', 'ip_admit', 'geocode_cohort',
                 'fips_tract', 'fips_block_group', 'lohis_tract','lohis_block_group',
-               'gest_age_cohort', 'c19_dx', 'c19_viral_labs', 'ecp_2010_geocodes',
-               'ecp_2020_geocodes', 'ecp_alanine_transaminase', 'ecp_anc', 'ecp_blood_culture_labs',
-               'ecp_blood_culture_px', 'ecp_cholesterol_all', 'ecp_creatinine_serum',
-               'ecp_head_circumference', 'ecp_height', 'ecp_weight', 'ecp_hemoglobin',
-               'ecp_hvs', 'ecp_influenza', 'ecp_rsv', 'ecp_platelets', 'ecp_rapid_strep',
-               'ecp_smoking_tobacco', 'ecp_sodium', 'ecp_urine_protein_qual')
+               'gest_age_cohort', 'c19_dx', 'c19_viral_labs')
 
   ck2_list <- c('procs_drugs', 'procs_drugs_labs', 'icu_transfer', 'payer_w_pid',
                 'ip_two', 'nephrology_specialties', 'oncology_specialties')

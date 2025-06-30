@@ -56,8 +56,8 @@ uc_output <- uc_output %>% mutate(unmapped_prop = ifelse(is.na(unmapped_prop), 0
 
 output_tbl_append(uc_output, 'uc_output', file = TRUE)
 
-mapped_list <- results_tbl('uc_grpd')
-output_tbl_append(mapped_list, 'uc_grpd', file = TRUE)
+# mapped_list <- results_tbl('uc_grpd')
+# output_tbl(mapped_list, 'uc_grpd', file = TRUE)
 
 uc_output_year <- check_uc(uc_tbl = read_codeset('pedsnet_uc_table', 'ccccc') %>%
                               filter(!check_id %in% c('ml', 'mlu', 'gest_age')),

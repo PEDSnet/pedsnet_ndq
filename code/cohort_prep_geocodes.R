@@ -54,22 +54,26 @@ prep_geocodes <- function(fips_tbl = cdm_tbl('location_fips'),
     mutate(across(where(is.character), ~ na_if(.," ")))
 
   ## Build code
+  message('Build location history tract geocode')
   lohis_code_tct<- add_nas_lohis %>%
     mutate(fips_code = paste0(geocode_state, geocode_county, geocode_tract),
            fips_code = str_remove_all(fips_code, '[A-Za-z]'),
            ndigit_fips = nchar(fips_code))
 
+  message('Build location history block group geocode')
   lohis_code_bg<- add_nas_lohis %>%
     mutate(fips_code = paste0(geocode_state, geocode_county, geocode_tract, geocode_group),
            fips_code = str_remove_all(fips_code, '[A-Za-z]'),
            ndigit_fips = nchar(fips_code))
 
   ## Count per patient
+  message('Count location history tract geocode')
   lohis_summ_tract <- lohis_code_tct %>%
     filter(ndigit_fips == 11) %>%
     group_by(site, person_id, geocode_year) %>%
     summarise(ngeo_lohis = n_distinct(location_id))
 
+  message('Count location history block group geocode')
   lohis_summ_bg <- lohis_code_bg %>%
     filter(ndigit_fips == 12) %>%
     group_by(site, person_id, geocode_year) %>%

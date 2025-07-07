@@ -114,7 +114,7 @@ initialize_session <- function(session_name,
           rslt <- dplyr::copy_to(dest = dest,
                                  overwrite = FALSE,
                                  df = slice(ungroup(df), cstart:cend), name = name,
-                                 append = TRUE, temporary = temporary, ...)
+                                 temporary = temporary, ...)
           if (.chunk_size <= dfsize) cli::cli_progress_update(set = 100L * cend / dfsize)
           cstart <- cend + 1L
         }

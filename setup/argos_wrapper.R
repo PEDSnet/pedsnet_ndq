@@ -80,6 +80,51 @@ initialize_session <- function(session_name,
     }
   }
 
+  argos$public_methods$copy_to_new <- function(dest = self$config('db_src'), df,
+                                               name = deparse(substitute(df)),
+                                               overwrite = TRUE,
+                                               temporary = ! self$config('retain_intermediates'),
+                                               ..., .chunk_size = NA) {
+        name <- self$intermed_name(name, temporary = temporary)
+        if (self$config('db_trace')) {
+          message(' -> copy_to')
+          start <- Sys.time()
+          message(start)
+          message('Data: ', deparse(substitute(df)))
+          message('Table name: ',
+                  base::ifelse(packageVersion('dbplyr') < '2.0.0',
+                               dbplyr::as.sql(name),
+                               dbplyr::as.sql(name, dbi_con(dest))),
+                  ' (temp: ', temporary, ')')
+          message('Data elements: ', paste(tbl_vars(df), collapse = ','))
+          message('Rows: ', NROW(df))
+        }
+        if (overwrite &&
+            self$db_exists_table(dest, name)) {
+          self$db_remove_table(dest, name)
+        }
+        dfsize <- tally(ungroup(df)) %>% pull(n)
+        if (is.na(.chunk_size)) .chunk_size <- dfsize
+        cstart <- 1
+        if (.chunk_size <= dfsize)
+          cli::cli_progress_bar('Writing data', total = 100,
+                                format = 'Writing data {cli::pb_bar} {cli::pb_percent}')
+        while (cstart <= dfsize) {
+          cend <- min(cstart + .chunk_size, dfsize)
+          rslt <- dplyr::copy_to(dest = dest,
+                                 overwrite = FALSE,
+                                 df = slice(ungroup(df), cstart:cend), name = name,
+                                 append = TRUE, temporary = temporary, ...)
+          if (.chunk_size <= dfsize) cli::cli_progress_update(set = 100L * cend / dfsize)
+          cstart <- cend + 1L
+        }
+        if (self$config('db_trace')) {
+          end  <- Sys.time()
+          message(end, ' ==> ', format(end - start))
+        }
+        rslt
+      }
+
   # Establish session
   argos_session <- argos$new(session_name)
 

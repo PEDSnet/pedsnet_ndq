@@ -1,0 +1,53 @@
+check_name,concept,include
+bmc_csvo_spec,Unknown Physician Specialty,0
+bmc_csvo_spec,Pediatric Medicine,0
+bmc_csvo_spec,Other,0
+bmc_csvo_spec,No matching concept,0
+bmc_csvo_spec,No information,0
+bmc_ethnicity,Unknown,0
+bmc_ethnicity,No information,0
+bmc_ethnicity,Refuse to answer,0
+bmc_pvvo_spec,Physician Assistant,0
+bmc_pvvo_spec,Unknown Physician Specialty,0
+bmc_pvvo_spec,Student,0
+bmc_pvvo_spec,Pediatric Medicine,0
+bmc_pvvo_spec,Specialty service,0
+bmc_pvvo_spec,No information,0
+bmc_pvvo_spec,No matching concept,0
+bmc_pvvo_spec,Physician,0
+bmc_pvvo_spec,Other,0
+bmc_pvvo_spec,Medical Physician Assistant,0
+bmc_pvvo_spec,"Physician Assistants & Advanced Practice Nursing Providers, Physician Assistant",0
+bmc_pvvo_spec,Pediatric Nurse,0
+bmc_pvvo_spec,Pediatric Nurse Practitioner,0
+bmc_pvvo_spec,Nurse Practitioner,0
+bmc_pvvo_spec,Licensed Practical Nurse,0
+bmc_race,Refuse to answer,0
+bmc_race,No information,0
+bmc_race,Unknown,0
+bmc_rxnorm_di,Quant Branded Drug,1
+bmc_rxnorm_di,Branded Drug,1
+bmc_rxnorm_di,Branded Pack,1
+bmc_rxnorm_di,Clinical Drug,1
+bmc_rxnorm_di,Clinical Pack,1
+bmc_rxnorm_di,Quant Clinical Drug,1
+bmc_rxnorm_dp,Clinical Pack,1
+bmc_rxnorm_dp,Branded Drug,1
+bmc_rxnorm_dp,Clinical Drug,1
+bmc_rxnorm_dp,Quant Clinical Drug,1
+bmc_rxnorm_dp,Branded Pack,1
+bmc_rxnorm_dp,Quant Branded Drug,1
+bmc_adt_service,Unknown,0
+bmc_adt_service,Other,0
+bmc_adt_service,No Information,0
+bmc_fips_tract,0,0
+bmc_fips_tract,12,0
+bmc_fips_tract,10,0
+bmc_fips_tract,9,0
+bmc_fips_tract,5,0
+bmc_fips_block_group,0,0
+bmc_fips_block_group,11,0
+bmc_fips_block_group,10,0
+bmc_fips_block_group,9,0
+bmc_fips_block_group,5,0
+bmc_gest_age,20-45 Weeks (Expected Range),1

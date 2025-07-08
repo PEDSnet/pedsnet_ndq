@@ -8,7 +8,7 @@ dc_pp <- process_dc(dc_ct_results = 'dc_output',
 # output_tbl(dc_pp, 'dc_output_pp')
 
 #### Detect Anomalies FOR (PLOTTING IN SHINY)
-dc_anom <- ssdqa.gen::compute_dist_anomalies(df_tbl=filter(dc_pp, site!='total'),
+dc_anom <- squba.gen::compute_dist_anomalies(df_tbl=filter(dc_pp, site!='total'),
                                              grp_vars=c('check_type', 'application'),
                                              var_col='prop_total_change',
                                              denom_cols = NULL)
@@ -56,6 +56,10 @@ mf_visitid_pp <- process_mf_visitid(mf_visitid_results = 'mf_visitid_output',
 output_tbl(mf_visitid_pp, 'mf_visitid_output_pp')
 
 ## Best Mapped Concepts
+#### Writing lookup table to schema
+bmc_concepts<-read_codeset('bmc_concepts',col_types = 'cci')
+output_tbl(bmc_concepts, 'bmc_concepts')
+
 #### Standard Processing
 bmc_pp <- process_bmc(bmc_results = 'bmc_output', #'bmc_gen_output',
                       bmc_concepts_labelled = 'bmc_concepts', ## with `include` column added that indicates not best concepts with 0
@@ -64,14 +68,14 @@ bmc_pp <- process_bmc(bmc_results = 'bmc_output', #'bmc_gen_output',
 output_tbl(bmc_pp, 'bmc_output_pp')
 
 #### Detect Anomalies
-bmc_anom <- ssdqa.gen::compute_dist_anomalies(df_tbl= bmc_pp %>% filter(include == 1L),
+bmc_anom <- squba.gen::compute_dist_anomalies(df_tbl= bmc_pp %>% filter(include == 1L),
                                               grp_vars=c('check_name', 'check_desc',
                                                          'check_type', 'check_name_app',
                                                          'database_version'),
                                               var_col='best_row_prop',
                                               denom_cols = 'total_rows')
 
-bmc_anom_pp <- ssdqa.gen::detect_outliers(df_tbl = bmc_anom,
+bmc_anom_pp <- squba.gen::detect_outliers(df_tbl = bmc_anom,
                                           tail_input = 'both',
                                           p_input = 0.9,
                                           column_analysis = 'best_row_prop',
@@ -100,12 +104,12 @@ ecp_anom_pp <- ssdqa.gen::detect_outliers(df_tbl = ecp_anom,
                                           column_variable = 'check_name')
 output_tbl(ecp_anom_pp, 'ecp_anom_pp')
 
-## Patient Facts
+## Clinical Fact Documentation
 
-pf_pp <- process_pf(pf_results = 'pf_output',
+cfd_pp <- process_cfd(cfd_results = 'cfd_output',
                     rslt_source = 'remote')
 
-output_tbl(pf_pp, 'pf_output_pp')
+output_tbl(cfd_pp, 'cfd_output_pp')
 
 ## Domain Concordance
 

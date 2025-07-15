@@ -4,3 +4,4 @@
 *.html
 *results*
 *.DS_Store*
+reporting/*.pdf

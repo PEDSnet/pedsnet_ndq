@@ -1,0 +1,461 @@
+---
+title: "Riley Children's DQ Summary"
+subtitle: "In comparison to PEDSnet"
+format: 
+  html:
+    embed-resources: true
+    html-table-processing: none
+    toc: true
+    toc-location: left
+brand:
+  color:
+    palette:
+      mgreen: '#0D4254'
+      cblue: '#8BBBB2'
+      hdew: '#D8EDDF'
+      snow: '#FBF7F9'
+      bbean: '#3B1516'
+      crose: '#945870'
+      puce: '#C884A7'
+    background: snow
+    primary: mgreen
+  typography:
+    fonts:
+      - family: Montserrat
+        source: google
+    base: Montserrat
+    headings: Montserrat
+---
+
+```{r setup, include=FALSE}
+
+library(argos)
+library(srcr)
+library(stringr)
+library(dplyr)
+library(ndq)
+library(gt)
+library(ggplot2)
+library(gtsummary)
+
+source('../setup/argos_wrapper.R')
+
+initialize_session(session_name = 'ndq_assessment',
+                   db_conn = Sys.getenv('PEDSNET_RLY_CONFIG'),
+                   is_json = TRUE,
+                   cdm_schema = 'indiana_pedsnet_v50',
+                   results_schema = 'dqa_riley', 
+                   retain_intermediates = FALSE,
+                   db_trace = FALSE, 
+                   results_tag = '')
+
+prettify_gt <- function(gt_obj){
+  
+   gt_obj %>% 
+    tab_options(row_group.background.color = '#D8EDDF',
+                heading.background.color = '#0D4254',
+                stub.background.color = '#945870',
+                
+                column_labels.font.weight = 'bold',
+                row_group.font.weight = 'bold',
+                table.background.color = '#FBF7F9') %>%
+    opt_table_font(font = 'Montserrat') %>%
+    tab_style(style = cell_text(align = 'center'), 
+              locations = cells_row_groups()) %>%
+    tab_style(style = cell_text(weight = 500),
+              locations = list(cells_body(),
+                               cells_stub()))
+}
+
+prettify_ggplot <- function(){
+
+    theme_minimal() +
+    theme(text = element_text(family = 'Montserrat',
+                              size = 14),
+          legend.title = element_text(family = 'Montserrat-Bold'),
+          plot.background = element_rect(fill = '#FBF7F9',
+                                         color = '#FBF7F9'))
+  
+}
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+peds_blue <- '#0D4254'
+peds_pink <- '#945870'
+
+```
+
+# Table 1
+```{r}
+
+results_tbl('riley_table1') %>%
+  collect() %>%
+  select(-person_id) %>%
+  gtsummary::tbl_summary(label = list(gender_concept_id = 'Sex',
+                                      ethnicity_concept_id = 'Ethnicity',
+                                      race_concept_id = 'Race',
+                                      current_age = 'Current Age',
+                                      age_first_visit = 'Age at First Visit')) %>%
+  as_gt() %>%
+  prettify_gt() %>%
+  tab_style(style = list(cell_fill(color = '#0D4254'),
+                         cell_text(color = 'white')),
+            locations = cells_body(rows = label %in% c('Sex', 'Race', 'Ethnicity'))) %>%
+  tab_style(style = list(cell_fill(color = '#0D4254'),
+                         cell_text(color = 'white')),
+            locations = cells_body(rows = label %in% c('Current Age', 'Age at First Visit'),
+                                   columns = 'label'))
+  
+
+```
+
+# Table Row Counts
+```{r}
+
+blah <- results_tbl('dc_output') %>%
+  select(domain, total_ct) %>%
+  mutate(domain = ifelse(domain == 'measurement_labs', 'measurement', domain),
+         table = case_when(grepl('^drug', domain) ~ 'drug_exposure',
+                           grepl('^cond', domain) ~ 'condition_occurrence',
+                           grepl('^adt', domain) ~ 'adt_occurrence',
+                           grepl('^proc', domain) ~ 'procedure_occurrence',
+                           grepl('^visit', domain) ~ 'visit_occurrence',
+                           TRUE ~ domain)) %>% 
+  collect()
+
+
+blah %>%
+  arrange(table) %>%
+  gt(rowname_col = 'domain',
+     groupname_col = 'table') %>%
+  tab_options(row_group.as_column = TRUE) %>%
+  prettify_gt() %>%
+  fmt_number(columns = 'total_ct',
+             decimals = 0) %>%
+  tab_style(style = list(cell_fill(color = '#0D4254'),
+                         cell_text(color = 'white')),
+            locations = cells_row_groups()) %>%
+  cols_label('total_ct' = 'Row Count')
+
+```
+
+# Vocabulary Conformance
+```{r}
+
+vc_output <- results_tbl('vc_output_ln') %>% collect()
+
+ggplot(filter(vc_output, site=='riley_childrens')%>%
+                      mutate(text=paste0("proportion: ",round(prop_viol, 2),
+                                         "\nmedian (Q1, Q3): ",round(median_val,2), " (", round(q1,2), ", ", round(q3,2), ")")),
+                    aes(x=measurement_column, text=text))+
+          geom_bar(aes(y=prop_viol, fill=site),stat="identity", fill = peds_blue)+
+          geom_linerange(aes(ymin=q1, ymax=q3))+
+          geom_point(aes(y=median_val), shape=23, size=3, fill = peds_pink)+
+          labs(x = "Column",
+               y="Proportion Violating Records")+
+          prettify_ggplot() +
+          coord_flip()+
+          theme(legend.position = "none")
+
+```
+
+# Unmapped Concepts
+
+## Overall
+```{r, fig.height=7}
+
+uc_output <- results_tbl('uc_output_ln') %>% collect() %>%
+  filter(total_rows != 0)
+
+ggplot(filter(uc_output, site=='riley_childrens') %>%
+         mutate(measure = ifelse(grepl('gestational', measure), 'gestational age', measure)),
+              aes(x = measure, y = unmapped_prop, fill=site)) +
+          geom_bar(stat='identity', fill = peds_blue)+
+          geom_errorbar(aes(ymin=q1, ymax=q3))+
+          geom_point(aes(y=median_val), shape=23, size=2, fill = peds_pink)+
+          prettify_ggplot() +
+          theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=14),
+                #axis.title=element_text(size=18),
+                legend.position="none")+
+          labs(x="Site",
+               y="Proportion Unmapped Concepts") +
+  coord_flip()
+
+```
+
+## By Year
+```{r, fig.height=8, fig.width=8}
+
+uc_yr_output <- results_tbl('uc_by_year_ln') %>% collect() %>%
+  mutate(unmapped_description = case_when(unmapped_description == 'inpatient administrations' ~ 
+                                            'inpatient \nadministrations',
+                                          unmapped_description == 'immunization dose unit' ~ 
+                                            'immunization \ndose unit',
+                                          TRUE ~ unmapped_description))
+
+ggplot(filter(uc_yr_output, site=='riley_childrens',
+                                  year_date>=2015,
+                               year_date<=2025),
+                                    aes(x = as.integer(year_date))) +
+          geom_ribbon(aes(ymin=q1,ymax=q3),fill="grey70")+
+          geom_line(aes(y=prop_total, colour=site),linewidth=2, color = peds_blue)+
+          geom_line(aes(y=median_val), linetype="dotted")+
+          facet_wrap(~unmapped_description, scales="free") +
+          labs(x = "Year",
+               y = "Proportion Unmapped")+
+          prettify_ggplot() +
+          theme(#axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+                axis.title=element_text(size=11))+
+          scale_x_continuous(breaks = scales::pretty_breaks())+
+          theme(legend.position = "none")
+
+```
+
+# Clinical Fact Documentation
+
+## Visits
+
+```{r, fig.height=6, fig.width=7}
+
+cfd_output <- results_tbl('cfd_output_ln') %>% collect() %>%
+  filter(visit_type != 'cancelled')
+
+ggplot(cfd_output%>%filter(site=='riley_childrens')%>%
+                          mutate(text=paste0("\nprop. patients: ",fact_pts_prop,
+                                             "\nprop. visits: ",fact_visits_prop,
+                                             "\nprop. patients median (Q1, Q3): ", round(median_val_pts,2), " (",round(q1_pts,2), ", ", round(q3_pts,2), ")",
+                                             "\nprop. visits median (Q1, Q3): ", round(median_val_visits,2), " (",round(q1_visits,2), ", ", round(q3_visits,2), ")")),
+                        aes(x=check_desc_neat, fill=site, text=text))+
+          geom_bar(aes(y=fact_visits_prop), stat="identity", fill = peds_blue)+
+          geom_linerange(aes(ymin=q1_visits, ymax=q3_visits))+
+          geom_point(aes(x=check_desc_neat,y=median_val_visits), shape=23, size=2, fill = peds_pink)+
+          # scale_fill_manual(values=site_colors)+
+          facet_wrap(~visit_type)+
+          prettify_ggplot() +
+          coord_flip()+
+          labs(x="Fact Type",y="Proportion Visits with Fact")+
+          theme(legend.position="none")
+
+```
+
+## Patients
+```{r, fig.height=6, fig.width=7}
+
+ggplot(cfd_output%>%filter(site=='riley_childrens')%>%
+                          mutate(text=paste0("\nprop. patients: ",fact_pts_prop,
+                                             "\nprop. visits: ",fact_visits_prop,
+                                             "\nprop. patients median (Q1, Q3): ", round(median_val_pts,2), " (",round(q1_pts,2), ", ", round(q3_pts,2), ")",
+                                             "\nprop. visits median (Q1, Q3): ", round(median_val_visits,2), " (",round(q1_visits,2), ", ", round(q3_visits,2), ")")),
+                        aes(x=check_desc_neat, fill=site, text=text))+
+          geom_bar(aes(y=fact_pts_prop), stat="identity", fill = peds_blue)+
+          geom_linerange(aes(ymin=q1_pts, ymax=q3_pts))+
+          geom_point(aes(x=check_desc_neat,y=median_val_pts), shape=23, size=2, fill = peds_pink)+
+          # scale_fill_manual(values=site_colors)+
+          facet_wrap(~visit_type)+
+          prettify_ggplot() +
+          coord_flip()+
+          labs(x="Fact Type",y="Proportion Patients with Fact")+
+          theme(legend.position="none")
+
+
+```
+
+# Best Mapped Concepts
+```{r}
+
+bmc_output <- results_tbl('bmc_output_ln') %>% collect()
+
+ggplot(filter(bmc_output,include==1L&site=='riley_childrens')%>%
+                            mutate(text=paste("Proportion best mapped: ",round(best_row_prop,2),
+                                              "\nOverall median (Q1, Q3): ",round(median_val,2), " (",round(q1,2),", ",round(q3,2), ")")),
+                          aes(x=check_desc,fill=site,text=text))+
+          geom_bar(aes(y=best_row_prop), stat="identity", fill = peds_blue)+
+          geom_linerange(aes(ymin=q1, ymax=q3))+
+          geom_point(aes(y=median_val), shape=23, size=3, fill = peds_pink)+
+          prettify_ggplot() +
+          theme(legend.position = "none")+
+          labs(x="Check Application",
+               y="Proportion Best Mapped")+
+          coord_flip()
+
+```
+
+# Domain Concordance
+```{r, fig.width=10, fig.height=8}
+
+dcon_output <- results_tbl('dcon_output_ln') %>% collect() %>%
+  mutate(cohort=factor(cohort, levels=c("cohort_2_only", "combined", "cohort_1_only",
+                                            "cohort_1_denom", "cohort_2_in_1",
+                                            "cohort_2_denom", "cohort_1_in_2"),
+                           labels=c("cohort 2 only", "combined", "cohort 1 only",
+                                    "cohort 1 not 2", "cohort 2 in 1",
+                                    "cohort 2 not 1", "cohort 1 in 2"))) #%>%
+  #mutate(check_desc = gsub('and', '\n/', check_desc))
+
+dcon_filter <- dcon_output %>% arrange(check_name) %>% distinct(check_name) %>% pull()
+
+ggplot(filter(dcon_output,site=='riley_childrens',
+              cohort%in%c("cohort 1 only", "cohort 2 only", "combined"),
+              check_name %in% c(dcon_filter[1:6])),
+                         aes(x=cohort)) +
+        geom_bar(aes(y=prop,fill=cohort,
+                     text=paste0("Cohort: ", cohort,
+                                 "\nProportion: ",round(prop,2),
+                                 "\nMedian (Q1, Q3): ",round(median_val,2), " ( ", round(q1,2), ", ", round(q3,2), ")")),
+                 stat='identity') +
+        geom_linerange(aes(ymin=q1, ymax=q3))+
+        geom_point(aes(y=median_val), shape=23, size=3)+
+        scale_fill_manual(values = c(peds_blue, peds_pink, '#8BBBB2')) +
+        prettify_ggplot() +
+        theme(axis.text.x=element_text(size=12),
+              axis.text.y=element_text(size=12),
+              axis.title=element_text(size=16),
+              strip.text = element_text(size = 13))+
+        labs(x="",
+             y="Proportion")+
+        facet_wrap(~check_desc, labeller = label_wrap_gen())+
+        coord_flip()
+
+ggplot(filter(dcon_output,site=='riley_childrens',
+              cohort%in%c("cohort 1 only", "cohort 2 only", "combined"),
+              check_name %in% c(dcon_filter[7:14])),
+                         aes(x=cohort)) +
+        geom_bar(aes(y=prop,fill=cohort,
+                     text=paste0("Cohort: ", cohort,
+                                 "\nProportion: ",round(prop,2),
+                                 "\nMedian (Q1, Q3): ",round(median_val,2), " ( ", round(q1,2), ", ", round(q3,2), ")")),
+                 stat='identity') +
+        geom_linerange(aes(ymin=q1, ymax=q3))+
+        geom_point(aes(y=median_val), shape=23, size=3)+
+        scale_fill_manual(values = c(peds_blue, peds_pink, '#8BBBB2')) +
+        prettify_ggplot() +
+        theme(axis.text.x=element_text(size=12),
+              axis.text.y=element_text(size=12),
+              axis.title=element_text(size=16),
+              strip.text = element_text(size = 13))+
+        labs(x="",
+             y="Proportion")+
+        facet_wrap(~check_desc, labeller = label_wrap_gen())+
+        coord_flip()
+
+```
+
+# Missing Fields: Visit ID
+```{r}
+
+mf_output <- results_tbl('mf_visitid_ln') %>% collect()
+
+
+ggplot(mf_output%>%filter(site=='riley_childrens'),
+             aes(x=measure))+
+        geom_bar(aes(y=prop_missing_visits_total, fill=site),stat="identity",
+                 fill = peds_blue)+
+        geom_linerange(aes(ymin=q1, ymax=q3))+
+        geom_point(aes(y=median_val), shape=23, size=2, fill = peds_pink)+
+        prettify_ggplot() +
+        labs(x="Domain",
+             y="Proportion missing visit_occurrence_id") +
+  coord_flip()
+
+```
+
+# Expected Concepts Present
+```{r, fig.height=8}
+
+ecp_output <- results_tbl('ecp_output_ln') %>% collect()
+
+ggplot(ecp_output%>%filter(site=='riley_childrens',
+                           !grepl('sdoh|promis', concept_group),
+                           !is.na(site_anon))%>%
+         mutate(concept_group = ifelse(concept_group == 'ecp_hvs', check_name, concept_group),
+                concept_group = gsub('ecp_', '', concept_group)) %>%
+                    mutate(text=paste0("Concept group: ",concept_group,
+                                       "\nProportion with concept: ", round(prop_with_concept,2),
+                                       "\nMedian (Q1, Q3): ",round(median_val,2), " (", round(q1,2), ", ", round(q3,2), ")",
+                                       "\nDenominator: ",cohort_denominator)),
+                  aes(x=concept_group, text=text, fill=site))+
+        geom_bar(aes(y=prop_with_concept), stat="identity", fill = peds_blue)+
+        geom_linerange(aes(ymin=q1, ymax=q3))+
+        geom_point(aes(y=median_val), shape=23, size=2, fill = peds_pink)+
+        labs(x="Concept Group",
+             y="Proportion with Concept",
+             title="Proportion of Patients \nwith Expected Concepts")+
+        prettify_ggplot() +
+        coord_flip()+
+        theme(legend.position="none")
+
+```
+
+# Facts Over Time
+
+```{r}
+
+indat<-results_tbl('fot_ratios_pp') %>%
+        filter(site=='riley_childrens') %>% collect()
+allsite_avg<-results_tbl('fot_ratios_pp')%>%
+  filter(site%in%c('allsite_median','allsite_mean')) %>% collect()
+
+check_list <- indat %>% filter(!grepl('sdoh|promis', tolower(check_desc))) %>% 
+                                 arrange(check_name) %>% distinct(check_desc) %>% pull()
+
+fot_plt_func <- function(check_vals,
+                         indat,
+                         allsite_avg){
+  
+  ggplot(indat %>% filter(check_desc %in% check_vals),
+                       aes(x=time_end,
+                           y=row_ratio,
+                           color=site,
+                           group=site)
+    )+
+      geom_smooth(se=TRUE,alpha=0.1,linewidth=0.5,formula=y~x)+
+      geom_smooth(data=allsite_avg %>% filter(check_desc %in% check_vals), aes(x=time_end,
+                                        y=row_ratio,
+                                        color=site,
+                                        group=site),linewidth=1)+
+      prettify_ggplot() +
+      facet_wrap(~check_desc, scales = 'free_y', ncol = 2,
+                 labeller = label_wrap_gen()) +
+      labs(x="Time (month)",
+           y="Rate per 10,000 patients")+
+      scale_x_date(limits = c(as.Date('2015-01-01'), as.Date('2025-01-01'))) +
+  scale_color_manual(values = c(peds_blue, peds_pink, '#8BBBB2'))
+}
+
+```
+
+```{r, fig.width=8, fig.height=5}
+
+fot_plt_func(check_vals = check_list[1:4],
+             indat = indat,
+             allsite_avg = allsite_avg)
+
+fot_plt_func(check_vals = check_list[5:8],
+             indat = indat,
+             allsite_avg = allsite_avg)
+
+fot_plt_func(check_vals = check_list[9:12],
+             indat = indat,
+             allsite_avg = allsite_avg)
+
+fot_plt_func(check_vals = check_list[13:16],
+             indat = indat,
+             allsite_avg = allsite_avg)
+
+fot_plt_func(check_vals = check_list[17:20],
+             indat = indat,
+             allsite_avg = allsite_avg)
+
+fot_plt_func(check_vals = check_list[21:24],
+             indat = indat,
+             allsite_avg = allsite_avg)
+
+fot_plt_func(check_vals = check_list[25:28],
+             indat = indat,
+             allsite_avg = allsite_avg)
+
+fot_plt_func(check_vals = check_list[29:32],
+             indat = indat,
+             allsite_avg = allsite_avg)
+
+```

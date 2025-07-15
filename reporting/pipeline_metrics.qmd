@@ -1,0 +1,362 @@
+---
+title: "Pipeline Metric Visualizations"
+format: 
+  html:
+    embed-resources: true
+---
+
+```{r setup, include=FALSE}
+
+unloadNamespace('squba.gen')
+unloadNamespace('plotly')
+
+setwd('../')
+source('setup/setup.R')
+
+library(ggplot2)
+library(ggiraph)
+library(plotly)
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+current_dc <- '2025-04'
+
+vocab_map <- results_tbl('pipeline_metrics_vocab') %>%
+  collect() %>%
+  filter(groupid != 6, metric != 'SUBONTIME') %>%
+  select(groupid, metric, description) %>%
+  group_by(groupid) %>%
+  summarise(description_long = str_c(description, collapse = ' & \n')) %>%
+  mutate(description_long = ifelse(description_long == 'Transformation From PEDSnet CDM to PCORnet CDM', 'Transformation From PEDSnet CDM \nto PCORnet CDM', description_long))
+
+pipeline_issues <- results_tbl('pipeline_metadata') %>%
+  left_join(results_tbl('pipeline_metrics_vocab')) %>%
+  collect() %>%
+  left_join(vocab_map) %>%
+  mutate(version = case_when(version == 57 ~ '2025-04',
+                             version == 56 ~ '2025-01',
+                             version == 55 ~ '2024-10',
+                             version == 54 ~ '2024-07',
+                             version == 53 ~ '2024-04'))
+
+```
+
+
+<!-- # Current Data Cycle - Composite -->
+
+```{r,include=FALSE}
+
+compute_scores <- pipeline_issues %>%
+  filter(version == current_dc) %>%
+  group_by(site, groupid) %>%
+  mutate(dashboard_value = sum(dashboard_value)) %>%
+  mutate(mult_score = dashboard_multiplier * dashboard_value) %>%
+  group_by(site, groupid) %>%
+  summarise(group_mult = sum(mult_score)) %>%
+  mutate(group_score = 25 - group_mult,
+         group_score = ifelse(group_score < 0, 0, group_score)) %>%
+  group_by(site) %>%
+  mutate(composite_score = sum(group_score))
+  
+tooltip_build <- pipeline_issues %>%
+  filter(version == current_dc) %>%
+  mutate(mult_score = dashboard_multiplier * dashboard_value) %>%
+  select(site, metric, mult_score) %>%
+  pivot_wider(names_from = 'metric',
+              values_from = 'mult_score') %>%
+  mutate(tooltip = paste0('DATALOAD: ', DATALOAD,
+                          '\nDATAPRECHK: ', DATAPRECHK,
+                          '\nSITESTDZTN: ', SITESTDZTN,
+                          '\nDERIVWRK: ', DERIVWRK,
+                          '\nTRANSPDTOPC: ', TRANSPDTOPC)) %>%
+  distinct(site, tooltip)
+
+grph <- compute_scores %>%
+  left_join(tooltip_build) %>%
+  distinct(site, composite_score, tooltip) %>%
+  ggplot(aes(x = site, y = composite_score, tooltip = tooltip)) +
+    geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 90, ymax = 101), 
+              fill = 'forestgreen', alpha = 0.02) +
+  geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 70, ymax = 90), 
+            fill = 'gold', alpha = 0.02) +
+  geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 0, ymax = 70), 
+            fill = 'firebrick', alpha = 0.02) +
+  geom_col_interactive(fill = '#0D4254') +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 101), expand = c(0,0)) +
+  labs(y = 'Composite Score',
+       x = 'Site')
+
+girafe(ggobj = grph)
+  
+
+```
+
+<!-- # Current Data Cycle - Facet By Category -->
+
+```{r, include=FALSE}
+
+collapse_groups <- pipeline_issues %>%
+  filter(version == current_dc) %>%
+  group_by(site, groupid) %>%
+  summarise(dashboard_value = sum(dashboard_value)) 
+
+compute_scores <- pipeline_issues %>%
+  filter(version == current_dc) %>%
+  select(-c(dashboard_value, metric, description, raw_value)) %>%
+  distinct() %>%
+  left_join(collapse_groups) %>%
+  mutate(mult_score = dashboard_multiplier * dashboard_value) %>%
+  group_by(site, groupid) %>%
+  summarise(group_mult = sum(mult_score)) %>%
+  mutate(group_score = 25 - group_mult,
+         group_score = ifelse(group_score < 0, 0, group_score)) %>%
+  group_by(site) %>%
+  mutate(composite_score = sum(group_score))
+  
+tooltip_build <- pipeline_issues %>%
+  filter(version == current_dc) %>%
+  select(-c(description, raw_value)) %>%
+  mutate(mult_score = dashboard_multiplier * dashboard_value) %>%
+  mutate(tooltip = paste0(metric, ': ', mult_score)) %>%
+  distinct(site, groupid, metric, description_long, tooltip)
+
+grph <- compute_scores %>%
+  left_join(tooltip_build) %>%
+  group_by(site, groupid) %>%
+  mutate(tooltip = str_c(tooltip, collapse = ' \n')) %>%
+  distinct(site, description_long, group_score, tooltip) %>%
+  ggplot(aes(x = site, y = group_score, tooltip = tooltip)) +
+    geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 20, ymax = 26), 
+              fill = 'forestgreen', alpha = 0.02) +
+  geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 10, ymax = 20), 
+            fill = 'gold', alpha = 0.02) +
+  geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 0, ymax = 10), 
+            fill = 'firebrick', alpha = 0.02) +
+  geom_col_interactive(fill = '#0D4254') +
+  facet_wrap(~description_long) +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 26), expand = c(0,0)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+
+girafe(ggobj = grph)
+  
+
+```
+
+# Current Data Cycle - Stacked Bar by Category
+
+```{r, fig.width=8}
+
+grph <- compute_scores %>%
+  left_join(tooltip_build) %>%
+  group_by(site, groupid) %>%
+  mutate(tooltip = str_c(tooltip, collapse = ' \n')) %>%
+  distinct(site, description_long, group_score, tooltip) %>%
+  ggplot(aes(x = site, y = group_score, fill = description_long, 
+             tooltip = tooltip)) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 90, ymax = 101), 
+  #             fill = 'forestgreen', alpha = 0.02) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 70, ymax = 90), 
+  #           fill = 'gold', alpha = 0.02) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 0, ymax = 70), 
+  #           fill = 'firebrick', alpha = 0.02) +
+  geom_col_interactive() +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 101), expand = c(0,0)) +
+  scale_fill_manual(values = c('#0D4254', '#935870', '#D8EDDF', '#8BBBB2')) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(y = 'Group Score',
+       x = 'Site',
+       fill = 'DQ Metric Group')
+
+
+ggsave('results/current_stacked_bar.png',
+       width = 10)
+
+
+girafe(ggobj = grph)
+
+```
+
+
+<!-- # Current Data Cycle - Facet by Site -->
+```{r, include=FALSE}
+
+grph <- compute_scores %>%
+  left_join(tooltip_build) %>%
+  group_by(site, groupid) %>%
+  mutate(tooltip = str_c(tooltip, collapse = ' \n')) %>%
+  distinct(site, description_long, group_score, tooltip) %>%
+  ggplot(aes(y = description_long, x = group_score,
+             tooltip = tooltip, fill = description_long)) +
+  geom_rect(aes(ymin = 0.3, ymax = Inf, xmin = 20, xmax = 26),
+              fill = 'forestgreen', alpha = 0.03) +
+  geom_rect(aes(ymin = 0.3, ymax = Inf, xmin = 10, xmax = 20),
+            fill = 'gold', alpha = 0.03) +
+  geom_rect(aes(ymin = 0.3, ymax = Inf, xmin = 0, xmax = 10),
+            fill = 'firebrick', alpha = 0.03) +
+  geom_col_interactive() +
+  facet_wrap(~site) +
+  theme_bw() +
+  theme(legend.position = 'none') +
+  scale_x_continuous(limits = c(0, 26), expand = c(0,0)) +
+  scale_fill_manual(values = c('#0D4254', '#935870', '#D8EDDF', '#8BBBB2')) +
+  labs(y = '',
+       x = 'Group Score')
+
+
+girafe(ggobj = grph)
+
+```
+
+
+# Across Data Cycles - Composite Score
+
+```{r}
+
+compute_scores <- pipeline_issues %>%
+  group_by(site, groupid, version) %>%
+  mutate(dashboard_value = sum(dashboard_value),
+         version = as.character(version)) %>%
+  mutate(mult_score = dashboard_multiplier * dashboard_value) %>%
+  group_by(site, groupid, version) %>%
+  summarise(group_mult = sum(mult_score)) %>%
+  mutate(group_score = 25 - group_mult,
+         group_score = ifelse(group_score < 0, 0, group_score)) %>%
+  group_by(site, version) %>%
+  mutate(composite_score = sum(group_score))
+  
+tooltip_build <- pipeline_issues %>%
+  mutate(mult_score = dashboard_multiplier * dashboard_value,
+         version = as.character(version)) %>%
+  select(site, version, metric, mult_score) %>%
+  pivot_wider(names_from = 'metric',
+              values_from = 'mult_score') %>%
+  mutate(tooltip = paste0('DB Version: ', version,
+                          '\nDATALOAD: ', DATALOAD,
+                          '\nDATAPRECHK: ', DATAPRECHK,
+                          '\nSITESTDZTN: ', SITESTDZTN,
+                          '\nDERIVWRK: ', DERIVWRK,
+                          '\nTRANSPDTOPC: ', TRANSPDTOPC)) %>%
+  distinct(site, version, tooltip)
+
+grph <- compute_scores %>%
+  left_join(tooltip_build) %>%
+  distinct(site, version, composite_score, tooltip) %>%
+  ggplot(aes(x = version, y = composite_score, color = site, 
+             group = site, text = tooltip)) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 90, ymax = 101), 
+  #             fill = 'forestgreen', alpha = 0.02) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 70, ymax = 90), 
+  #           fill = 'gold', alpha = 0.02) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 0, ymax = 70), 
+  #           fill = 'firebrick', alpha = 0.02) +
+  geom_line() +
+  geom_point() +
+  ggsci::scale_color_d3('category20') +
+  theme_bw() +
+  scale_y_continuous(limits = c(40, 101), expand = c(0,0)) +
+  labs(y = 'Composite Score',
+       x = 'Database Version',
+       color = 'Site')
+
+ggsave('results/past_cycles_composite.png',
+       height = 8,
+       width = 10)
+
+ggplotly(grph, tooltip = 'text', height = 600)
+  
+
+```
+
+
+<!-- # Across Data Cycles - Facet By Category -->
+
+```{r, include=FALSE}
+
+collapse_groups <- pipeline_issues %>%
+  group_by(site, version, groupid) %>%
+  summarise(dashboard_value = sum(dashboard_value))
+
+compute_scores <- pipeline_issues %>%
+  select(-c(dashboard_value, metric, description, raw_value)) %>%
+  distinct() %>%
+  left_join(collapse_groups) %>%
+  mutate(mult_score = dashboard_multiplier * dashboard_value) %>%
+  group_by(site, groupid, version) %>%
+  summarise(group_mult = sum(mult_score)) %>%
+  mutate(group_score = 25 - group_mult,
+         group_score = ifelse(group_score < 0, 0, group_score)) %>%
+  group_by(site, version) %>%
+  mutate(composite_score = sum(group_score),
+         version = as.character(version))
+  
+tooltip_build <- pipeline_issues %>%
+  select(-c(description, raw_value)) %>%
+  mutate(mult_score = dashboard_multiplier * dashboard_value) %>%
+  mutate(tooltip = paste0(metric, ': ', mult_score),
+         version = as.character(version)) %>%
+  distinct(site, groupid, version, metric, description_long, tooltip)
+
+grph <- compute_scores %>%
+  left_join(tooltip_build) %>%
+  group_by(site, version, groupid) %>%
+  mutate(tooltip = str_c(tooltip, collapse = ' \n')) %>%
+  distinct(site, version, description_long, group_score, tooltip) %>%
+  ggplot(aes(x = version, y = group_score, color = site, group = site, 
+             text = tooltip)) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 20, ymax = 26), 
+  #             fill = 'forestgreen', alpha = 0.02) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 10, ymax = 20), 
+  #           fill = 'gold', alpha = 0.02) +
+  # geom_rect(aes(xmin = 0.3, xmax = Inf, ymin = 0, ymax = 10), 
+  #           fill = 'firebrick', alpha = 0.02) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~description_long) +
+  ggsci::scale_color_d3('category20') +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 26), expand = c(0,0)) +
+  labs(y = 'Group Score',
+       x = 'Database Version',
+       color = 'Site')
+
+
+ggplotly(grph, tooltip = 'text')
+  
+
+```
+
+<!-- # Across Data Cycles - Facet by Site -->
+```{r, include=FALSE}
+
+grph <- compute_scores %>%
+  left_join(tooltip_build) %>%
+  group_by(site, version, groupid) %>%
+  mutate(tooltip = str_c(tooltip, collapse = ' \n')) %>%
+  distinct(site, version, description_long, group_score, tooltip) %>%
+  ggplot(aes(x = as.character(version), y = group_score,
+             text = tooltip, color = description_long, group = description_long)) +
+  # geom_rect(aes(ymin = 0.3, ymax = Inf, xmin = 20, xmax = 26),
+  #             fill = 'forestgreen', alpha = 0.03) +
+  # geom_rect(aes(ymin = 0.3, ymax = Inf, xmin = 10, xmax = 20),
+  #           fill = 'gold', alpha = 0.03) +
+  # geom_rect(aes(ymin = 0.3, ymax = Inf, xmin = 0, xmax = 10),
+  #           fill = 'firebrick', alpha = 0.03) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~site) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  scale_y_continuous(limits = c(0, 26), expand = c(0,0)) +
+  scale_color_manual(values = c('#0D4254', '#935870', '#D8EDDF', '#8BBBB2')) +
+  labs(y = 'Group Score',
+       x = 'Database Version',
+       color = 'DQ Metric Group')
+
+
+ggplotly(grph, tooltip = 'text')
+
+```

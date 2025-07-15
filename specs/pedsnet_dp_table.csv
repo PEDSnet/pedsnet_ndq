@@ -1,0 +1,11 @@
+﻿check_id,check_description,schema,table,date_field,filter_logic
+drugsall,all drugs,cdm,drug_exposure,drug_exposure_start_date,
+drugspresc,prescriptions,cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugsip,med admins,cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000180
+condsall,all conditions (excluding problem list),cdm,condition_occurrence,condition_start_date,condition_type_concept_id != 2000000089
+condsorder,ordered conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000095, 2000000101,2000000092, 2000000098,2000001280, 2000001283)"
+condsbill,billed conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000096, 2000000102,2000000093, 2000000099,2000001282, 2000001285)"
+procsall,all procedures,cdm,procedure_occurrence,procedure_date,
+procsbill,billed procedures,cdm,procedure_occurrence,procedure_date,"procedure_type_concept_id %in% c(44786630,44786631)"
+procsord,ordered procedures,cdm,procedure_occurrence,procedure_date,"procedure_type_concept_id %in% c(2000001494,38000275)"
+labsall,all labs,cdm,measurement_labs,measurement_date,

@@ -9,10 +9,10 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 # dc_output <- check_dc(dc_tbl = read_codeset('pedsnet_dc_table', 'cccccc') %>%
 #                         filter(!check_id %in% c('ml', 'mv', 'ma', 'co_ml_covid')),
 #                       omop_or_pcornet = 'omop',
-#                       prev_db_string = 'v56',
-#                       current_db_string = 'v57',
+#                       prev_db_string = 'v50',
+#                       current_db_string = 'v50',
 #                       prev_ct_src = 'cdm',
-#                       prev_db = config('db_src_prev'),
+#                       prev_db = config('db_src'),
 #                       prev_rslt_tbl = 'dc_output',
 #                       prev_rslt_schema = config('results_schema'),
 #                       check_string = 'dc')
@@ -225,6 +225,15 @@ dcon_meta <- dcon_output_pt[[2]] %>%
 output_tbl_append(dcon_combined, 'dcon_output', file = TRUE)
 output_tbl(dcon_meta, 'dcon_meta', file = TRUE)
 
+## Date Plausibility
+
+dp_output <- ndq::check_dp(dp_tbl = read_codeset('pedsnet_dp_table', 'ccccc'),
+                           omop_or_pcornet = 'omop',
+                           visit_tbl = cdm_tbl('visit_occurrence'),
+                           dob_tbl = cdm_tbl('person'),
+                           check_string = 'dp')
+
+output_tbl_append(dp_output, 'dp_output', file = TRUE)
 
 ######### CLEANUP CHECKPOINT #################
 remove_precompute(checkpoint = 2)

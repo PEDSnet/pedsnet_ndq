@@ -4,3 +4,6 @@
 *.html
 *results*
 *.DS_Store*
+reporting/*.pdf
+.Rhistory
+.Renviron

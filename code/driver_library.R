@@ -211,7 +211,7 @@ dcon_output_pt <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccc
                              check_string='dcon')
 
 dcon_output_visit <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccccccccd') %>%
-                                  filter(grepl('visit', check_id)),
+                                  filter(grepl('visits', check_id)),
                                 compute_level = 'visit',
                                 omop_or_pcornet = 'omop',
                                 check_string='dcon')

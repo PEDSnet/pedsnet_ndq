@@ -1,38 +1,39 @@
 schema_current,table_current,schema_prev,table_prev,filter_logic,check_domain,check_id,check_description
-cdm,person,cdm,person,,person,pd,full person table
-cdm,drug_exposure,cdm,drug_exposure,,drug_exposure,dr,full drug exposure table
-cdm,condition_occurrence,cdm,condition_occurrence,,condition_occurrence,co,full condition occurrence table
-cdm,adt_occurrence,cdm,adt_occurrence,,adt_occurrence,adt,full adt occurrence table
-cdm,device_exposure,cdm,device_exposure,,device_exposure,de,full device exposure
-cdm,immunization,cdm,immunization,,immunization,im,full immunizations
-cdm,visit_occurrence,cdm,visit_occurrence,,visit_occurrence,vi,full visit table
-cdm,measurement_vitals,cdm,measurement_vitals,,measurement_vitals,mv,full vitals
-cdm,measurement_labs,cdm,measurement_labs,,measurement_labs,ml,full labs
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)",condition_outpatient,cop,outpatient condition headers
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000092, 2000000093, 2000000094, 2000000098, 2000000099, 2000000100)",condition_inpatient,ci,inpatient condition headers
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000001280, 2000001281, 2000001282, 2000001283, 2000001284, 2000001285)",condition_ed,ced,ed condition headers
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000096, 2000000097, 2000000102, 2000000103)",condition_op_billing,cop_cb,condition op billing diagnoses
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000095, 2000000101)",condition_op_order,cop_cc,condition op order diagnoses
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000092, 2000000098)",condition_ip_order,ci_cc,condition ip order diagnoses
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000099, 2000000100, 2000000093, 2000000094)",condition_ip_billing,ci_cb,condition ip billing diagnoses
-cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000078,adt_picu,adt_picu,picu from adt table
-cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000080,adt_nicu,adt_nicu,nicu from adt table
-cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000079,adt_cicu,adt_cicu,cicu from adt table
-cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 9202,visit_op_office,vo_office,outpatient office visits
-cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000469,visit_op_labs,vo_labs,outpatient lab visits
-cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 581399,visit_op_telehealth,vo_th,outpatient telehealth visits
-cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 44814711,visit_op_oa,vo_oa,outpatient other ambulatory visits
-cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 9201,visit_ip,vip,inpatient 9201 visits
-cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000048,visit_edip,vip_ipcombined,ed to inpatient
-cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000088,visit_ov,vob,observation visit types
-cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id ==  38000177,drug_rx,dp,drug prescriptions
-cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 38000180,drug_ip,di,inpatient drug administrations
-cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 32865,drug_pr,dpr,patient reported drugs
-cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(44786630,44786631)",procedures_billed,pb,billed procedures
-cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(2000001494,38000275)",procedures_ordered,po,ordered procedures
-cdm,procedure_occurrence,cdm,procedure_occurrence,,procedures,pr,procedures
-cdm,measurement_anthro,cdm,measurement_anthro,,measurement_anthro,ma,measured anthropometrics
-result,c19_dx_lab_current,result,c19_dx_lab_prev,,covid19_dx_labs,co_ml_covid,c19 diagnosed patients with labs
-cdm,care_site,cdm,care_site,,care_site,cs,full care site table
-cdm,provider,cdm,provider,,provider,pv,full provider table
-cdm,specialty,cdm,specialty,,specialty,sp,full specialty table
+cdm,person,cdm,person,,person,demog,full person table
+cdm,drug_exposure,cdm,drug_exposure,,drug_exposure,drugsall,full drug exposure table
+cdm,condition_occurrence,cdm,condition_occurrence,,condition_occurrence,condsall,full condition occurrence table
+cdm,adt_occurrence,cdm,adt_occurrence,,adt_occurrence,adtall,full adt occurrence table
+cdm,device_exposure,cdm,device_exposure,,device_exposure,deall,full device exposure
+cdm,immunization,cdm,immunization,,immunization,immsall,full immunizations
+cdm,visit_occurrence,cdm,visit_occurrence,,visit_occurrence,visall,full visit table
+cdm,measurement_vitals,cdm,measurement_vitals,,measurement_vitals,vitalsall,full vitals
+cdm,measurement_labs,cdm,measurement_labs,,measurement_labs,labsall,full labs
+cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)",condition_outpatient,condsop,outpatient condition headers
+cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000092, 2000000093, 2000000094, 2000000098, 2000000099, 2000000100)",condition_inpatient,condsip,inpatient condition headers
+cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000001280, 2000001281, 2000001282, 2000001283, 2000001284, 2000001285)",condition_ed,condsed,ed condition headers
+cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000096, 2000000097, 2000000102, 2000000103)",condition_op_billing,condsop-condsbill,condition op billing diagnoses
+cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000095, 2000000101)",condition_op_order,condsop-condsorder,condition op order diagnoses
+cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000092, 2000000098)",condition_ip_order,condsip-condsorder,condition ip order diagnoses
+cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000099, 2000000100, 2000000093, 2000000094)",condition_ip_billing,condsip-condsbill,condition ip billing diagnoses
+cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000078,adt_picu,adtpicu,picu from adt table
+cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000080,adt_nicu,adtnicu,nicu from adt table
+cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000079,adt_cicu,adtcicu,cicu from adt table
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 9202,visit_op_office,visofc,outpatient office visits
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000469,visit_op_labs,vislabs,outpatient lab visits
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 581399,visit_op_telehealth,vistele,outpatient telehealth visits
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 44814711,visit_op_oa,visoa,outpatient other ambulatory visits
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 9201,visit_ip,visip,inpatient 9201 visits
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000048,visit_edip,visei,ed to inpatient
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 9203,vised,vised,emergency department visits
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000088,visit_ov,visobs,observation visit types
+cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id ==  38000177,drug_rx,drugspresc,drug prescriptions
+cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 38000180,drug_ip,drugsip,inpatient drug administrations
+cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 32865,drug_pr,drugsrprt,patient reported drugs
+cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(44786630,44786631)",procedures_billed,procsbill,billed procedures
+cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(2000001494,38000275)",procedures_ordered,procsord,ordered procedures
+cdm,procedure_occurrence,cdm,procedure_occurrence,,procedures,procsall,procedures
+cdm,measurement_anthro,cdm,measurement_anthro,,measurement_anthro,anthros,measured anthropometrics
+result,c19_dx_lab_current,result,c19_dx_lab_prev,,covid19_dx_labs,condscovid19-labscovid19,c19 diagnosed patients with labs
+cdm,care_site,cdm,care_site,,care_site,csall,full care site table
+cdm,provider,cdm,provider,,provider,provall,full provider table
+cdm,specialty,cdm,specialty,,specialty,specall,full specialty table

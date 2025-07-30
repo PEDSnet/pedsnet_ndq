@@ -19,8 +19,9 @@ update_names <- function(tbl_list_arg = tbl_list){
       update_names <- get_tbl %>%
         left_join(new_name_refs) %>%
         # select(-check_name) %>%
-        rename('old_check_name' = 'check_name',
-               'check_name' = 'new_name')
+        # rename('old_check_name' = 'check_name',
+        #        'check_name' = 'new_name') %>%
+        mutate(check_name = ifelse(is.na(new_name), check_name, new_name))
 
       output_tbl(update_names, i)
 
@@ -33,3 +34,26 @@ update_names <- function(tbl_list_arg = tbl_list){
 
 
 update_names()
+
+
+
+drop_old_names <- function(tbl_list_arg = tbl_list){
+
+  for(i in tbl_list_arg){
+
+    get_tbl <- results_tbl(i) %>% collect()
+
+    if('old_check_name' %in% colnames(get_tbl)){
+
+      drop_col <- get_tbl %>%
+        select(-old_check_name)
+
+      output_tbl(drop_col, i)
+    }else{
+      next
+    }
+
+  }
+}
+
+drop_old_names()

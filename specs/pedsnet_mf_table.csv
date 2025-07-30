@@ -1,7 +1,7 @@
 ﻿check_id,check_description,schema,table,filter_logic
-coied,conditions excluding problem list,cdm,condition_occurrence,"!condition_type_concept_id %in% c(2000000089, 2000000090, 2000000091)"
-dr,all drugs,cdm,drug_exposure,
-dp,prescription or inpatient drugs,cdm,drug_exposure,!drug_type_concept_id == 38000175
-pr,all procedures,cdm,procedure_occurrence,
-ml,all labs,cdm,measurement_labs,
-im,all immunizations,cdm,immunization,
+condsall-visitid,conditions excluding problem list,cdm,condition_occurrence,"!condition_type_concept_id %in% c(2000000089, 2000000090, 2000000091)"
+drugsall-visitid,all drugs,cdm,drug_exposure,
+drugspresc-visitid,prescription or inpatient drugs,cdm,drug_exposure,!drug_type_concept_id == 38000175
+procsall-visitid,all procedures,cdm,procedure_occurrence,
+labsall-visitid,all labs,cdm,measurement_labs,
+immsall-visitid,all immunizations,cdm,immunization,

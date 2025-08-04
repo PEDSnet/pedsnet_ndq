@@ -82,13 +82,13 @@ output_tbl_append(mf_output, 'mf_visitid_output', file = TRUE)
 ## Best Mapped Concepts
 
 bmc_output <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc') %>%
-                          filter(!grepl('fips|gest_age', check_id)),
+                          filter(!grepl('fips|gestage', check_id)),
                         omop_or_pcornet = 'omop',
                         concept_tbl = vocabulary_tbl('concept'),
                         check_string='bmc')
 
 bmc_output2 <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc') %>%
-                          filter(grepl('fips|gest_age', check_id)),
+                          filter(grepl('fips|gestage', check_id)),
                         omop_or_pcornet = 'omop',
                         concept_tbl = NULL,
                         check_string='bmc')

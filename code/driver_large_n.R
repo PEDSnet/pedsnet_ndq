@@ -18,7 +18,7 @@ output_tbl(dc_ln %>% bind_rows(results_tbl('dc_output_pp') %>%
 ## Vocabulary & Valueset Conformance ----
 
 vs_ln <- summarize_large_n(dq_output = results_tbl('vs_output_pp') %>%
-                             filter(site != 'total'),
+                             filter(site != 'total',total_denom_ct!=0),
                            check_string = 'vs',
                            num_col = 'prop_viol',
                            grp_vars = c('table_application', 'measurement_column',
@@ -38,7 +38,7 @@ output_tbl(vc_ln, 'vc_output_ln')
 
 ## Unmapped Concepts ----
 
-uc_ln <- summarize_large_n(dq_output = results_tbl('uc_output_pp') %>%
+uc_ln <- summarize_large_n(dq_output = results_tbl('uc_output_pp') %>%mutate(unmapped_prop=case_when(is.na(unmapped_prop)~0, TRUE~unmapped_prop))%>%
                              filter(site != 'total'),
                            check_string = 'uc',
                            num_col = 'unmapped_prop',
@@ -62,11 +62,11 @@ output_tbl(uc_by_yr_ln %>% bind_rows(results_tbl('uc_by_year_pp') %>%
 ## Person Facts ----
 
 ### person level
-pf_person_ln <- summarize_large_n(dq_output = results_tbl('pf_output_pp') %>%
-                                    filter(site != 'total'),
+pf_person_ln <- summarize_large_n(dq_output = results_tbl('cfd_output_pp') %>%
+                                    filter(site != 'total',!is.na(fact_pts_prop)),
                                   check_string = 'pf',
                                   num_col = 'fact_pts_prop',
-                                  grp_vars = c('check_description', 'check_name',
+                                  grp_vars = c('check_desc', 'check_name',
                                               'visit_type', 'check_desc_neat'),
                                   shape="wide") %>%
   rename_with(~paste0(.x,"_pts"), c(min_val, max_val,
@@ -74,11 +74,11 @@ pf_person_ln <- summarize_large_n(dq_output = results_tbl('pf_output_pp') %>%
                                       median_val, mean_val))
 
 ### visit level
-pf_visit_ln <- summarize_large_n(dq_output = results_tbl('pf_output_pp') %>%
-                                   filter(site != 'total'),
+pf_visit_ln <- summarize_large_n(dq_output = results_tbl('cfd_output_pp') %>%
+                                   filter(site != 'total',!is.na(fact_visits_prop)),
                                  check_string = 'pf',
                                  num_col = 'fact_visits_prop',
-                                 grp_vars = c('check_description', 'check_name',
+                                 grp_vars = c('check_desc', 'check_name',
                                               'visit_type', 'check_desc_neat'),
                                  shape="wide")%>%
   rename_with(~paste0(.x,"_visits"), c(min_val, max_val,
@@ -87,22 +87,22 @@ pf_visit_ln <- summarize_large_n(dq_output = results_tbl('pf_output_pp') %>%
 
 ### stitch together and bring in the total rows
 pf_final_ln <- pf_person_ln %>% full_join(pf_visit_ln) %>%
-  bind_rows(results_tbl('pf_output_pp') %>% filter(site == 'total') %>% collect())
+  bind_rows(results_tbl('cfd_output_pp') %>% filter(site == 'total') %>% collect())
 
-output_tbl(pf_final_ln, 'pf_output_ln')
+output_tbl(pf_final_ln, 'cfd_output_ln')
 
 ## Best Mapped Concepts ----
 
-bmc_ln <- summarize_large_n(dq_output = results_tbl('bmc_gen_output_pp') %>%
+bmc_ln <- summarize_large_n(dq_output = results_tbl('bmc_output_pp') %>%
                               filter(site != 'total'),
                             check_string = 'bmc',
                             num_col = 'best_row_prop',
                             grp_vars = c('check_name', 'check_desc', 'include'),
                             shape="wide")
 
-output_tbl(bmc_ln%>% bind_rows(results_tbl('bmc_gen_output_pp') %>%
+output_tbl(bmc_ln%>% bind_rows(results_tbl('bmc_output_pp') %>%
                                  filter(site == 'total') %>% collect()),
-           'bmc_gen_output_ln')
+           'bmc_output_ln')
 
 ## Domain Concordance ----
 
@@ -119,7 +119,7 @@ output_tbl(dcon_ln %>% bind_rows(results_tbl('dcon_output_pp') %>%
 
 ## MF VisitID ----
 
-mf_visitid_ln <- summarize_large_n(dq_output = results_tbl('mf_visitid_pp') %>%
+mf_visitid_ln <- summarize_large_n(dq_output = results_tbl('mf_visitid_output_pp') %>%
                                      filter(site != 'total'),
                                    check_string = 'mf',
                                    num_col = 'prop_missing_visits_total',
@@ -127,8 +127,8 @@ mf_visitid_ln <- summarize_large_n(dq_output = results_tbl('mf_visitid_pp') %>%
                                                 'check_type', 'check_name_app'),
                                    shape="wide")
 
-output_tbl(mf_visitid_ln %>% bind_rows(results_tbl('mf_visitid_pp') %>%
-                                    filter(site == 'total') %>% collect()), 'mf_visitid_ln')
+output_tbl(mf_visitid_ln %>% bind_rows(results_tbl('mf_visitid_output_pp') %>%
+                                    filter(site == 'total') %>% collect()), 'mf_visitid_output_ln')
 
 ## Expected Concepts Present ----
 

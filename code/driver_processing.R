@@ -120,7 +120,7 @@ output_tbl(cfd_pp, 'cfd_output_pp')
 dcon_pp <- process_dcon(dcon_results = 'dcon_output',
                         rslt_source = 'remote')
 
-output_tbl(dcon_pp$dcon_props, 'dcon_output_pp')
+output_tbl(dcon_pp, 'dcon_output_pp')
 
 ## Facts Over Time
 

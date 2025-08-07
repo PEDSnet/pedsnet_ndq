@@ -18,7 +18,7 @@ output_tbl(dc_ln %>% bind_rows(results_tbl('dc_output_pp') %>%
 ## Vocabulary & Valueset Conformance ----
 
 vs_ln <- summarize_large_n(dq_output = results_tbl('vs_output_pp') %>%
-                             filter(site != 'total'),
+                             filter(site != 'total',total_denom_ct!=0),
                            check_string = 'vs',
                            num_col = 'prop_viol',
                            grp_vars = c('table_application', 'measurement_column',
@@ -68,7 +68,7 @@ cfd_person_ln <- summarize_large_n(dq_output = results_tbl('cfd_output_pp') %>%
                                     mutate(fact_pts_prop = ifelse(is.na(fact_pts_prop), 0, fact_pts_prop)),
                                   check_string = 'cfd',
                                   num_col = 'fact_pts_prop',
-                                  grp_vars = c('check_description', 'check_name',
+                                  grp_vars = c('check_desc', 'check_name',
                                               'visit_type', 'check_desc_neat'),
                                   shape="wide") %>%
   rename_with(~paste0(.x,"_pts"), c(min_val, max_val,
@@ -81,7 +81,7 @@ cfd_visit_ln <- summarize_large_n(dq_output = results_tbl('cfd_output_pp') %>%
                                     mutate(fact_visits_prop = ifelse(is.na(fact_visits_prop), 0, fact_visits_prop)),
                                  check_string = 'cfd',
                                  num_col = 'fact_visits_prop',
-                                 grp_vars = c('check_description', 'check_name',
+                                 grp_vars = c('check_desc', 'check_name',
                                               'visit_type', 'check_desc_neat'),
                                  shape="wide")%>%
   rename_with(~paste0(.x,"_visits"), c(min_val, max_val,

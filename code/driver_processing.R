@@ -92,7 +92,10 @@ output_tbl(bmc_anom_pp, 'bmc_anom_pp')
 ecp_pp <- process_ecp(ecp_results = 'ecp_output',
                       rslt_source = 'remote')
 
-output_tbl(ecp_pp, 'ecp_output_pp')
+ecp_pp_labs <- ecp_pp %>%
+  left_join(read_codeset('ecp_cat_new', 'cc'))
+
+output_tbl(ecp_pp_labs, 'ecp_output_pp')
 
 #### Detect Anomalies
 ecp_anom <- ssdqa.gen::compute_dist_anomalies(df_tbl= ecp_pp,
@@ -119,6 +122,9 @@ output_tbl(cfd_pp, 'cfd_output_pp')
 
 dcon_pp <- process_dcon(dcon_results = 'dcon_output',
                         rslt_source = 'remote')
+
+dcon_pp_labs <- dcon_pp %>%
+  mutate(description_full = gsub('and', '/', check_desc))
 
 output_tbl(dcon_pp, 'dcon_output_pp')
 

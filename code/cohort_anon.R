@@ -23,7 +23,8 @@ pull_site_tables <- function(db=config('db_src'),
       dplyr::rename('table' = 'table_name') %>%
       dplyr::mutate(schema = schema_name) %>%
       filter(! str_detect(table,'redcap'))%>%
-      filter(str_detect(table, '_pp'))
+      filter(str_detect(table, '_pp')) %>%
+      select(schema, table)
 
   }else{
     tbl_names <-

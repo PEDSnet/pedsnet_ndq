@@ -30,7 +30,7 @@ cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id ==  38000177,drug_rx,dr
 cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 38000180,drug_ip,drugsip,inpatient drug administrations
 cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 32865,drug_pr,drugsrprt,patient reported drugs
 cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(44786630,44786631)",procedures_billed,procsbill,billed procedures
-cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(2000001494,38000275)",procedures_ordered,procsord,ordered procedures
+cdm,procedure_occurrence,cdm,procedure_occurrence,"procedure_type_concept_id %in% c(2000001494,38000275)",procedures_ordered,procsorder,ordered procedures
 cdm,procedure_occurrence,cdm,procedure_occurrence,,procedures,procsall,procedures
 cdm,measurement_anthro,cdm,measurement_anthro,,measurement_anthro,anthros,measured anthropometrics
 result,c19_dx_lab_current,result,c19_dx_lab_prev,,covid19_dx_labs,condscovid19-labscovid19,c19 diagnosed patients with labs

@@ -2,7 +2,7 @@ check_id,check_description,schema,table,concept_field,source_value_field,date_fi
 drugsall,all drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,
 drugsip,inpatient administrations,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000180
 drugspresc,prescription drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000177
-drugsprt,patient reported drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_order_date,drug_type_concept_id == 32865
+drugsrprt,patient reported drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_order_date,drug_type_concept_id == 32865
 drugs-doseunits,drug dose unit,cdm,drug_exposure,dose_unit_concept_id,dose_unit_source_value,drug_exposure_start_date,
 drugs-route,drug route,cdm,drug_exposure,route_concept_id,route_source_value,drug_exposure_start_date,
 condsall,conditions,cdm,condition_occurrence,condition_concept_id,condition_source_value,condition_start_date,

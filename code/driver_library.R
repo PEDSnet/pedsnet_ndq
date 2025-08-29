@@ -196,13 +196,15 @@ output_tbl(cfd_mapping_file, 'cfd_mappings')
 ## Domain Concordance
 
 dcon_output_pt <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccccccccd') %>%
-                               filter(!grepl('visit', check_id)),
+                               filter(!grepl('vis', check_id), check_id %in% c('asthma_dx_broncho_rx',
+                                                                               'frac_dx_img_px',
+                                                                               'ED_visits_ED_conds')),
                              compute_level = 'patient',
                              omop_or_pcornet = 'omop',
                              check_string='dcon')
 
 dcon_output_visit <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccccccccd') %>%
-                                  filter(grepl('visit', check_id)),
+                                  filter(grepl('vis', check_id)),
                                 compute_level = 'visit',
                                 omop_or_pcornet = 'omop',
                                 check_string='dcon')

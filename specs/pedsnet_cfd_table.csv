@@ -1,8 +1,8 @@
 check_id,check_description,schema,table,filter_logic
-pr,procedures,cdm,procedure_occurrence,
-co,conditions,cdm,condition_occurrence,
-dr,drugs,cdm,drug_exposure,
-prdr,procs_drugs,result,procs_drugs,
-ml,labs,cdm,measurement,"!measurement_concept_id %in% c(3038553,3013762,3001537,3023540,3025315,3036277,3004249,40762499,3024171,3027018,3020891,3012888,3009395,3018586,3035856,21492241,21490852,3034703,3019962,3013940)"
-prdrml,procs_drugs_labs,result,procs_drugs_labs,
-ob,observation,cdm,observation,
+procsall,procedures,cdm,procedure_occurrence,
+condsall,conditions,cdm,condition_occurrence,
+drugsall,drugs,cdm,drug_exposure,
+procsall-drugsall,procs_drugs,result,procs_drugs,
+labsall,labs,cdm,measurement,"!measurement_concept_id %in% c(3038553,3013762,3001537,3023540,3025315,3036277,3004249,40762499,3024171,3027018,3020891,3012888,3009395,3018586,3035856,21492241,21490852,3034703,3019962,3013940)"
+procsall-drugsall-labsall,procs_drugs_labs,result,procs_drugs_labs,
+obsall,observation,cdm,observation,

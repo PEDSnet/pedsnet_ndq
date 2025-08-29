@@ -1,6 +1,6 @@
 check_id,check_description,schema,table,concept_field,concept_table_field,filter_logic
-rxnorm_di,inpatient admin,cdm,drug_exposure,drug_concept_id,concept_class_id,drug_type_concept_id %in% c(38000180)
-rxnorm_dp,prescriptions,cdm,drug_exposure,drug_concept_id,concept_class_id,drug_type_concept_id %in% c(38000177)
+drugsip-rxnorm,inpatient admin,cdm,drug_exposure,drug_concept_id,concept_class_id,drug_type_concept_id %in% c(38000180)
+drugspresc-rxnorm,prescriptions,cdm,drug_exposure,drug_concept_id,concept_class_id,drug_type_concept_id %in% c(38000177)
 race,race,cdm,person,race_concept_id,concept_name,
-ethnicity,ethnicity,cdm,person,ethnicity_concept_id,concept_name,
-pvvo_spec,outpatient provider specialty,result,op_prov_spec,specialty_concept_id,concept_name,
+eth,ethnicity,cdm,person,ethnicity_concept_id,concept_name,
+provop,outpatient provider specialty,result,op_prov_spec,specialty_concept_id,concept_name,

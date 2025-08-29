@@ -1,0 +1,12 @@
+concept_id,concept_code,concept_name,vocabulary_id
+45756747,OMOP4822001,Adolescent Medicine,ABMS
+45756824,OMOP4822015,Public Health and General Preventive Medicine,ABMS
+2000000063,OMOP generated,General Pediatrics,PEDSnet
+38004446,1,General Practice,Medicare Specialty
+38004453,8,Family Practice,Medicare Specialty
+38004503,84,Preventive Medicine,Medicare Specialty
+38003851,207Q00000X,Family Medicine,NUCC
+38003939,208000000X,"Allopathic & Osteopathic Physicians, Pediatrics",NUCC
+38003940,2080A0000X,"Allopathic & Osteopathic Physicians, Pediatrics, Adolescent Medicine",NUCC
+38004247,261QP2300X,Ambulatory Primary Care Clinic / Center,NUCC
+38004377,363LF0000X,Family Nurse Practitioner,NUCC

@@ -93,3 +93,9 @@ ip_admit <- cdm_tbl('visit_occurrence') %>%
   add_site() %>% filter(site == site_nm) %>%
   filter(visit_concept_id %in% c(9201, 2000000048)) %>%
   distinct(person_id) %>% output_tbl('ip_admit')
+
+
+neph_spec_prep <- find_specialty(visits = cdm_tbl('visit_occurrence') %>%
+                                   add_site() %>% filter(site == site_nm),
+                                 specialty_conceptset = load_codeset('nephrology'))
+output_tbl(neph_spec_prep, 'nephrology_specialties')

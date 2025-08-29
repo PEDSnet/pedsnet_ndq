@@ -12,15 +12,31 @@
 
 pull_site_tables <- function(db=config('db_src'),
                              schema_name=config('results_schema')) {
+
   # pull all results table names from schema
-  tbl_names <-
-    db %>%
-    DBI::dbListObjects(DBI::Id(schema= schema_name)) %>%
-    dplyr::pull(table) %>%
-    purrr::map(~slot(.x, 'name')) %>%
-    dplyr::bind_rows()%>%
-    filter(! str_detect(table,'redcap'))%>%
-    filter(str_detect(table, 'pp'))
+  if(!any(class(config('db_src')) %in% 'PqConnection')){
+
+    tbl_list <- dbGetQuery(config('db_src'),
+                           paste0("SELECT table_name FROM information_schema.tables
+                               WHERE table_schema='", schema_name, "'"))
+
+    tbl_names <- dplyr::tibble(tbl_list) %>%
+      dplyr::rename('table' = 'table_name') %>%
+      dplyr::mutate(schema = schema_name) %>%
+      filter(! str_detect(table,'redcap'))%>%
+      filter(str_detect(table, '_pp')) %>%
+      select(schema, table)
+
+  }else{
+    tbl_names <-
+      db %>%
+      DBI::dbListObjects(DBI::Id(schema= schema_name)) %>%
+      dplyr::pull(table) %>%
+      purrr::map(~slot(.x, 'name')) %>%
+      dplyr::bind_rows()%>%
+      filter(! str_detect(table,'redcap'))%>%
+      filter(str_detect(table, '_pp'))
+  }
 
   tbl_names_short <-
     tbl_names %>%

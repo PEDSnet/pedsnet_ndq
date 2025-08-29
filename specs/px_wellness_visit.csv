@@ -1,0 +1,87 @@
+concept_id,concept_code,concept_name,vocabulary_id,domain_id
+40664424,G0438,"Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit",HCPCS,Observation
+40664425,G0439,"Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit",HCPCS,Observation
+4014738,170099002,Child examination - birth,SNOMED,Procedure
+4014613,170107008,Child examination - 10 days,SNOMED,Procedure
+4014615,170114005,Child examination - 6 weeks,SNOMED,Procedure
+4016495,170123008,Child 8-9 month examination,SNOMED,Procedure
+4016193,170132005,Child 18 month examination,SNOMED,Procedure
+4016194,170141000,Child 2.5 year examination,SNOMED,Procedure
+4016610,170150003,Child 3.5 year examination,SNOMED,Procedure
+4014849,170159002,Child 4.5 year examination,SNOMED,Procedure
+4014853,170168000,Child 10 year examination,SNOMED,Procedure
+4015555,170250008,Child 3 month examination,SNOMED,Procedure
+4016212,170254004,Child 1 year examination,SNOMED,Procedure
+4014880,170263002,Child 6 month examination,SNOMED,Procedure
+4016633,170272005,Child 21 month examination,SNOMED,Procedure
+4014990,170281004,Child 3 year examination,SNOMED,Procedure
+4016746,170290006,Child 39 month examination,SNOMED,Procedure
+4015568,170300004,Child 8 week examination,SNOMED,Procedure
+4016751,170309003,Child 7 month exam,SNOMED,Procedure
+4088016,243788004,Child examination,SNOMED,Procedure
+4147965,268563000,Child health medical examination,SNOMED,Procedure
+4094033,281010000,Child development checks,SNOMED,Procedure
+4295019,401140000,Child 2 year examination,SNOMED,Procedure
+4132649,410620009,Well child visit,SNOMED,Procedure
+4259636,410621008,"Well child visit, newborn",SNOMED,Procedure
+4253751,410622001,Child examination - 2 weeks,SNOMED,Procedure
+4256496,410623006,"Well child visit, 2 week",SNOMED,Procedure
+4256497,410624000,"Well child visit, 2 month",SNOMED,Procedure
+4259637,410625004,Child 4 month examination,SNOMED,Procedure
+4256498,410626003,"Well child visit, 4 month",SNOMED,Procedure
+4253752,410627007,"Well child visit, 6 month",SNOMED,Procedure
+4256499,410628002,"Well child visit, 9 month",SNOMED,Procedure
+4256500,410629005,"Well child visit, 12 month",SNOMED,Procedure
+4132650,410630000,Child 15 month examination,SNOMED,Procedure
+4259638,410631001,"Well child visit, 15 month",SNOMED,Procedure
+4256501,410632008,"Well child visit, 18 month",SNOMED,Procedure
+4259639,410633003,"Well child visit, 2 years",SNOMED,Procedure
+4253753,410634009,"Well child visit, 3 years",SNOMED,Procedure
+4132651,410635005,Child 4 year examination,SNOMED,Procedure
+4132652,410636006,"Well child visit, 4 years",SNOMED,Procedure
+4132653,410637002,"Well child visit, 5 years",SNOMED,Procedure
+4132654,410638007,"Well child visit, 6 years",SNOMED,Procedure
+4253754,410639004,"Well child visit, 7 years",SNOMED,Procedure
+4132655,410640002,"Well child visit, 8 years",SNOMED,Procedure
+4132656,410641003,"Well child visit, 9 years",SNOMED,Procedure
+4259640,410642005,"Well child visit, 10 years",SNOMED,Procedure
+4132657,410643000,"Well child visit, 11 years",SNOMED,Procedure
+4132658,410644006,"Well child visit, 12 years",SNOMED,Procedure
+4132659,410645007,"Well child visit, 13 years",SNOMED,Procedure
+4259641,410646008,"Well child visit, 14 years",SNOMED,Procedure
+4256502,410647004,"Well child visit, 15 years",SNOMED,Procedure
+4253755,410648009,"Well child visit, 16 years",SNOMED,Procedure
+4259642,410649001,"Well child visit, 17 years",SNOMED,Procedure
+4253756,410650001,"Well child visit, 18 years",SNOMED,Procedure
+40482245,442162000,Child 6 to 8 week examination,SNOMED,Procedure
+37204555,783260003,Child 15 year examination,SNOMED,Procedure
+2514516,99381,"Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnos",CPT4,Procedure
+2514517,99382,"Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnos",CPT4,Procedure
+2514518,99383,"Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnos",CPT4,Procedure
+2514519,99384,"Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnos",CPT4,Procedure
+2514520,99385,"Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnos",CPT4,Procedure
+2514521,99386,"Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnos",CPT4,Procedure
+2514522,99387,"Initial comprehensive preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnos",CPT4,Procedure
+2514523,99391,"Periodic comprehensive preventive medicine reevaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diag",CPT4,Procedure
+2514524,99392,"Periodic comprehensive preventive medicine reevaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diag",CPT4,Procedure
+2514525,99393,"Periodic comprehensive preventive medicine reevaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diag",CPT4,Procedure
+2514526,99394,"Periodic comprehensive preventive medicine reevaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diag",CPT4,Procedure
+2514527,99395,"Periodic comprehensive preventive medicine reevaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diag",CPT4,Procedure
+2514528,99396,"Periodic comprehensive preventive medicine reevaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diag",CPT4,Procedure
+2514529,99397,"Periodic comprehensive preventive medicine reevaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diag",CPT4,Procedure
+1575980,Z00,"Encounter for general examination without complaint, suspected or reported diagnosis",ICD10CM,Observation
+1575981,Z00.0,Encounter for general adult medical examination,ICD10CM,Observation
+45552054,Z00.00,Encounter for general adult medical examination without abnormal findings,ICD10CM,Observation
+45600300,Z00.01,Encounter for general adult medical examination with abnormal findings,ICD10CM,Observation
+1575982,Z00.1,"Encounter for newborn, infant and child health examinations",ICD10CM,Observation
+35225036,Z00.11,Newborn health examination,ICD10CM,Measurement
+45585792,Z00.110,Health examination for newborn under 8 days old,ICD10CM,Measurement
+45537612,Z00.111,Health examination for newborn 8 to 28 days old,ICD10CM,Observation
+1575983,Z00.12,Encounter for routine child health examination,ICD10CM,Observation
+45590689,Z00.121,Encounter for routine child health examination with abnormal findings,ICD10CM,Observation
+45571312,Z00.129,Encounter for routine child health examination without abnormal findings,ICD10CM,Observation
+35225037,Z00.2,Encounter for examination for period of rapid growth in childhood,ICD10CM,Observation
+35225038,Z00.3,Encounter for examination for adolescent development state,ICD10CM,Observation
+35225041,Z00.8,Encounter for other general examination,ICD10CM,Observation
+4222294,8390008,Routine care of newborn,SNOMED,Procedure
+4008161,102506008,Well child,SNOMED,Observation

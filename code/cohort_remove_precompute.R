@@ -10,7 +10,8 @@ remove_precompute <- function(checkpoint){
   ck2_list <- c('procs_drugs', 'procs_drugs_labs', 'icu_transfer', 'payer_w_pid',
                 'ip_two', 'nephrology_specialties', 'oncology_specialties')
 
-  ck3_list <- c('voml', 'vipdp', 'vodi', 'prvo', 'c19_imm')
+  ck3_list <- c('voml', 'vipdp', 'vodi', 'prvo', 'c19_imm', 'gp_specialties',
+                'wc_codes')
 
   drop_tbls <- function(tbl_list,
                         schema = rslt_schm){

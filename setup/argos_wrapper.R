@@ -50,32 +50,79 @@ initialize_session <- function(session_name,
                                retain_intermediates = FALSE,
                                db_trace = TRUE){
 
-  argos$public_methods$load_codeset <- function(name,
-                                                col_types = "iccc",
-                                                table_name = name,
-                                                indexes = NULL,
-                                                full_path = FALSE,
-                                                db = self$config("db_src")) {
+  argos$public_methods$db_exists_table <- function(db = self$config('db_src'), name) {
+    con <- self$dbi_con(db)
+    elts <- private$parse_tblspec(name)
 
-    if (self$config('cache_enabled')) {
-      if (is.null(self$config('_codesets'))) self$config('_codesets', list())
-      cache <- self$config('_codesets')
-      if (! is.null(cache[[name]])) return(cache[[name]])
+    if (any(grepl('ora', class(con), ignore.case = TRUE)) &&
+        length(elts) > 1) {
+      elts <- rev(elts)
+      return(DBI::dbExistsTable(con, elts[1], schema = elts[2]))
     }
-    codes <-
-      self$copy_to_new(db,
-                       self$read_codeset(name, col_types = col_types,
-                                         full_path = full_path),
-                       name = table_name,
-                       overwrite = TRUE,
-                       indexes = NULL)
-
-    if (self$config('cache_enabled')) {
-      cache[[name]] <- codes
-      self$config('_codesets', cache)
+    else if (any(class(con) == 'PostgreSQLConnection') &&
+             length(elts) == 1) {
+      res <-
+        DBI::dbGetQuery(con,
+                        paste("select tablename from pg_tables where ",
+                              "schemaname !='information_schema' and schemaname !='pg_catalog' ",
+                              "and schemaname in (select schemas[nr] from ",
+                              "(select *, generate_subscripts(schemas,1) as nr ",
+                              "from (select current_schemas(true) as schemas) a ",
+                              ") b where schemas[nr] <> 'pg_catalog') and tablename=",
+                              DBI::dbQuoteString(con, elts[1]), sep = ""))
+      return(as.logical(dim(res)[1]))
     }
+    else if (length(elts) > 1) {
+      return(DBI::dbExistsTable(con, DBI::Id(elts)))
+    }
+    else {
+      return(DBI::dbExistsTable(con, elts))
+    }
+  }
 
-    codes
+  argos$public_methods$copy_to_new <- function(dest = self$config('db_src'), df,
+                                               name = deparse(substitute(df)),
+                                               overwrite = TRUE,
+                                               temporary = ! self$config('retain_intermediates'),
+                                               ..., .chunk_size = NA) {
+    name <- self$intermed_name(name, temporary = temporary)
+    if (self$config('db_trace')) {
+      message(' -> copy_to')
+      start <- Sys.time()
+      message(start)
+      message('Data: ', deparse(substitute(df)))
+      message('Table name: ',
+              base::ifelse(packageVersion('dbplyr') < '2.0.0',
+                           dbplyr::as.sql(name),
+                           dbplyr::as.sql(name, dbi_con(dest))),
+              ' (temp: ', temporary, ')')
+      message('Data elements: ', paste(tbl_vars(df), collapse = ','))
+      message('Rows: ', NROW(df))
+    }
+    if (overwrite &&
+        self$db_exists_table(dest, name)) {
+      self$db_remove_table(dest, name)
+    }
+    dfsize <- tally(ungroup(df)) %>% pull(n)
+    if (is.na(.chunk_size)) .chunk_size <- dfsize
+    cstart <- 1
+    if (.chunk_size <= dfsize)
+      cli::cli_progress_bar('Writing data', total = 100,
+                            format = 'Writing data {cli::pb_bar} {cli::pb_percent}')
+    while (cstart <= dfsize) {
+      cend <- min(cstart + .chunk_size, dfsize)
+      rslt <- dplyr::copy_to(dest = dest,
+                             overwrite = overwrite,
+                             df = slice(ungroup(df), cstart:cend), name = name,
+                             temporary = temporary, ...)
+      if (.chunk_size <= dfsize) cli::cli_progress_update(set = 100L * cend / dfsize)
+      cstart <- cend + 1L
+    }
+    if (self$config('db_trace')) {
+      end  <- Sys.time()
+      message(end, ' ==> ', format(end - start))
+    }
+    rslt
   }
 
   # Establish session

@@ -1,13 +1,13 @@
 check_id,check_description,schema,table,concept_field,source_value_field,date_field,filter_logic
-dr,all drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,
-di,inpatient administrations,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000180
-dp,prescription drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000177
-dpr,patient reported drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 32865
-drt,drug route,cdm,drug_exposure,route_concept_id,route_source_value,drug_exposure_start_date,
-co,conditions,cdm,condition_occurrence,condition_concept_id,condition_source_value,condition_start_date,
-co_scid,condition source,cdm,condition_occurrence,condition_source_concept_id,condition_source_value,condition_start_date,
-ms,all measurements,cdm,measurement,measurement_concept_id,measurement_source_value,measurement_date,
-msu,measurement units,cdm,measurement,unit_concept_id,unit_source_value,measurement_date,value_as_number != 9999 & !is.na(value_as_number)
-pr,all procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,
-po,ordered procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(2000001494,38000275)"
-pb,billed procedure,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(44786630L,44786631)"
+drugsall,all drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,
+drugsip,inpatient administrations,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000180
+drugspresc,prescription drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugsrprt,patient reported drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 32865
+drugs-route,drug route,cdm,drug_exposure,route_concept_id,route_source_value,drug_exposure_start_date,
+condsall,conditions,cdm,condition_occurrence,condition_concept_id,condition_source_value,condition_start_date,
+condsall-scid,condition source,cdm,condition_occurrence,condition_source_concept_id,condition_source_value,condition_start_date,
+measall,all measurements,cdm,measurement,measurement_concept_id,measurement_source_value,measurement_date,
+meas-units,measurement units,cdm,measurement,unit_concept_id,unit_source_value,measurement_date,value_as_number != 9999 & !is.na(value_as_number)
+procsall,all procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,
+procsorder,ordered procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(2000001494,38000275)"
+procsbill,billed procedure,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(44786630L,44786631)"

@@ -102,33 +102,33 @@ source(file.path(getwd(), 'code', 'precompute_tables_2.R'))
 
 ## Patient Facts
 ####### All Visits
-cfd_output_all <- check_pf(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %>%
+cfd_output_all <- check_cfd(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %>%
                             filter(check_id != 'icu'),
                           visit_type_filter = 'all',
                           visit_type_tbl = read_codeset('pedsnet_cfd_visits', 'ci'),
                           omop_or_pcornet = 'omop',
                           visit_tbl=cdm_tbl('visit_occurrence'),
-                          check_string='pf')
+                          check_string='cfd')
 ####### Inpatient Visits
-cfd_output_ip <- check_pf(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc'),
+cfd_output_ip <- check_cfd(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc'),
                          visit_type_filter = 'inpatient',
                          visit_type_tbl = read_codeset('pedsnet_cfd_visits', 'ci') %>%
                            select(-visit_source_concept_id),
                          omop_or_pcornet = 'omop',
                          visit_tbl=cdm_tbl('visit_occurrence') %>%
                            filter(visit_source_concept_id != 2000001590),
-                         check_string='pf')
+                         check_string='cfd')
 ####### Inpatient Visits > 2 Days
-cfd_output_lip <- check_pf(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc'),
+cfd_output_lip <- check_cfd(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc'),
                           visit_type_filter = 'long_inpatient',
                           visit_type_tbl = read_codeset('pedsnet_cfd_visits', 'ci') %>%
                             select(-visit_source_concept_id),
                           omop_or_pcornet = 'omop',
                           visit_tbl = results_tbl('ip_two') %>%
                             filter(visit_source_concept_id != 2000001590),
-                          check_string='pf')
+                          check_string='cfd')
 ####### Outpatient Visits
-cfd_output_op <- check_pf(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %>%
+cfd_output_op <- check_cfd(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %>%
                            filter(check_id != 'icu'),
                          visit_type_filter = 'outpatient',
                          visit_type_tbl = read_codeset('pedsnet_cfd_visits', 'ci') %>%
@@ -136,9 +136,22 @@ cfd_output_op <- check_pf(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %
                          omop_or_pcornet = 'omop',
                          visit_tbl=cdm_tbl('visit_occurrence') %>%
                            filter(visit_source_concept_id != 2000001590),
-                         check_string='pf')
+                         check_string='cfd')
+
+###### Primary Care Visits (Specialty)
+cfd_output_pc <- check_cfd(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %>%
+                             filter(check_id != 'icu'),
+                           visit_type_filter = 'primary_care',
+                           visit_type_tbl = read_codeset('pedsnet_cfd_visits', 'ci') %>%
+                             select(-visit_source_concept_id),
+                           omop_or_pcornet = 'omop',
+                           visit_tbl=results_tbl('gp_specialties') %>%
+                             filter(visit_source_concept_id != 2000001590),
+                           check_string='cfd') %>%
+  mutate(check_name = stringr::str_replace_all(check_name, '_primary_care', '-vispc'))
+
 ####### Emergency Department Visits
-cfd_output_ed <- check_pf(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %>%
+cfd_output_ed <- check_cfd(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %>%
                            filter(check_id != 'icu'),
                          visit_type_filter = 'emergency',
                          visit_type_tbl = read_codeset('pedsnet_cfd_visits', 'ci') %>%
@@ -146,26 +159,27 @@ cfd_output_ed <- check_pf(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc') %
                          omop_or_pcornet = 'omop',
                          visit_tbl=cdm_tbl('visit_occurrence') %>%
                            filter(visit_source_concept_id != 2000001590),
-                         check_string='pf')
+                         check_string='cfd')
 ####### Cancelled Visits
-cfd_output_cld <- check_pf(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc'),
+cfd_output_cld <- check_cfd(cfd_tbl = read_codeset('pedsnet_cfd_table', 'ccccc'),
                           visit_type_filter = 'cancelled',
                           visit_type_tbl = read_codeset('pedsnet_cfd_visits', 'ci') %>%
                             select(-visit_concept_id),
                           omop_or_pcornet = 'omop',
                           visit_tbl=cdm_tbl('visit_occurrence'),
-                          check_string='pf')
+                          check_string='cfd')
 
 cfd_combined <- cfd_output_all %>%
   union(cfd_output_ip) %>%
   union(cfd_output_lip) %>%
   union(cfd_output_op) %>%
   union(cfd_output_ed) %>%
-  union(cfd_output_cld)
+  union(cfd_output_cld) %>%
+  union(cfd_outpu_pc)
 
 output_tbl_append(cfd_combined, 'cfd_output', file = TRUE)
 
-# PF Mapping Descriptions (for Shiny app)
+# cfd Mapping Descriptions (for Shiny app)
 cfd_mapping_file <- read_codeset('cfd_mappings', 'cc')
 output_tbl(cfd_mapping_file, 'cfd_mappings')
 
@@ -173,13 +187,13 @@ output_tbl(cfd_mapping_file, 'cfd_mappings')
 ## Domain Concordance
 
 dcon_output_pt <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccccccccd') %>%
-                               filter(!grepl('visit', check_id)),
+                               filter(!grepl('vis', check_id)),
                              compute_level = 'patient',
                              omop_or_pcornet = 'omop',
                              check_string='dcon')
 
 dcon_output_visit <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccccccccd') %>%
-                                  filter(grepl('visit', check_id)),
+                                  filter(grepl('vis', check_id)),
                                 compute_level = 'visit',
                                 omop_or_pcornet = 'omop',
                                 check_string='dcon')
@@ -192,6 +206,16 @@ dcon_meta <- dcon_output_pt[[2]] %>%
 
 output_tbl_append(dcon_combined, 'dcon_output', file = TRUE)
 output_tbl(dcon_meta, 'dcon_meta', file = TRUE)
+
+## Date Plausibility
+
+dp_output <- check_dp(dp_tbl = read_codeset('pedsnet_dp_table', 'ccccc'),
+                      omop_or_pcornet = 'omop',
+                      visit_tbl = cdm_tbl('visit_occurrence'),
+                      dob_tbl = cdm_tbl('person'),
+                      check_string = 'dp')
+
+output_tbl_append(dp_output, 'dp_output', file = TRUE)
 
 
 ######### CLEANUP CHECKPOINT #################
@@ -213,7 +237,7 @@ fot_output <- check_fot(fot_tbl = read_codeset('pedsnet_fot_table', 'cccc'),
                         check_string = 'fot')
 
 fot_visit_denom <- fot_output %>%
-  filter(check_name == 'fot_vi') %>%
+  filter(check_name == 'fot_visall') %>%
   select(site, time_end, time_start,
          row_cts, row_visits, row_pts) %>%
   rename('total_pt' = row_pts,
@@ -231,7 +255,7 @@ remove_precompute(checkpoint = 3)
 # Output mapping table
 
 check_type_mapping <- tibble('check_type_short' = c('dc', 'ecp', 'bmc', 'dcon',
-                                                    'pf', 'mf_visitid', 'fot', 'uc',
+                                                    'cfd', 'mf_visitid', 'fot', 'uc',
                                                     'vc', 'vs'),
                              'check_type' = c('Data Cycle Changes', 'Expected Concepts Present',
                                               'Best Mapped Concepts', 'Domain Concordance',

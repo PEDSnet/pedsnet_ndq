@@ -80,94 +80,49 @@ initialize_session <- function(session_name,
     }
   }
 
-  argos$public_methods$copy_to_new <- function(dest = self$config('db_src'), df,
-                                               name = deparse(substitute(df)),
-                                               overwrite = TRUE,
-                                               temporary = ! self$config('retain_intermediates'),
-                                               ..., .chunk_size = NA) {
-        name <- self$intermed_name(name, temporary = temporary)
-        if (self$config('db_trace')) {
-          message(' -> copy_to')
-          start <- Sys.time()
-          message(start)
-          message('Data: ', deparse(substitute(df)))
-          message('Table name: ',
-                  base::ifelse(packageVersion('dbplyr') < '2.0.0',
-                               dbplyr::as.sql(name),
-                               dbplyr::as.sql(name, dbi_con(dest))),
-                  ' (temp: ', temporary, ')')
-          message('Data elements: ', paste(tbl_vars(df), collapse = ','))
-          message('Rows: ', NROW(df))
-        }
-        if (overwrite &&
-            self$db_exists_table(dest, name)) {
-          self$db_remove_table(dest, name)
-        }
-        dfsize <- tally(ungroup(df)) %>% pull(n)
-        if (is.na(.chunk_size)) .chunk_size <- dfsize
-        cstart <- 1
-        if (.chunk_size <= dfsize)
-          cli::cli_progress_bar('Writing data', total = 100,
-                                format = 'Writing data {cli::pb_bar} {cli::pb_percent}')
-        while (cstart <= dfsize) {
-          cend <- min(cstart + .chunk_size, dfsize)
-          rslt <- dplyr::copy_to(dest = dest,
-                                 overwrite = overwrite,
-                                 df = slice(ungroup(df), cstart:cend), name = name,
-                                 temporary = temporary, ...)
-          if (.chunk_size <= dfsize) cli::cli_progress_update(set = 100L * cend / dfsize)
-          cstart <- cend + 1L
-        }
-        if (self$config('db_trace')) {
-          end  <- Sys.time()
-          message(end, ' ==> ', format(end - start))
-        }
-        rslt
-      }
-
   # Establish session
   argos_session <- argos$new(session_name)
 
-  set_argos_default(argos_session)
-
   # Set db_src
   if(!is_json){
-    get_argos_default()$config('db_src', db_conn)
+    argos_session$config('db_src', db_conn)
   }else{
-    get_argos_default()$config('db_src', srcr(db_conn))
+    argos_session$config('db_src', srcr(db_conn))
   }
 
   # Set misc configs
-  get_argos_default()$config('cdm_schema', cdm_schema)
-  get_argos_default()$config('results_schema', results_schema)
-  get_argos_default()$config('vocabulary_schema', vocabulary_schema)
-  get_argos_default()$config('cache_enabled', cache_enabled)
-  get_argos_default()$config('retain_intermediates', retain_intermediates)
-  get_argos_default()$config('db_trace', db_trace)
-  get_argos_default()$config('can_explain', !is.na(tryCatch(db_explain(config('db_src'), 'select 1 = 1'),
-                                                            error = function(e) NA)))
-  get_argos_default()$config('results_target', ifelse(default_file_output, 'file', TRUE))
+  argos_session$config('cdm_schema', cdm_schema)
+  argos_session$config('results_schema', results_schema)
+  argos_session$config('vocabulary_schema', vocabulary_schema)
+  argos_session$config('cache_enabled', cache_enabled)
+  argos_session$config('retain_intermediates', retain_intermediates)
+  argos_session$config('db_trace', db_trace)
+  argos_session$config('can_explain', !is.na(tryCatch(db_explain(config('db_src'), 'select 1 = 1'),
+                                                      error = function(e) NA)))
+  argos_session$config('results_target', ifelse(default_file_output, 'file', TRUE))
 
   if(is.null(results_tag)){
-    get_argos_default()$config('results_name_tag', '')
+    argos_session$config('results_name_tag', '')
   }else{
-    get_argos_default()$config('results_name_tag', results_tag)
+    argos_session$config('results_name_tag', results_tag)
   }
 
   # Set working directory
-  get_argos_default()$config('base_dir', base_directory)
+  argos_session$config('base_dir', base_directory)
 
   # Set specs & results directories
   ## Drop path to base directory if present
   specs_drop_wd <- str_remove(specs_subdirectory, base_directory)
   results_drop_wd <- str_remove(results_subdirectory, base_directory)
-  get_argos_default()$config('subdirs', list(spec_dir = specs_drop_wd,
-                                             result_dir = results_drop_wd))
+  argos_session$config('subdirs', list(spec_dir = specs_drop_wd,
+                                       result_dir = results_drop_wd))
 
   # Print session information
   db_str <- DBI::dbGetInfo(config('db_src'))
   cli::cli_div(theme = list(span.code = list(color = 'blue')))
 
   cli::cli_inform(paste0('Connected to: ', db_str$dbname, '@', db_str$host))
-  cli::cli_inform('To see environment settings, run {.code get_argos_default()}')
+  # cli::cli_inform('To see environment settings, run {.code argos_session}')
+
+  argos_session
 }

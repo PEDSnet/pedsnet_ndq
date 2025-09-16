@@ -1,15 +1,15 @@
 ﻿concept_id,concept_code,concept_name,vocabulary_id,instrument,answers,concept_group
-3045858,44255-8,"Feeling down, depressed, or hopeless in last 2 weeks",LOINC,"PHQ-9, PHQ-8, PHQ-2",,Depression
-3045019,44252-5,"Trouble concentrating on things, such as reading the newspaper or watching television in last 2 weeks [Reported.PHQ]",LOINC,"PHQ-9, PHQ-8",,Depression
-3044964,44254-1,Feeling tired or having little energy in last 2 weeks [Reported.PHQ],LOINC,"PHQ-9, PHQ-8",,Depression
-3043785,44253-3,Moving or speaking so slowly that other people could have noticed. Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual in last 2 weeks [Reported.PHQ],LOINC,"PHQ-9, PHQ-8",,Depression
-3043801,44258-2,Feeling bad about yourself - or that you are a failure or have let yourself or your family down in last 2 weeks [Reported.PHQ],LOINC,"PHQ-9, PHQ-8",,Depression
-3045933,44259-0,"Trouble falling or staying asleep, or sleeping too much in last 2 weeks [Reported.PHQ]",LOINC,"PHQ-9, PHQ-8",,Depression
-36660083,94328-2,Patient Health Questionnaire 8 item (PHQ-8) total score [Reported],LOINC,PHQ-8,,Depression
-3042924,44250-9,Little interest or pleasure in doing things in last 2 weeks,LOINC,"PHQ-9, PHQ-8, PHQ-2",,Depression
-3044098,44251-7,Poor appetite or overeating in last 2 weeks [Reported.PHQ],LOINC,"PHQ-9, PHQ-8",,Depression
-3043462,44260-8,"Thoughts that you would be better off dead, or of hurting yourself in some way in last 2 weeks [Reported.PHQ]",LOINC,PHQ-9,,Depression
-3042932,44261-6,Patient Health Questionnaire 9 item (PHQ-9) total score [Reported],LOINC,PHQ-9,,Depression
-40758879,55758-7,Patient Health Questionnaire 2 item (PHQ-2) total score [Reported],LOINC,PHQ-2,,Depression
-40772146,69722-7,"How difficult have these made it for you to do your work, take care of things at home, or get along with other people [Reported.PHQ]",LOINC,PHQ-9,,Depression
-36305244,89204-2,Patient Health Questionnaire-9: Modified for Teens total score [Reported.PHQ.Teen],LOINC,PHQ-9 for teens,,Depression
+3045858,44255-8,"Feeling down, depressed, or hopeless in last 2 weeks",LC,"PHQ-9, PHQ-8, PHQ-2",,Depression
+3045019,44252-5,"Trouble concentrating on things, such as reading the newspaper or watching television in last 2 weeks [Reported.PHQ]",LC,"PHQ-9, PHQ-8",,Depression
+3044964,44254-1,Feeling tired or having little energy in last 2 weeks [Reported.PHQ],LC,"PHQ-9, PHQ-8",,Depression
+3043785,44253-3,Moving or speaking so slowly that other people could have noticed. Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual in last 2 weeks [Reported.PHQ],LC,"PHQ-9, PHQ-8",,Depression
+3043801,44258-2,Feeling bad about yourself - or that you are a failure or have let yourself or your family down in last 2 weeks [Reported.PHQ],LC,"PHQ-9, PHQ-8",,Depression
+3045933,44259-0,"Trouble falling or staying asleep, or sleeping too much in last 2 weeks [Reported.PHQ]",LC,"PHQ-9, PHQ-8",,Depression
+36660083,94328-2,Patient Health Questionnaire 8 item (PHQ-8) total score [Reported],LC,PHQ-8,,Depression
+3042924,44250-9,Little interest or pleasure in doing things in last 2 weeks,LC,"PHQ-9, PHQ-8, PHQ-2",,Depression
+3044098,44251-7,Poor appetite or overeating in last 2 weeks [Reported.PHQ],LC,"PHQ-9, PHQ-8",,Depression
+3043462,44260-8,"Thoughts that you would be better off dead, or of hurting yourself in some way in last 2 weeks [Reported.PHQ]",LC,PHQ-9,,Depression
+3042932,44261-6,Patient Health Questionnaire 9 item (PHQ-9) total score [Reported],LC,PHQ-9,,Depression
+40758879,55758-7,Patient Health Questionnaire 2 item (PHQ-2) total score [Reported],LC,PHQ-2,,Depression
+40772146,69722-7,"How difficult have these made it for you to do your work, take care of things at home, or get along with other people [Reported.PHQ]",LC,PHQ-9,,Depression
+36305244,89204-2,Patient Health Questionnaire-9: Modified for Teens total score [Reported.PHQ.Teen],LC,PHQ-9 for teens,,Depression

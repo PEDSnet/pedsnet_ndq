@@ -1,0 +1,7 @@
+﻿check_id,check_description,schema,table,filter_logic
+condsall-visitid,conditions excluding problem list,cdm,diagnosis,
+drugsip-visitid,med admins,cdm,med_admin,
+drugspresc-visitid,prescription or inpatient drugs,cdm,prescribing,
+procsall-visitid,all procedures,cdm,procedures,
+labsall-visitid,all labs,cdm,lab_result_cm,
+immsall-visitid,all immunizations,cdm,immunization,

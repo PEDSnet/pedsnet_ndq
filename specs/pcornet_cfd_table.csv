@@ -1,0 +1,11 @@
+check_id,check_description,schema,table,filter_logic
+procsall,procedures,cdm,procedures,
+condsall,conditions,cdm,diagnosis,
+drugsrx,prescriptions,cdm,prescribing,
+drugsadmin,inpatient administrations,cdm,med_admin,
+procsall-drugsall,procs_drugs,result,procs_drugs,
+labsall,labs,cdm,lab_result_cm,
+procsall-drugsall-labsall,procs_drugs_labs,result,procs_drugs_labs,
+payers,payer,cdm,encounter,!is.na(payer_type_primary)
+immsall,immunizations,cdm,immunization,
+obsall,observation,cdm,obs_clin,

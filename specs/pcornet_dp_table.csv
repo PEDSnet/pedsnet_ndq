@@ -1,0 +1,10 @@
+﻿check_id,check_description,schema,table,date_field,filter_logic
+drugspresc,prescriptions,cdm,prescribing,rx_start_date,
+drugsip,med admins,cdm,med_admin,medadmin_start_date,
+condsall,all conditions (excluding problem list),cdm,diagnosis,admit_date,
+condsorder,ordered conditions,cdm,diagnosis,admit_date,dx_origin == 'OD'
+condsbill,billed conditions,cdm,diagnosis,admit_date,dx_origin == 'BI'
+procsall,all procedures,cdm,procedures,px_date,
+procsbill,billed procedures,cdm,procedures,px_date,px_source == 'BI'
+procsord,ordered procedures,cdm,procedures,px_date,px_source == 'OD'
+labsall,all labs,cdm,lab_result_cm,result_date,

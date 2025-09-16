@@ -1,41 +1,41 @@
 ﻿concept_id,concept_code,concept_name,vocabulary_id,form_type
-1175493,89948-4,It was hard for my child to stay standing when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
-1175853,89938-5,My child had trouble doing schoolwork when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
-1175694,89939-3,It was hard for my child to run when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
-36660045,94181-5,PROMIS parent proxy global health - version 1.0 T-score,LOINC,parent_proxy
-46235702,75906-8,My child had trouble sleeping when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
-1175175,89937-7,It was hard for my child to walk one block when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
-1176426,89940-1,It was hard for my child to pay attention when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
-1176082,89941-9,It was hard for my child to have fun when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
-1175922,89943-5,My child felt angry when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LOINC,parent_proxy
-36660476,94179-9,PROMIS parent proxy short form - pain interference 8 - version 1.0 raw score,LOINC,parent_proxy
-1175803,89950-0,PROMIS parent proxy pain interference - version 2.0 T-score,LOINC,parent_proxy
-1176502,90943-2,PROMIS parent proxy short form - pain interference 8a - version 2.0 raw score,LOINC,parent_proxy
-40764914,62153-2,It was hard to stay standing when I had pain in past 7 days [PROMIS],LOINC,self_report
-40764915,62154-0,It was hard for me to pay attention when I had pain in past 7 days [PROMIS],LOINC,self_report
-40764903,62142-5,I felt angry when I had pain in past 7 days [PROMIS],LOINC,self_report
-40764904,62143-3,I had trouble doing schoolwork when I had pain in past 7 days [PROMIS],LOINC,self_report
-40764905,62144-1,I had trouble sleeping when I had pain in past 7 days [PROMIS],LOINC,self_report
-40764909,62148-2,It was hard for me to run when I had pain in past 7 days [PROMIS],LOINC,self_report
-40764910,62149-0,It was hard for me to walk one block when I had pain in past 7 days [PROMIS],LOINC,self_report
-40764913,62152-4,It was hard to have fun when I had pain in past 7 days [PROMIS],LOINC,self_report
-46236699,77839-9,PROMIS pediatric short form - pain interference 8a - version 1.0 raw score,LOINC,self_report
-46236773,77869-6,PROMIS pediatric pain interference - version 1.0 Tscore,LOINC,self_report
-1176145,89936-9,PROMIS pediatric pain interference - version 2.0 Tscore,LOINC,self_report
-1175902,90958-0,PROMIS pediatric short form - pain interference 8a - version 2.0 raw score,LOINC,self_report
-40764530,61769-6,How much did pain interfere with work around the home in past 7 days [PROMIS],LOINC,self_report
-40764519,61758-9,How much did pain interfere with your day to day activities in past 7 days [PROMIS],LOINC,self_report
-40764534,61773-8,How much did pain interfere with your ability to participate in social activities in past 7 days [PROMIS],LOINC,self_report
-40764536,61775-3,How much did pain interfere with your household chores in past 7 days [PROMIS],LOINC,self_report
-46236769,77865-4,PROMIS pain interference - version 1.0 Tscore,LOINC,self_report
-1175435,90972-1,PROMIS short form - pain interference 4a - version 1.0 raw score,LOINC,self_report
-40764522,61761-3,How much did pain interfere with the things you usually do for fun in past 7 days [PROMIS],LOINC,self_report
-40764538,61777-9,How much did pain interfere with your enjoyment of social activities in past 7 days [PROMIS],LOINC,self_report
-1175856,90974-7,PROMIS short form - pain interference 6a - version 1.0 raw score,LOINC,self_report
-40764518,61757-1,How much did pain interfere with your ability to concentrate in past 7 days [PROMIS],LOINC,self_report
-40764520,61759-7,How much did pain interfere with your enjoyment of recreational activities in past 7 days [PROMIS],LOINC,self_report
-40764524,61763-9,"How much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands) in past 7 days [PROMIS]",LOINC,self_report
-40764532,61771-2,How often did pain keep you from socializing with others in past 7 days [PROMIS],LOINC,self_report
-40764555,61794-4,How much did pain interfere with your enjoyment of life in past 7 days [PROMIS],LOINC,self_report
-46236693,77833-2,PROMIS short form - pain interference 6b - version 1.0 raw score,LOINC,self_report
-40764523,61762-1,How much did pain interfere with your family life in past 7 days [PROMIS],LOINC,self_report
+1175493,89948-4,It was hard for my child to stay standing when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LC,parent_proxy
+1175853,89938-5,My child had trouble doing schoolwork when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LC,parent_proxy
+1175694,89939-3,It was hard for my child to run when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LC,parent_proxy
+36660045,94181-5,PROMIS parent proxy global health - version 1.0 T-score,LC,parent_proxy
+46235702,75906-8,My child had trouble sleeping when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LC,parent_proxy
+1175175,89937-7,It was hard for my child to walk one block when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LC,parent_proxy
+1176426,89940-1,It was hard for my child to pay attention when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LC,parent_proxy
+1176082,89941-9,It was hard for my child to have fun when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LC,parent_proxy
+1175922,89943-5,My child felt angry when he or she had pain in past 7 days [PROMIS.PARENTPROXY],LC,parent_proxy
+36660476,94179-9,PROMIS parent proxy short form - pain interference 8 - version 1.0 raw score,LC,parent_proxy
+1175803,89950-0,PROMIS parent proxy pain interference - version 2.0 T-score,LC,parent_proxy
+1176502,90943-2,PROMIS parent proxy short form - pain interference 8a - version 2.0 raw score,LC,parent_proxy
+40764914,62153-2,It was hard to stay standing when I had pain in past 7 days [PROMIS],LC,self_report
+40764915,62154-0,It was hard for me to pay attention when I had pain in past 7 days [PROMIS],LC,self_report
+40764903,62142-5,I felt angry when I had pain in past 7 days [PROMIS],LC,self_report
+40764904,62143-3,I had trouble doing schoolwork when I had pain in past 7 days [PROMIS],LC,self_report
+40764905,62144-1,I had trouble sleeping when I had pain in past 7 days [PROMIS],LC,self_report
+40764909,62148-2,It was hard for me to run when I had pain in past 7 days [PROMIS],LC,self_report
+40764910,62149-0,It was hard for me to walk one block when I had pain in past 7 days [PROMIS],LC,self_report
+40764913,62152-4,It was hard to have fun when I had pain in past 7 days [PROMIS],LC,self_report
+46236699,77839-9,PROMIS pediatric short form - pain interference 8a - version 1.0 raw score,LC,self_report
+46236773,77869-6,PROMIS pediatric pain interference - version 1.0 Tscore,LC,self_report
+1176145,89936-9,PROMIS pediatric pain interference - version 2.0 Tscore,LC,self_report
+1175902,90958-0,PROMIS pediatric short form - pain interference 8a - version 2.0 raw score,LC,self_report
+40764530,61769-6,How much did pain interfere with work around the home in past 7 days [PROMIS],LC,self_report
+40764519,61758-9,How much did pain interfere with your day to day activities in past 7 days [PROMIS],LC,self_report
+40764534,61773-8,How much did pain interfere with your ability to participate in social activities in past 7 days [PROMIS],LC,self_report
+40764536,61775-3,How much did pain interfere with your household chores in past 7 days [PROMIS],LC,self_report
+46236769,77865-4,PROMIS pain interference - version 1.0 Tscore,LC,self_report
+1175435,90972-1,PROMIS short form - pain interference 4a - version 1.0 raw score,LC,self_report
+40764522,61761-3,How much did pain interfere with the things you usually do for fun in past 7 days [PROMIS],LC,self_report
+40764538,61777-9,How much did pain interfere with your enjoyment of social activities in past 7 days [PROMIS],LC,self_report
+1175856,90974-7,PROMIS short form - pain interference 6a - version 1.0 raw score,LC,self_report
+40764518,61757-1,How much did pain interfere with your ability to concentrate in past 7 days [PROMIS],LC,self_report
+40764520,61759-7,How much did pain interfere with your enjoyment of recreational activities in past 7 days [PROMIS],LC,self_report
+40764524,61763-9,"How much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands) in past 7 days [PROMIS]",LC,self_report
+40764532,61771-2,How often did pain keep you from socializing with others in past 7 days [PROMIS],LC,self_report
+40764555,61794-4,How much did pain interfere with your enjoyment of life in past 7 days [PROMIS],LC,self_report
+46236693,77833-2,PROMIS short form - pain interference 6b - version 1.0 raw score,LC,self_report
+40764523,61762-1,How much did pain interfere with your family life in past 7 days [PROMIS],LC,self_report

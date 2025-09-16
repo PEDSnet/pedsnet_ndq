@@ -1,0 +1,7 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,A,Ambiguous,Demographic,PCORnet
+1,F,Female,Demographic,PCORnet
+1,M,Male,Demographic,PCORnet
+1,NI,No Information,Demographic,PCORnet
+1,UN,Unknown,Demographic,PCORnet
+1,OT,Other,Demographic,PCORnet

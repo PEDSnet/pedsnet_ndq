@@ -1,0 +1,10 @@
+visit_type,enc_type
+inpatient,IP
+inpatient,EI
+long_inpatient,IP
+long_inpatient,EI
+outpatient,AV
+outpatient,TH
+emergency,ED
+emergency,EI
+primary_care,AV

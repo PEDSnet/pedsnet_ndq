@@ -1,0 +1,28 @@
+schema_current,table_current,schema_prev,table_prev,filter_logic,check_domain,check_id,check_description
+cdm,demographic,cdm,demographic,,person,demog,full person table
+cdm,diagnosis,cdm,diagnosis,,condition_occurrence,condsall,full condition occurrence table
+cdm,immunization,cdm,immunization,,immunization,immsall,full immunizations
+cdm,encounter,cdm,encounter,,visit_occurrence,visall,full visit table
+cdm,vital,cdm,vital,,measurement_vitals,vitalsall,full vitals
+cdm,lab_result_cm,cdm,lab_result_cm,,measurement_labs,labsall,full labs
+cdm,diagnosis,cdm,diagnosis,"enc_type %in% c('AV', 'TH')",condition_outpatient,condsop,outpatient condition headers
+cdm,diagnosis,cdm,diagnosis,"enc_type %in% c('IP', 'EI')",condition_inpatient,condsip,inpatient condition headers
+cdm,diagnosis,cdm,diagnosis,"enc_type %in% c('ED', 'EI')",condition_ed,condsed,ed condition headers
+cdm,diagnosis,cdm,diagnosis,"enc_type %in% c('AV', 'TH') & dx_origin == 'BI'",condition_op_billing,condsop-condsbill,condition op billing diagnoses
+cdm,diagnosis,cdm,diagnosis,"enc_type %in% c('AV', 'TH') & dx_origin == 'OD'",condition_op_order,condsop-condsorder,condition op order diagnoses
+cdm,diagnosis,cdm,diagnosis,"enc_type %in% c('IP', 'EI') & dx_origin == 'OD'",condition_ip_order,condsip-condsorder,condition ip order diagnoses
+cdm,diagnosis,cdm,diagnosis,"enc_type %in% c('IP', 'EI') & dx_origin == 'BI'",condition_ip_billing,condsip-condsbill,condition ip billing diagnoses
+cdm,encounter,cdm,encounter,enc_type == 'AV',visit_op_office,visofc,outpatient office visits
+cdm,encounter,cdm,encounter,enc_type == 'TH',visit_op_telehealth,vistele,outpatient telehealth visits
+cdm,encounter,cdm,encounter,enc_type == 'OA',visit_op_oa,visoa,outpatient other ambulatory visits
+cdm,encounter,cdm,encounter,enc_type == 'IP',visit_ip,visip,inpatient 9201 visits
+cdm,encounter,cdm,encounter,enc_type == 'EI',visit_edip,visei,ed to inpatient
+cdm,encounter,cdm,encounter,enc_type == 'ED',vised,vised,emergency department visits
+cdm,encounter,cdm,encounter,enc_type == 'OS',visit_ov,visobs,observation visit types
+cdm,prescribing,cdm,prescribing,,drug_rx,drugspresc,drug prescriptions
+cdm,med_admin,cdm,med_admin,,drug_ip,drugsip,inpatient drug administrations
+cdm,procedures,cdm,procedures,px_source == 'BI',procedures_billed,procsbill,billed procedures
+cdm,procedures,cdm,procedures,px_source == 'OD',procedures_ordered,procsord,ordered procedures
+cdm,procedures,cdm,procedures,,procedures,procsall,procedures
+result,c19_dx_lab_current,result,c19_dx_lab_prev,,covid19_dx_labs,condscovid19-labscovid19,c19 diagnosed patients with labs
+cdm,provider,cdm,provider,,provider,provall,full provider table

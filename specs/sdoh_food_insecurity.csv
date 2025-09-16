@@ -1,3 +1,3 @@
 ﻿concept_id,concept_code,concept_name,vocabulary_id,instrument,answers,concept_group
-36304041,88122-7,Within the past 12 months we worried whether our food would run out before we got money to buy more [U.S. FSS],LOINC,U.S. Food Security Survey,"Never true, Sometimes true, Often true, Patient unable to answer, Patient refused / declined",Food Insecurity
-36306143,88123-5,Within the past 12 months the food we bought just didn't last and we didn't have money to get more [U.S. FSS],LOINC,U.S. Food Security Survey,"Never true, Sometimes true, Often true, Patient unable to answer, Patient refused / declined",Food Insecurity
+36304041,88122-7,Within the past 12 months we worried whether our food would run out before we got money to buy more [U.S. FSS],LC,U.S. Food Security Survey,"Never true, Sometimes true, Often true, Patient unable to answer, Patient refused / declined",Food Insecurity
+36306143,88123-5,Within the past 12 months the food we bought just didn't last and we didn't have money to get more [U.S. FSS],LC,U.S. Food Security Survey,"Never true, Sometimes true, Often true, Patient unable to answer, Patient refused / declined",Food Insecurity

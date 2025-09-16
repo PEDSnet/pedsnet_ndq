@@ -1,0 +1,11 @@
+concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,01,American Indian or Alaska Native,Demographic,PCORnet
+1,02,Asian,Demographic,PCORnet
+1,03,Black or African American,Demographic,PCORnet
+1,04,Native Hawaiian or Other Pacific Islander,Demographic,PCORnet
+1,05,White,Demographic,PCORnet
+1,06,Multiple Race,Demographic,PCORnet
+1,07,Refuse to answer,Demographic,PCORnet
+1,NI,No Information,Demographic,PCORnet
+1,UN,Unknown,Demographic,PCORnet
+1,OT,Other,Demographic,PCORnet

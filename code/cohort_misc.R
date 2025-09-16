@@ -69,8 +69,10 @@ output_tbl_append <- function(data, name = NA, local = FALSE,
 
   if (is.na(name)) name <- quo_name(enquo(data))
 
-  if(db_exists_table(config('db_src'), name = intermed_name(name,
-                                                            temporary = FALSE))) {
+  set_argos_default(sf_rslt)
+
+  if(db_exists_table(config('db_src'),
+                     name = intermed_name(name, temporary = FALSE))) {
 
     tmp <- results_tbl(name) %>% collect()
     new_tbl <-
@@ -91,6 +93,7 @@ output_tbl_append <- function(data, name = NA, local = FALSE,
                results_tag = TRUE, ...)
   }
 
+  set_argos_default(sf_cdm)
 
 }
 
@@ -107,22 +110,20 @@ output_tbl_append <- function(data, name = NA, local = FALSE,
 find_specialty <- function(visits,
                            specialty_conceptset) {
   prov_informative <- cdm_tbl('provider') %>%
-    inner_join(specialty_conceptset, by = c('specialty_concept_id' = 'concept_id')) %>%
-    select(provider_id, prov_specialty = specialty_concept_id)
-  cs_informative <- cdm_tbl('care_site') %>%
-    inner_join(specialty_conceptset, by = c('specialty_concept_id' = 'concept_id')) %>%
-    select(care_site_id, cs_specialty = specialty_concept_id)
+    inner_join(specialty_conceptset, by = c('provider_specialty_primary' = 'concept_code')) %>%
+    select(providerid, prov_specialty = provider_specialty_primary)
+  cs_informative <- cdm_tbl('encounter') %>%
+    inner_join(specialty_conceptset, by = c('facility_type' = 'concept_code')) %>%
+    select(facilityid, cs_specialty = facility_type)
 
   visits %>%
-    left_join(prov_informative, by = 'provider_id') %>%
-    left_join(cs_informative, by = 'care_site_id') %>%
+    left_join(prov_informative, by = 'providerid') %>%
+    left_join(cs_informative, by = 'facilityid') %>%
     filter(!is.na(prov_specialty) | !is.na(cs_specialty)) %>%
     mutate(visit_specialty_concept_id =
-             case_when(prov_specialty != 38004477L ~ prov_specialty,
-                       cs_specialty != 38004477L ~ cs_specialty,
-                       prov_specialty == 38004477L ~ 38004477L,
-                       cs_specialty == 38004477L ~ 38004477L,
-                       TRUE ~ 0L)) %>%
+             case_when(!is.na(prov_specialty) ~ prov_specialty,
+                       !is.na(cs_specialty) ~ cs_specialty,
+                       TRUE ~ 'UN')) %>%
     select(-prov_specialty, -cs_specialty)
 }
 

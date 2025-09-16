@@ -1,2 +1,2 @@
 ﻿concept_id,concept_code,concept_name,vocabulary_id,instrument,answers,concept_group
-21492245,76542-0,"Do you feel stress - tense, restless, nervous, or anxious, or unable to sleep at night because your mind is troubled all the time - these days [OSQ]",LOINC,OSQ,"Not at all, Only a little, To some extent, Rather much, Very much, Patient unable to answer, Patient refused / declined",Stress
+21492245,76542-0,"Do you feel stress - tense, restless, nervous, or anxious, or unable to sleep at night because your mind is troubled all the time - these days [OSQ]",LC,OSQ,"Not at all, Only a little, To some extent, Rather much, Very much, Patient unable to answer, Patient refused / declined",Stress

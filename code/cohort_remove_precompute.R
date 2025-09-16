@@ -34,6 +34,31 @@ remove_precompute <- function(checkpoint){
     drop_tbls(tbl_list = ck3_list)
     cli::cli_inform(str_wrap(paste0('The following tables have been removed from
                                     your results_schema: ', paste(ck3_list, collapse = ', '))))
+
+    req_tbls <- list('DEMOGRAPHIC',
+                     'DIAGNOSIS',
+                     'DISPENSING',
+                     'ENCOUNTER',
+                     'IMMUNIZATION',
+                     'LAB_RESULT_CM',
+                     'LDS_ADDRESS_HISTORY',
+                     'MED_ADMIN',
+                     'OBS_CLIN',
+                     'OBS_GEN',
+                     'PRESCRIBING',
+                     'PRO_CM',
+                     'PROCEDURES',
+                     'PROVIDER',
+                     'VITAL')
+
+    for(i in req_tbls){
+
+      view_sql <- paste0(
+        "DROP VIEW PCORNET_TEST.UMO_SYNTHETIC_DATA_SHARE_VIEW.", i
+      )
+
+      dbExecute(conn = sf_cdm$config('db_src'), view_sql)
+    }
   }
 
 }

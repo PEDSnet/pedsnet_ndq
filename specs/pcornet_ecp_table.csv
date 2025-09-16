@@ -1,0 +1,41 @@
+check_id,cohort_definition,cohort_schema,cohort_table,schema,table,concept_field,conceptset_name,filter_logic,vocabulary_field
+labshgb,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_hemoglobin,,
+labsplt,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_platelets,,
+labsanc,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_anc,,
+labscreat,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_creatinine_serum,,
+labssodium,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_sodium,,
+labsalt,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_alanine_transaminase,,
+labsupqual,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_urine_protein_qual,,
+labsstreprapid,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_rapid_strep,,
+labsflu,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_influenza,,
+labsrsv,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_rsv,,
+headcirc,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,obs_clin,obsclin_code,ecp_head_circumference,,
+state,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,fips_state,geocode_year,ecp_2020_geocode,ndigit_fips == 2,
+county,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,fips_county,geocode_year,ecp_2020_geocode,ndigit_fips == 7,
+lohis-twoplus-state,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,lohis_state,geocode_year,ecp_2020_geocode,ngeo_lohis > 1,
+lohis-twoplus-county,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,result,lohis_county,geocode_year,ecp_2020_geocode,ngeo_lohis > 1,
+labsblcx,Patients with an inpatient admission (9201 or 2000000048),result,ip_admit,cdm,lab_result_cm,lab_loinc,ecp_blood_culture_labs,,
+procsblcx,Patients with an inpatient admission (9201 or 2000000048),result,ip_admit,cdm,procedures,px,ecp_blood_culture_px,,px_type
+labscholesterol,"Patients with evidence of a procedure, drug, AND lab",result,pdl_pts,cdm,lab_result_cm,lab_loinc,ecp_cholesterol_all,,
+obshvsall,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,ecp_hvs,,pro_type
+obshvsfood,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,ecp_hvs,observation_concept_id == 37116643,pro_type
+obshvsq1,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,ecp_hvs,observation_concept_id == 40192426,pro_type
+obshvsq2,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,ecp_hvs,observation_concept_id == 40192517,pro_type
+obssdohaud,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_aud,,pro_type
+obssdohfood,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_food_insecurity,,pro_type
+obsasdohliter,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_health_literacy,,pro_type
+obssdohhous,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_housing_stability,,pro_type
+obssdohipv,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_ipv,,pro_type
+obssdohmdd,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_mdd,,pro_type
+obssdohact,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_physical_activity,,pro_type
+obssdohppd,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_ppd,,pro_type
+obssdohstress,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_stress,,pro_type
+obssdohutil,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,sdoh_utilities,,pro_type
+obspromisanxiety,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,promis_anxiety,,pro_type
+obspromismdd,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,promis_mdd,,pro_type
+obspromisglobal,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,promis_global,,pro_type
+obspromispainbehav,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,promis_pain_behavior,,pro_type
+obspromispainintens,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,promis_pain_intensity,,pro_type
+obspromispaininterf,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,promis_pain_interference,,pro_type
+obspromispainfunc,"Patients with a valid sex, valid DOB, and at least one face to face visit associated with a diagnosis",result,geocode_cohort,cdm,pro_cm,pro_code,promis_physical_function,,pro_type
+procskidneybiopsy,Patients with at least one nephrology specialty visit,result,nephrology_specialties,cdm,procedures,px,px_kidney_biopsy,,px_type

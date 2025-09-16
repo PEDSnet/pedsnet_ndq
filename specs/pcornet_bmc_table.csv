@@ -1,0 +1,10 @@
+check_id,check_description,schema,table,concept_field,concept_table_field,filter_logic
+drugsip-rxnorm,inpatient admin,cdm,med_admin,medadmin_code,concept_class_id,
+drugspresc-rxnorm,prescriptions,cdm,prescribing,rxnorm_cui,concept_class_id,
+race,race,cdm,demographic,race,concept_name,
+eth,ethnicity,cdm,demographic,hispanic,concept_name,
+provop,outpatient provider specialty,result,op_prov_spec,provider_specialty_primary,concept_name,
+csop,outpatient care site specialty,cdm,encounter,facility_type,concept_name,"enc_type %in% c('AV', 'TH')"
+fips_state,FIPS State,result,fips_state,ndigit_fips,ndigit_fips,
+fips_county,FIPS County,result,fips_county,ndigit_fips,ndigit_fips,
+gestage,gestational age (when first visit occurs at <= 2 years old),result,gest_age_cohort,ga_group,ga_group,

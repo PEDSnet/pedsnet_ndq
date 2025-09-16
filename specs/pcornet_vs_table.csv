@@ -1,0 +1,5 @@
+check_id,schema,table,valueset_name,concept_field,filter_logic,vocabulary_field
+demog-race,cdm,demographic,valueset_race_pc,race,,
+demog-eth,cdm,demographic,valueset_ethnicity_pc,hispanic,,
+visall-enctype,cdm,encounter,valueset_enc_type,enc_type,,
+demog-sex,cdm,demographic,valueset_sex,sex,,

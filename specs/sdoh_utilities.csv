@@ -1,2 +1,2 @@
 ﻿concept_id,concept_code,concept_name,vocabulary_id,instrument,answers,concept_group
-1617701,96779-4,"Has the electric, gas, oil, or water company threatened to shut off services in your home in past 12 months",LOINC,AHC HRSN Utilities,"Yes, No, Already Shut Off, Patient unable to answer, Patient declined",Utilities
+1617701,96779-4,"Has the electric, gas, oil, or water company threatened to shut off services in your home in past 12 months",LC,AHC HRSN Utilities,"Yes, No, Already Shut Off, Patient unable to answer, Patient declined",Utilities

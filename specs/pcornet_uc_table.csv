@@ -1,0 +1,16 @@
+check_id,check_description,schema,table,concept_field,source_value_field,date_field,filter_logic
+drugsip,inpatient administrations,cdm,med_admin,medadmin_code,raw_medadmin_med_name,medadmin_start_date,
+drugspresc,prescription drugs,cdm,prescribing,rxnorm_cui,raw_rx_med_name,rx_start_date,
+drugs-doseunits,drug dose unit,cdm,prescribing,rx_dose_ordered_unit,raw_rx_dose_ordered_unit,rx_start_date,
+drugs-route,drug route,cdm,prescribing,rx_route,raw_rx_route,rx_start_date,
+condsall,conditions,cdm,diagnosis,dx,raw_dx,admit_date,
+labsall,all labs,cdm,lab_result_cm,lab_loinc,raw_lab_name,result_date,
+labs-units,lab units,cdm,lab_result_cm,result_unit,raw_unit,result_date,result_num != 9999 & !is.na(result_num)
+immsall,immunizations,cdm,immunization,vx_code,immunization_source_value,immunization_date,
+immsall-doseunits,immunization dose unit,cdm,immunization,vx_dose_unit,raw_vx_dose_unit,vx_record_date,
+immsall-route,immunization route,cdm,immunization,vx_route,raw_vx_route,vx_record_date,
+procsall,all procedures,cdm,procedures,px,raw_px,px_date,
+procsord,ordered procedures,cdm,procedures,px,raw_px,px_date,px_source == 'OD'
+procsbill,billed procedure,cdm,procedures,px,raw_px,px_date,px_source == 'BI'
+payers-payertype,payer plan type,cdm,encounter,payer_type_primary,raw_payer_type_primary,admit_date,
+gestage,gestational age (when first visit occurs at <= 2 years old),result,gest_age_cohort,pn_gestational_age,ga_group,birth_date,

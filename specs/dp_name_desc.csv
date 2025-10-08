@@ -1,0 +1,41 @@
+check_description,check_name,implausible_type,desc_full
+all drugs,dp_drugsall,before_visit_start,Drug records before visit start date
+all drugs,dp_drugsall,after_visit_end,Drug records after visit end date
+all drugs,dp_drugsall,before_birth_date,Drug records before birth date
+all drugs,dp_drugsall,after_death,Drug records after death date
+prescriptions,dp_drugspresc,before_visit_start,Drug prescriptions before visit start date
+prescriptions,dp_drugspresc,after_visit_end,Drug prescriptions after visit end date
+prescriptions,dp_drugspresc,before_birth_date,Drug prescriptions before birth date
+prescriptions,dp_drugspresc,after_death,Drug prescriptions after death date
+med admins,dp_drugsip,before_visit_start,Drug administrations before visit start date
+med admins,dp_drugsip,after_visit_end,Drug administrations after visit end date
+med admins,dp_drugsip,before_birth_date,Drug administrations before birth date
+med admins,dp_drugsip,after_death,Drug administrations after death date
+all conditions (excluding problem list),dp_condsall,before_visit_start,Conditions (excluding problem list) before visit start date
+all conditions (excluding problem list),dp_condsall,after_visit_end,Conditions (excluding problem list) after visit end date
+all conditions (excluding problem list),dp_condsall,before_birth_date,Conditions (excluding problem list) before birth date
+all conditions (excluding problem list),dp_condsall,after_death,Conditions (excluding problem list) after death date
+ordered conditions,dp_condsorder,before_visit_start,"Conditions, order origin, before visit start date"
+ordered conditions,dp_condsorder,after_visit_end,"Conditions, order origin, after visit end date"
+ordered conditions,dp_condsorder,before_birth_date,"Conditions, order origin, before visit start date"
+ordered conditions,dp_condsorder,after_death,"Conditions, order origin, after death date"
+billed conditions,dp_condsbill,before_visit_start,"Conditions, billing origin, before visit start date"
+billed conditions,dp_condsbill,after_visit_end,"Conditions, billing origin, after visit end date"
+billed conditions,dp_condsbill,before_birth_date,"Conditions, billing origin, before birth date"
+billed conditions,dp_condsbill,after_death,"Conditions, billing origin, after death date"
+all procedures,dp_procsall,before_visit_start,Procedures (all) before visit start date
+all procedures,dp_procsall,after_visit_end,Procedures (all) after visit end date
+all procedures,dp_procsall,before_birth_date,Procedures (all) before birth date
+all procedures,dp_procsall,after_death,Procedures (all) after death date
+billed procedures,dp_procsbill,before_visit_start,"Procedures, billing origin, before visit start date"
+billed procedures,dp_procsbill,after_visit_end,"Procedures, billing origin, after visit end date"
+billed procedures,dp_procsbill,before_birth_date,"Procedures, billing origin, before birth date"
+billed procedures,dp_procsbill,after_death,"Procedures, billing origin, after death date"
+ordered procedures,dp_procsord,before_visit_start,"Procedures, order origin, before visit start date"
+ordered procedures,dp_procsord,after_visit_end,"Procedures, order origin, after visit end date"
+ordered procedures,dp_procsord,before_birth_date,"Procedures, order origin, before birth date"
+ordered procedures,dp_procsord,after_death,"Procedures, order origin, after death date"
+all labs,dp_labsall,before_visit_start,"Labs, all, before visit start date"
+all labs,dp_labsall,after_visit_end,"Labs, all, after visit end date"
+all labs,dp_labsall,before_birth_date,"Labs, all, before birth date"
+all labs,dp_labsall,after_death,"Labs, all, after death date"

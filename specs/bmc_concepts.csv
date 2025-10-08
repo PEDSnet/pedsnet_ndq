@@ -1,0 +1,45 @@
+check_name,concept,include
+bmc_csop,Unknown Physician Specialty,0
+bmc_csop,Pediatric Medicine,0
+bmc_csop,Other,0
+bmc_csop,No matching concept,0
+bmc_csop,No information,0
+bmc_eth,Unknown,0
+bmc_eth,No information,0
+bmc_eth,Refuse to answer,0
+bmc_provop,Physician Assistant,0
+bmc_provop,Unknown Physician Specialty,0
+bmc_provop,Student,0
+bmc_provop,Pediatric Medicine,0
+bmc_provop,Specialty service,0
+bmc_provop,No information,0
+bmc_provop,No matching concept,0
+bmc_provop,Physician,0
+bmc_provop,Other,0
+bmc_provop,Medical Physician Assistant,0
+bmc_provop,"Physician Assistants & Advanced Practice Nursing Providers, Physician Assistant",0
+bmc_provop,Pediatric Nurse,0
+bmc_provop,Pediatric Nurse Practitioner,0
+bmc_provop,Nurse Practitioner,0
+bmc_provop,Licensed Practical Nurse,0
+bmc_race,Refuse to answer,0
+bmc_race,No information,0
+bmc_race,Unknown,0
+bmc_drugsip-rxnorm,Quant Branded Drug,1
+bmc_drugsip-rxnorm,Branded Drug,1
+bmc_drugsip-rxnorm,Branded Pack,1
+bmc_drugsip-rxnorm,Clinical Drug,1
+bmc_drugsip-rxnorm,Clinical Pack,1
+bmc_drugsip-rxnorm,Quant Clinical Drug,1
+bmc_drugspresc-rxnorm,Clinical Pack,1
+bmc_drugspresc-rxnorm,Branded Drug,1
+bmc_drugspresc-rxnorm,Clinical Drug,1
+bmc_drugspresc-rxnorm,Quant Clinical Drug,1
+bmc_drugspresc-rxnorm,Branded Pack,1
+bmc_drugspresc-rxnorm,Quant Branded Drug,1
+bmc_adtall-servcid,Unknown,0
+bmc_adtall-servcid,Other,0
+bmc_adtall-servcid,No Information,0
+bmc_tract,11,1
+bmc_blgr,12,1
+bmc_gestage,20-45 Weeks (Expected Range),1

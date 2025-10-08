@@ -1,0 +1,236 @@
+﻿check_type,old_desc,new_desc
+dc,measurement_vitals,Vital signs
+dc,procedures_billed,"Procedures, billing"
+dc,condition_outpatient,"Conditions, outpatient"
+dc,care_site,Care sites
+dc,adt_picu,ADT to PICU
+dc,person,Persons
+dc,visit_op_oa,Visits (outpatient and other ambulatory)
+dc,condition_occurrence,Conditions
+dc,provider,Providers
+dc,condition_op_billing,"Conditions, outpatient billing"
+dc,covid19_dx_labs,COVID19 diagnosis or lab test
+dc,drug_exposure,Drugs
+dc,drug_rx,Drug prescriptions
+dc,adt_occurrence,"ADT, any"
+dc,adt_nicu,ADT to NICU
+dc,condition_ip_billing,"Conditions, inpatient billing"
+dc,condition_ip_order,"Conditions, inpatient ordered"
+dc,specialty,Specialties
+dc,procedures_ordered,"Procedures, ordered"
+dc,visit_ip,"Visits, inpatient"
+dc,visit_op_telehealth,"Visits, telehealth"
+dc,adt_cicu,ADT to CICU
+dc,visit_op_office,"Visits, office"
+dc,measurement_labs,Lab results
+dc,procedures,Procedures
+dc,condition_ed,"Conditions, ED"
+dc,measurement_anthro,Anthropometrics
+dc,condition_op_order,"Conditions, outpatient ordered"
+dc,visit_occurrence,Visits
+dc,visit_edip,"Visits, ED or inpatient"
+dc,immunization,Immunizations
+dc,visit_op_labs,Labs results at outpatient visits
+dc,condition_inpatient,"Conditions, inpatient"
+dc,visit_ov,"Visits, observation"
+dc,device_exposure,Devices
+dc,drug_ip,Drug inpatient administrations
+bmc,FIPS Block Group,FIPS census block group
+bmc,ethnicity,Ethnicity
+bmc,inpatient admin,Drug inpatient administrations
+bmc,FIPS Census Tract,FIPS census tract
+bmc,ADT service_concept_id,ADT service type
+bmc,prescriptions,Drug prescriptions
+bmc,race,Race
+bmc,outpatient care site specialty,Specialty at outpatient visits (care site)
+bmc,outpatient provider specialty,Specialty at outpatient visits (provider)
+vc,measurement_labs,Lab results
+vc,drug_exposure,Drugs
+vc,immunization,Immunizations
+vc,death_cause,Cause of death
+vc,procedure_occurrence,Procedures
+vc,condition_occurrence,Conditions
+vc,adt_occurrence,ADT
+vc,observation,Observations
+vc,person,Demographics
+vc,measurement_concept_id,Measurements
+vc,dose_unit_concept_id,Drug dose units
+vc,immunization_concept_id,Immunizations
+vc,imm_dose_unit_concept_id,Immunization dose units
+vc,death_cause_concept_id,Cause of death
+vc,procedure_concept_id,Procedures
+vc,condition_concept_id,Conditions
+vc,condition_source_concept_id,Conditions (source concept)
+vc,procedure_source_concept_id,Procedures (source concept)
+vc,drug_concept_id,Drugs
+vs,imm_route_concept_id,Immunization route
+vs,service_concept_id,ADT service
+vs,observation_concept_id,Observations
+vs,race_concept_id,Race
+vs,adt_type_concept_id,ADT type
+vs,ethnicity_concept_id,Ethnicity
+uc,prescription drugs,Drug prescriptions
+uc,drug route,"Drugs, route"
+uc,billed procedure,"Procedures, billing"
+uc,ordered procedures,"Procedures, ordered"
+uc,immunization route,Immunization route
+uc,immunization dose unit,Immunization dose unit
+uc,inpatient administrations,Drug inpatient administrations
+uc,immunizations,Immunizations
+uc,lab units,Lab result units
+uc,payer plan class,Payer class
+uc,drug dose unit,Drug dose units
+uc,all drugs,Drugs
+uc,payer plan type,Payer type
+uc,condition source,Conditions (source concept)
+uc,all labs,Lab results
+uc,conditions,Conditions
+uc,all procedures,Procedures
+cfd,labs,Lab results
+cfd,procs_drugs_labs,"Procedures, drugs, and lab results"
+cfd,immunizations,Immunizations
+cfd,conditions,Conditions
+cfd,drugs,Drugs
+cfd,procedures,Procedures
+cfd,icu,ICU admission
+cfd,procs_drugs,Procedures and drugs
+cfd,observation,Observations
+cfd,payer,Payers
+dcon,dcon_t1d_dx_insulin_rx,Type 1 diabetes / Insulin prescription
+dcon,dcon_frac_dx_img_px,Fracture condition / Imaging procedure
+dcon,dcon_rsv_pos_lab_rsv_dx,RSV positive lab result / RSV diagnosis
+dcon,dcon_nephsyn_dx_neph_spec,Nephrotic syndrome condition / nephrology visit
+dcon,dcon_leukemia_dx_onco_spec,Leukemia condition / oncology visit
+dcon,dcon_asthma_dx_broncho_rx,Asthma condition / bronchodilator
+dcon,dcon_OP_visits_OP_conds,Outpatient visit / Outpatient  condition type
+dcon,dcon_IP_visits_IP_conds,Inpatient visit / Inpatient condition type
+dcon,dcon_rsv_neg_lab_rsv_dx,RSV negative lab result / RSV condition
+dcon,dcon_flu_pos_lab_flu_dx,Influenza positive lab result / Influenza condition
+dcon,dcon_ckd_dx_htn_rx,CKD condition / HTN prescription
+dcon,dcon_ED_visits_ED_conds,ED visit / ED condition type
+dcon,dcon_flu_neg_lab_flu_dx,Influenza negative lab result / Influenza condition
+mf,immunization,Immunizations
+mf,condition_occurrence,Conditions
+mf,drug_exposure,Drugs
+mf,measurement_labs,Lab results
+mf,procedure_occurrence,Procedures
+fot,outpatient visits,"Visits, office"
+fot,telehealth visits,Telehealth visits
+fot,Diastolic Blood Pressure,Diastolic BP
+fot,outpatient labs,Lab results at office visits
+fot,Systolic Blood Pressure,Systolic BP
+fot,Height,Height
+fot,all immunizations,Immunizations
+fot,outpatient procedures,Procedures at office visits
+fot,Observation visits,"Visits, observation"
+fot,Outpatient billing,"Conditions, outpatient billing"
+fot,inpatient visits,Inpatient visits
+fot,cicu,ADT to CICU
+fot,other ambulatory visits,"Visits, other ambulatory"
+fot,all conditions,Conditions
+fot,Inpatient condition billing,"Conditions, inpatient billing"
+fot,outpatient conditions primary and secondary,Conditions outpatient primary/secondary
+fot,outpatient med administration,Drug administration at outpatient visits
+fot,nicu,ADT to NICU
+fot,inpatient prescriptions,Drug prescriptions at inpatient visits
+fot,all visits,Visits
+fot,ED conditions primary and secondary,"Conditions, ED primary/secondary"
+fot,covid19 immunizations,"Immunizations, COVID-19"
+fot,prescription drugs,Drug prescriptions
+fot,Weight,Weight
+fot,emergency department visits (9203),"Visits, ED"
+fot,outpatient lab visits,"Visits, outpatient lab/imaging"
+fot,picu,ADT to PICU
+fot,inpatient conditions primary and secondary,"Conditions, inpatient primary/secondary"
+fot,Inpatient condition order,"Conditions, inpatient ordered"
+fot,inpatient administration drugs,Drug administration at inpatient visits
+fot,appendectomy procedures,"Procedure, appendectomy"
+fot,Outpatient order,"Conditions, outpatient ordered"
+dc,drug_pr,Drugs patient reported
+uc,patient reported drugs,Drugs patient reported
+uc,gestational age (when first visit occurs at <= 2 years old),Gestational age at visit <= 2 years old
+bmc,gestational age (when first visit occurs at <= 2 years old),Gestational age (only when first visit <=2 years of age)
+dcon,dcon_gp_visits_wc_codes,General Practice Visits / Visits with a well-child diagnosis or procedure code
+fot,outpatient (9202) labs,Lab results at office visits
+fot,inpatient visits (9201 or 2000000048),Inpatient visits
+fot,emergency department visits,"Visits, ED"
+fot,observation visits,"Visits, observation"
+fot,outpatient conditions (primary and secondary),Conditions outpatient primary/secondary
+fot,inpatient conditions (primary and secondary),"Conditions, inpatient primary/secondary"
+fot,ED conditions (primary and secondary),"Conditions, ED primary/secondary"
+fot,outpatient billed conditions,"Conditions, outpatient billing"
+fot,outpatient ordered conditions,"Conditions, outpatient ordered"
+fot,systolic blood pressure,Systolic BP
+fot,diastolic blood pressure,Diastolic BP
+fot,patient reported drugs,Drugs patient reported
+fot,SDOH - Depression (PHQ),SDOH Depression survey
+fot,General practice specialty visits,General practice specialty visits
+fot,Visits with well-child codes,Visits with well-child codes
+fot,inpatient ordered conditions,"Conditions, inpatient ordered"
+fot,inpatient billed conditions,"Conditions, inpatient billing"
+fot,outpatient med admins,Drug administration at outpatient visits
+fot,height,Height
+fot,weight,Weight
+dc,vised,"Visits, ED"
+fot,PROMIS - Depression,PROMIS Depression survey
+fot,SDOH - Alcohol Use Disorder,SDOH Alcohol Use Disorder survey
+fot,SDOH - Food Insecurity,SDOH Food Insecurity survey
+fot,SDOH - Housing Stability,SDOH Housing Stability survey
+fot,SDOH - Intimate Partner Violence,SDOH Intimate Partner Violence survey
+fot,SDOH - Physical Activity,SDOH Physical Activity survey
+fot,SDOH - Postpartum Depression,SDOH Postpartum Depression survey
+fot,SDOH - Utilities,SDOH Utilities survey
+fot,PROMIS - Anxiety,PROMIS Anxiety survey
+fot,PROMIS - Global,PROMIS Global survey
+fot,PROMIS - Pain Interference,PROMIS Pain Interference survey
+fot,PROMIS - Physical Function,PROMIS Physical Function Survey
+fot,PROMIS - Pain Behavior,PROMIS Pain Behavior survey
+fot,PROMIS - Pain Intensity,PROMIS Pain Intensity survey
+fot,SDOH - Stress,SDOH Stress survey
+ecp,ecp_blgr-2010,Census Block Group (2010)
+ecp,ecp_blgr-2020,Census Block Group (2020)
+ecp,ecp_headcirc,Head circumference
+ecp,ecp_ht,Height
+ecp,ecp_hvsall,Hunger Vital Signs (full survey)
+ecp,ecp_hvsfood,Hunger Vital Signs - Food Insecurity Finding
+ecp,ecp_hvsq1,Hunger Vital Signs - Question 1
+ecp,ecp_hvsq2,Hunger Vital Signs - Question 2
+ecp,ecp_labsalt,Alanine Transaminase (ALT) lab test
+ecp,ecp_labsanc,Absolute Neutrophil Count (ANC) lab test
+ecp,ecp_labsblcx,Blood culture lab test 
+ecp,ecp_labscholesterol,Cholesterol lab test
+ecp,ecp_labscreat,Serum Creatinine lab test
+ecp,ecp_labsflu,Influenza lab test
+ecp,ecp_labshgb,Hemoglobin lab test
+ecp,ecp_labsplt,Platelets lab test
+ecp,ecp_labsrsv,Respiratory Syncytial Virus (RSV) lab test
+ecp,ecp_labssodium,Sodium lab test
+ecp,ecp_labsstreprapid,Rapid Strep lab test
+ecp,ecp_labsupqual,Urine Protein (Qualitative) lab test
+ecp,ecp_lohis-twoplus-blgr-2010,Census Block Group Location History (2020)
+ecp,ecp_lohis-twoplus-blgr-2020,Census Block Group Location History (2010)
+ecp,ecp_lohis-twoplus-tract-2010,Census Tract Location History (2010)
+ecp,ecp_lohis-twoplus-tract-2020,Census Tract Location History (2020)
+ecp,ecp_procsblcx,Blood culture order
+ecp,ecp_procskidneybiopsy,Kidney biopsy procedure
+ecp,ecp_promisanxiety,PROMIS Anxiety survey
+ecp,ecp_promisglobal,PROMIS Global survey
+ecp,ecp_promismdd,PROMIS Depression survey
+ecp,ecp_promispainbehav,PROMIS Pain Behavior survey
+ecp,ecp_promispainintens,PROMIS Pain Intensity survey
+ecp,ecp_promispaininterf,PROMIS Pain Interference survey
+ecp,ecp_promisphysfunc,PROMIS Physical Function Survey
+ecp,ecp_sdohact,SDOH Physical Activity survey
+ecp,ecp_sdohaud,SDOH Alcohol Use Disorder survey
+ecp,ecp_sdohfood,SDOH Food Insecurity survey
+ecp,ecp_sdohhous,SDOH Housing Stability survey
+ecp,ecp_sdohipv,SDOH Intimate Partner Violence survey
+ecp,ecp_sdohlit,SDOH Health Literacy survey
+ecp,ecp_sdohmdd,SDOH Depression survey
+ecp,ecp_sdohppd,SDOH Postpartum Depression survey
+ecp,ecp_sdohstress,SDOH Stress survey
+ecp,ecp_sdohutil,SDOH Utilities survey
+ecp,ecp_smk-tob,Smoking status
+ecp,ecp_tract-2010,Census Tract (2010)
+ecp,ecp_tract-2020,Census Tract (2020)
+ecp,ecp_wt,Weight

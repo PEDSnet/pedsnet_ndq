@@ -155,3 +155,45 @@ dc_suppress_outlier<-function(tbl){
     select(-c(min_not_outlier, max_not_outlier))
 }
 
+add_desc<-function(tbl,
+                   join_col_name,
+                   check_type_name,
+                   label_file){
+  tbl%>%
+    left_join(label_file%>%
+                filter(check_type==check_type_name)%>%select(-check_type),
+              by=setNames('old_desc',join_col_name)) %>%
+    select(-!!sym(join_col_name))%>%
+    rename({{join_col_name}}:=new_desc)
+}
+
+#' Function to process date plausibility library output
+process_dp<-function(dp_results,
+                     rslt_source='remote',
+                     csv_rslt_path=NULL){
+  if(tolower(rslt_source) == 'remote'){
+    dp_int <- results_tbl(dp_results) %>%
+      collect()
+  }else if(tolower(rslt_source) == 'csv'){
+    dp_int <- readr::read_csv(paste0(csv_rslt_path, dp_results))
+  }else if(tolower(rslt_source) == 'local'){
+    dp_int <- dp_results %>% collect()
+  }else{cli::cli_abort('Incorrect input for rslt_source. Please set the rslt_source to either local, csv, or remote')}
+
+  # compute overall proportion
+  dp_overall <- dp_int %>%
+    group_by(implausible_type, check_name, check_description) %>%
+    summarise(total_rows=sum(total_rows),
+              implausible_row=sum(implausible_row)) %>%
+    ungroup()%>%
+    mutate(site = 'total',
+           prop_implausible = implausible_row/total_rows) %>% collect()
+
+  # bring together total and sites
+  dp_rslt<-dp_int%>%
+    dplyr::bind_rows(dp_overall)%>%
+    mutate(check_name_app=paste0(check_name,"_rows"))
+
+  return(dp_rslt)
+
+}

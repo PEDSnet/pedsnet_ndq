@@ -130,7 +130,7 @@ mf_visitid_ln <- summarize_large_n(dq_output = results_tbl('mf_visitid_output_pp
                                                 'check_type', 'check_name_app'),
                                    shape="wide")
 
-output_tbl(mf_visitid_ln %>% bind_rows(results_tbl('mf_visitid_pp') %>%
+output_tbl(mf_visitid_ln %>% bind_rows(results_tbl('mf_visitid_output_pp') %>%
                                     filter(site == 'total') %>% collect()), 'mf_visitid_ln')
 
 ## Expected Concepts Present ----
@@ -145,4 +145,14 @@ ecp_ln <- summarize_large_n(dq_output = results_tbl('ecp_output_pp') %>%
 output_tbl(ecp_ln %>% bind_rows(results_tbl('ecp_output_pp') %>%
                                           filter(site == 'total') %>% collect()), 'ecp_output_ln')
 
+## Date Plausibility ----
+
+dp_ln <- summarize_large_n(dq_output = results_tbl('dp_output_pp') %>%
+                             filter(site != 'total'),
+                           check_string = 'dp',
+                           num_col = 'prop_implausible',
+                           grp_vars = c('implausible_type', 'check_name', 'check_description', 'check_name_app', 'desc_full'),
+                           shape="wide")
+output_tbl(dp_ln %>% bind_rows(results_tbl('dp_output_pp') %>%
+                                  filter(site == 'total') %>% collect()), 'dp_output_ln')
 

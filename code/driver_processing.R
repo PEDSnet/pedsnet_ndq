@@ -240,3 +240,17 @@ dp_pp_desc<-dp_pp%>%
   left_join(read_codeset('dp_name_desc', col_types='cccc'), by = c('check_description', 'check_name', 'implausible_type'))
 output_tbl(dp_pp_desc,
            name='dp_output_pp')
+
+dp_anom <- squba.gen::compute_dist_anomalies(df_tbl= dp_pp_desc,
+                                             grp_vars=c('check_name', 'implausible_type', 'check_name_app'),
+                                             var_col='prop_implausible',
+                                             denom_cols = NULL)
+
+dp_anom_pp <- squba.gen::detect_outliers(df_tbl=dp_anom,
+                                          tail_input = 'both',
+                                          p_input = 0.9,
+                                          column_analysis = 'prop_implausible',
+                                          column_eligible = 'analysis_eligible',
+                                          column_variable =c('check_name', 'implausible_type', 'check_name_app'))
+output_tbl(dp_anom_pp,
+           'dp_anom_pp')

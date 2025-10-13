@@ -192,7 +192,8 @@ process_dp<-function(dp_results,
   # bring together total and sites
   dp_rslt<-dp_int%>%
     dplyr::bind_rows(dp_overall)%>%
-    mutate(check_name_app=paste0(check_name,"_rows"))
+    mutate(check_name_app=paste0(check_name, "_", implausible_type, "_rows"),
+           check_type='dp')
 
   return(dp_rslt)
 

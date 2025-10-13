@@ -87,13 +87,13 @@ uc,all labs,Lab results
 uc,conditions,Conditions
 uc,all procedures,Procedures
 cfd,labs,Lab results
-cfd,procs_drugs_labs,"Procedures, drugs, and lab results"
+cfd,procs_drugs_labs,"Procedures, drugs, or lab results"
 cfd,immunizations,Immunizations
 cfd,conditions,Conditions
 cfd,drugs,Drugs
 cfd,procedures,Procedures
 cfd,icu,ICU admission
-cfd,procs_drugs,Procedures and drugs
+cfd,procs_drugs,Procedures or drugs
 cfd,observation,Observations
 cfd,payer,Payers
 dcon,dcon_t1d_dx_insulin_rx,Type 1 diabetes / Insulin prescription

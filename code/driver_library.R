@@ -9,8 +9,8 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 # dc_output <- check_dc(dc_tbl = read_codeset('pedsnet_dc_table', 'cccccc') %>%
 #                         filter(!check_id %in% c('ml', 'mv', 'ma', 'co_ml_covid')),
 #                       omop_or_pcornet = 'omop',
-#                       prev_db_string = 'v50',
-#                       current_db_string = 'v50',
+#                       prev_db_string = 'v59',
+#                       current_db_string = 'v60',
 #                       prev_ct_src = 'cdm',
 #                       prev_db = config('db_src'),
 #                       prev_rslt_tbl = 'dc_output',
@@ -82,22 +82,24 @@ output_tbl_append(mf_output, 'mf_visitid_output', file = TRUE)
 ## Best Mapped Concepts
 
 bmc_output <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc') %>%
-                          filter(!grepl('fips|gestage', check_id)),
+                          filter(!grepl('blgr|tract|gestage', check_id)),
+                        best_notbest_tbl = read_codeset('pedsnet_bmc_bestnotbest', 'ccic') %>%
+                          filter(!grepl('blgr|tract|gestage', check_name)),
                         omop_or_pcornet = 'omop',
                         concept_tbl = vocabulary_tbl('concept'),
                         check_string='bmc')
 
 bmc_output2 <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc') %>%
-                          filter(grepl('fips|gestage', check_id)),
+                           filter(grepl('blgr|tract|gestage', check_id)),
+                         best_notbest_tbl = read_codeset('pedsnet_bmc_bestnotbest', 'ccic') %>%
+                           filter(grepl('blgr|tract|gestage', check_name)),
                         omop_or_pcornet = 'omop',
                         concept_tbl = NULL,
                         check_string='bmc')
 
-bmc_counts_final <- bmc_output$bmc_counts %>% union(bmc_output2$bmc_counts)
-bmc_concepts_final <- bmc_output$bmc_concepts %>% union(bmc_output2$bmc_concepts)
+bmc_counts_final <- bmc_output %>% union(bmc_output2)
 
 output_tbl_append(bmc_counts_final, 'bmc_output', file = TRUE)
-output_tbl_append(bmc_concepts_final, 'bmc_concepts', file = TRUE)
 
 ## Expected Concepts Present
 

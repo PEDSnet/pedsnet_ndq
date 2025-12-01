@@ -5,7 +5,7 @@
 # Load required packages
 # devtools::install_github('PEDSnet/argos')
 # devtools::install_github('PEDSnet/ndq')
-# devtools::install_github('ssdqa/ssdqa.gen')
+# devtools::install_github('ssdqa/squba.gen')
 library(argos)
 library(srcr)
 library(ndq)
@@ -16,7 +16,7 @@ library(stringr)
 library(DBI)
 library(dbplyr)
 library(lubridate)
-library(ssdqa.gen)
+library(squba.gen)
 
 # Source file with wrapper function
 source(file.path('setup', 'argos_wrapper.R'))
@@ -40,7 +40,7 @@ initialize_session(session_name = 'ndq_assessment',
 
 config('qry_site', site)
 
-config('current_version','v57') ## set current instantiation PEDSnet version
+config('current_version','v60') ## set current instantiation PEDSnet version
 
 # location of prior CDM or results data (for data cycle changes check)
 # config('db_src_prev', srcr(Sys.getenv('PEDSNET_PREV_CONFIG')))

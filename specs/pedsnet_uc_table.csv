@@ -1,20 +1,20 @@
 check_id,check_description,schema,table,concept_field,source_value_field,date_field,filter_logic
-drugsall,all drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,
-drugsip,inpatient administrations,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000180
-drugspresc,prescription drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000177
-drugsprt,patient reported drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_order_date,drug_type_concept_id == 32865
-drugs-doseunits,drug dose unit,cdm,drug_exposure,dose_unit_concept_id,dose_unit_source_value,drug_exposure_start_date,
-drugs-route,drug route,cdm,drug_exposure,route_concept_id,route_source_value,drug_exposure_start_date,
-condsall,conditions,cdm,condition_occurrence,condition_concept_id,condition_source_value,condition_start_date,
-condsall-scid,condition source,cdm,condition_occurrence,condition_source_concept_id,condition_source_value,condition_start_date,
-labsall,all labs,cdm,measurement_labs,measurement_concept_id,measurement_source_value,measurement_date,
-labs-units,lab units,cdm,measurement_labs,unit_concept_id,unit_source_value,measurement_date,value_as_number != 9999 & !is.na(value_as_number)
-immsall,immunizations,cdm,immunization,immunization_concept_id,immunization_source_value,immunization_date,
-immsall-doseunits,immunization dose unit,cdm,immunization,imm_dose_unit_concept_id,imm_dose_unit_source_value,immunization_date,
-immsall-route,immunization route,cdm,immunization,imm_route_concept_id,imm_route_source_value,immunization_date,
-procsall,all procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,
-procsord,ordered procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(2000001494,38000275)"
-procsbill,billed procedure,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(44786630L,44786631)"
-payers-payerclass,payer plan class,result,payer_with_date,payer_class,plan_name,visit_start_date,
-payers-payertype,payer plan type,result,payer_with_date,payer_type,plan_name,visit_start_date,
-gestage,gestational age (when first visit occurs at <= 2 years old),result,gest_age_cohort,pn_gestational_age,ga_group,birth_date,
+drugsall,Drugs,cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,
+drugsip,"Drugs, inpatient administration",cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000180
+drugspresc,"Drugs, prescriptions",cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugsrprt,"Drugs, patient reported",cdm,drug_exposure,drug_concept_id,drug_source_value,drug_exposure_order_date,drug_type_concept_id == 32865
+drugs-doseunits,"Drugs, dosage unit",cdm,drug_exposure,dose_unit_concept_id,dose_unit_source_value,drug_exposure_start_date,
+drugs-route,"Drugs, route of administration",cdm,drug_exposure,route_concept_id,route_source_value,drug_exposure_start_date,
+condsall,Conditions,cdm,condition_occurrence,condition_concept_id,condition_source_value,condition_start_date,
+condsall-scid,Conditions (source concept),cdm,condition_occurrence,condition_source_concept_id,condition_source_value,condition_start_date,
+labsall,Labs,cdm,measurement_labs,measurement_concept_id,measurement_source_value,measurement_date,
+labs-units,"Labs, result unit",cdm,measurement_labs,unit_concept_id,unit_source_value,measurement_date,value_as_number != 9999 & !is.na(value_as_number)
+immsall,Immunizations,cdm,immunization,immunization_concept_id,immunization_source_value,immunization_date,
+immsall-doseunits,"Immunizations, dosage unit",cdm,immunization,imm_dose_unit_concept_id,imm_dose_unit_source_value,immunization_date,
+immsall-route,"Immunizations, route of administration",cdm,immunization,imm_route_concept_id,imm_route_source_value,immunization_date,
+procsall,Procedures,cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,
+procsord,"Procedures, ordered",cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(2000001494,38000275)"
+procsbill,"Procedures, billing",cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,"procedure_type_concept_id %in% c(44786630L,44786631)"
+payers-payerclass,Payer Class,result,payer_with_date,payer_class,plan_name,visit_start_date,
+payers-payertype,Payer Type,result,payer_with_date,payer_type,plan_name,visit_start_date,
+gestage,Gestational Age (when first visit occurs at <= 2 years old),result,gest_age_cohort,pn_gestational_age,ga_group,birth_date,

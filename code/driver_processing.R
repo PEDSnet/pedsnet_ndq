@@ -65,7 +65,7 @@ output_tbl(mf_visitid_pp, 'mf_visitid_output_pp')
 ## Best Mapped Concepts
 #### Standard Processing
 bmc_pp <- process_bmc(bmc_results = 'bmc_output', #'bmc_gen_output',
-                      bmc_concepts_labelled = 'bmc_concepts', ## with `include` column added that indicates not best concepts with 0
+                      #bmc_concepts_labelled = 'bmc_concepts',
                       rslt_source = 'remote')
 
 output_tbl(bmc_pp$bmc_output_pp, 'bmc_output_pp')

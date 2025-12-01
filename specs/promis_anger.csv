@@ -1,0 +1,14 @@
+concept_id,concept_code,concept_name,vocabulary_id
+1175904,90970-5,PROMIS short form - emotional distress - anger 5a - version 1.1 raw score,LOINC
+40764674,61913-0,I felt annoyed in past 7 days [PROMIS],LOINC
+40764690,61929-6,I felt upset in past 7 days [PROMIS],LOINC
+40764945,62184-7,I was so angry I felt like yelling at somebody in past 7 days [PROMIS],LOINC
+40764663,61902-3,I felt like I was ready to explode in past 7 days [PROMIS],LOINC
+40764903,62142-5,I felt angry when I had pain in past 7 days [PROMIS],LOINC
+40764943,62182-1,I felt mad in past 7 days [PROMIS],LOINC
+40764944,62183-9,I was so angry I felt like throwing something in past 7 days [PROMIS],LOINC
+46236697,77837-3,PROMIS short form - emotional distress - anger 8a - version 1.0 raw score,LOINC
+46236706,77846-4,PROMIS pediatric short form - emotional distress - anger - version 1.0 raw score,LOINC
+40764660,61899-1,I felt angry in past 7 days [PROMIS],LOINC
+40764672,61911-4,I was grouchy in past 7 days [PROMIS],LOINC
+40764942,62181-3,I felt fed up in past 7 days [PROMIS],LOINC

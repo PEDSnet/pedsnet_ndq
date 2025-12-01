@@ -1,0 +1,47 @@
+concept_id,concept_code,concept_name,vocabulary_id
+40764779,62018-7,I had a hard time concentrating because of poor sleep in past 7 days [PROMIS],LOINC
+40764865,62104-5,I got tired easily in past 7 days [PROMIS],LOINC
+40764753,61992-4,Trouble staying asleep in past 7 days,LOINC
+40764747,61986-6,My sleep was refreshing in past 7 days [PROMIS],LOINC
+40764748,61987-4,My sleep quality was...in past 7 days [PROMIS],LOINC
+40764774,62013-8,I was sleepy during the daytime in past 7 days [PROMIS],LOINC
+40764780,62019-5,I felt irritable because of poor sleep in past 7 days [PROMIS],LOINC
+40764860,62099-7,Being tired made it hard for me to keep up with my schoolwork in past 7 days [PROMIS],LOINC
+37020397,91913-4,My child had trouble finishing things because he/she was too tired in past 7 days [PROMIS.PARENTPROXY],LOINC
+37019793,91915-9,Being tired made it hard for my child to keep up with schoolwork in past 7 days [PROMIS.PARENTPROXY],LOINC
+37020018,91923-3,My child was too tired to do sports or exercise in past 7 days [PROMIS.PARENTPROXY],LOINC
+46236686,77826-6,PROMIS short form - sleep disturbance 4a - version 1.0 raw score,LOINC
+40764767,62006-2,I tried hard to get to sleep in past 7 days [PROMIS],LOINC
+40764785,62024-5,I felt alert when I woke up in past 7 days [PROMIS],LOINC
+40764867,62106-0,I had trouble starting things because I was too tired in past 7 days [PROMIS],LOINC
+40764871,62110-2,I was too tired to do things outside in past 7 days [PROMIS],LOINC
+46236683,77822-5,PROMIS short form - fatigue 4a - version 1.0 raw score,LOINC
+40764639,61878-5,I feel fatigued during the past 7 days [PROMIS],LOINC
+37021381,91922-5,My child had trouble starting things because he/she was too tired in past 7 days [PROMIS.PARENTPROXY],LOINC
+37020677,91926-6,Being tired made it hard for my child to play or go out with friends as much as he/she would like in past 7 days [PROMIS.PARENTPROXY],LOINC
+40764642,61881-9,I felt tired in past 7 days [PROMIS],LOINC
+40764759,61998-1,I had a problem with my sleep 7 days [PROMIS],LOINC
+40764778,62017-9,I had problems during the day because of poor sleep in past 7 days [PROMIS],LOINC
+46236694,77834-0,PROMIS short form - fatigue 7a - version 1.0 raw score,LOINC
+40764625,61864-5,How fatigued were you on average in past 7 days [PROMIS],LOINC
+37019727,91920-9,My child was too tired to do things outside in past 7 days [PROMIS.PARENTPROXY],LOINC
+37020270,92615-4,PROMIS parent proxy short form - fatigue 10a - version 2.0 raw score,LOINC
+40764746,61985-8,I was satisfied with my sleep in past 7 days [PROMIS],LOINC
+40764757,61996-5,My sleep was restless in past 7 days [PROMIS],LOINC
+40764866,62105-2,I had trouble finishing things because I was too tired in past 7 days [PROMIS],LOINC
+40764869,62108-6,I was so tired it was hard for me to pay attention in past 7 days [PROMIS],LOINC
+46235828,76345-8,I have trouble starting things because I am tired during the past 7 days [PROMIS],LOINC
+46236677,77816-7,PROMIS short form - sleep disturbance 6a - version 1.0 raw score,LOINC
+46234798,75899-5,My child got tired easily in past 7 days [PROMIS.PARENTPROXY],LOINC
+40764626,61865-2,How run-down did you feel on average in past 7 days [PROMIS],LOINC
+40764754,61993-2,I had trouble sleeping in past 7 days [PROMIS],LOINC
+40764872,62111-0,I was too tired to enjoy the things I like to do in past 7 days [PROMIS],LOINC
+37021416,91929-0,My child was too tired to enjoy the things he/she likes to do in past 7 days [PROMIS.PARENTPROXY],LOINC
+37020211,91918-3,My child was so tired it was hard for him/her to pay attention in past 7 days [PROMIS.PARENTPROXY],LOINC
+40764749,61988-2,I got enough sleep in past 7 days [PROMIS],LOINC
+40764760,61999-9,I had difficulty falling asleep in past 7 days [PROMIS],LOINC
+40764776,62015-3,I had a hard time getting things done because I was sleepy in past 7 days [PROMIS],LOINC
+40764861,62100-3,Being tired made it hard for me to play or go out with my friends as much as I'd like in past 7 days [PROMIS],LOINC
+40764870,62109-4,I was too tired to do sports or exercise in past 7 days [PROMIS],LOINC
+46236689,77829-0,PROMIS short form - sleep disturbance 8b - version 1.0 raw score,LOINC
+46236700,77840-7,PROMIS pediatric short form - fatigue 10a - version 1.0 raw score,LOINC

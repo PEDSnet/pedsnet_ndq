@@ -1,0 +1,14 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,01,Every day,Prescribing,PCORnet
+1,02,Two times a day (BID),Prescribing,PCORnet
+1,03,Three times a day (TID),Prescribing,PCORnet
+1,04,Four times a day (QID),Prescribing,PCORnet
+1,05,Every morning,Prescribing,PCORnet
+1,06,Every afternoon,Prescribing,PCORnet
+1,07,Before meals,Prescribing,PCORnet
+1,08,After meals,Prescribing,PCORnet
+1,10,Every evening,Prescribing,PCORnet
+1,11,Once,Prescribing,PCORnet
+1,NI,No Information,Prescribing,PCORnet
+1,UN,Unknown,Prescribing,PCORnet
+1,OT,Other,Prescribing,PCORnet

@@ -1,0 +1,12 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,M,Man,Demographic,PCORnet
+1,F,Woman,Demographic,PCORnet
+1,TM,Transgender man/Trans man/Female-to-male,Demographic,PCORnet
+1,TF,Transgender female/Trans woman/Male-to-female,Demographic,PCORnet
+1,GQ,Genderqueer/Non-binary,Demographic,PCORnet
+1,SE,Something else,Demographic,PCORnet
+1,MU,Multiple gender categories,Demographic,PCORnet
+1,DC,Decline to answer,Demographic,PCORnet
+1,NI,No information,Demographic,PCORnet
+1,UN,Unknown,Demographic,PCORnet
+1,OT,Other,Demographic,PCORnet

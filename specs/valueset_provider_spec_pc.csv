@@ -1,0 +1,877 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,101200000X,Drama Therapist,Provider,PCORnet
+1,101Y00000X,Counselor,Provider,PCORnet
+1,101YA0400X,Counselor Addiction Substance Use Disorder,Provider,PCORnet
+1,101YM0800X,Counselor Mental Health,Provider,PCORnet
+1,101YP1600X,Counselor Pastoral,Provider,PCORnet
+1,101YP2500X,Counselor Professional,Provider,PCORnet
+1,101YS0200X,Counselor School,Provider,PCORnet
+1,102L00000X,Psychoanalyst,Provider,PCORnet
+1,102X00000X,Poetry Therapist,Provider,PCORnet
+1,103G00000X,Clinical Neuropsychologist,Provider,PCORnet
+1,103GC0700X,Clinical Neuropsychologist Clinical,Provider,PCORnet
+1,103K00000X,Behavioral Analyst,Provider,PCORnet
+1,103T00000X,Psychologist,Provider,PCORnet
+1,103TA0400X,Psychologist Addiction (Substance Use Disorder),Provider,PCORnet
+1,103TA0700X,Psychologist Adult Development & Aging,Provider,PCORnet
+1,103TB0200X,Psychologist Cognitive & Behavioral,Provider,PCORnet
+1,103TC0700X,Psychologist Clinical,Provider,PCORnet
+1,103TC1900X,Psychologist Counseling,Provider,PCORnet
+1,103TC2200X,Psychologist Clinical Child & Adolescent,Provider,PCORnet
+1,103TE1000X,Psychologist Educational,Provider,PCORnet
+1,103TE1100X,Psychologist Exercise & Sports,Provider,PCORnet
+1,103TF0000X,Psychologist Family,Provider,PCORnet
+1,103TF0200X,Psychologist Forensic,Provider,PCORnet
+1,103TH0004X,Psychologist Health,Provider,PCORnet
+1,103TH0100X,Psychologist Health Service,Provider,PCORnet
+1,103TM1700X,Psychologist Men & Masculinity,Provider,PCORnet
+1,103TM1800X,Psychologist Mental Retardation & Developmental Disabilities,Provider,PCORnet
+1,103TP0016X,Psychologist Prescribing (Medical),Provider,PCORnet
+1,103TP0814X,Psychologist Psychoanalysis,Provider,PCORnet
+1,103TP2700X,Psychologist Psychotherapy,Provider,PCORnet
+1,103TP2701X,Psychologist Group Psychotherapy,Provider,PCORnet
+1,103TR0400X,Psychologist Rehabilitation,Provider,PCORnet
+1,103TS0200X,Psychologist School,Provider,PCORnet
+1,103TW0100X,Psychologist Women,Provider,PCORnet
+1,104100000X,Social Worker,Provider,PCORnet
+1,1041C0700X,Social Worker Clinical,Provider,PCORnet
+1,1041S0200X,Social Worker School,Provider,PCORnet
+1,106E00000X,Assistant Behavior Analyst,Provider,PCORnet
+1,106H00000X,Marriage & Family Therapist,Provider,PCORnet
+1,106S00000X,Behavior Technician,Provider,PCORnet
+1,111N00000X,Chiropractor,Provider,PCORnet
+1,111NI0013X,Chiropractor Independent Medical Examiner,Provider,PCORnet
+1,111NI0900X,Chiropractor Internist,Provider,PCORnet
+1,111NN0400X,Chiropractor Neurology,Provider,PCORnet
+1,111NN1001X,Chiropractor Nutrition,Provider,PCORnet
+1,111NP0017X,Chiropractor Pediatric Chiropractor,Provider,PCORnet
+1,111NR0200X,Chiropractor Radiology,Provider,PCORnet
+1,111NR0400X,Chiropractor Rehabilitation,Provider,PCORnet
+1,111NS0005X,Chiropractor Sports Physician,Provider,PCORnet
+1,111NT0100X,Chiropractor Thermography,Provider,PCORnet
+1,111NX0100X,Chiropractor Occupational Health,Provider,PCORnet
+1,111NX0800X,Chiropractor Orthopedic,Provider,PCORnet
+1,122300000X,Dentist,Provider,PCORnet
+1,1223D0001X,Dentist Dental Public Health,Provider,PCORnet
+1,1223D0004X,Dentist Dentist Anesthesiologist,Provider,PCORnet
+1,1223E0200X,Dentist Endodontics,Provider,PCORnet
+1,1223G0001X,Dentist General Practice,Provider,PCORnet
+1,1223P0106X,Dentist Oral and Maxillofacial Pathology,Provider,PCORnet
+1,1223P0221X,Dentist Pediatric Dentistry,Provider,PCORnet
+1,1223P0300X,Dentist Periodontics,Provider,PCORnet
+1,1223P0700X,Dentist Prosthodontics,Provider,PCORnet
+1,1223S0112X,Dentist Oral and Maxillofacial Surgery,Provider,PCORnet
+1,1223X0008X,Dentist Oral and Maxillofacial Radiology,Provider,PCORnet
+1,1223X0400X,Dentist Orthodontics and Dentofacial Orthopedics,Provider,PCORnet
+1,1223X2210X,Dentist Orofacial Pain,Provider,PCORnet
+1,122400000X,Denturist,Provider,PCORnet
+1,124Q00000X,Dental Hygienist,Provider,PCORnet
+1,125J00000X,Dental Therapist,Provider,PCORnet
+1,125K00000X,Advanced Practice Dental Therapist,Provider,PCORnet
+1,125Q00000X,Oral Medicinist,Provider,PCORnet
+1,126800000X,Dental Assistant,Provider,PCORnet
+1,126900000X,Dental Laboratory Technician,Provider,PCORnet
+1,132700000X,Dietary Manager,Provider,PCORnet
+1,133N00000X,Nutritionist,Provider,PCORnet
+1,133NN1002X,"Nutritionist Nutrition, Education",Provider,PCORnet
+1,133V00000X,"Dietitian, Registered",Provider,PCORnet
+1,133VN1004X,"Dietitian, Registered Nutrition, Pediatric",Provider,PCORnet
+1,133VN1005X,"Dietitian, Registered Nutrition, Renal",Provider,PCORnet
+1,133VN1006X,"Dietitian, Registered Nutrition, Metabolic",Provider,PCORnet
+1,133VN1101X,"Dietitian, Registered Nutrition, Gerontological",Provider,PCORnet
+1,133VN1201X,"Dietitian, Registered Nutrition, Obesity and Weight Mana",Provider,PCORnet
+1,133VN1301X,"Dietitian, Registered Nutrition, Oncology",Provider,PCORnet
+1,133VN1401X,"Dietitian, Registered Nutrition, Pediatric Critical Care",Provider,PCORnet
+1,133VN1501X,"Dietitian, Registered Nutrition, Sports Dietetics",Provider,PCORnet
+1,136A00000X,"Dietetic Technician, Registered",Provider,PCORnet
+1,146D00000X,Personal Emergency Response Attendant,Provider,PCORnet
+1,146L00000X,"Emergency Medical Technician, Paramedic",Provider,PCORnet
+1,146M00000X,"Emergency Medical Technician, Intermediate",Provider,PCORnet
+1,146N00000X,"Emergency Medical Technician, Basic",Provider,PCORnet
+1,152W00000X,Optometrist,Provider,PCORnet
+1,152WC0802X,Optometrist Corneal and Contact Management,Provider,PCORnet
+1,152WL0500X,Optometrist Low Vision Rehabilitation,Provider,PCORnet
+1,152WP0200X,Optometrist Pediatrics,Provider,PCORnet
+1,152WS0006X,Optometrist Sports Vision,Provider,PCORnet
+1,152WV0400X,Optometrist Vision Therapy,Provider,PCORnet
+1,152WX0102X,Optometrist Occupational Vision,Provider,PCORnet
+1,156F00000X,Technician/Technologist,Provider,PCORnet
+1,156FC0800X,Technician/Technologist Contact Lens,Provider,PCORnet
+1,156FC0801X,Technician/Technologist Contact Lens Fitter,Provider,PCORnet
+1,156FX1100X,Technician/Technologist Ophthalmic,Provider,PCORnet
+1,156FX1101X,Technician/Technologist Ophthalmic Assistant,Provider,PCORnet
+1,156FX1201X,Technician/Technologist Optometric Assistant,Provider,PCORnet
+1,156FX1202X,Technician/Technologist Optometric Technician,Provider,PCORnet
+1,156FX1700X,Technician/Technologist Ocularist,Provider,PCORnet
+1,156FX1800X,Technician/Technologist Optician,Provider,PCORnet
+1,156FX1900X,Technician/Technologist Orthoptist,Provider,PCORnet
+1,163W00000X,Registered Nurse,Provider,PCORnet
+1,163WA0400X,Registered Nurse Addiction (Substance Use Disorder),Provider,PCORnet
+1,163WA2000X,Registered Nurse Administrator,Provider,PCORnet
+1,163WC0200X,Registered Nurse Critical Care Medicine,Provider,PCORnet
+1,163WC0400X,Registered Nurse Case Management,Provider,PCORnet
+1,163WC1400X,Registered Nurse College Health,Provider,PCORnet
+1,163WC1500X,Registered Nurse Community Health,Provider,PCORnet
+1,163WC1600X,Registered Nurse Continuing Education/Staff Development,Provider,PCORnet
+1,163WC2100X,Registered Nurse Continence Care,Provider,PCORnet
+1,163WC3500X,Registered Nurse Cardiac Rehabilitation,Provider,PCORnet
+1,163WD0400X,Registered Nurse Diabetes Educator,Provider,PCORnet
+1,163WD1100X,"Registered Nurse Dialysis, Peritoneal",Provider,PCORnet
+1,163WE0003X,Registered Nurse Emergency,Provider,PCORnet
+1,163WE0900X,Registered Nurse Enterostomal Therapy,Provider,PCORnet
+1,163WF0300X,Registered Nurse Flight,Provider,PCORnet
+1,163WG0000X,Registered Nurse General Practice,Provider,PCORnet
+1,163WG0100X,Registered Nurse Gastroenterology,Provider,PCORnet
+1,163WG0600X,Registered Nurse Gerontology,Provider,PCORnet
+1,163WH0200X,Registered Nurse Home Health,Provider,PCORnet
+1,163WH0500X,Registered Nurse Hemodialysis,Provider,PCORnet
+1,163WH1000X,Registered Nurse Hospice,Provider,PCORnet
+1,163WI0500X,Registered Nurse Infusion Therapy,Provider,PCORnet
+1,163WI0600X,Registered Nurse Infection Control,Provider,PCORnet
+1,163WL0100X,Registered Nurse Lactation Consultant,Provider,PCORnet
+1,163WM0102X,Registered Nurse Maternal Newborn,Provider,PCORnet
+1,163WM0705X,Registered Nurse Medical-Surgical,Provider,PCORnet
+1,163WM1400X,Registered Nurse Nurse Massage Therapist (NMT),Provider,PCORnet
+1,163WN0002X,Registered Nurse Neonatal Intensive Care,Provider,PCORnet
+1,163WN0003X,"Registered Nurse Neonatal, Low-Risk",Provider,PCORnet
+1,163WN0300X,Registered Nurse Nephrology,Provider,PCORnet
+1,163WN0800X,Registered Nurse Neuroscience,Provider,PCORnet
+1,163WN1003X,Registered Nurse Nutrition Support,Provider,PCORnet
+1,163WP0000X,Registered Nurse Pain Management,Provider,PCORnet
+1,163WP0200X,Registered Nurse Pediatrics,Provider,PCORnet
+1,163WP0218X,Registered Nurse Pediatric Oncology,Provider,PCORnet
+1,163WP0807X,"Registered Nurse Psych/Mental Health, Child & Adolescent",Provider,PCORnet
+1,163WP0808X,Registered Nurse Psych/Mental Health,Provider,PCORnet
+1,163WP0809X,"Registered Nurse Psych/Mental Health, Adult",Provider,PCORnet
+1,163WP1700X,Registered Nurse Perinatal,Provider,PCORnet
+1,163WP2201X,Registered Nurse Ambulatory Care,Provider,PCORnet
+1,163WR0006X,Registered Nurse Registered Nurse First Assistant,Provider,PCORnet
+1,163WR0400X,Registered Nurse Rehabilitation,Provider,PCORnet
+1,163WR1000X,Registered Nurse Reproductive Endocrinology/Infertility,Provider,PCORnet
+1,163WS0121X,Registered Nurse Plastic Surgery,Provider,PCORnet
+1,163WS0200X,Registered Nurse School,Provider,PCORnet
+1,163WU0100X,Registered Nurse Urology,Provider,PCORnet
+1,163WW0000X,Registered Nurse Wound Care,Provider,PCORnet
+1,163WW0101X,"Registered Nurse Women's Health Care, Ambulatory",Provider,PCORnet
+1,163WX0002X,"Registered Nurse Obstetric, High-Risk",Provider,PCORnet
+1,163WX0003X,"Registered Nurse Obstetric, Inpatient",Provider,PCORnet
+1,163WX0106X,Registered Nurse Occupational Health,Provider,PCORnet
+1,163WX0200X,Registered Nurse Oncology,Provider,PCORnet
+1,163WX0601X,Registered Nurse Otorhinolaryngology & Head-Neck,Provider,PCORnet
+1,163WX0800X,Registered Nurse Orthopedic,Provider,PCORnet
+1,163WX1100X,Registered Nurse Ophthalmic,Provider,PCORnet
+1,163WX1500X,Registered Nurse Ostomy Care,Provider,PCORnet
+1,164W00000X,Licensed Practical Nurse,Provider,PCORnet
+1,164X00000X,Licensed Vocational Nurse,Provider,PCORnet
+1,167G00000X,Licensed Psychiatric Technician,Provider,PCORnet
+1,170100000X,"Medical Genetics, Ph.D. Medical Genetics",Provider,PCORnet
+1,170300000X,"Genetic Counselor, MS",Provider,PCORnet
+1,171000000X,Military Health Care Provider,Provider,PCORnet
+1,1710I1002X,Military Health Care Provider Independent Duty Corpsman,Provider,PCORnet
+1,1710I1003X,Military Health Care Provider Independent Duty Medical Technicians,Provider,PCORnet
+1,171100000X,Acupuncturist,Provider,PCORnet
+1,171400000X,Health & Wellness Coach,Provider,PCORnet
+1,171M00000X,Case Manager/Care Coordinator,Provider,PCORnet
+1,171R00000X,Interpreter,Provider,PCORnet
+1,171W00000X,Contractor,Provider,PCORnet
+1,171WH0202X,Contractor Home Modifications,Provider,PCORnet
+1,171WV0202X,Contractor Vehicle Modifications,Provider,PCORnet
+1,172A00000X,Driver,Provider,PCORnet
+1,172M00000X,Mechanotherapist,Provider,PCORnet
+1,172P00000X,Naprapath,Provider,PCORnet
+1,172V00000X,Community Health Worker,Provider,PCORnet
+1,173000000X,Legal Medicine,Provider,PCORnet
+1,173C00000X,Reflexologist,Provider,PCORnet
+1,173F00000X,"Sleep Specialist, PhD",Provider,PCORnet
+1,174200000X,Meals,Provider,PCORnet
+1,174400000X,Specialist,Provider,PCORnet
+1,1744G0900X,Specialist Graphics Designer,Provider,PCORnet
+1,1744P3200X,Specialist Prosthetics Case Management,Provider,PCORnet
+1,1744R1102X,Specialist Research Study,Provider,PCORnet
+1,1744R1103X,Specialist Research Data Abstracter/Coder,Provider,PCORnet
+1,174H00000X,Health Educator,Provider,PCORnet
+1,174M00000X,Veterinarian,Provider,PCORnet
+1,174MM1900X,Veterinarian Medical Research,Provider,PCORnet
+1,174N00000X,"Lactation Consultant, Non-RN",Provider,PCORnet
+1,174V00000X,Clinical Ethicist,Provider,PCORnet
+1,175F00000X,Naturopath,Provider,PCORnet
+1,175L00000X,Homeopath,Provider,PCORnet
+1,175M00000X,"Midwife, Lay",Provider,PCORnet
+1,175T00000X,Peer Specialist,Provider,PCORnet
+1,176B00000X,Midwife,Provider,PCORnet
+1,176P00000X,Funeral Director,Provider,PCORnet
+1,177F00000X,Lodging,Provider,PCORnet
+1,183500000X,Pharmacist,Provider,PCORnet
+1,1835C0205X,Pharmacist Critical Care,Provider,PCORnet
+1,1835C0206X,Pharmacist Cardiology,Provider,PCORnet
+1,1835C0207X,Pharmacist Compounded Sterile Preparations,Provider,PCORnet
+1,1835E0208X,Pharmacist Emergency Medicine,Provider,PCORnet
+1,1835G0000X,Pharmacist General Practice,Provider,PCORnet
+1,1835G0303X,Pharmacist Geriatric,Provider,PCORnet
+1,1835I0206X,Pharmacist Infectious Diseases,Provider,PCORnet
+1,1835N0905X,Pharmacist Nuclear,Provider,PCORnet
+1,1835N1003X,Pharmacist Nutrition Support,Provider,PCORnet
+1,1835P0018X,Pharmacist Pharmacist Clinician (PhC)/ Clinical Pharmacy Specialist,Provider,PCORnet
+1,1835P0200X,Pharmacist Pediatrics,Provider,PCORnet
+1,1835P1200X,Pharmacist Pharmacotherapy,Provider,PCORnet
+1,1835P1300X,Pharmacist Psychiatric,Provider,PCORnet
+1,1835P2201X,Pharmacist Ambulatory Care,Provider,PCORnet
+1,1835S0206X,Pharmacist Solid Organ Transplant,Provider,PCORnet
+1,1835X0200X,Pharmacist Oncology,Provider,PCORnet
+1,183700000X,Pharmacy Technician,Provider,PCORnet
+1,193200000X,Multi-Specialty,Provider,PCORnet
+1,193400000X,Single Specialty,Provider,PCORnet
+1,202C00000X,Independent Medical Examiner,Provider,PCORnet
+1,202D00000X,Integrative Medicine,Provider,PCORnet
+1,202K00000X,Phlebology,Provider,PCORnet
+1,204C00000X,"Neuromusculoskeletal Medicine, Sports Medicine",Provider,PCORnet
+1,204D00000X,Neuromusculoskeletal Medicine & OMM,Provider,PCORnet
+1,204E00000X,Oral & Maxillofacial Surgery,Provider,PCORnet
+1,204F00000X,Transplant Surgery,Provider,PCORnet
+1,204R00000X,Electrodiagnostic Medicine,Provider,PCORnet
+1,207K00000X,Allergy & Immunology,Provider,PCORnet
+1,207KA0200X,Allergy & Immunology Allergy,Provider,PCORnet
+1,207KI0005X,Allergy & Immunology Clinical & Laboratory Immunology,Provider,PCORnet
+1,207L00000X,Anesthesiology,Provider,PCORnet
+1,207LA0401X,Anesthesiology Addiction Medicine,Provider,PCORnet
+1,207LC0200X,Anesthesiology Critical Care Medicine,Provider,PCORnet
+1,207LH0002X,Anesthesiology Hospice and Palliative Medicine,Provider,PCORnet
+1,207LP2900X,Anesthesiology Pain Medicine,Provider,PCORnet
+1,207LP3000X,Anesthesiology Pediatric Anesthesiology,Provider,PCORnet
+1,207N00000X,Dermatology,Provider,PCORnet
+1,207ND0101X,Dermatology MOHS-Micrographic Surgery,Provider,PCORnet
+1,207ND0900X,Dermatology Dermatopathology,Provider,PCORnet
+1,207NI0002X,Dermatology Clinical & Laboratory Dermatological Immunology,Provider,PCORnet
+1,207NP0225X,Dermatology Pediatric Dermatology,Provider,PCORnet
+1,207NS0135X,Dermatology Procedural Dermatology,Provider,PCORnet
+1,207P00000X,Emergency Medicine,Provider,PCORnet
+1,207PE0004X,Emergency Medicine Emergency Medical Services,Provider,PCORnet
+1,207PE0005X,Emergency Medicine Undersea and Hyperbaric Medicine,Provider,PCORnet
+1,207PH0002X,Emergency Medicine Hospice and Palliative Medicine,Provider,PCORnet
+1,207PP0204X,Emergency Medicine Pediatric Emergency Medicine,Provider,PCORnet
+1,207PS0010X,Emergency Medicine Sports Medicine,Provider,PCORnet
+1,207PT0002X,Emergency Medicine Medical Toxicology,Provider,PCORnet
+1,207Q00000X,Family Medicine,Provider,PCORnet
+1,207QA0000X,Family Medicine Adolescent Medicine,Provider,PCORnet
+1,207QA0401X,Family Medicine Addiction Medicine,Provider,PCORnet
+1,207QA0505X,Family Medicine Adult Medicine,Provider,PCORnet
+1,207QB0002X,Family Medicine Obesity Medicine,Provider,PCORnet
+1,207QG0300X,Family Medicine Geriatric Medicine,Provider,PCORnet
+1,207QH0002X,Family Medicine Hospice and Palliative Medicine,Provider,PCORnet
+1,207QS0010X,Family Medicine Sports Medicine,Provider,PCORnet
+1,207QS1201X,Family Medicine Sleep Medicine,Provider,PCORnet
+1,207R00000X,Internal Medicine,Provider,PCORnet
+1,207RA0000X,Internal Medicine Adolescent Medicine,Provider,PCORnet
+1,207RA0001X,Internal Medicine Advanced Heart Failure and Transplant Cardiology,Provider,PCORnet
+1,207RA0002X,Internal Medicine Adult Congenital Heart Disease,Provider,PCORnet
+1,207RA0201X,Internal Medicine Allergy & Immunology,Provider,PCORnet
+1,207RA0401X,Internal Medicine Addiction Medicine,Provider,PCORnet
+1,207RB0002X,Internal Medicine Obesity Medicine,Provider,PCORnet
+1,207RC0000X,Internal Medicine Cardiovascular Disease,Provider,PCORnet
+1,207RC0001X,Internal Medicine Clinical Cardiac Electrophysiology,Provider,PCORnet
+1,207RC0200X,Internal Medicine Critical Care Medicine,Provider,PCORnet
+1,207RE0101X,"Internal Medicine Endocrinology, Diabetes & Metabolism",Provider,PCORnet
+1,207RG0100X,Internal Medicine Gastroenterology,Provider,PCORnet
+1,207RG0300X,Internal Medicine Geriatric Medicine,Provider,PCORnet
+1,207RH0000X,Internal Medicine Hematology,Provider,PCORnet
+1,207RH0002X,Internal Medicine Hospice and Palliative Medicine,Provider,PCORnet
+1,207RH0003X,Internal Medicine Hematology & Oncology,Provider,PCORnet
+1,207RH0005X,Internal Medicine Hypertension Specialist,Provider,PCORnet
+1,207RI0001X,Internal Medicine Clinical & Laboratory Immunology,Provider,PCORnet
+1,207RI0008X,Internal Medicine Hepatology,Provider,PCORnet
+1,207RI0011X,Internal Medicine Interventional Cardiology,Provider,PCORnet
+1,207RI0200X,Internal Medicine Infectious Disease,Provider,PCORnet
+1,207RM1200X,Internal Medicine Magnetic Resonance Imaging (MRI),Provider,PCORnet
+1,207RN0300X,Internal Medicine Nephrology,Provider,PCORnet
+1,207RP1001X,Internal Medicine Pulmonary Disease,Provider,PCORnet
+1,207RR0500X,Internal Medicine Rheumatology,Provider,PCORnet
+1,207RS0010X,Internal Medicine Sports Medicine,Provider,PCORnet
+1,207RS0012X,Internal Medicine Sleep Medicine,Provider,PCORnet
+1,207RT0003X,Internal Medicine Transplant Hepatology,Provider,PCORnet
+1,207RX0202X,Internal Medicine Medical Oncology,Provider,PCORnet
+1,207SC0300X,Medical Genetics Clinical Cytogenetic,Provider,PCORnet
+1,207SG0201X,Medical Genetics Clinical Genetics (M.D.),Provider,PCORnet
+1,207SG0202X,Medical Genetics Clinical Biochemical Genetics,Provider,PCORnet
+1,207SG0203X,Medical Genetics Clinical Molecular Genetics,Provider,PCORnet
+1,207SG0205X,Medical Genetics Ph.D. Medical Genetics,Provider,PCORnet
+1,207SM0001X,Medical Genetics Molecular Genetic Pathology,Provider,PCORnet
+1,207T00000X,Neurological Surgery,Provider,PCORnet
+1,207U00000X,Nuclear Medicine,Provider,PCORnet
+1,207UN0901X,Nuclear Medicine Nuclear Cardiology,Provider,PCORnet
+1,207UN0902X,Nuclear Medicine Nuclear Imaging & Therapy,Provider,PCORnet
+1,207UN0903X,Nuclear Medicine In Vivo & In Vitro Nuclear Medicine,Provider,PCORnet
+1,207V00000X,Obstetrics & Gynecology,Provider,PCORnet
+1,207VB0002X,Obstetrics & Gynecology Obesity Medicine,Provider,PCORnet
+1,207VC0200X,Obstetrics & Gynecology Critical Care Medicine,Provider,PCORnet
+1,207VC0300X,Obstetrics & Gynecology Complex Family Planning,Provider,PCORnet
+1,207VE0102X,Obstetrics & Gynecology Reproductive Endocrinology,Provider,PCORnet
+1,207VF0040X,Obstetrics & Gynecology Female Pelvic Medicine and Reconstructive Surgery,Provider,PCORnet
+1,207VG0400X,Obstetrics & Gynecology Gynecology,Provider,PCORnet
+1,207VH0002X,Obstetrics & Gynecology Hospice and Palliative Medicine,Provider,PCORnet
+1,207VM0101X,Obstetrics & Gynecology Maternal & Fetal Medicine,Provider,PCORnet
+1,207VX0000X,Obstetrics & Gynecology Obstetrics,Provider,PCORnet
+1,207VX0201X,Obstetrics & Gynecology Gynecologic Oncology,Provider,PCORnet
+1,207W00000X,Ophthalmology,Provider,PCORnet
+1,207WX0009X,Ophthalmology Glaucoma Specialist,Provider,PCORnet
+1,207WX0107X,Ophthalmology Retina Specialist,Provider,PCORnet
+1,207WX0108X,Ophthalmology Uveitis and Ocular Inflammatory Disease,Provider,PCORnet
+1,207WX0109X,Ophthalmology Neuro-ophthalmology,Provider,PCORnet
+1,207WX0110X,Ophthalmology Pediatric Ophthalmology and Strabismus Specialist,Provider,PCORnet
+1,207WX0120X,Ophthalmology Cornea and External Diseases Speci,Provider,PCORnet
+1,207WX0200X,Ophthalmology Ophthalmic Plastic and Reconstructive Surgery,Provider,PCORnet
+1,207X00000X,Orthopaedic Surgery,Provider,PCORnet
+1,207XP3100X,Orthopaedic Surgery Pediatric Orthopaedic Surgery,Provider,PCORnet
+1,207XS0106X,Orthopaedic Surgery Hand Surgery,Provider,PCORnet
+1,207XS0114X,Orthopaedic Surgery Adult Reconstructive Orthopaedic Surgery,Provider,PCORnet
+1,207XS0117X,Orthopaedic Surgery Orthopaedic Surgery of the Spine,Provider,PCORnet
+1,207XX0004X,Orthopaedic Surgery Foot and Ankle Surgery,Provider,PCORnet
+1,207XX0005X,Orthopaedic Surgery Sports Medicine,Provider,PCORnet
+1,207XX0801X,Orthopaedic Surgery Orthopaedic Trauma,Provider,PCORnet
+1,207Y00000X,Otolaryngology,Provider,PCORnet
+1,207YP0228X,Otolaryngology Pediatric Otolaryngology,Provider,PCORnet
+1,207YS0012X,Otolaryngology Sleep Medicine,Provider,PCORnet
+1,207YS0123X,Otolaryngology Facial Plastic Surgery,Provider,PCORnet
+1,207YX0007X,Otolaryngology Plastic Surgery within the Head & Neck,Provider,PCORnet
+1,207YX0602X,Otolaryngology Otolaryngic Allergy,Provider,PCORnet
+1,207YX0901X,Otolaryngology Otology & Neurotology,Provider,PCORnet
+1,207YX0905X,Otolaryngology Otolaryngology/Facial Plastic Surgery,Provider,PCORnet
+1,207ZB0001X,Pathology Blood Banking & Transfusion Medicine,Provider,PCORnet
+1,207ZC0006X,Pathology Clinical Pathology,Provider,PCORnet
+1,207ZC0008X,Pathology Clinical Informatics,Provider,PCORnet
+1,207ZC0500X,Pathology Cytopathology,Provider,PCORnet
+1,207ZD0900X,Pathology Dermatopathology,Provider,PCORnet
+1,207ZF0201X,Pathology Forensic Pathology,Provider,PCORnet
+1,207ZH0000X,Pathology Hematology,Provider,PCORnet
+1,207ZI0100X,Pathology Immunopathology,Provider,PCORnet
+1,207ZM0300X,Pathology Medical Microbiology,Provider,PCORnet
+1,207ZN0500X,Pathology Neuropathology,Provider,PCORnet
+1,207ZP0007X,Pathology Molecular Genetic Pathology,Provider,PCORnet
+1,207ZP0101X,Pathology Anatomic Pathology,Provider,PCORnet
+1,207ZP0102X,Pathology Anatomic Pathology & Clinical Pathology,Provider,PCORnet
+1,207ZP0104X,Pathology Chemical Pathology,Provider,PCORnet
+1,207ZP0105X,Pathology Clinical Pathology/Laboratory Medicine,Provider,PCORnet
+1,207ZP0213X,Pathology Pediatric Pathology,Provider,PCORnet
+1,208000000X,Pediatrics,Provider,PCORnet
+1,2080A0000X,Pediatrics Adolescent Medicine,Provider,PCORnet
+1,2080B0002X,Pediatrics Obesity Medicine,Provider,PCORnet
+1,2080C0008X,Pediatrics Child Abuse Pediatrics,Provider,PCORnet
+1,2080H0002X,Pediatrics Hospice and Palliative Medicine,Provider,PCORnet
+1,2080I0007X,Pediatrics Clinical & Laboratory Immunology,Provider,PCORnet
+1,2080N0001X,Pediatrics Neonatal-Perinatal Medicine,Provider,PCORnet
+1,2080P0006X,Pediatrics Developmental â€“ Behavioral Pediatrics,Provider,PCORnet
+1,2080P0008X,Pediatrics Neurodevelopmental Disabilities,Provider,PCORnet
+1,2080P0201X,Pediatrics Pediatric Allergy/Immunology,Provider,PCORnet
+1,2080P0202X,Pediatrics Pediatric Cardiology,Provider,PCORnet
+1,2080P0203X,Pediatrics Pediatric Critical Care Medicine,Provider,PCORnet
+1,2080P0204X,Pediatrics Pediatric Emergency Medicine,Provider,PCORnet
+1,2080P0205X,Pediatrics Pediatric Endocrinology,Provider,PCORnet
+1,2080P0206X,Pediatrics Pediatric Gastroenterology,Provider,PCORnet
+1,2080P0207X,Pediatrics Pediatric Hematology-Oncology,Provider,PCORnet
+1,2080P0208X,Pediatrics Pediatric Infectious Diseases,Provider,PCORnet
+1,2080P0210X,Pediatrics Pediatric Nephrology,Provider,PCORnet
+1,2080P0214X,Pediatrics Pediatric Pulmonology,Provider,PCORnet
+1,2080P0216X,Pediatrics Pediatric Rheumatology,Provider,PCORnet
+1,2080S0010X,Pediatrics Sports Medicine,Provider,PCORnet
+1,2080S0012X,Pediatrics Sleep Medicine,Provider,PCORnet
+1,2080T0002X,Pediatrics Medical Toxicology,Provider,PCORnet
+1,2080T0004X,Pediatrics Pediatric Transplant Hepatology,Provider,PCORnet
+1,208100000X,Physical Medicine & Rehabilitation,Provider,PCORnet
+1,2081H0002X,Physical Medicine & Rehabilitation Hospice and Palliative Medicine,Provider,PCORnet
+1,2081N0008X,Physical Medicine & Rehabilitation Neuromuscular Medicine,Provider,PCORnet
+1,2081P0004X,Physical Medicine & Rehabilitation Spinal Cord Injury Medicine,Provider,PCORnet
+1,2081P0010X,Physical Medicine & Rehabilitation Pediatric Rehabilitation Medicine,Provider,PCORnet
+1,2081P0301X,Physical Medicine & Rehabilitation Brain Injury Medicine,Provider,PCORnet
+1,2081P2900X,Physical Medicine & Rehabilitation Pain Medicine,Provider,PCORnet
+1,2081S0010X,Physical Medicine & Rehabilitation Sports Medicine,Provider,PCORnet
+1,208200000X,Plastic Surgery,Provider,PCORnet
+1,2082S0099X,Plastic Surgery Plastic Surgery Within the Head and Neck,Provider,PCORnet
+1,2082S0105X,Plastic Surgery Surgery of the Hand,Provider,PCORnet
+1,2083A0100X,Preventive Medicine Aerospace Medicine,Provider,PCORnet
+1,2083A0300X,Preventive Medicine Addiction Medicine,Provider,PCORnet
+1,2083B0002X,Preventive Medicine Obesity Medicine,Provider,PCORnet
+1,2083C0008X,Preventive Medicine Clinical Informatics,Provider,PCORnet
+1,2083P0011X,Preventive Medicine Undersea and Hyperbaric Medicine,Provider,PCORnet
+1,2083P0500X,Preventive Medicine Preventive Medicine/Occupational Environmental Medicine,Provider,PCORnet
+1,2083P0901X,Preventive Medicine Public Health & General Preventive Medicine,Provider,PCORnet
+1,2083S0010X,Preventive Medicine Sports Medicine,Provider,PCORnet
+1,2083T0002X,Preventive Medicine Medical Toxicology,Provider,PCORnet
+1,2083X0100X,Preventive Medicine Occupational Medicine,Provider,PCORnet
+1,2084A0401X,Psychiatry & Neurology Addiction Medicine,Provider,PCORnet
+1,2084A2900X,Psychiatry & Neurology Neurocritical Care,Provider,PCORnet
+1,2084B0002X,Psychiatry & Neurology Obesity Medicine,Provider,PCORnet
+1,2084B0040X,Psychiatry & Neurology Behavioral Neurology & Neuropsychiatry,Provider,PCORnet
+1,2084D0003X,Psychiatry & Neurology Diagnostic Neuroimaging,Provider,PCORnet
+1,2084E0001X,Psychiatry & Neurology Epilepsy,Provider,PCORnet
+1,2084F0202X,Psychiatry & Neurology Forensic Psychiatry,Provider,PCORnet
+1,2084H0002X,Psychiatry & Neurology Hospice and Palliative Medicine,Provider,PCORnet
+1,2084N0008X,Psychiatry & Neurology Neuromuscular Medicine,Provider,PCORnet
+1,2084N0400X,Psychiatry & Neurology Neurology,Provider,PCORnet
+1,2084N0402X,Psychiatry & Neurology Neurology with Special Qualifications in Child Neurology,Provider,PCORnet
+1,2084N0600X,Psychiatry & Neurology Clinical Neurophysiology,Provider,PCORnet
+1,2084P0005X,Psychiatry & Neurology Neurodevelopmental Disabilities,Provider,PCORnet
+1,2084P0015X,Psychiatry & Neurology Psychosomatic Medicine,Provider,PCORnet
+1,2084P0301X,Psychiatry & Neurology Brain Injury Medicine,Provider,PCORnet
+1,2084P0800X,Psychiatry & Neurology Psychiatry,Provider,PCORnet
+1,2084P0802X,Psychiatry & Neurology Addiction Psychiatry,Provider,PCORnet
+1,2084P0804X,Psychiatry & Neurology Child & Adolescent Psychiatry,Provider,PCORnet
+1,2084P0805X,Psychiatry & Neurology Geriatric Psychiatry,Provider,PCORnet
+1,2084P2900X,Psychiatry & Neurology Pain Medicine,Provider,PCORnet
+1,2084S0010X,Psychiatry & Neurology Sports Medicine,Provider,PCORnet
+1,2084S0012X,Psychiatry & Neurology Sleep Medicine,Provider,PCORnet
+1,2084V0102X,Psychiatry & Neurology Vascular Neurology,Provider,PCORnet
+1,2085B0100X,Radiology Body Imaging,Provider,PCORnet
+1,2085D0003X,Radiology Diagnostic Neuroimaging,Provider,PCORnet
+1,2085H0002X,Radiology Hospice and Palliative Medicine,Provider,PCORnet
+1,2085N0700X,Radiology Neuroradiology,Provider,PCORnet
+1,2085N0904X,Radiology Nuclear Radiology,Provider,PCORnet
+1,2085P0229X,Radiology Pediatric Radiology,Provider,PCORnet
+1,2085R0001X,Radiology Radiation Oncology,Provider,PCORnet
+1,2085R0202X,Radiology Diagnostic Radiology,Provider,PCORnet
+1,2085R0203X,Radiology Therapeutic Radiology,Provider,PCORnet
+1,2085R0204X,Radiology Vascular & Interventional Radiology,Provider,PCORnet
+1,2085R0205X,Radiology Radiological Physics,Provider,PCORnet
+1,2085U0001X,Radiology Diagnostic Ultrasound,Provider,PCORnet
+1,208600000X,Surgery,Provider,PCORnet
+1,2086H0002X,Surgery Hospice and Palliative Medicine,Provider,PCORnet
+1,2086S0102X,Surgery Surgical Critical Care,Provider,PCORnet
+1,2086S0105X,Surgery Surgery of the Hand,Provider,PCORnet
+1,2086S0120X,Surgery Pediatric Surgery,Provider,PCORnet
+1,2086S0122X,Surgery Plastic and Reconstructive Surgery,Provider,PCORnet
+1,2086S0127X,Surgery Trauma Surgery,Provider,PCORnet
+1,2086S0129X,Surgery Vascular Surgery,Provider,PCORnet
+1,2086X0206X,Surgery Surgical Oncology,Provider,PCORnet
+1,208800000X,Urology,Provider,PCORnet
+1,2088F0040X,Urology Female Pelvic Medicine and Reconstructive Surgery,Provider,PCORnet
+1,2088P0231X,Urology Pediatric Urology,Provider,PCORnet
+1,208C00000X,Colon & Rectal Surgery,Provider,PCORnet
+1,208D00000X,General Practice,Provider,PCORnet
+1,208G00000X,Thoracic Surgery (Cardiothoracic Vascular Surgery),Provider,PCORnet
+1,208M00000X,Hospitalist,Provider,PCORnet
+1,208U00000X,Clinical Pharmacology,Provider,PCORnet
+1,208VP0000X,Pain Medicine Pain Medicine,Provider,PCORnet
+1,208VP0014X,Pain Medicine Interventional Pain Medicine,Provider,PCORnet
+1,209800000X,Legal Medicine,Provider,PCORnet
+1,211D00000X,"Assistant, Podiatric",Provider,PCORnet
+1,213E00000X,Podiatrist,Provider,PCORnet
+1,213EG0000X,Podiatrist General Practice,Provider,PCORnet
+1,213EP0504X,Podiatrist Public Medicine,Provider,PCORnet
+1,213EP1101X,Podiatrist Primary Podiatric Medicine,Provider,PCORnet
+1,213ER0200X,Podiatrist Radiology,Provider,PCORnet
+1,213ES0000X,Podiatrist Sports Medicine,Provider,PCORnet
+1,213ES0103X,Podiatrist Foot & Ankle Surgery,Provider,PCORnet
+1,213ES0131X,Podiatrist Foot Surgery,Provider,PCORnet
+1,221700000X,Art Therapist,Provider,PCORnet
+1,222Q00000X,Developmental Therapist,Provider,PCORnet
+1,222Z00000X,Orthotist,Provider,PCORnet
+1,224900000X,Mastectomy Fitter,Provider,PCORnet
+1,224L00000X,Pedorthist,Provider,PCORnet
+1,224P00000X,Prosthetist,Provider,PCORnet
+1,224Y00000X,Clinical Exercise Physiologist,Provider,PCORnet
+1,224Z00000X,Occupational Therapy Assistant,Provider,PCORnet
+1,224ZE0001X,Occupational Therapy Assistant Environmental Modification,Provider,PCORnet
+1,224ZF0002X,"Occupational Therapy Assistant Feeding, Eating & Swallowing",Provider,PCORnet
+1,224ZL0004X,Occupational Therapy Assistant Low Vision,Provider,PCORnet
+1,224ZR0403X,Occupational Therapy Assistant Driving and Community Mobility,Provider,PCORnet
+1,225000000X,Orthotic Fitter,Provider,PCORnet
+1,225100000X,Physical Therapist,Provider,PCORnet
+1,2251C2600X,Physical Therapist Cardiopulmonary,Provider,PCORnet
+1,2251E1200X,Physical Therapist Ergonomics,Provider,PCORnet
+1,2251E1300X,"Physical Therapist Electrophysiology, Clinical",Provider,PCORnet
+1,2251G0304X,Physical Therapist Geriatrics,Provider,PCORnet
+1,2251H1200X,Physical Therapist Hand,Provider,PCORnet
+1,2251H1300X,Physical Therapist Human Factors,Provider,PCORnet
+1,2251N0400X,Physical Therapist Neurology,Provider,PCORnet
+1,2251P0200X,Physical Therapist Pediatrics,Provider,PCORnet
+1,2251S0007X,Physical Therapist Sports,Provider,PCORnet
+1,2251X0800X,Physical Therapist Orthopedic,Provider,PCORnet
+1,225200000X,Physical Therapy Assistant,Provider,PCORnet
+1,225400000X,Rehabilitation Practitioner,Provider,PCORnet
+1,225500000X,Specialist/Technologist,Provider,PCORnet
+1,2255A2300X,Specialist/Technologist Athletic Trainer,Provider,PCORnet
+1,2255R0406X,"Specialist/Technologist Rehabilitation, Blind",Provider,PCORnet
+1,225600000X,Dance Therapist,Provider,PCORnet
+1,225700000X,Massage Therapist,Provider,PCORnet
+1,225800000X,Recreation Therapist,Provider,PCORnet
+1,225A00000X,Music Therapist,Provider,PCORnet
+1,225B00000X,Pulmonary Function Technologist,Provider,PCORnet
+1,225C00000X,Rehabilitation Counselor,Provider,PCORnet
+1,225CA2400X,Rehabilitation Counselor Assistive Technology Practitioner,Provider,PCORnet
+1,225CA2500X,Rehabilitation Counselor Assistive Technology Supplier,Provider,PCORnet
+1,225CX0006X,Rehabilitation Counselor Orientation and Mobility Training Provider,Provider,PCORnet
+1,225X00000X,Occupational Therapist,Provider,PCORnet
+1,225XE0001X,Occupational Therapist Environmental Modification,Provider,PCORnet
+1,225XE1200X,Occupational Therapist Ergonomics,Provider,PCORnet
+1,225XF0002X,"Occupational Therapist Feeding, Eating & Swallowing",Provider,PCORnet
+1,225XG0600X,Occupational Therapist Gerontology,Provider,PCORnet
+1,225XH1200X,Occupational Therapist Hand,Provider,PCORnet
+1,225XH1300X,Occupational Therapist Human Factors,Provider,PCORnet
+1,225XL0004X,Occupational Therapist Low Vision,Provider,PCORnet
+1,225XM0800X,Occupational Therapist Mental Health,Provider,PCORnet
+1,225XN1300X,Occupational Therapist Neurorehabilitation,Provider,PCORnet
+1,225XP0019X,Occupational Therapist Physical Rehabilitation,Provider,PCORnet
+1,225XP0200X,Occupational Therapist Pediatrics,Provider,PCORnet
+1,225XR0403X,Occupational Therapist Driving and Community Mobility,Provider,PCORnet
+1,226000000X,Recreational Therapist Assistant,Provider,PCORnet
+1,226300000X,Kinesiotherapist,Provider,PCORnet
+1,227800000X,"Respiratory Therapist, Certified",Provider,PCORnet
+1,2278C0205X,"Respiratory Therapist, Certified Critical Care",Provider,PCORnet
+1,2278E0002X,"Respiratory Therapist, Certified Emergency Care",Provider,PCORnet
+1,2278E1000X,"Respiratory Therapist, Certified Educational",Provider,PCORnet
+1,2278G0305X,"Respiratory Therapist, Certified Geriatric Care",Provider,PCORnet
+1,2278G1100X,"Respiratory Therapist, Certified General Care",Provider,PCORnet
+1,2278H0200X,"Respiratory Therapist, Certified Home Health",Provider,PCORnet
+1,2278P1004X,"Respiratory Therapist, Certified Pulmonary Diagnostics",Provider,PCORnet
+1,2278P1005X,"Respiratory Therapist, Certified Pulmonary Rehabilitation",Provider,PCORnet
+1,2278P1006X,"Respiratory Therapist, Certified Pulmonary Function Technologist",Provider,PCORnet
+1,2278P3800X,"Respiratory Therapist, Certified Palliative/Hospice",Provider,PCORnet
+1,2278P3900X,"Respiratory Therapist, Certified Neonatal/Pediatrics",Provider,PCORnet
+1,2278P4000X,"Respiratory Therapist, Certified Patient Transport",Provider,PCORnet
+1,2278S1500X,"Respiratory Therapist, Certified SNF/Subacute Care",Provider,PCORnet
+1,227900000X,"Respiratory Therapist, Registered",Provider,PCORnet
+1,2279C0205X,"Respiratory Therapist, Registered Critical Care",Provider,PCORnet
+1,2279E0002X,"Respiratory Therapist, Registered Emergency Care",Provider,PCORnet
+1,2279E1000X,"Respiratory Therapist, Registered Educational",Provider,PCORnet
+1,2279G0305X,"Respiratory Therapist, Registered Geriatric Care",Provider,PCORnet
+1,2279G1100X,"Respiratory Therapist, Registered General Care",Provider,PCORnet
+1,2279H0200X,"Respiratory Therapist, Registered Home Health",Provider,PCORnet
+1,2279P1004X,"Respiratory Therapist, Registered Pulmonary Diagnostics",Provider,PCORnet
+1,2279P1005X,"Respiratory Therapist, Registered Pulmonary Rehabilitation",Provider,PCORnet
+1,2279P1006X,"Respiratory Therapist, Registered Pulmonary Function Technologist",Provider,PCORnet
+1,2279P3800X,"Respiratory Therapist, Registered Palliative/Hospice",Provider,PCORnet
+1,2279P3900X,"Respiratory Therapist, Registered Neonatal/Pediatrics",Provider,PCORnet
+1,2279P4000X,"Respiratory Therapist, Registered Patient Transport",Provider,PCORnet
+1,2279S1500X,"Respiratory Therapist, Registered SNF/Subacute Care",Provider,PCORnet
+1,229N00000X,Anaplastologist,Provider,PCORnet
+1,231H00000X,Audiologist,Provider,PCORnet
+1,231HA2400X,Audiologist Assistive Technology Practitioner,Provider,PCORnet
+1,231HA2500X,Audiologist Assistive Technology Supplier,Provider,PCORnet
+1,235500000X,Specialist/Technologist,Provider,PCORnet
+1,2355A2700X,Specialist/Technologist Audiology Assistant,Provider,PCORnet
+1,2355S0801X,Specialist/Technologist Speech-Language Assistant,Provider,PCORnet
+1,235Z00000X,Speech-Language Pathologist,Provider,PCORnet
+1,237600000X,Audiologist-Hearing Aid Fitter,Provider,PCORnet
+1,237700000X,Hearing Instrument Specialist,Provider,PCORnet
+1,242T00000X,Perfusionist,Provider,PCORnet
+1,243U00000X,Radiology Practitioner Assistant,Provider,PCORnet
+1,246Q00000X,"Spec/Tech, Pathology",Provider,PCORnet
+1,246QB0000X,"Spec/Tech, Pathology Blood Banking",Provider,PCORnet
+1,246QC1000X,"Spec/Tech, Pathology Chemistry",Provider,PCORnet
+1,246QC2700X,"Spec/Tech, Pathology Cytotechnology",Provider,PCORnet
+1,246QH0000X,"Spec/Tech, Pathology Hematology",Provider,PCORnet
+1,246QH0401X,"Spec/Tech, Pathology Hemapheresis Practitioner",Provider,PCORnet
+1,246QH0600X,"Spec/Tech, Pathology Histology",Provider,PCORnet
+1,246QI0000X,"Spec/Tech, Pathology Immunology",Provider,PCORnet
+1,246QL0900X,"Spec/Tech, Pathology Laboratory Management",Provider,PCORnet
+1,246QL0901X,"Spec/Tech, Pathology Laboratory Management, Diplomate",Provider,PCORnet
+1,246QM0706X,"Spec/Tech, Pathology Medical Technologist",Provider,PCORnet
+1,246QM0900X,"Spec/Tech, Pathology Microbiology",Provider,PCORnet
+1,246R00000X,"Technician, Pathology",Provider,PCORnet
+1,246RH0600X,"Technician, Pathology Histology",Provider,PCORnet
+1,246RM2200X,"Technician, Pathology Medical Laboratory",Provider,PCORnet
+1,246RP1900X,"Technician, Pathology Phlebotomy",Provider,PCORnet
+1,246W00000X,"Technician, Cardiology",Provider,PCORnet
+1,246X00000X,"Spec/Tech, Cardiovascular",Provider,PCORnet
+1,246XC2901X,"Spec/Tech, Cardiovascular Cardiovascular Invasive Specialist",Provider,PCORnet
+1,246XC2903X,"Spec/Tech, Cardiovascular Vascular Specialist",Provider,PCORnet
+1,246XS1301X,"Spec/Tech, Cardiovascular Sonography",Provider,PCORnet
+1,246Y00000X,"Spec/Tech, Health Info",Provider,PCORnet
+1,246YC3301X,"Spec/Tech, Health Info Coding Specialist, Hospital Based",Provider,PCORnet
+1,246YC3302X,"Spec/Tech, Health Info Coding Specialist, Physician Office Based",Provider,PCORnet
+1,246YR1600X,"Spec/Tech, Health Info Registered Record Administrator",Provider,PCORnet
+1,246Z00000X,"Specialist/Technologist, Other",Provider,PCORnet
+1,246ZA2600X,"Specialist/Technologist, Other Art, Medical",Provider,PCORnet
+1,246ZB0301X,"Specialist/Technologist, Other Biomedical Engineering",Provider,PCORnet
+1,246ZB0302X,"Specialist/Technologist, Other Biomedical Photographer",Provider,PCORnet
+1,246ZB0500X,"Specialist/Technologist, Other Biochemist",Provider,PCORnet
+1,246ZB0600X,"Specialist/Technologist, Other Biostatistician",Provider,PCORnet
+1,246ZC0007X,"Specialist/Technologist, Other Surgical Assistant",Provider,PCORnet
+1,246ZE0500X,"Specialist/Technologist, Other EEG",Provider,PCORnet
+1,246ZE0600X,"Specialist/Technologist, Other Electroneurodiagnostic",Provider,PCORnet
+1,246ZG0701X,"Specialist/Technologist, Other Graphics Methods",Provider,PCORnet
+1,246ZG1000X,"Specialist/Technologist, Other Geneticist, Medical (PhD)",Provider,PCORnet
+1,246ZI1000X,"Specialist/Technologist, Other Illustration, Medical",Provider,PCORnet
+1,246ZN0300X,"Specialist/Technologist, Other Nephrology",Provider,PCORnet
+1,246ZS0410X,"Specialist/Technologist, Other Surgical Technologist",Provider,PCORnet
+1,246ZX2200X,"Specialist/Technologist, Other Orthopedic Assistant",Provider,PCORnet
+1,247000000X,"Technician, Health Information",Provider,PCORnet
+1,2470A2800X,"Technician, Health Information Assistant Record Technician",Provider,PCORnet
+1,247100000X,Radiologic Technologist,Provider,PCORnet
+1,2471B0102X,Radiologic Technologist Bone Densitometry,Provider,PCORnet
+1,2471C1101X,Radiologic Technologist Cardiovascular-Interventional Technology,Provider,PCORnet
+1,2471C1106X,Radiologic Technologist Cardiac-Interventional Technology,Provider,PCORnet
+1,2471C3401X,Radiologic Technologist Computed Tomography,Provider,PCORnet
+1,2471C3402X,Radiologic Technologist Radiography,Provider,PCORnet
+1,2471M1202X,Radiologic Technologist Magnetic Resonance Imaging,Provider,PCORnet
+1,2471M2300X,Radiologic Technologist Mammography,Provider,PCORnet
+1,2471N0900X,Radiologic Technologist Nuclear Medicine Technology,Provider,PCORnet
+1,2471Q0001X,Radiologic Technologist Quality Management,Provider,PCORnet
+1,2471R0002X,Radiologic Technologist Radiation Therapy,Provider,PCORnet
+1,2471S1302X,Radiologic Technologist Sonography,Provider,PCORnet
+1,2471V0105X,Radiologic Technologist Vascular Sonography,Provider,PCORnet
+1,2471V0106X,Radiologic Technologist Vascular-Interventional Technology,Provider,PCORnet
+1,247200000X,"Technician, Other",Provider,PCORnet
+1,2472B0301X,"Technician, Other Biomedical Engineering",Provider,PCORnet
+1,2472D0500X,"Technician, Other Darkroom",Provider,PCORnet
+1,2472E0500X,"Technician, Other EEG",Provider,PCORnet
+1,2472R0900X,"Technician, Other Renal Dialysis",Provider,PCORnet
+1,2472V0600X,"Technician, Other Veterinary",Provider,PCORnet
+1,247ZC0005X,"Pathology Clinical Laboratory Director, Non-physician",Provider,PCORnet
+1,251300000X,Local Education Agency (LEA),Provider,PCORnet
+1,251B00000X,Case Management,Provider,PCORnet
+1,251C00000X,"Day Training, Developmentally Disabled Services",Provider,PCORnet
+1,251E00000X,Home Health,Provider,PCORnet
+1,251F00000X,Home Infusion,Provider,PCORnet
+1,251G00000X,"Hospice Care, Community Based",Provider,PCORnet
+1,251J00000X,Nursing Care,Provider,PCORnet
+1,251K00000X,Public Health or Welfare,Provider,PCORnet
+1,251S00000X,Community/Behavioral Health,Provider,PCORnet
+1,251T00000X,PACE Provider Organization,Provider,PCORnet
+1,251V00000X,Voluntary or Charitable,Provider,PCORnet
+1,251X00000X,Supports Brokerage,Provider,PCORnet
+1,252Y00000X,Early Intervention Provider Agency,Provider,PCORnet
+1,253J00000X,Foster Care Agency,Provider,PCORnet
+1,253Z00000X,In Home Supportive Care,Provider,PCORnet
+1,261Q00000X,Clinic/Center,Provider,PCORnet
+1,261QA0005X,Clinic/Center Ambulatory Family Planning Facility,Provider,PCORnet
+1,261QA0006X,Clinic/Center Ambulatory Fertility Facility,Provider,PCORnet
+1,261QA0600X,Clinic/Center Adult Day Care,Provider,PCORnet
+1,261QA0900X,Clinic/Center Amputee,Provider,PCORnet
+1,261QA1903X,Clinic/Center Ambulatory Surgical,Provider,PCORnet
+1,261QA3000X,Clinic/Center Augmentative Communication,Provider,PCORnet
+1,261QB0400X,Clinic/Center Birthing,Provider,PCORnet
+1,261QC0050X,Clinic/Center Critical Access Hospital,Provider,PCORnet
+1,261QC1500X,Clinic/Center Community Health,Provider,PCORnet
+1,261QC1800X,Clinic/Center Corporate Health,Provider,PCORnet
+1,261QD0000X,Clinic/Center Dental,Provider,PCORnet
+1,261QD1600X,Clinic/Center Developmental Disabilities,Provider,PCORnet
+1,261QE0002X,Clinic/Center Emergency Care,Provider,PCORnet
+1,261QE0700X,Clinic/Center End-Stage Renal Disease (ESRD) Treatment,Provider,PCORnet
+1,261QE0800X,Clinic/Center Endoscopy,Provider,PCORnet
+1,261QF0050X,"Clinic/Center Family Planning, Non-Surgical",Provider,PCORnet
+1,261QF0400X,Clinic/Center Federally Qualified Health Center (FQHC),Provider,PCORnet
+1,261QG0250X,Clinic/Center Genetics,Provider,PCORnet
+1,261QH0100X,Clinic/Center Health Service,Provider,PCORnet
+1,261QH0700X,Clinic/Center Hearing and Speech,Provider,PCORnet
+1,261QI0500X,Clinic/Center Infusion Therapy,Provider,PCORnet
+1,261QL0400X,Clinic/Center Lithotripsy,Provider,PCORnet
+1,261QM0801X,Clinic/Center Mental Health (Including Community Mental Health Center),Provider,PCORnet
+1,261QM0850X,Clinic/Center Adult Mental Health,Provider,PCORnet
+1,261QM0855X,Clinic/Center Adolescent and Children Mental Health,Provider,PCORnet
+1,261QM1000X,Clinic/Center Migrant Health,Provider,PCORnet
+1,261QM1100X,Clinic/Center Military/U.S. Coast Guard Outpatient,Provider,PCORnet
+1,261QM1101X,Clinic/Center Military and U.S. Coast Guard Ambulatory Procedure,Provider,PCORnet
+1,261QM1102X,Clinic/Center Military Outpatient Operational (Transportable) Component,Provider,PCORnet
+1,261QM1103X,Clinic/Center Military Ambulatory Procedure Visits Operational (Transportable),Provider,PCORnet
+1,261QM1200X,Clinic/Center Magnetic Resonance Imaging (MRI),Provider,PCORnet
+1,261QM1300X,Clinic/Center Multi-Specialty,Provider,PCORnet
+1,261QM2500X,Clinic/Center Medical Specialty,Provider,PCORnet
+1,261QM2800X,Clinic/Center Methadone Clinic,Provider,PCORnet
+1,261QM3000X,Clinic/Center Medically Fragile Intants and Children Day Care,Provider,PCORnet
+1,261QP0904X,"Clinic/Center Public Health, Federal",Provider,PCORnet
+1,261QP0905X,"Clinic/Center Public Health, State or Local",Provider,PCORnet
+1,261QP1100X,Clinic/Center Podiatric,Provider,PCORnet
+1,261QP2000X,Clinic/Center Physical Therapy,Provider,PCORnet
+1,261QP2300X,Clinic/Center Primary Care,Provider,PCORnet
+1,261QP2400X,Clinic/Center Prison Health,Provider,PCORnet
+1,261QP3300X,Clinic/Center Pain,Provider,PCORnet
+1,261QR0200X,Clinic/Center Radiology,Provider,PCORnet
+1,261QR0206X,"Clinic/Center Radiology, Mammography",Provider,PCORnet
+1,261QR0207X,"Clinic/Center Radiology, Mobile Mammography",Provider,PCORnet
+1,261QR0208X,"Clinic/Center Radiology, Mobile",Provider,PCORnet
+1,261QR0400X,Clinic/Center Rehabilitation,Provider,PCORnet
+1,261QR0401X,"Clinic/Center Rehabilitation, Comprehensive Outpatient Rehabilitation Facility (CORF)",Provider,PCORnet
+1,261QR0404X,"Clinic/Center Rehabilitation, Cardiac Facilities",Provider,PCORnet
+1,261QR0405X,"Clinic/Center Rehabilitation, Substance Use Disorder",Provider,PCORnet
+1,261QR0800X,Clinic/Center Recovery Care,Provider,PCORnet
+1,261QR1100X,Clinic/Center Research,Provider,PCORnet
+1,261QR1300X,Clinic/Center Rural Health,Provider,PCORnet
+1,261QS0112X,Clinic/Center Oral and Maxillofacial Surgery,Provider,PCORnet
+1,261QS0132X,Clinic/Center Ophthalmologic Surgery,Provider,PCORnet
+1,261QS1000X,Clinic/Center Student Health,Provider,PCORnet
+1,261QS1200X,Clinic/Center Sleep Disorder Diagnostic,Provider,PCORnet
+1,261QU0200X,Clinic/Center Urgent Care,Provider,PCORnet
+1,261QV0200X,Clinic/Center VA,Provider,PCORnet
+1,261QX0100X,Clinic/Center Occupational Medicine,Provider,PCORnet
+1,261QX0200X,Clinic/Center Oncology,Provider,PCORnet
+1,261QX0203X,"Clinic/Center Oncology, Radiation",Provider,PCORnet
+1,273100000X,Epilepsy Unit,Provider,PCORnet
+1,273R00000X,Psychiatric Unit,Provider,PCORnet
+1,273Y00000X,Rehabilitation Unit,Provider,PCORnet
+1,275N00000X,Medicare Defined Swing Bed Unit,Provider,PCORnet
+1,276400000X,"Rehabilitation, Substance Use Disorder Unit",Provider,PCORnet
+1,281P00000X,Chronic Disease Hospital,Provider,PCORnet
+1,281PC2000X,Chronic Disease Hospital Children,Provider,PCORnet
+1,282E00000X,Long Term Care Hospital,Provider,PCORnet
+1,282J00000X,Religious Nonmedical Health Care Institution,Provider,PCORnet
+1,282N00000X,General Acute Care Hospital,Provider,PCORnet
+1,282NC0060X,General Acute Care Hospital Critical Access,Provider,PCORnet
+1,282NC2000X,General Acute Care Hospital Children,Provider,PCORnet
+1,282NR1301X,General Acute Care Hospital Rural,Provider,PCORnet
+1,282NW0100X,General Acute Care Hospital Women,Provider,PCORnet
+1,283Q00000X,Psychiatric Hospital,Provider,PCORnet
+1,283X00000X,Rehabilitation Hospital,Provider,PCORnet
+1,283XC2000X,Rehabilitation Hospital Children,Provider,PCORnet
+1,284300000X,Special Hospital,Provider,PCORnet
+1,286500000X,Military Hospital,Provider,PCORnet
+1,2865C1500X,Military Hospital Community Health,Provider,PCORnet
+1,2865M2000X,Military Hospital Military General Acute Care Hospital,Provider,PCORnet
+1,2865X1600X,Military Hospital Military General Acute Care Hospital. Operational (Transportable),Provider,PCORnet
+1,287300000X,Christian Science Sanitorium,Provider,PCORnet
+1,291900000X,Military Clinical Medical Laboratory,Provider,PCORnet
+1,291U00000X,Clinical Medical Laboratory,Provider,PCORnet
+1,292200000X,Dental Laboratory,Provider,PCORnet
+1,293D00000X,Physiological Laboratory,Provider,PCORnet
+1,302F00000X,Exclusive Provider Organization,Provider,PCORnet
+1,302R00000X,Health Maintenance Organization,Provider,PCORnet
+1,305R00000X,Preferred Provider Organization,Provider,PCORnet
+1,305S00000X,Point of Service,Provider,PCORnet
+1,310400000X,Assisted Living Facility,Provider,PCORnet
+1,3104A0625X,"Assisted Living Facility Assisted Living, Mental Illness",Provider,PCORnet
+1,3104A0630X,"Assisted Living Facility Assisted Living, Behavioral Disturbances",Provider,PCORnet
+1,310500000X,"Intermediate Care Facility, Mental Illness",Provider,PCORnet
+1,311500000X,Alzheimer Center (Dementia Center),Provider,PCORnet
+1,311Z00000X,Custodial Care Facility,Provider,PCORnet
+1,311ZA0620X,Custodial Care Facility Adult Care Home,Provider,PCORnet
+1,313M00000X,Nursing Facility/Intermediate Care Facility,Provider,PCORnet
+1,314000000X,Skilled Nursing Facility,Provider,PCORnet
+1,3140N1450X,"Skilled Nursing Facility Nursing Care, Pediatric",Provider,PCORnet
+1,315D00000X,"Hospice, Inpatient",Provider,PCORnet
+1,315P00000X,"Intermediate Care Facility, Mentally Retarded",Provider,PCORnet
+1,317400000X,Christian Science Facility,Provider,PCORnet
+1,320600000X,"Residential Treatment Facility, Mental Retardation and/or Developmental Disabilities",Provider,PCORnet
+1,320700000X,"Residential Treatment Facility, Physical Disabilities",Provider,PCORnet
+1,320800000X,"Community Based Residential Treatment Facility, Mental Illness",Provider,PCORnet
+1,320900000X,"Community Based Residential Treatment, Mental Retardation and/or Developmental Disabilities",Provider,PCORnet
+1,322D00000X,"Residential Treatment Facility, Emotionally Disturbed Children",Provider,PCORnet
+1,323P00000X,Psychiatric Residential Treatment Facility,Provider,PCORnet
+1,324500000X,Substance Abuse Rehabilitation Facility,Provider,PCORnet
+1,3245S0500X,"Substance Abuse Rehabilitation Facility Substance Abuse Treatment, Children",Provider,PCORnet
+1,331L00000X,Blood Bank,Provider,PCORnet
+1,332000000X,Military/U.S. Coast Guard Pharmacy,Provider,PCORnet
+1,332100000X,Department of Veterans Affairs (VA) Pharmacy,Provider,PCORnet
+1,332800000X,Indian Health Service/Tribal/Urban Indian Health (I/T/U) Pharmacy,Provider,PCORnet
+1,332900000X,Non-Pharmacy Dispensing Site,Provider,PCORnet
+1,332B00000X,Durable Medical Equipment & Medical Supplies,Provider,PCORnet
+1,332BC3200X,Durable Medical Equipment & Medical Supplies Customized Equipment,Provider,PCORnet
+1,332BD1200X,Durable Medical Equipment & Medical Supplies Dialysis Equipment & Supplies,Provider,PCORnet
+1,332BN1400X,Durable Medical Equipment & Medical Supplies Nursing Facility Supplies,Provider,PCORnet
+1,332BP3500X,Durable Medical Equipment & Medical Supplies Parenteral & Enteral Nutrition,Provider,PCORnet
+1,332BX2000X,Durable Medical Equipment & Medical Supplies Oxygen Equipment & Supplies,Provider,PCORnet
+1,332G00000X,Eye Bank,Provider,PCORnet
+1,332H00000X,"Eyewear Supplier (Equipment, not the service)",Provider,PCORnet
+1,332S00000X,Hearing Aid Equipment,Provider,PCORnet
+1,332U00000X,Home Delivered Meals,Provider,PCORnet
+1,333300000X,Emergency Response System Companies,Provider,PCORnet
+1,333600000X,Pharmacy,Provider,PCORnet
+1,3336C0002X,Pharmacy Clinic Pharmacy,Provider,PCORnet
+1,3336C0003X,Pharmacy Community/Retail Pharmacy,Provider,PCORnet
+1,3336C0004X,Pharmacy Compounding Pharmacy,Provider,PCORnet
+1,3336H0001X,Pharmacy Home Infusion Therapy Pharmacy,Provider,PCORnet
+1,3336I0012X,Pharmacy Institutional Pharmacy,Provider,PCORnet
+1,3336L0003X,Pharmacy Long Term Care Pharmacy,Provider,PCORnet
+1,3336M0002X,Pharmacy Mail Order Pharmacy,Provider,PCORnet
+1,3336M0003X,Pharmacy Managed Care Organization Pharmacy,Provider,PCORnet
+1,3336N0007X,Pharmacy Nuclear Pharmacy,Provider,PCORnet
+1,3336S0011X,Pharmacy Specialty Pharmacy,Provider,PCORnet
+1,335E00000X,Prosthetic/Orthotic Supplier,Provider,PCORnet
+1,335G00000X,Medical Foods Supplier,Provider,PCORnet
+1,335U00000X,Organ Procurement Organization,Provider,PCORnet
+1,335V00000X,Portable X-ray and/or Other Portable Diagnostic Imaging Supplier,Provider,PCORnet
+1,341600000X,Ambulance,Provider,PCORnet
+1,3416A0800X,Ambulance Air Transport,Provider,PCORnet
+1,3416L0300X,Ambulance Land Transport,Provider,PCORnet
+1,3416S0300X,Ambulance Water Transport,Provider,PCORnet
+1,341800000X,Military/U.S. Coast Guard Transport,Provider,PCORnet
+1,3418M1110X,"Military/U.S. Coast Guard Transport Military or U.S. Coast Guard Ambulance, Ground Transport",Provider,PCORnet
+1,3418M1120X,"Military/U.S. Coast Guard Transport Military or U.S. Coast Guard Ambulance, Air Transport",Provider,PCORnet
+1,3418M1130X,"Military/U.S. Coast Guard Transport Military or U.S. Coast Guard Ambulance, Water Transport",Provider,PCORnet
+1,342000000X,Transportation Network Company,Provider,PCORnet
+1,343800000X,Secured Medical Transport (VAN),Provider,PCORnet
+1,343900000X,Non-emergency Medical Transport (VAN),Provider,PCORnet
+1,344600000X,Taxi,Provider,PCORnet
+1,344800000X,Air Carrier,Provider,PCORnet
+1,347B00000X,Bus,Provider,PCORnet
+1,347C00000X,Private Vehicle,Provider,PCORnet
+1,347D00000X,Train,Provider,PCORnet
+1,347E00000X,Transportation Broker,Provider,PCORnet
+1,363A00000X,Physician Assistant,Provider,PCORnet
+1,363AM0700X,Physician Assistant Medical,Provider,PCORnet
+1,363AS0400X,Physician Assistant Surgical Technologist,Provider,PCORnet
+1,363L00000X,Nurse Practitioner,Provider,PCORnet
+1,363LA2100X,Nurse Practitioner Acute Care,Provider,PCORnet
+1,363LA2200X,Nurse Practitioner Adult Health,Provider,PCORnet
+1,363LC0200X,Nurse Practitioner Critical Care Medicine,Provider,PCORnet
+1,363LC1500X,Nurse Practitioner Community Health,Provider,PCORnet
+1,363LF0000X,Nurse Practitioner Family,Provider,PCORnet
+1,363LG0600X,Nurse Practitioner Gerontology,Provider,PCORnet
+1,363LN0000X,Nurse Practitioner Neonatal,Provider,PCORnet
+1,363LN0005X,"Nurse Practitioner Neonatal, Critical Care",Provider,PCORnet
+1,363LP0200X,Nurse Practitioner Pediatrics,Provider,PCORnet
+1,363LP0222X,"Nurse Practitioner Pediatrics, Critical Care",Provider,PCORnet
+1,363LP0808X,Nurse Practitioner Psych/Mental Health,Provider,PCORnet
+1,363LP1700X,Nurse Practitioner Perinatal,Provider,PCORnet
+1,363LP2300X,Nurse Practitioner Primary Care,Provider,PCORnet
+1,363LS0200X,Nurse Practitioner School,Provider,PCORnet
+1,363LW0102X,Nurse Practitioner Women's Health,Provider,PCORnet
+1,363LX0001X,Nurse Practitioner Obstetrics & Gynecology,Provider,PCORnet
+1,363LX0106X,Nurse Practitioner Occupational Health,Provider,PCORnet
+1,364S00000X,Clinical Nurse Specialist,Provider,PCORnet
+1,364SA2100X,Clinical Nurse Specialist Acute Care,Provider,PCORnet
+1,364SA2200X,Clinical Nurse Specialist Adult Health,Provider,PCORnet
+1,364SC0200X,Clinical Nurse Specialist Critical Care Medicine,Provider,PCORnet
+1,364SC1501X,Clinical Nurse Specialist Community Health/Public Health,Provider,PCORnet
+1,364SC2300X,Clinical Nurse Specialist Chronic Care,Provider,PCORnet
+1,364SE0003X,Clinical Nurse Specialist Emergency,Provider,PCORnet
+1,364SE1400X,Clinical Nurse Specialist Ethics,Provider,PCORnet
+1,364SF0001X,Clinical Nurse Specialist Family Health,Provider,PCORnet
+1,364SG0600X,Clinical Nurse Specialist Gerontology,Provider,PCORnet
+1,364SH0200X,Clinical Nurse Specialist Home Health,Provider,PCORnet
+1,364SH1100X,Clinical Nurse Specialist Holistic,Provider,PCORnet
+1,364SI0800X,Clinical Nurse Specialist Informatics,Provider,PCORnet
+1,364SL0600X,Clinical Nurse Specialist Long-Term Care,Provider,PCORnet
+1,364SM0705X,Clinical Nurse Specialist Medical-Surgical,Provider,PCORnet
+1,364SN0000X,Clinical Nurse Specialist Neonatal,Provider,PCORnet
+1,364SN0800X,Clinical Nurse Specialist Neuroscience,Provider,PCORnet
+1,364SP0200X,Clinical Nurse Specialist Pediatrics,Provider,PCORnet
+1,364SP0807X,"Clinical Nurse Specialist Psych/Mental Health, Child & Adolescent",Provider,PCORnet
+1,364SP0808X,Clinical Nurse Specialist Psych/Mental Health,Provider,PCORnet
+1,364SP0809X,"Clinical Nurse Specialist Psych/Mental Health, Adult",Provider,PCORnet
+1,364SP0810X,"Clinical Nurse Specialist Psych/Mental Health, Child & Family",Provider,PCORnet
+1,364SP0811X,"Clinical Nurse Specialist Psych/Mental Health, Chronically Ill",Provider,PCORnet
+1,364SP0812X,"Clinical Nurse Specialist Psych/Mental Health, Community",Provider,PCORnet
+1,364SP0813X,"Clinical Nurse Specialist Psych/Mental Health, Geropsychiatric",Provider,PCORnet
+1,364SP1700X,Clinical Nurse Specialist Perinatal,Provider,PCORnet
+1,364SP2800X,Clinical Nurse Specialist Perioperative,Provider,PCORnet
+1,364SR0400X,Clinical Nurse Specialist Rehabilitation,Provider,PCORnet
+1,364SS0200X,Clinical Nurse Specialist School,Provider,PCORnet
+1,364ST0500X,Clinical Nurse Specialist Transplantation,Provider,PCORnet
+1,364SW0102X,Clinical Nurse Specialist Women's Health,Provider,PCORnet
+1,364SX0106X,Clinical Nurse Specialist Occupational Health,Provider,PCORnet
+1,364SX0200X,Clinical Nurse Specialist Oncology,Provider,PCORnet
+1,364SX0204X,"Clinical Nurse Specialist Oncology, Pediatrics",Provider,PCORnet
+1,367500000X,"Nurse Anesthetist, Certified Registered",Provider,PCORnet
+1,367A00000X,Advanced Practice Midwife,Provider,PCORnet
+1,367H00000X,Anesthesiologist Assistant,Provider,PCORnet
+1,372500000X,Chore Provider,Provider,PCORnet
+1,372600000X,Adult Companion,Provider,PCORnet
+1,373H00000X,Day Training/Habilitation Specialist,Provider,PCORnet
+1,374700000X,Technician,Provider,PCORnet
+1,3747A0650X,Technician Attendant Care Provider,Provider,PCORnet
+1,3747P1801X,Technician Personal Care Attendant,Provider,PCORnet
+1,374J00000X,Doula,Provider,PCORnet
+1,374K00000X,Religious Nonmedical Practitioner,Provider,PCORnet
+1,374T00000X,Religious Nonmedical Nursing Personnel,Provider,PCORnet
+1,374U00000X,Home Health Aide,Provider,PCORnet
+1,376G00000X,Nursing Home Administrator,Provider,PCORnet
+1,376J00000X,Homemaker,Provider,PCORnet
+1,376K00000X,Nurse's Aide,Provider,PCORnet
+1,385H00000X,Respite Care,Provider,PCORnet
+1,385HR2050X,Respite Care Respite Care Camp,Provider,PCORnet
+1,385HR2055X,"Respite Care Respite Care, Mental Illness, Child",Provider,PCORnet
+1,385HR2060X,"Respite Care Respite Care, Mental Retardation and/or Developmental Disabilities, Child",Provider,PCORnet
+1,385HR2065X,"Respite Care Respite Care, Physical Disabilities, Child",Provider,PCORnet
+1,390200000X,Student in an Organized Health Care Education/Training Program,Provider,PCORnet
+1,405300000X,Prevention Professional,Provider,PCORnet
+1,NI,No information,Provider,PCORnet
+1,OT,Other,Provider,PCORnet
+1,UN,Unknown,Provider,PCORnet

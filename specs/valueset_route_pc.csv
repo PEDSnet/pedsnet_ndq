@@ -1,0 +1,169 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,ARTERIOVENOUS_FISTULA,Arteriovenous fistula route (qualifier value),Route,PCORnet
+1,ARTERIOVENOUS_GRAFT,Arteriovenous graft route (qualifier value),Route,PCORnet
+1,BODY_CAVITY,Body cavity route (qualifier value),Route,PCORnet
+1,BUCCAL,Buccal route (qualifier value),Route,PCORnet
+1,CAUDAL,Caudal route (qualifier value),Route,PCORnet
+1,COLOSTOMY,Colostomy route (qualifier value),Route,PCORnet
+1,CONJUNCTIVAL,Conjunctival route (qualifier value),Route,PCORnet
+1,CUTANEOUS,Cutaneous route (qualifier value),Route,PCORnet
+1,DENTAL,Dental route (qualifier value),Route,PCORnet
+1,DIGESTIVE_TRACT,Digestive tract route (qualifier value),Route,PCORnet
+1,ENDOCERVICAL,Endocervical route (qualifier value),Route,PCORnet
+1,ENDOSINUSIAL,Endosinusial route (qualifier value),Route,PCORnet
+1,ENDOTRACHEOPULMONARY,Endotracheopulmonary route (qualifier value),Route,PCORnet
+1,ENTERAL,Enteral route (qualifier value),Route,PCORnet
+1,EPIDURAL,Epidural route (qualifier value),Route,PCORnet
+1,EPILESIONAL,Epilesional route (qualifier value),Route,PCORnet
+1,ESOPHAGOSTOMY,Esophagostomy route (qualifier value),Route,PCORnet
+1,EXTRA_AMNIOTIC,Extra-amniotic route (qualifier value),Route,PCORnet
+1,EXTRACORPOREAL,Extracorporeal route (qualifier value),Route,PCORnet
+1,EXTRACORPOREAL_HEMODIALYSIS,Extracorporeal hemodialysis route (qualifier value),Route,PCORnet
+1,FISTULA,Fistula route (qualifier value),Route,PCORnet
+1,GASTRO_INTESTINAL_STOMA,Gastro-intestinal stoma route (qualifier value),Route,PCORnet
+1,GASTROENTERAL,Gastroenteral route (qualifier value),Route,PCORnet
+1,GASTROSTOMY,Gastrostomy route (qualifier value),Route,PCORnet
+1,GINGIVAL,Gingival route (qualifier value),Route,PCORnet
+1,ILEOSTOMY,Ileostomy route (qualifier value),Route,PCORnet
+1,INFILTRATION,Infiltration route (qualifier value),Route,PCORnet
+1,INTERSTITIAL,Interstitial route (qualifier value),Route,PCORnet
+1,INTESTINAL,Intestinal route (qualifier value),Route,PCORnet
+1,INTRA_ARTERIAL,Intra-arterial route (qualifier value),Route,PCORnet
+1,INTRA_ARTICULAR,Intra-articular route (qualifier value),Route,PCORnet
+1,INTRAABDOMINAL,Intraabdominal route (qualifier value),Route,PCORnet
+1,INTRAAMNIOTIC,Intraamniotic route (qualifier value),Route,PCORnet
+1,INTRABILIARY,Intrabiliary route (qualifier value),Route,PCORnet
+1,INTRABRONCHIAL,Intrabronchial route (qualifier value),Route,PCORnet
+1,INTRABURSAL,Intrabursal route (qualifier value),Route,PCORnet
+1,INTRACAMERAL,Intracameral route (qualifier value),Route,PCORnet
+1,INTRACARDIAC,Intracardiac route (qualifier value),Route,PCORnet
+1,INTRACARTILAGINOUS,Intracartilaginous route (qualifier value),Route,PCORnet
+1,INTRACATHETER_INSTILLATION,Intracatheter instillation route (qualifier value),Route,PCORnet
+1,INTRACAVERNOUS,Intracavernous route (qualifier value),Route,PCORnet
+1,INTRACEREBRAL,Intracerebral route (qualifier value),Route,PCORnet
+1,INTRACEREBROVENTRICULAR,Intracerebroventricular route (qualifier value),Route,PCORnet
+1,INTRACERVICAL,Intracervical route (qualifier value),Route,PCORnet
+1,INTRACHOLANGIOPANCREATIC,Intracholangiopancreatic route (qualifier value),Route,PCORnet
+1,INTRACISTERNAL,Intracisternal route (qualifier value),Route,PCORnet
+1,INTRACOLONIC,Intracolonic route (qualifier value),Route,PCORnet
+1,INTRACORNEAL,Intracorneal route (qualifier value),Route,PCORnet
+1,INTRACORONAL,Intracoronal route (qualifier value),Route,PCORnet
+1,INTRACORONARY,Intracoronary route (qualifier value),Route,PCORnet
+1,INTRACORPORUS_CAVERNOSUM_OF_PENIS,Intracorporus cavernosum of penis route (qualifier value),Route,PCORnet
+1,INTRACORPUS_CAVERNOSUM,Intracorpus cavernosum route (qualifier value),Route,PCORnet
+1,INTRACRANIAL,Intracranial route (qualifier value),Route,PCORnet
+1,INTRADERMAL,Intradermal route (qualifier value),Route,PCORnet
+1,INTRADIALYTIC,Intradialytic route (qualifier value),Route,PCORnet
+1,INTRADISCAL,Intradiscal route (qualifier value),Route,PCORnet
+1,INTRADUCTAL,Intraductal route (qualifier value),Route,PCORnet
+1,INTRADUODENAL,Intraduodenal route (qualifier value),Route,PCORnet
+1,INTRADURAL,Intradural route (qualifier value),Route,PCORnet
+1,INTRAEPICARDIAL,Intraepicardial route (qualifier value),Route,PCORnet
+1,INTRAEPIDERMAL,Intraepidermal route (qualifier value),Route,PCORnet
+1,INTRAESOPHAGEAL,Intraesophageal route (qualifier value),Route,PCORnet
+1,INTRAGASTRIC,Intragastric route (qualifier value),Route,PCORnet
+1,INTRAGINGIVAL,Intragingival route (qualifier value),Route,PCORnet
+1,INTRAGLANDULAR,Intraglandular route (qualifier value),Route,PCORnet
+1,INTRAHEPATIC,Intrahepatic route (qualifier value),Route,PCORnet
+1,INTRAILEAL,Intraileal route (qualifier value),Route,PCORnet
+1,INTRAJEJUNAL,Intrajejunal route (qualifier value),Route,PCORnet
+1,INTRALESIONAL,Intralesional route (qualifier value),Route,PCORnet
+1,INTRALINGUAL,Intralingual route (qualifier value),Route,PCORnet
+1,INTRALUMINAL,Intraluminal route (qualifier value),Route,PCORnet
+1,INTRALYMPHATIC,Intralymphatic route (qualifier value),Route,PCORnet
+1,INTRAMAMMARY,Intramammary route (qualifier value),Route,PCORnet
+1,INTRAMEDULLARY,Intramedullary route (qualifier value),Route,PCORnet
+1,INTRAMENINGEAL,Intrameningeal route (qualifier value),Route,PCORnet
+1,INTRAMURAL,Intramural route (qualifier value),Route,PCORnet
+1,INTRAMUSCULAR,Intramuscular route (qualifier value),Route,PCORnet
+1,INTRAMYOMETRIAL,Intramyometrial route (qualifier value),Route,PCORnet
+1,INTRANEURAL,Intraneural route (qualifier value),Route,PCORnet
+1,INTRAOCULAR,Intraocular route (qualifier value),Route,PCORnet
+1,INTRAOSSEOUS,Intraosseous route (qualifier value),Route,PCORnet
+1,INTRAOVARIAN,Intraovarian route (qualifier value),Route,PCORnet
+1,INTRAPERICARDIAL,Intrapericardial route (qualifier value),Route,PCORnet
+1,INTRAPERITONEAL,Intraperitoneal route (qualifier value),Route,PCORnet
+1,INTRAPLEURAL,Intrapleural route (qualifier value),Route,PCORnet
+1,INTRAPORTAL,Intraportal route (qualifier value),Route,PCORnet
+1,INTRAPROSTATIC,Intraprostatic route (qualifier value),Route,PCORnet
+1,INTRAPULMONARY,Intrapulmonary route (qualifier value),Route,PCORnet
+1,INTRASINAL,Intrasinal route (qualifier value),Route,PCORnet
+1,INTRASPINAL,Intraspinal route (qualifier value),Route,PCORnet
+1,INTRASTERNAL,Intrasternal route (qualifier value),Route,PCORnet
+1,INTRASYNOVIAL,Intrasynovial route (qualifier value),Route,PCORnet
+1,INTRATENDINOUS,Intratendinous route (qualifier value),Route,PCORnet
+1,INTRATESTICULAR,Intratesticular route (qualifier value),Route,PCORnet
+1,INTRATHECAL,Intrathecal route (qualifier value),Route,PCORnet
+1,INTRATHORACIC,Intrathoracic route (qualifier value),Route,PCORnet
+1,INTRATRACHEAL,Intratracheal route (qualifier value),Route,PCORnet
+1,INTRATUMOR,Intratumor route (qualifier value),Route,PCORnet
+1,INTRATYMPANIC,Intratympanic route (qualifier value),Route,PCORnet
+1,INTRAUTERINE,Intrauterine route (qualifier value),Route,PCORnet
+1,INTRAVASCULAR,Intravascular route (qualifier value),Route,PCORnet
+1,INTRAVENOUS,Intravenous route (qualifier value),Route,PCORnet
+1,INTRAVENOUS_CENTRAL,Intravenous central route (qualifier value),Route,PCORnet
+1,INTRAVENOUS_PERIPHERAL,Intravenous peripheral route (qualifier value),Route,PCORnet
+1,INTRAVENTRICULAR,Intraventricular route - cardiac (qualifier value),Route,PCORnet
+1,INTRAVENTRICULAR_CARDIAC,Intraventricular route - cardiac (qualifier value),Route,PCORnet
+1,INTRAVESICAL,Intravesical route (qualifier value),Route,PCORnet
+1,INTRAVITREAL,Intravitreal route (qualifier value),Route,PCORnet
+1,JEJUNOSTOMY,Jejunostomy route (qualifier value),Route,PCORnet
+1,LARYNGEAL,Laryngeal route (qualifier value),Route,PCORnet
+1,LOWER_RESPIRATORY_TRACT,Lower respiratory tract route (qualifier value),Route,PCORnet
+1,MUCOUS_FISTULA,Mucous fistula route (qualifier value),Route,PCORnet
+1,NASAL,Nasal route (qualifier value),Route,PCORnet
+1,NASODUODENAL,Nasoduodenal route (qualifier value),Route,PCORnet
+1,NASOGASTRIC,Nasogastric route (qualifier value),Route,PCORnet
+1,NASOJEJUNAL,Nasojejunal route (qualifier value),Route,PCORnet
+1,NI,No information,Route,PCORnet
+1,OCULAR,Ocular route (qualifier value),Route,PCORnet
+1,OPHTHALMIC,Ophthalmic route (qualifier value),Route,PCORnet
+1,ORAL,Oral route (qualifier value),Route,PCORnet
+1,OROGASTRIC,Orogastric route (qualifier value),Route,PCORnet
+1,OROMUCOSAL,Oromucosal route (qualifier value),Route,PCORnet
+1,OROPHARYNGEAL,Oropharyngeal route (qualifier value),Route,PCORnet
+1,OT,Other,Route,PCORnet
+1,OTIC,Otic route (qualifier value),Route,PCORnet
+1,PARACERVICAL,Paracervical route (qualifier value),Route,PCORnet
+1,PARAVERTEBRAL,Paravertebral route (qualifier value),Route,PCORnet
+1,PERCUTANEOUS,Percutaneous route (qualifier value),Route,PCORnet
+1,PERIARTICULAR,Periarticular route (qualifier value),Route,PCORnet
+1,PERIBULBAR,Peribulbar route (qualifier value),Route,PCORnet
+1,PERIDURAL,Peridural route (qualifier value),Route,PCORnet
+1,PERINEURAL,Perineural route (qualifier value),Route,PCORnet
+1,PERIODONTAL,Periodontal route (qualifier value),Route,PCORnet
+1,PERIOSTEAL,Periosteal route (qualifier value),Route,PCORnet
+1,PERITENDINOUS,Peritendinous route (qualifier value),Route,PCORnet
+1,PERITUMORAL,Peritumoral route (qualifier value),Route,PCORnet
+1,PERIURETHRAL,Periurethral route (qualifier value),Route,PCORnet
+1,POSTERIOR_JUXTASCLERAL,Posterior juxtascleral route (qualifier value),Route,PCORnet
+1,RECTAL,Rectal route (qualifier value),Route,PCORnet
+1,RESPIRATORY_TRACT,Respiratory tract route (qualifier value),Route,PCORnet
+1,RETROBULBAR,Retrobulbar route (qualifier value),Route,PCORnet
+1,SUBCONJUNCTIVAL,Subconjunctival route (qualifier value),Route,PCORnet
+1,SUBCUTANEOUS,Subcutaneous route (qualifier value),Route,PCORnet
+1,SUBGINGIVAL,Subgingival route (qualifier value),Route,PCORnet
+1,SUBLABIAL,Sublabial route (qualifier value),Route,PCORnet
+1,SUBLESIONAL,Sublesional route (qualifier value),Route,PCORnet
+1,SUBLINGUAL,Sublingual route (qualifier value),Route,PCORnet
+1,SUBMUCOSAL,Submucosal route (qualifier value),Route,PCORnet
+1,SUBORBITAL,Suborbital route (qualifier value),Route,PCORnet
+1,SUBRETINAL,Subretinal route (qualifier value),Route,PCORnet
+1,SUBTENDINOUS,Subtendinous route (qualifier value),Route,PCORnet
+1,SURGICAL_CAVITY,Surgical cavity route (qualifier value),Route,PCORnet
+1,SURGICAL_DRAIN,Surgical drain route (qualifier value),Route,PCORnet
+1,TOPICAL,Topical route (qualifier value),Route,PCORnet
+1,TRANSCERVICAL,Transcervical route (qualifier value),Route,PCORnet
+1,TRANSDERMAL,Transdermal route (qualifier value),Route,PCORnet
+1,TRANSENDOCARDIAL,Transendocardial route (qualifier value),Route,PCORnet
+1,TRANSMUCOSAL,Transmucosal route (qualifier value),Route,PCORnet
+1,TRANSPLACENTAL,Transplacental route (qualifier value),Route,PCORnet
+1,TRANSTRACHEAL,Transtracheal route (qualifier value),Route,PCORnet
+1,TRANSTYMPANIC,Transtympanic route (qualifier value),Route,PCORnet
+1,TRANSURETHRAL,Transurethral route (qualifier value),Route,PCORnet
+1,TUMOR_CAVITY,Tumor cavity route (qualifier value),Route,PCORnet
+1,UN,Unknown,Route,PCORnet
+1,URETERAL,Ureteral route (qualifier value),Route,PCORnet
+1,URETHRAL,Urethral route (qualifier value),Route,PCORnet
+1,UROSTOMY,Urostomy route (qualifier value),Route,PCORnet
+1,VAGINAL,Vaginal route (qualifier value),Route,PCORnet

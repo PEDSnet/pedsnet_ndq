@@ -1,0 +1,10 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,EQ,Equal,lab_result_cm,PCORnet
+1,GE,Greater than or equal to,lab_result_cm,PCORnet
+1,GT,Greater than,lab_result_cm,PCORnet
+1,LE,Less than or equal to,lab_result_cm,PCORnet
+1,LT,Less than,lab_result_cm,PCORnet
+1,TX,Text,lab_result_cm,PCORnet
+1,NI,No information,lab_result_cm,PCORnet
+1,UN,Unknown,lab_result_cm,PCORnet
+1,OT,Other,lab_result_cm,PCORnet

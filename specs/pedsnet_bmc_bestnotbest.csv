@@ -1,0 +1,45 @@
+check_name,concept,best_notbest,default_to
+csop,Unknown Physician Specialty,0,best
+csop,Pediatric Medicine,0,best
+csop,Other,0,best
+csop,No matching concept,0,best
+csop,No information,0,best
+demog-eth,Unknown,0,best
+demog-eth,No information,0,best
+demog-eth,Refuse to answer,0,best
+provop,Physician Assistant,0,best
+provop,Unknown Physician Specialty,0,best
+provop,Student,0,best
+provop,Pediatric Medicine,0,best
+provop,Specialty service,0,best
+provop,No information,0,best
+provop,No matching concept,0,best
+provop,Physician,0,best
+provop,Other,0,best
+provop,Medical Physician Assistant,0,best
+provop,"Physician Assistants & Advanced Practice Nursing Providers, Physician Assistant",0,best
+provop,Pediatric Nurse,0,best
+provop,Pediatric Nurse Practitioner,0,best
+provop,Nurse Practitioner,0,best
+provop,Licensed Practical Nurse,0,best
+demog-race,Refuse to answer,0,best
+demog-race,No information,0,best
+demog-race,Unknown,0,best
+drugsip-rxnorm,Quant Branded Drug,1,notbest
+drugsip-rxnorm,Branded Drug,1,notbest
+drugsip-rxnorm,Branded Pack,1,notbest
+drugsip-rxnorm,Clinical Drug,1,notbest
+drugsip-rxnorm,Clinical Pack,1,notbest
+drugsip-rxnorm,Quant Clinical Drug,1,notbest
+drugspresc-rxnorm,Clinical Pack,1,notbest
+drugspresc-rxnorm,Branded Drug,1,notbest
+drugspresc-rxnorm,Clinical Drug,1,notbest
+drugspresc-rxnorm,Quant Clinical Drug,1,notbest
+drugspresc-rxnorm,Branded Pack,1,notbest
+drugspresc-rxnorm,Quant Branded Drug,1,notbest
+adtall-servcid,Unknown,0,best
+adtall-servcid,Other,0,best
+adtall-servcid,No Information,0,best
+tract,11,1,notbest
+blgr,12,1,notbest
+gestage,20-45 Weeks (Expected Range),1,notbest

@@ -1,0 +1,12 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,01,Current every day smoker,Vital,PCORnet
+1,02,Current some day smoker,Vital,PCORnet
+1,03,Former smoker,Vital,PCORnet
+1,04,Never smoker,Vital,PCORnet
+1,05,"Smoker, current status unknown",Vital,PCORnet
+1,06,Unknown if ever smoked,Vital,PCORnet
+1,07,Heavy tobacco smoker,Vital,PCORnet
+1,08,Light tobacco smoker,Vital,PCORnet
+1,NI,No information,Vital,PCORnet
+1,UN,Unknown,Vital,PCORnet
+1,OT,Other,Vital,PCORnet

@@ -87,11 +87,12 @@ output_tbl_append(mf_output, 'mf_visitid_output')
 ## Best Mapped Concepts
 
 ## didnt sent provider table
-# bmc_output <- check_bmc(bmc_tbl = read_codeset('pcornet_bmc_table', 'ccccc') %>%
-#                           filter(!grepl('fips|gestage', check_id)),
-#                         omop_or_pcornet = 'pcornet',
-#                         concept_tbl = NULL,
-#                         check_string='bmc')
+bmc_output <- check_bmc(bmc_tbl = read_codeset('pcornet_bmc_table', 'ccccc') %>%
+                          filter(!grepl('fips|gestage|drug', check_id)),
+                        best_notbest_tbl = read_codeset('pcornet_best_notbest', 'cccc'),
+                        omop_or_pcornet = 'pcornet',
+                        concept_tbl = NULL,
+                        check_string='bmc')
 
 # bmc_output2 <- check_bmc(bmc_tbl = read_codeset('pcornet_bmc_table', 'ccccc') %>%
 #                           filter(grepl('fips', check_id)), ## dropped gestage cht for now
@@ -100,10 +101,8 @@ output_tbl_append(mf_output, 'mf_visitid_output')
 #                         check_string='bmc')
 
 # bmc_counts_final <- bmc_output$bmc_counts #%>% union(bmc_output2$bmc_counts)
-# bmc_concepts_final <- bmc_output$bmc_concepts #%>% union(bmc_output2$bmc_concepts)
 
-# output_tbl_append(bmc_counts_final, 'bmc_output', file = TRUE)
-# output_tbl_append(bmc_concepts_final, 'bmc_concepts', file = TRUE)
+output_tbl_append(bmc_output, 'bmc_output')
 
 ## Expected Concepts Present
 

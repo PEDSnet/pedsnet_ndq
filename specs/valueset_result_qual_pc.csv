@@ -1,0 +1,272 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,1+,1+,Qual,PCORnet
+1,2+,2+,Qual,PCORnet
+1,3+,3+,Qual,PCORnet
+1,4+,4+,Qual,PCORnet
+1,5+,5+,Qual,PCORnet
+1,A NEG,A Neg,Qual,PCORnet
+1,A POS,A Pos,Qual,PCORnet
+1,AB NEG,AB Neg,Qual,PCORnet
+1,AB NOT DETECTED,Ab not detected,Qual,PCORnet
+1,AB POS,AB Pos,Qual,PCORnet
+1,ABNORMAL,Abnormal,Qual,PCORnet
+1,ABSENT,Absent,Qual,PCORnet
+1,ACANTHOCYTES,Acanthocytes,Qual,PCORnet
+1,ACCEPTABLE,Acceptable,Qual,PCORnet
+1,ACIDIC,Acidic,Qual,PCORnet
+1,ADEQUATE,Adequate,Qual,PCORnet
+1,AMBER,Amber,Qual,PCORnet
+1,AMNIOTIC FLUID,Amniotic fluid,Qual,PCORnet
+1,ANISOCHROMASIA,Anisochromasia,Qual,PCORnet
+1,ANISOCYTOSIS,Anisocytosis,Qual,PCORnet
+1,ANULOCYTES,Anulocytes,Qual,PCORnet
+1,ARTERIAL,Arterial,Qual,PCORnet
+1,ARTERIAL LINE,Arterial line,Qual,PCORnet
+1,AUSCULTATION - AUTOMATIC,Auscultation - automatic,Qual,PCORnet
+1,AUSCULTATION - MANUAL,Auscultation - manual,Qual,PCORnet
+1,AUTOMATED FLOW CYTOMETRY,Automated flow cytometry,Qual,PCORnet
+1,B NEG,B Neg,Qual,PCORnet
+1,B POS,B Pos,Qual,PCORnet
+1,BASOPHILIC STIPPLING,Basophilic stippling,Qual,PCORnet
+1,BASOPHILIC STIPPLING COARSE,Basophilic stippling coarse,Qual,PCORnet
+1,BASOPHILIC STIPPLING FINE,Basophilic stippling fine,Qual,PCORnet
+1,BEDFAST,Bedfast,Qual,PCORnet
+1,BITE CELLS,Bite cells,Qual,PCORnet
+1,BIZARRE CELLS,Bizarre cells,Qual,PCORnet
+1,BLACK,Black,Qual,PCORnet
+1,BLISTER CELLS,Blister cells,Qual,PCORnet
+1,BLOOD,Blood,Qual,PCORnet
+1,BLUE,Blue,Qual,PCORnet
+1,BONE MARROW,Bone marrow,Qual,PCORnet
+1,BORDERLINE,Borderline,Qual,PCORnet
+1,BROWN,Brown,Qual,PCORnet
+1,BURR CELLS,Burr cells,Qual,PCORnet
+1,CABOT RINGS,Cabot rings,Qual,PCORnet
+1,CAPILLARY,Capillary,Qual,PCORnet
+1,CEREBROSPINAL FLUID (CSF),Cerebrospinal fluid (CSF),Qual,PCORnet
+1,CHAIRFAST,Chairfast,Qual,PCORnet
+1,CLEAN,Clean,Qual,PCORnet
+1,CLEAN CATCH,Clean catch,Qual,PCORnet
+1,CLEAR,Clear,Qual,PCORnet
+1,CLEAR YELLOW,Clear Yellow,Qual,PCORnet
+1,CLOUDY,Cloudy,Qual,PCORnet
+1,CLUMPED,Clumped,Qual,PCORnet
+1,COLORLESS,Colorless,Qual,PCORnet
+1,COMPATIBLE,Compatible,Qual,PCORnet
+1,COMPLETELY IMMOBILE,Completely immobile,Qual,PCORnet
+1,COMPLETELY LIMITED,Completely limited,Qual,PCORnet
+1,COMPUTER IMAGING ASSISTED,Computer imaging assisted,Qual,PCORnet
+1,CONFUSED,Confused,Qual,PCORnet
+1,CONSTANTLY MOIST,Constantly moist,Qual,PCORnet
+1,CONTINUOUS NONINVASIVE ARTERIAL PRESSURE (CNAP),Continuous noninvasive arterial pressure (CNAP),Qual,PCORnet
+1,CUFF-MANUAL PALPATED ONLY,Cuff-manual palpated only,Qual,PCORnet
+1,CURRENT EVERY DAY SMOKER,Current every day smoker,Qual,PCORnet
+1,CURRENT SOME DAY SMOKER,Current some day smoker,Qual,PCORnet
+1,DACROCYTES,Dacrocytes,Qual,PCORnet
+1,DARK AMBER,Dark Amber,Qual,PCORnet
+1,DARK BROWN,Dark Brown,Qual,PCORnet
+1,DARK ORANGE,Dark Orange,Qual,PCORnet
+1,DARK RED,Dark Red,Qual,PCORnet
+1,DARK YELLOW,Dark Yellow,Qual,PCORnet
+1,DECREASED,Decreased,Qual,PCORnet
+1,DETECTED,Detected,Qual,PCORnet
+1,DONE,Done,Qual,PCORnet
+1,DOPPLER,Doppler,Qual,PCORnet
+1,DRY,Dry,Qual,PCORnet
+1,DYSERYTHROPOIEISIS,Dyserythropoieisis,Qual,PCORnet
+1,ELEVATED,Elevated,Qual,PCORnet
+1,ELLIPTOCYTES,Elliptocytes,Qual,PCORnet
+1,EQUIVOCAL,Equivocal,Qual,PCORnet
+1,ERYTHROCYTES.FILAMENTED,Erythrocytes.filamented,Qual,PCORnet
+1,EXCELLENT,Excellent,Qual,PCORnet
+1,EXTENSION TO PAIN,Extension to pain,Qual,PCORnet
+1,EYE OPENING TO PAIN,Eye opening to pain,Qual,PCORnet
+1,EYE OPENING TO VERBAL COMMAND,Eye opening to verbal command,Qual,PCORnet
+1,EYES OPEN SPONTANEOUSLY,Eyes open spontaneously,Qual,PCORnet
+1,FEW,Few,Qual,PCORnet
+1,FEW-MODERATE,Few-Moderate,Qual,PCORnet
+1,FLEXION TO PAIN,Flexion to pain,Qual,PCORnet
+1,FORMER SMOKER,Former smoker,Qual,PCORnet
+1,FRAGMENTS,Fragments,Qual,PCORnet
+1,FREQUENT,Frequent,Qual,PCORnet
+1,GREEN,Green,Qual,PCORnet
+1,GROUP A,Group A,Qual,PCORnet
+1,GROUP AB,Group AB,Qual,PCORnet
+1,GROUP B,Group B,Qual,PCORnet
+1,GROUP O,Group O,Qual,PCORnet
+1,HAIR,Hair,Qual,PCORnet
+1,HAZY,Hazy,Qual,PCORnet
+1,HEALED,Healed,Qual,PCORnet
+1,HEAVY,Heavy,Qual,PCORnet
+1,HEAVY TOBACCO SMOKER,Heavy tobacco smoker,Qual,PCORnet
+1,HEINZ BODIES,Heinz bodies,Qual,PCORnet
+1,HELMET CELLS,Helmet cells,Qual,PCORnet
+1,HEMOGLOBIN C CRYSTALS,Hemoglobin C crystals,Qual,PCORnet
+1,HETEROZYGOUS,Heterozygous,Qual,PCORnet
+1,HIGH,High,Qual,PCORnet
+1,HOMOGENEOUS,Homogeneous,Qual,PCORnet
+1,HOMOZYGOUS,Homozygous,Qual,PCORnet
+1,HOWELL-JOLLY BODIES,Howell-Jolly bodies,Qual,PCORnet
+1,HUMAN READ,Human read,Qual,PCORnet
+1,HYPERCHROMIC,Hyperchromic,Qual,PCORnet
+1,HYPOCHROMIA,Hypochromia,Qual,PCORnet
+1,IMMUNE,Immune,Qual,PCORnet
+1,INAPPROPRIATE WORDS,Inappropriate words,Qual,PCORnet
+1,INCOMPREHENSIBLE SOUNDS,Incomprehensible sounds,Qual,PCORnet
+1,INCONCLUSIVE,Inconclusive ,Qual,PCORnet
+1,INCREASED,Increased,Qual,PCORnet
+1,INDETERMINATE,Indeterminate,Qual,PCORnet
+1,INDETERMINATE ABNORMAL,Indeterminate abnormal,Qual,PCORnet
+1,INFLUENZA A VIRUS,Influenza A virus,Qual,PCORnet
+1,INFLUENZA B VIRUS,Influenza B virus,Qual,PCORnet
+1,INTACT,Intact,Qual,PCORnet
+1,INTERMEDIATE,Intermediate,Qual,PCORnet
+1,INVALID,Invalid,Qual,PCORnet
+1,INVASIVE (INTRAVASCULAR TRANSDUCER),Invasive (intravascular transducer),Qual,PCORnet
+1,IRREGULARLY CONTRACTED CELLS,Irregularly contracted cells,Qual,PCORnet
+1,KAOLIN MODIFIED BLOOD,Kaolin modified blood,Qual,PCORnet
+1,KAOLIN-HEPARINASE MODIFIED BLOOD,Kaolin-heparinase modified blood,Qual,PCORnet
+1,LARGE,Large,Qual,PCORnet
+1,LEFT ARM,Left arm,Qual,PCORnet
+1,LEFT LEG,Left leg,Qual,PCORnet
+1,LIGHT,Light,Qual,PCORnet
+1,LIGHT AMBER,Light Amber,Qual,PCORnet
+1,LIGHT BROWN,Light Brown,Qual,PCORnet
+1,LIGHT ORANGE,Light Orange,Qual,PCORnet
+1,LIGHT PINK,Light Pink,Qual,PCORnet
+1,LIGHT RED,Light Red,Qual,PCORnet
+1,LIGHT TOBACCO SMOKER,Light tobacco smoker,Qual,PCORnet
+1,LIGHT YELLOW,Light Yellow,Qual,PCORnet
+1,LOCALIZING PAIN,Localizing pain,Qual,PCORnet
+1,LOW,Low,Qual,PCORnet
+1,LYING,Lying,Qual,PCORnet
+1,MACROCYTES,Macrocytes,Qual,PCORnet
+1,MACROCYTES.OVAL,Macrocytes.oval,Qual,PCORnet
+1,MANY,Many,Qual,PCORnet
+1,MARKED,Marked,Qual,PCORnet
+1,MICROCYTES,Microcytes,Qual,PCORnet
+1,MIXED VENOUS,Mixed Venous,Qual,PCORnet
+1,MODERATE,Moderate,Qual,PCORnet
+1,MUTANT,Mutant,Qual,PCORnet
+1,NAIL,Nail,Qual,PCORnet
+1,NASOPHARYNGEAL,Nasopharyngeal,Qual,PCORnet
+1,NEGATIVE,Negative,Qual,PCORnet
+1,NEUTRAL,Neutral,Qual,PCORnet
+1,NEVER SMOKER,Never smoker,Qual,PCORnet
+1,NI,No Information,Qual,PCORnet
+1,NO,No,Qual,PCORnet
+1,NO APPARENT PROBLEM,No apparent problem,Qual,PCORnet
+1,NO EYE OPENING,No eye opening,Qual,PCORnet
+1,NO GROWTH,No Growth,Qual,PCORnet
+1,NO IMPAIRMENT,No impairment,Qual,PCORnet
+1,NO LIMITATION,No limitation,Qual,PCORnet
+1,NO MOTOR RESPONSE,No motor response,Qual,PCORnet
+1,NO VERBAL RESPONSE (>2 YRS); NO VOCAL RESPONSE (<=2 YRS),No verbal response (>2 yrs); no vocal response (<=2 yrs),Qual,PCORnet
+1,NONE,None,Qual,PCORnet
+1,NONE SEEN,None Seen,Qual,PCORnet
+1,NON-IMMUNE/NOT IMMUNE,Non-Immune/Not Immune,Qual,PCORnet
+1,NONREACTIVE,Nonreactive,Qual,PCORnet
+1,NORMAL,Normal,Qual,PCORnet
+1,NORMOCHROMIC,Normochromic,Qual,PCORnet
+1,NORMOCYTIC,Normocytic,Qual,PCORnet
+1,NOT DETECTED,Not Detected,Qual,PCORnet
+1,NOT INCREASED,Not Increased,Qual,PCORnet
+1,NUCLEOLAR,Nucleolar,Qual,PCORnet
+1,O NEG,O Neg,Qual,PCORnet
+1,O POS,O Pos,Qual,PCORnet
+1,OBEYS COMMANDS,Obeys commands,Qual,PCORnet
+1,OCCASIONAL,Occasional,Qual,PCORnet
+1,OCCASIONALLY MOIST,Occasionally moist,Qual,PCORnet
+1,OPAQUE,Opaque,Qual,PCORnet
+1,ORANGE,Orange,Qual,PCORnet
+1,ORIENTED,Oriented,Qual,PCORnet
+1,OSCILLOMETRY,Oscillometry,Qual,PCORnet
+1,OT,Other,Qual,PCORnet
+1,OVALOCYTES,Ovalocytes,Qual,PCORnet
+1,OVERGROWN/OVERGROWTH,Overgrown/Overgrowth,Qual,PCORnet
+1,PALE PINK,Pale Pink,Qual,PCORnet
+1,PALE STRAW,Pale Straw,Qual,PCORnet
+1,PALE YELLOW,Pale Yellow,Qual,PCORnet
+1,PAPPENHEIMER BODIES,Pappenheimer bodies,Qual,PCORnet
+1,PAST INFECTION,Past infection,Qual,PCORnet
+1,PENCIL CELLS,Pencil cells,Qual,PCORnet
+1,PERICARDIAL FLUID,Pericardial fluid,Qual,PCORnet
+1,PERIPHERAL BLOOD,Peripheral Blood,Qual,PCORnet
+1,PERITONEAL FLUID,Peritoneal fluid,Qual,PCORnet
+1,PERITONEAL FLUID/ASCITES,Peritoneal Fluid/Ascites,Qual,PCORnet
+1,PINK,Pink,Qual,PCORnet
+1,PLASMA,Plasma,Qual,PCORnet
+1,PLEURAL FLUID,Pleural Fluid,Qual,PCORnet
+1,POIKILOCYTOSIS,Poikilocytosis,Qual,PCORnet
+1,POLYCHROMASIA,Polychromasia,Qual,PCORnet
+1,POSITIVE,Positive,Qual,PCORnet
+1,POTENTIAL PROBLEM,Potential problem,Qual,PCORnet
+1,PREKERATOCYTES,Prekeratocytes,Qual,PCORnet
+1,PRESENT,Present,Qual,PCORnet
+1,PRESUMPTIVE POSITIVE,Presumptive positive,Qual,PCORnet
+1,PROBABLY INADEQUATE,Probably inadequate,Qual,PCORnet
+1,PROBLEM,Problem,Qual,PCORnet
+1,PRONE,Prone,Qual,PCORnet
+1,PYKNOSIS,Pyknosis,Qual,PCORnet
+1,RANDOM,Random,Qual,PCORnet
+1,RARE,Rare,Qual,PCORnet
+1,RARELY MOIST,Rarely moist,Qual,PCORnet
+1,REACTIVE,Reactive,Qual,PCORnet
+1,RECENT INFECTION,Recent infection,Qual,PCORnet
+1,RED,Red,Qual,PCORnet
+1,RESISTANT,Resistant,Qual,PCORnet
+1,RESPIRATORY,Respiratory,Qual,PCORnet
+1,RIGHT ARM,Right arm,Qual,PCORnet
+1,RIGHT LEG,Right leg,Qual,PCORnet
+1,ROULEAUX,Rouleaux,Qual,PCORnet
+1,SARS CORONAVIRUS 2,SARS coronavirus 2,Qual,PCORnet
+1,SCHISTOCYTES,Schistocytes,Qual,PCORnet
+1,SENSITIVE,Sensitive,Qual,PCORnet
+1,SICKLE CELLS,Sickle cells,Qual,PCORnet
+1,SIDEROCYTES,Siderocytes,Qual,PCORnet
+1,SITTING,Sitting,Qual,PCORnet
+1,SKIN,Skin,Qual,PCORnet
+1,SLIGHT,Slight,Qual,PCORnet
+1,SLIGHTLY CLOUDY,Slightly Cloudy,Qual,PCORnet
+1,SLIGHTLY LIMITED,Slightly limited,Qual,PCORnet
+1,SMALL,Small,Qual,PCORnet
+1,"SMOKER, CURRENT STATUS UNKNOWN","Smoker, current status unknown",Qual,PCORnet
+1,SPECIMEN UNSATISFACTORY,Specimen unsatisfactory,Qual,PCORnet
+1,SPECIMEN UNSATISFACTORY FOR EVALUATION,Specimen unsatisfactory for evaluation,Qual,PCORnet
+1,SPECKLED,Speckled,Qual,PCORnet
+1,SPHEROCYTES,Spherocytes,Qual,PCORnet
+1,SPHEROCYTES.MICRO,Spherocytes.micro,Qual,PCORnet
+1,STANDING,Standing,Qual,PCORnet
+1,STOMATOCYTES,Stomatocytes,Qual,PCORnet
+1,STOOL,Stool,Qual,PCORnet
+1,STRAW,Straw,Qual,PCORnet
+1,SUPINE,Supine,Qual,PCORnet
+1,SUSCEPTIBLE,Susceptible,Qual,PCORnet
+1,SUSPECTED,Suspected,Qual,PCORnet
+1,SYNOVIAL FLUID,Synovial fluid,Qual,PCORnet
+1,TARGET CELLS,Target cells,Qual,PCORnet
+1,TRACE,Trace,Qual,PCORnet
+1,TRACE-INTACT,Trace-Intact,Qual,PCORnet
+1,TRACE-LYSED,Trace-Lysed,Qual,PCORnet
+1,TRANSFUSED,Transfused,Qual,PCORnet
+1,TRANSLUCENT,Translucent,Qual,PCORnet
+1,TURBID,Turbid,Qual,PCORnet
+1,UN,Unknown,Qual,PCORnet
+1,UNDETECTABLE,Undetectable,Qual,PCORnet
+1,UNDETERMINED,Undetermined,Qual,PCORnet
+1,UNINTERPRETIBLE,Uninterpretible,Qual,PCORnet
+1,UNKNOWN IF EVER SMOKED,Unknown if ever smoked,Qual,PCORnet
+1,URINE,Urine,Qual,PCORnet
+1,VENOUS LINE,Venous line,Qual,PCORnet
+1,VERY CLOUDY,Very Cloudy,Qual,PCORnet
+1,VERY LIMITED,Very limited,Qual,PCORnet
+1,VERY MOIST,Very moist,Qual,PCORnet
+1,VERY POOR,Very poor,Qual,PCORnet
+1,WALKS FREQUENTLY,Walks frequently,Qual,PCORnet
+1,WALKS OCCASIONALLY,Walks occasionally,Qual,PCORnet
+1,WATERY,Watery,Qual,PCORnet
+1,WHITE,White,Qual,PCORnet
+1,WILD TYPE,Wild Type,Qual,PCORnet
+1,WITHDRAWAL FROM PAIN,Withdrawal from pain,Qual,PCORnet
+1,YELLOW,Yellow,Qual,PCORnet
+1,YES,Yes,Qual,PCORnet

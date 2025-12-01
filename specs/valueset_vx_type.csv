@@ -1,0 +1,8 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,CX,CVX,immunization,PCORnet
+1,ND,NDC,immunization,PCORnet
+1,CH,CPT or HCPCS,immunization,PCORnet
+1,RX,RXNORM,immunization,PCORnet
+1,NI,No Information,immunization,PCORnet
+1,UN,Unknown,immunization,PCORnet
+1,OT,Other,immunization,PCORnet

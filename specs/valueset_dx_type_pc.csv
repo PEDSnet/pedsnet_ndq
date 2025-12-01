@@ -1,0 +1,8 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,09,ICD-9-CM,Diagnosis,PCORnet
+1,10,ICD-10-CM,Diagnosis,PCORnet
+1,11,ICD-11-CM,Diagnosis,PCORnet
+1,SM,SNOMED,Diagnosis,PCORnet
+1,NI,No Information,Diagnosis,PCORnet
+1,UN,Unknown,Diagnosis,PCORnet
+1,OT,Other,Diagnosis,PCORnet

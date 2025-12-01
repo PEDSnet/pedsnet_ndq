@@ -1,0 +1,870 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,%,percent,Units,PCORnet
+1,%{abnormal},percent abnormal,Units,PCORnet
+1,%{activity},percent activity,Units,PCORnet
+1,%{aggregation},percent aggregation,Units,PCORnet
+1,%{at_60_min},percent at 60 minute,Units,PCORnet
+1,%{bacteria},percent of bacteria,Units,PCORnet
+1,%{basal_activity},percent basal activity,Units,PCORnet
+1,%{baseline},percent of baseline,Units,PCORnet
+1,%{binding},percent binding,Units,PCORnet
+1,%{blockade},percent blockade,Units,PCORnet
+1,%{blocked},percent blocked,Units,PCORnet
+1,%{bound},percent bound,Units,PCORnet
+1,%{breakdown},percent breakdown,Units,PCORnet
+1,%{cells},percent of cells,Units,PCORnet
+1,%{deficient},percent deficient,Units,PCORnet
+1,%{dose},percent dose,Units,PCORnet
+1,%{excretion},percent excretion,Units,PCORnet
+1,%{Hb},percent hemoglobin,Units,PCORnet
+1,%{hemolysis},percent hemolysis,Units,PCORnet
+1,%{index},percent index,Units,PCORnet
+1,%{inhibition},percent inhibition,Units,PCORnet
+1,%{loss_AChR},percent  loss of acetylcholine receptor,Units,PCORnet
+1,%{loss},percent loss,Units,PCORnet
+1,%{lysis},percent lysis,Units,PCORnet
+1,%{normal},percent normal,Units,PCORnet
+1,%{penetration},percent  penetration,Units,PCORnet
+1,%{pooled_plasma},percent normal pooled plasma,Units,PCORnet
+1,%{positive},percent positive,Units,PCORnet
+1,%{RBCs},percent of red blood cells,Units,PCORnet
+1,%{reactive},percent reactive,Units,PCORnet
+1,%{recovery},percent recovery,Units,PCORnet
+1,%{reference},percent reference,Units,PCORnet
+1,%{relative},relative percent,Units,PCORnet
+1,%{residual},percent residual,Units,PCORnet
+1,%{response},percent response,Units,PCORnet
+1,%{saturation},percent saturation,Units,PCORnet
+1,%{total},percent total,Units,PCORnet
+1,%{uptake},percent uptake,Units,PCORnet
+1,%{viable},percent viable,Units,PCORnet
+1,%{vol},percent by volume,Units,PCORnet
+1,%{WBCs},percent of white blood cells,Units,PCORnet
+1,/(12.h),per twelve hour,Units,PCORnet
+1,/[arb'U],per arbitrary unit,Units,PCORnet
+1,/[HPF],per high power field,Units,PCORnet
+1,/[IU],per international unit,Units,PCORnet
+1,/[IU]/mL,per international unit per milliliter,Units,PCORnet
+1,/[LPF],per low power field,Units,PCORnet
+1,/{entity},per entity,Units,PCORnet
+1,/{OIF},per oil immersion field,Units,PCORnet
+1,/10*10,per 10 billion,Units,PCORnet
+1,/10*12,per trillion,Units,PCORnet
+1,/10*12{RBCs},per trillion red blood cells,Units,PCORnet
+1,/10*3,per thousand,Units,PCORnet
+1,/10*3{RBCs},per thousand red blood cells,Units,PCORnet
+1,/10*4{RBCs},per 10 thousand red blood cells,Units,PCORnet
+1,/10*6,per million,Units,PCORnet
+1,/10*9,per billion,Units,PCORnet
+1,/100,per 100,Units,PCORnet
+1,/100{cells},per 100 cells,Units,PCORnet
+1,/100{neutrophils},per 100 neutrophils,Units,PCORnet
+1,/100{spermatozoa},per 100 spermatozoa,Units,PCORnet
+1,/100{WBCs},per 100 white blood cells,Units,PCORnet
+1,/a,per year,Units,PCORnet
+1,/cm[H2O],per centimeter of water,Units,PCORnet
+1,/d,per day,Units,PCORnet
+1,/dL,per deciliter,Units,PCORnet
+1,/g,per gram,Units,PCORnet
+1,/g{creat},per gram of creatinine,Units,PCORnet
+1,/g{Hb},per gram of hemoglobin,Units,PCORnet
+1,/g{tot_nit},per gram of total nitrogen,Units,PCORnet
+1,/g{tot_prot},per gram of total protein,Units,PCORnet
+1,/g{wet_tis},per gram of wet tissue,Units,PCORnet
+1,/h,per hour,Units,PCORnet
+1,/kg,per kilogram,Units,PCORnet
+1,/kg{body_wt},per kilogram of body weight,Units,PCORnet
+1,/L,per liter,Units,PCORnet
+1,/m2,per square meter,Units,PCORnet
+1,/m3,per cubic meter,Units,PCORnet
+1,/mg,per milligram,Units,PCORnet
+1,/min,per minute,Units,PCORnet
+1,/mL,per milliliter,Units,PCORnet
+1,/mm,per millimeter,Units,PCORnet
+1,/mm3,per cubic millimeter,Units,PCORnet
+1,/mmol{creat},per millimole of creatinine,Units,PCORnet
+1,/mo,per month,Units,PCORnet
+1,/s,per second,Units,PCORnet
+1,/U,per enzyme unit,Units,PCORnet
+1,/uL,per microliter,Units,PCORnet
+1,/wk,per week,Units,PCORnet
+1,[APL'U],IgA anticardiolipin unit**,Units,PCORnet
+1,[APL'U]/mL,IgA anticardiolipin unit per milliliter**,Units,PCORnet
+1,[arb'U],arbitrary unit,Units,PCORnet
+1,[arb'U]/mL,arbitrary unit per milliliter,Units,PCORnet
+1,[AU],allergy unit,Units,PCORnet
+1,[AU]/ml,Allergy unit per milliliter,Units,PCORnet
+1,[bdsk'U],Bodansky unit,Units,PCORnet
+1,[beth'U],Bethesda unit,Units,PCORnet
+1,[beth'U]/ml,Bethesda unit per milliliter,Units,PCORnet
+1,[CFU],colony forming unit,Units,PCORnet
+1,[CFU]/L,colony forming unit per liter,Units,PCORnet
+1,[CFU]/mL,colony forming unit per milliliter,Units,PCORnet
+1,[Ch],French (catheter gauge),Units,PCORnet
+1,[cin_i],cubic inch (international),Units,PCORnet
+1,[degF],degree Fahrenheit,Units,PCORnet
+1,[diop],diopter,Units,PCORnet
+1,[dr_av],dram  (US and British),Units,PCORnet
+1,[drp],drop (1/12 milliliter),Units,PCORnet
+1,[FEU],Fibrinogen equivalent units,Units,PCORnet
+1,[foz_us],fluid ounce (US),Units,PCORnet
+1,[ft_i],foot (international),Units,PCORnet
+1,[ft_us]/[ft_us],feet (US) per feet (US),Units,PCORnet
+1,[gal_us],gallon (US),Units,PCORnet
+1,[GPL'U],IgG anticardiolipin unit**,Units,PCORnet
+1,[GPL'U]/mL,IgG anticardiolipin unit per milliliter**,Units,PCORnet
+1,[HPF],high power field,Units,PCORnet
+1,[in_i],inch (international),Units,PCORnet
+1,[in_i'H2O],inch (international) of water,Units,PCORnet
+1,[in_us],inches (US),Units,PCORnet
+1,[IU],international unit,Units,PCORnet
+1,[IU]/(2.h),international unit per 2 hour,Units,PCORnet
+1,[IU]/(24.h),international unit per 24 hour,Units,PCORnet
+1,[IU]/10*9{RBCs},international unit per billion red blood cells,Units,PCORnet
+1,[IU]/d,international unit per day,Units,PCORnet
+1,[IU]/dL,international unit per deciliter,Units,PCORnet
+1,[IU]/g,international unit per gram,Units,PCORnet
+1,[IU]/g{Hb},international unit per gram of hemoglobin,Units,PCORnet
+1,[IU]/h,international unit per hour,Units,PCORnet
+1,[IU]/kg,international unit per kilogram,Units,PCORnet
+1,[IU]/kg/d,international unit per kilogram per day,Units,PCORnet
+1,[IU]/kg/h,international unit per kilogram per hour,Units,PCORnet
+1,[IU]/L,international unit per liter,Units,PCORnet
+1,[IU]/L{37Cel},international unit per liter at 37 degrees Celsius,Units,PCORnet
+1,[IU]/mg{creat},international unit per milligram of creatinine,Units,PCORnet
+1,[IU]/min,international unit per minute,Units,PCORnet
+1,[IU]/mL,international unit per milliliter,Units,PCORnet
+1,[ka'U],King Armstrong unit,Units,PCORnet
+1,[knk'U],Kunkel unit,Units,PCORnet
+1,[lb_av],pound (US and British),Units,PCORnet
+1,[LPF],low power field,Units,PCORnet
+1,[mclg'U],Maclagan unit,Units,PCORnet
+1,[MET].min/wk,metabolic equivalent minute per week,Units,PCORnet
+1,[mi_i],mile (international),Units,PCORnet
+1,[MPL'U],IgM anticardiolipin unit**,Units,PCORnet
+1,[MPL'U]/mL,IgM anticardiolipin unit per milliliter**,Units,PCORnet
+1,[oz_av],ounce (US and British),Units,PCORnet
+1,[oz_tr],Troy ounce,Units,PCORnet
+1,[pH],pH,Units,PCORnet
+1,[ppb],part per billion,Units,PCORnet
+1,[ppm],part per million,Units,PCORnet
+1,[ppm]{v/v},part per million in volume per volume,Units,PCORnet
+1,[ppth],part per thousand,Units,PCORnet
+1,[pptr],part per trillion,Units,PCORnet
+1,[PRU],peripheral vascular resistance unit,Units,PCORnet
+1,[psi],pound per square inch,Units,PCORnet
+1,[pt_us],pint (US),Units,PCORnet
+1,[qt_us],quart (US),Units,PCORnet
+1,[sft_i],square foot (international),Units,PCORnet
+1,[sin_i],square inch (international),Units,PCORnet
+1,[syd_i],square yard (international),Units,PCORnet
+1,[tbs_us],tablespoon (US),Units,PCORnet
+1,[tb'U],tuberculin unit,Units,PCORnet
+1,[todd'U],Todd unit,Units,PCORnet
+1,[tsp_us],teaspoon (US),Units,PCORnet
+1,[yd_i],yard (international),Units,PCORnet
+1,{#},number,Units,PCORnet
+1,{#}/[HPF],number per high power field,Units,PCORnet
+1,{#}/[LPF],number per low power field,Units,PCORnet
+1,{#}/{platelet},molecule per platelet,Units,PCORnet
+1,{#}/a,number per annum (year),Units,PCORnet
+1,{#}/d,number per day,Units,PCORnet
+1,{#}/g,number per gram,Units,PCORnet
+1,{#}/L,number per liter,Units,PCORnet
+1,{#}/min,number per minute,Units,PCORnet
+1,{#}/mL,number per milliliter,Units,PCORnet
+1,{#}/uL,number per microliter,Units,PCORnet
+1,{#}/wk,number per week,Units,PCORnet
+1,{absorbance},absorbance,Units,PCORnet
+1,{activity},activity,Units,PCORnet
+1,{AHF'U},American Hospital Formulary unit,Units,PCORnet
+1,{APS'U},IgA antiphosphatidylserine unit,Units,PCORnet
+1,{ARU},aspirin response unit,Units,PCORnet
+1,{beats}/min,heart beats per minute,Units,PCORnet
+1,{binding_index},binding index,Units,PCORnet
+1,{breaths}/min,breaths per minute,Units,PCORnet
+1,{CAE'U},complement activity enzyme unit,Units,PCORnet
+1,{CAG_repeats},CAG trinucleotide repeats,Units,PCORnet
+1,{cells},cells,Units,PCORnet
+1,{cells}/[HPF],cells per high power field,Units,PCORnet
+1,{cells}/uL,cells per microliter,Units,PCORnet
+1,{CH100'U},complement CH100 unit,Units,PCORnet
+1,{clock_time},clock time e.g 12:30PM,Units,PCORnet
+1,{copies},copies,Units,PCORnet
+1,{copies}/mL,copies per milliliter,Units,PCORnet
+1,{copies}/ug,copies per microgram,Units,PCORnet
+1,{count},count,Units,PCORnet
+1,{CPM},counts per minute,Units,PCORnet
+1,{CPM}/10*3{cell},counts per minute per thousand cells,Units,PCORnet
+1,{Ct_value},Cycle threshold value,Units,PCORnet
+1,{delta_OD},change in (delta) optical density,Units,PCORnet
+1,{dilution},dilution,Units,PCORnet
+1,{Ehrlich'U},Ehrlich unit,Units,PCORnet
+1,{Ehrlich'U}/(2.h),Ehrlich unit per 2 hour,Units,PCORnet
+1,{Ehrlich'U}/100.g,Ehrlich unit per 100 gram,Units,PCORnet
+1,{Ehrlich'U}/d,Ehrlich unit per day,Units,PCORnet
+1,{Ehrlich'U}/dL,Ehrlich unit per deciliter,Units,PCORnet
+1,{EIA_index},EIA index,Units,PCORnet
+1,{EIA_titer},EIA titer,Units,PCORnet
+1,{EIA'U},EIA unit,Units,PCORnet
+1,{EIA'U}/U,EIA unit per enzyme unit,Units,PCORnet
+1,{ELISA'U},ELISA unit,Units,PCORnet
+1,{EV},EIA value,Units,PCORnet
+1,{FIU},fluorescent intensity unit,Units,PCORnet
+1,{fraction},fraction,Units,PCORnet
+1,{GAA_repeats},GAA trinucleotide repeats,Units,PCORnet
+1,{genomes}/mL,genomes per milliliter,Units,PCORnet
+1,{Globules}/[HPF],globules (drops)  per high power field,Units,PCORnet
+1,{GPS'U},IgG antiphosphatidylserine unit,Units,PCORnet
+1,{HA_titer},influenza hemagglutination titer,Units,PCORnet
+1,{IFA_index},immunofluorescence assay index,Units,PCORnet
+1,{IFA_titer},Immunofluorescence assay titer,Units,PCORnet
+1,{ImmuneComplex'U},immune complex unit,Units,PCORnet
+1,{index_val},index value,Units,PCORnet
+1,{index},index value,Units,PCORnet
+1,{INR},international normalized ratio,Units,PCORnet
+1,{ISR},immune status ratio,Units,PCORnet
+1,{JDF'U},Juvenile Diabetes Foundation unit,Units,PCORnet
+1,{JDF'U}/L,Juvenile Diabetes Foundation unit per liter,Units,PCORnet
+1,{KCT'U},kaolin clotting time,Units,PCORnet
+1,{KRONU'U}/mL,Kronus unit per milliliter,Units,PCORnet
+1,{Log_copies}/mL,log (base 10) copies per milliliter,Units,PCORnet
+1,{Log_IU},log (base 10) international unit,Units,PCORnet
+1,{Log_IU}/mL,log (base 10) international unit per milliliter,Units,PCORnet
+1,{Log},log base 10,Units,PCORnet
+1,{Lyme_index_value},Lyme index value,Units,PCORnet
+1,{M.o.M},multiple of the median,Units,PCORnet
+1,{minidrop}/min,minidrop per minute,Units,PCORnet
+1,{minidrop}/s,minidrop per second,Units,PCORnet
+1,{mm/dd/yyyy},month-day-year,Units,PCORnet
+1,{MPS'U},IgM antiphosphatidylserine unit,Units,PCORnet
+1,{MPS'U}/mL,IgM antiphosphatidylserine unit per milliliter,Units,PCORnet
+1,{mutation},mutation,Units,PCORnet
+1,{OD_unit},optical density unit,Units,PCORnet
+1,{Pan_Bio'U},panbio unit,Units,PCORnet
+1,{percentile},percentile,Units,PCORnet
+1,{phenotype},phenotype,Units,PCORnet
+1,{ratio},ratio,Units,PCORnet
+1,{RBC}/uL,red blood cell per microliter,Units,PCORnet
+1,{rel_saturation},relative saturation,Units,PCORnet
+1,{risk},risk,Units,PCORnet
+1,{Rubella_virus},rubella virus,Units,PCORnet
+1,{s_co_ratio},signal to cutoff ratio,Units,PCORnet
+1,{saturation},saturation,Units,PCORnet
+1,{score},score,Units,PCORnet
+1,{shift},shift,Units,PCORnet
+1,{spermatozoa}/mL,spermatozoa per milliliter,Units,PCORnet
+1,{STDV},standard deviation,Units,PCORnet
+1,{titer},titer,Units,PCORnet
+1,{TmStp},time stamp,Units,PCORnet
+1,{Tscore},t score,Units,PCORnet
+1,{TSI_index},thyroid-stimulating immunoglobulin index,Units,PCORnet
+1,{WBCs},white blood cells,Units,PCORnet
+1,{yyyy},year,Units,PCORnet
+1,{Zscore},z score,Units,PCORnet
+1,10*12/L,trillion per liter,Units,PCORnet
+1,10*3,thousand,Units,PCORnet
+1,10*3/L,thousand per liter,Units,PCORnet
+1,10*3/mL,thousand per milliliter,Units,PCORnet
+1,10*3/uL,thousand per microliter,Units,PCORnet
+1,10*3{copies}/mL,thousand copies per milliliter,Units,PCORnet
+1,10*3{RBCs},thousand red blood cells,Units,PCORnet
+1,10*4/uL,10 thousand per microliter,Units,PCORnet
+1,10*5,one hundred thousand,Units,PCORnet
+1,10*6,million,Units,PCORnet
+1,10*6.[CFU]/L,million colony forming unit per liter,Units,PCORnet
+1,10*6.[IU],million international unit,Units,PCORnet
+1,10*6/(24.h),million per 24 hour,Units,PCORnet
+1,10*6/kg,million per kilogram,Units,PCORnet
+1,10*6/L,million per liter,Units,PCORnet
+1,10*6/mL,million per milliliter,Units,PCORnet
+1,10*6/uL,million per microliter,Units,PCORnet
+1,10*8,100 million,Units,PCORnet
+1,10*9/L,billion per liter,Units,PCORnet
+1,10*9/mL,billion per milliliter,Units,PCORnet
+1,10*9/uL,billion per microliter,Units,PCORnet
+1,10.L/(min.m2),10 liter per minute per square meter,Units,PCORnet
+1,10.L/min,10 liter per minute,Units,PCORnet
+1,10.uN.s/(cm5.m2),10 micronewton second per centimeter to the fifth power per square meter,Units,PCORnet
+1,24.h,24 hour,Units,PCORnet
+1,A,ampere,Units,PCORnet
+1,a,year,Units,PCORnet
+1,A/m,ampere per meter,Units,PCORnet
+1,ag/{cell},attogram per cell,Units,PCORnet
+1,atm,atmosphere,Units,PCORnet
+1,bar,bar,Units,PCORnet
+1,Bq,Becquerel,Units,PCORnet
+1,cal,calorie,Units,PCORnet
+1,Cel,degree Celsius,Units,PCORnet
+1,cg,centigram,Units,PCORnet
+1,cL,centiliter,Units,PCORnet
+1,cm,centimeter,Units,PCORnet
+1,cm/m2,centimeter per square meter,Units,PCORnet
+1,cm/s,centimeter per second,Units,PCORnet
+1,cm[H2O],centimeter of water,Units,PCORnet
+1,cm[H2O]/L/s,centimeter of water per liter per second,Units,PCORnet
+1,cm[H2O]/s/m,centimeter of water per second per meter,Units,PCORnet
+1,cm[Hg],centimeter of mercury,Units,PCORnet
+1,cm2,square centimeter,Units,PCORnet
+1,cm2/s,square centimeter per second,Units,PCORnet
+1,cm3,cubic centimeter,Units,PCORnet
+1,cP,centipoise,Units,PCORnet
+1,cSt,centistoke,Units,PCORnet
+1,d,day,Units,PCORnet
+1,d/(7.d),day per 7 day,Units,PCORnet
+1,d/wk,days per week,Units,PCORnet
+1,daL/min,dekaliter per minute,Units,PCORnet
+1,daL/min/m2,dekaliter per minute per square meter,Units,PCORnet
+1,dB,decibel,Units,PCORnet
+1,deg,degree (plane angle),Units,PCORnet
+1,deg/s,degree per second,Units,PCORnet
+1,dg,decigram,Units,PCORnet
+1,dL,deciliter,Units,PCORnet
+1,dL/day,deciliter per day,Units,PCORnet
+1,dL/h,deciliter per hour,Units,PCORnet
+1,dL/min,deciliter per minute,Units,PCORnet
+1,dm,decimeter,Units,PCORnet
+1,dm2/s2,square decimeter per square second,Units,PCORnet
+1,dyn.s/(cm.m2),dyne second per centimeter per square meter,Units,PCORnet
+1,dyn.s/cm,dyne second per centimeter,Units,PCORnet
+1,eq,equivalent,Units,PCORnet
+1,eq/L,equivalent per liter,Units,PCORnet
+1,eq/mL,equivalent per milliliter,Units,PCORnet
+1,eq/mmol,equivalent per millimole,Units,PCORnet
+1,eq/umol,equivalent per micromole,Units,PCORnet
+1,erg,erg,Units,PCORnet
+1,eV,electron Volt,Units,PCORnet
+1,F,Farad,Units,PCORnet
+1,fg,femtogram,Units,PCORnet
+1,fL,femtoliter,Units,PCORnet
+1,fm,femtometer,Units,PCORnet
+1,fmol,femtomole,Units,PCORnet
+1,fmol/g,femtomole per gram,Units,PCORnet
+1,fmol/L,femtomole per liter,Units,PCORnet
+1,fmol/mg,femtomole per milligram,Units,PCORnet
+1,fmol/mg{cyt_prot},femtomole per milligram of cytosol protein,Units,PCORnet
+1,fmol/mg{prot},femtomole per milligram of protein,Units,PCORnet
+1,fmol/mL,femtomole per milliliter,Units,PCORnet
+1,g,gram,Units,PCORnet
+1,g.m,gram meter,Units,PCORnet
+1,g.m/{beat},gram meter per heart beat,Units,PCORnet
+1,g/(100.g),gram per 100 gram,Units,PCORnet
+1,g/(12.h),gram per 12 hour,Units,PCORnet
+1,g/(24.h),gram per 24 hour,Units,PCORnet
+1,g/(3.d),gram per 3 days,Units,PCORnet
+1,g/(4.h),gram per 4 hour,Units,PCORnet
+1,g/(48.h),gram per 48 hour,Units,PCORnet
+1,g/(5.h),gram per 5 hour,Units,PCORnet
+1,g/(6.h),gram per 6 hour,Units,PCORnet
+1,g/(72.h),gram per 72 hour,Units,PCORnet
+1,g/(8.h){shift},gram per 8 hour shift,Units,PCORnet
+1,g/{specimen},gram per specimen,Units,PCORnet
+1,g/{total_output},gram per total output,Units,PCORnet
+1,g/{total_weight},gram per total weight,Units,PCORnet
+1,g/cm2,gram per square centimeter,Units,PCORnet
+1,g/cm3,gram per cubic centimeter,Units,PCORnet
+1,g/d,gram per day,Units,PCORnet
+1,g/dL,gram per deciliter,Units,PCORnet
+1,g/g,gram per gram,Units,PCORnet
+1,g/g{creat},gram per gram of creatinine,Units,PCORnet
+1,g/g{globulin},gram per gram of globulin,Units,PCORnet
+1,g/g{tissue},gram per gram of tissue,Units,PCORnet
+1,g/h,gram per hour,Units,PCORnet
+1,g/h/m2,gram per hour per square meter,Units,PCORnet
+1,g/kg,gram per kilogram,Units,PCORnet
+1,g/kg/(8.h),gram per  kilogram per 8 hour,Units,PCORnet
+1,g/kg/(8.h){shift},gram per kilogram per 8 hour shift,Units,PCORnet
+1,g/kg/d,gram per kilogram per day,Units,PCORnet
+1,g/kg/h,gram per kilogram per hour,Units,PCORnet
+1,g/kg/min,gram per kilogram per minute,Units,PCORnet
+1,g/L,gram per liter,Units,PCORnet
+1,g/m2,gram per square meter,Units,PCORnet
+1,g/mg,gram per milligram,Units,PCORnet
+1,g/min,gram per minute,Units,PCORnet
+1,g/mL,gram per milliliter,Units,PCORnet
+1,g/mmol,gram per millimole,Units,PCORnet
+1,g/mol{creat},gram per mole of creatinine,Units,PCORnet
+1,g{creat},gram of creatinine,Units,PCORnet
+1,g{Hb},gram of hemoglobin,Units,PCORnet
+1,g{total_nit},gram of total nitrogen,Units,PCORnet
+1,g{total_prot},gram of total protein,Units,PCORnet
+1,g{wet_tissue},gram of wet tissue,Units,PCORnet
+1,Gy,Gray,Units,PCORnet
+1,H,Henry,Units,PCORnet
+1,h,hour,Units,PCORnet
+1,h/d,hour per day,Units,PCORnet
+1,h/wk,hour per week,Units,PCORnet
+1,Hz,Hertz,Units,PCORnet
+1,J,joule,Units,PCORnet
+1,J/L,joule per liter,Units,PCORnet
+1,K,degree Kelvin,Units,PCORnet
+1,K/W,degree Kelvin per Watt,Units,PCORnet
+1,k[IU]/L,kilo international unit per liter,Units,PCORnet
+1,k[IU]/mL,kilo international unit per milliliter,Units,PCORnet
+1,kat,katal,Units,PCORnet
+1,kat/kg,katal per kilogram,Units,PCORnet
+1,kat/L,katal per liter,Units,PCORnet
+1,kcal,kilocalorie,Units,PCORnet
+1,kcal/(24.h),kilocalorie per 24 hour,Units,PCORnet
+1,kcal/[oz_av],kilocalorie per ounce (US & British),Units,PCORnet
+1,kcal/d,kilocalorie per day,Units,PCORnet
+1,kcal/dL,kilocalorie per deciliter,Units,PCORnet
+1,kcal/h,kilocalorie per hour,Units,PCORnet
+1,kcal/kg,kilocalorie per kilogram,Units,PCORnet
+1,kcal/kg/(24.h),kilocalorie per kilogram per 24 hour,Units,PCORnet
+1,kg,kilogram,Units,PCORnet
+1,kg.m/s,kilogram meter per second,Units,PCORnet
+1,kg/(s.m2),kilogram per second per square meter,Units,PCORnet
+1,kg/d,kilogram per day,Units,PCORnet
+1,kg/h,kilogram per hour,Units,PCORnet
+1,kg/L,kilogram per liter,Units,PCORnet
+1,kg/m2,kilogram per square meter,Units,PCORnet
+1,kg/m3,kilogram per cubic meter,Units,PCORnet
+1,kg/min,kilogram per minute,Units,PCORnet
+1,kg/mol,kilogram per mole,Units,PCORnet
+1,kg/s,kilogram per second,Units,PCORnet
+1,kL,kiloliter,Units,PCORnet
+1,km,kilometer,Units,PCORnet
+1,kPa,kilopascal,Units,PCORnet
+1,ks,kilosecond,Units,PCORnet
+1,kU,kilo enzyme unit,Units,PCORnet
+1,kU/g,kilo enzyme unit per gram,Units,PCORnet
+1,kU/L,kilo enzyme unit per liter,Units,PCORnet
+1,kU/L{class},kilo enzyme unit per liter class,Units,PCORnet
+1,kU/mL,kilo enzyme unit per milliliter,Units,PCORnet
+1,L,liter,Units,PCORnet
+1,L/(24.h),liter per 24 hour,Units,PCORnet
+1,L/(8.h),liter per 8 hour,Units,PCORnet
+1,L/(min.m2),liter per minute per square meter,Units,PCORnet
+1,L/d,liter per day,Units,PCORnet
+1,L/h,liter per hour,Units,PCORnet
+1,L/kg,liter per kilogram,Units,PCORnet
+1,L/L,liter per liter,Units,PCORnet
+1,L/min,liter per minute,Units,PCORnet
+1,L/min/m2,liter per minute per sqaure meter,Units,PCORnet
+1,L/s,liter per second,Units,PCORnet
+1,L/s/s2,liter per second per square second,Units,PCORnet
+1,lm,lumen,Units,PCORnet
+1,lm.m2,lumen square meter,Units,PCORnet
+1,m,meter,Units,PCORnet
+1,m/s,meter per second,Units,PCORnet
+1,m/s2,meter per square second,Units,PCORnet
+1,m[IU]/L,milli international unit per liter,Units,PCORnet
+1,m[IU]/mL,milli  international unit per milliliter,Units,PCORnet
+1,m2,square meter,Units,PCORnet
+1,m2/s,square meter per second,Units,PCORnet
+1,m3/s,cubic meter per second,Units,PCORnet
+1,mA,milliampere,Units,PCORnet
+1,mbar,millibar,Units,PCORnet
+1,mbar.s/L,millibar second per liter,Units,PCORnet
+1,mbar/L/s,millibar per liter per second,Units,PCORnet
+1,mcg/mL,millicentigram per milliliter,Units,PCORnet
+1,meq,milliequivalent,Units,PCORnet
+1,meq/(2.h),milliequivalent per 2 hour,Units,PCORnet
+1,meq/(24.h),milliequivalent per 24 hour,Units,PCORnet
+1,meq/(8.h),milliequivalent per 8 hour,Units,PCORnet
+1,meq/{specimen},milliequivalent per specimen,Units,PCORnet
+1,meq/{total_volume},milliequivalent per total volume,Units,PCORnet
+1,meq/d,milliequivalent per day,Units,PCORnet
+1,meq/dL,milliequivalent per deciliter,Units,PCORnet
+1,meq/g,milliequivalent per gram,Units,PCORnet
+1,meq/g{creat},milliequivalent per gram of creatinine,Units,PCORnet
+1,meq/h,milliequivalent per hour,Units,PCORnet
+1,meq/kg,milliequivalent per kilogram,Units,PCORnet
+1,meq/kg/h,milliequivalent per kilogram per hour,Units,PCORnet
+1,meq/L,milliequivalent per liter,Units,PCORnet
+1,meq/m2,milliequivalent per square meter,Units,PCORnet
+1,meq/min,milliequivalent per minute,Units,PCORnet
+1,meq/mL,milliequivalent per milliliter,Units,PCORnet
+1,mg,milligram,Units,PCORnet
+1,mg/(10.h),milligram per 10 hour,Units,PCORnet
+1,mg/(12.h),milligram per 12 hour,Units,PCORnet
+1,mg/(2.h),milligram per 2 hour,Units,PCORnet
+1,mg/(24.h),milligram per 24 hour,Units,PCORnet
+1,mg/(6.h),milligram per 6 hour,Units,PCORnet
+1,mg/(72.h),milligram per 72 hour,Units,PCORnet
+1,mg/(8.h),milligram per 8 hour,Units,PCORnet
+1,mg/{collection},milligram per collection,Units,PCORnet
+1,mg/{specimen},milligram per specimen,Units,PCORnet
+1,mg/{total_output},milligram per total output,Units,PCORnet
+1,mg/{total_volume},milligram per total volume,Units,PCORnet
+1,mg/d,milligram per day,Units,PCORnet
+1,mg/d/{1.73_m2},milligram per day per 1.73 square meter,Units,PCORnet
+1,mg/dL,milligram per deciliter,Units,PCORnet
+1,mg/dL{RBCs},milligram per deciliter of red blood cells,Units,PCORnet
+1,mg/g,milligram per gram,Units,PCORnet
+1,mg/g{creat},milligram per gram of creatinine,Units,PCORnet
+1,mg/g{dry_tissue},milligram per gram of dry tissue,Units,PCORnet
+1,mg/g{feces},milligram per gram of feces,Units,PCORnet
+1,mg/g{tissue},milligram per gram of tissue,Units,PCORnet
+1,mg/g{wet_tissue},milligram per gram of wet tissue,Units,PCORnet
+1,mg/h,milligram per hour,Units,PCORnet
+1,mg/kg,milligram per kilogram,Units,PCORnet
+1,mg/kg/(8.h),milligram per kilogram per 8 hour,Units,PCORnet
+1,mg/kg/d,milligram per kilogram per day,Units,PCORnet
+1,mg/kg/h,milligram per kilogram per hour,Units,PCORnet
+1,mg/kg/min,milligram per kilogram per minute,Units,PCORnet
+1,mg/L,milligram per liter,Units,PCORnet
+1,mg/L{RBCs},milligram per liter of red blood cells,Units,PCORnet
+1,mg/m2,milligram per square meter,Units,PCORnet
+1,mg/m3,milligram per cubic meter,Units,PCORnet
+1,mg/mg,milligram per milligram,Units,PCORnet
+1,mg/mg{creat},milligram per milligram of creatinine,Units,PCORnet
+1,mg/min,milligram per minute,Units,PCORnet
+1,mg/mL,milligram per milliliter,Units,PCORnet
+1,mg/mmol,milligram per millimole,Units,PCORnet
+1,mg/mmol{creat},milligram per millimole of creatinine,Units,PCORnet
+1,mg/wk,milligram per week,Units,PCORnet
+1,mg{FEU}/L,milligram fibrinogen equivalent unit per liter,Units,PCORnet
+1,min,minute,Units,PCORnet
+1,min/d,minute per day,Units,PCORnet
+1,min/wk,minute per week,Units,PCORnet
+1,mL,milliliter,Units,PCORnet
+1,mL/(10.h),milliliter per 10 hour,Units,PCORnet
+1,mL/(12.h),milliliter per 12 hour,Units,PCORnet
+1,mL/(2.h),milliliter per 2 hour,Units,PCORnet
+1,mL/(24.h),milliliter per 24 hour,Units,PCORnet
+1,mL/(4.h),milliliter per 4 hour,Units,PCORnet
+1,mL/(5.h),milliliter per 5 hour,Units,PCORnet
+1,mL/(6.h),milliliter per 6 hour,Units,PCORnet
+1,mL/(72.h),milliliter per 72 hour,Units,PCORnet
+1,mL/(8.h),milliliter per 8 hour,Units,PCORnet
+1,mL/(8.h)/kg,milliliter per 8 hour per kilogram,Units,PCORnet
+1,mL/[sin_i],milliliter per square inch (international),Units,PCORnet
+1,mL/{beat},milliliter per heart beat,Units,PCORnet
+1,mL/{beat}/m2,milliliter per heart beat per  square meter,Units,PCORnet
+1,mL/cm[H2O],milliliter per centimeter of water,Units,PCORnet
+1,mL/d,milliliter per day,Units,PCORnet
+1,mL/dL,milliliter per deciliter,Units,PCORnet
+1,mL/h,milliliter per hour,Units,PCORnet
+1,mL/kg,milliliter per kilogram,Units,PCORnet
+1,mL/kg/(8.h),milliliter per kilogram per 8 hour,Units,PCORnet
+1,mL/kg/d,milliliter per kilogram per day,Units,PCORnet
+1,mL/kg/h,milliliter per kilogram per hour,Units,PCORnet
+1,mL/kg/min,milliliter per kilogram per minute,Units,PCORnet
+1,mL/m2,milliliter per square meter,Units,PCORnet
+1,mL/mbar,milliliter per millibar,Units,PCORnet
+1,mL/min,milliliter per minute,Units,PCORnet
+1,mL/min/{1.73_m2},milliliter per minute per 1.73 square meter,Units,PCORnet
+1,mL/min/m2,milliliter per minute per square meter,Units,PCORnet
+1,mL/mm,milliliter per millimeter,Units,PCORnet
+1,mL/s,milliliter per second,Units,PCORnet
+1,mL{fetal_RBCs},milliliter of fetal red blood cells,Units,PCORnet
+1,mm,millimeter,Units,PCORnet
+1,mm/h,millimeter per hour,Units,PCORnet
+1,mm/min,millimeter per minute,Units,PCORnet
+1,mm[H2O],millimeter of water,Units,PCORnet
+1,mm[Hg],millimeter of mercury,Units,PCORnet
+1,mm2,square millimeter,Units,PCORnet
+1,mmol,millimole,Units,PCORnet
+1,mmol/(12.h),millimole per 12 hour,Units,PCORnet
+1,mmol/(2.h),millimole per 2 hour,Units,PCORnet
+1,mmol/(24.h),millimole per 24 hour,Units,PCORnet
+1,mmol/(5.h),millimole per 5 hour,Units,PCORnet
+1,mmol/(6.h),millimole per 6 hour,Units,PCORnet
+1,mmol/(8.h),millimole per 8 hour,Units,PCORnet
+1,mmol/{ejaculate},millimole per ejaculate,Units,PCORnet
+1,mmol/{specimen},millimole per specimen,Units,PCORnet
+1,mmol/{total_vol},millimole per total volume,Units,PCORnet
+1,mmol/d,millimole per day,Units,PCORnet
+1,mmol/dL,millimole per deciliter,Units,PCORnet
+1,mmol/g,millimole per gram,Units,PCORnet
+1,mmol/g{creat},millimole per gram of creatinine,Units,PCORnet
+1,mmol/h,millimole per hour,Units,PCORnet
+1,mmol/h/mg{Hb},millimole per hour per milligram of hemoglobin,Units,PCORnet
+1,mmol/h/mg{prot},millimole per hour per milligram of protein,Units,PCORnet
+1,mmol/kg,millimole per kilogram,Units,PCORnet
+1,mmol/kg/(8.h),millimole per kilogram per 8 hour,Units,PCORnet
+1,mmol/kg/d,millimole per kilogram per day,Units,PCORnet
+1,mmol/kg/h,millimole per kilogram per hour,Units,PCORnet
+1,mmol/kg/min,millimole per kilogram per minute,Units,PCORnet
+1,mmol/L,millimole per liter,Units,PCORnet
+1,mmol/L{RBCs},millimole per liter of red blood cells,Units,PCORnet
+1,mmol/m2,millimole per square meter,Units,PCORnet
+1,mmol/min,millimole per minute,Units,PCORnet
+1,mmol/mL,millimole per milliliter,Units,PCORnet
+1,mmol/mmol,millimole per millimole,Units,PCORnet
+1,mmol/mmol{creat},millimole per millmole of creatinine,Units,PCORnet
+1,mmol/mmol{urea},millimole per millimole of urea,Units,PCORnet
+1,mmol/mol,millimole per mole,Units,PCORnet
+1,mmol/mol{creat},millimole per mole of creatinine,Units,PCORnet
+1,mmol/s/L,millimole per second per liter,Units,PCORnet
+1,mo,month,Units,PCORnet
+1,mol,mole,Units,PCORnet
+1,mol/kg,mole per kilogram,Units,PCORnet
+1,mol/kg/s,mole per kilogram per second,Units,PCORnet
+1,mol/L,mole per liter,Units,PCORnet
+1,mol/m3,mole per cubic meter,Units,PCORnet
+1,mol/mL,mole per milliliter,Units,PCORnet
+1,mol/mol,mole per mole,Units,PCORnet
+1,mol/s,mole per second,Units,PCORnet
+1,mosm,milliosmole,Units,PCORnet
+1,mosm/dL,milliosmole per deciliter,Units,PCORnet
+1,mosm/kg,milliosmole per kilogram,Units,PCORnet
+1,mosm/L,milliosmole per liter,Units,PCORnet
+1,mosm/mL,milliosmole per milliliter,Units,PCORnet
+1,mPa,millipascal,Units,PCORnet
+1,mPa.s,millipascal second,Units,PCORnet
+1,Ms,megasecond,Units,PCORnet
+1,ms,millisecond,Units,PCORnet
+1,mU/g,milli  enzyme unit per gram,Units,PCORnet
+1,mU/g{Hb},milli enzyme unit per gram of hemoglobin,Units,PCORnet
+1,mU/g{prot},milli enzyme unit per gram of protein,Units,PCORnet
+1,mU/L,milli enzyme unit per liter,Units,PCORnet
+1,mU/mg,milli enzyme unit per milligram,Units,PCORnet
+1,mU/mg{creat},milli enzyme unit per milligram of creatinine,Units,PCORnet
+1,mU/mL,milli  enzyme unit per milliliter,Units,PCORnet
+1,mU/mL/min,milli  enzyme unit per milliliter per minute,Units,PCORnet
+1,mU/mmol{creat},milli  enzyme unit per millimole of creatinine,Units,PCORnet
+1,mU/mmol{RBCs},milli  enzyme unit per millimole of red blood cells,Units,PCORnet
+1,mV,millivolt,Units,PCORnet
+1,mV/s,millivolt per second,Units,PCORnet
+1,N,Newton,Units,PCORnet
+1,N.cm,Newton centimeter,Units,PCORnet
+1,N.s,Newton second,Units,PCORnet
+1,ng,nanogram,Units,PCORnet
+1,ng/(24.h),nanogram per 24 hour,Units,PCORnet
+1,ng/(8.h),nanogram per 8 hour,Units,PCORnet
+1,ng/10*6,nanogram per million,Units,PCORnet
+1,ng/10*6{RBCs},nanogram per million red blood cells,Units,PCORnet
+1,ng/d,nanogram per day,Units,PCORnet
+1,ng/dL,nanogram per deciliter,Units,PCORnet
+1,ng/g,nanogram per gram,Units,PCORnet
+1,ng/g{creat},nanogram per gram of creatinine,Units,PCORnet
+1,ng/h,nanogram per hour,Units,PCORnet
+1,ng/kg,nanogram per kilogram,Units,PCORnet
+1,ng/kg/(8.h),nanogram per kilogram per 8 hour,Units,PCORnet
+1,ng/kg/h,nanogram per kilogram per hour,Units,PCORnet
+1,ng/kg/min,nanogram per kilogram per minute,Units,PCORnet
+1,ng/L,nanogram per liter,Units,PCORnet
+1,ng/m2,nanogram per square meter,Units,PCORnet
+1,ng/mg,nanogram per milligram,Units,PCORnet
+1,ng/mg/h,nanogram per milligram per hour,Units,PCORnet
+1,ng/mg{creat},nanogram per milligram of creatinine,Units,PCORnet
+1,ng/mg{prot},nanogram per milligram of protein,Units,PCORnet
+1,ng/min,nanogram per minute,Units,PCORnet
+1,ng/mL,nanogram per millliiter,Units,PCORnet
+1,ng/mL/h,nanogram per milliliter per hour,Units,PCORnet
+1,ng/mL{RBCs},nanogram per milliliter of red blood cells,Units,PCORnet
+1,ng/s,nanogram per second,Units,PCORnet
+1,ng/U,nanogram per enzyme unit,Units,PCORnet
+1,ng{FEU}/mL,nanogram fibrinogen equivalent unit per milliliter,Units,PCORnet
+1,NI,No information,Units,PCORnet
+1,nkat,nanokatal,Units,PCORnet
+1,nL,nanoliter,Units,PCORnet
+1,nm,nanometer,Units,PCORnet
+1,nm/s/L,nanometer per second per liter,Units,PCORnet
+1,nmol,nanomole,Units,PCORnet
+1,nmol/(24.h),nanomole per 24 hour,Units,PCORnet
+1,nmol/d,nanomole per day,Units,PCORnet
+1,nmol/dL,nanomole per deciliter,Units,PCORnet
+1,nmol/dL{GF},nanomole per deciliter of glomerular filtrate,Units,PCORnet
+1,nmol/g,nanomole per gram,Units,PCORnet
+1,nmol/g{creat},nanomole per gram of creatinine,Units,PCORnet
+1,nmol/g{dry_wt},nanomole per gram of dry weight,Units,PCORnet
+1,nmol/h/L,nanomole per hour per liter,Units,PCORnet
+1,nmol/h/mg{prot},nanomole per hour per milligram of protein,Units,PCORnet
+1,nmol/h/mL,nanomole per hour per milliliter,Units,PCORnet
+1,nmol/L,nanomole per liter,Units,PCORnet
+1,nmol/L/mmol{creat},nanomole per liter per millimole of creatinine,Units,PCORnet
+1,nmol/L{RBCs},nanomole per liter of red blood cells,Units,PCORnet
+1,nmol/m/mg{prot},nanomole per meter per milligram of protein,Units,PCORnet
+1,nmol/mg,nanomole per milligram,Units,PCORnet
+1,nmol/mg/h,nanomole per milligram per hour,Units,PCORnet
+1,nmol/mg{creat},nanomole per milligram of creatinine,Units,PCORnet
+1,nmol/mg{prot},nanomole per milligram of protein,Units,PCORnet
+1,nmol/mg{prot}/h,nanomole per milligram of protein per hour,Units,PCORnet
+1,nmol/min,nanomole per minute,Units,PCORnet
+1,nmol/min/10*6{cells},nanomole per minute per million cells,Units,PCORnet
+1,nmol/min/mg{Hb},nanomole per minute per milligram of hemoglobin,Units,PCORnet
+1,nmol/min/mg{prot},nanomole per minute per milligram of protein,Units,PCORnet
+1,nmol/min/mg{protein},nanomole per minute per milligram protein,Units,PCORnet
+1,nmol/min/mL,nanomole per minute per milliliter,Units,PCORnet
+1,nmol/mL,nanomole per milliliter,Units,PCORnet
+1,nmol/mL/h,nanomole per milliliter per hour,Units,PCORnet
+1,nmol/mL/min,nanomole per milliliter per minute,Units,PCORnet
+1,nmol/mmol,nanomole per millimole,Units,PCORnet
+1,nmol/mmol{creat},nanomole per millimole of creatinine,Units,PCORnet
+1,nmol/mol,nanomole per mole,Units,PCORnet
+1,nmol/mol{creat},nanomole per mole creatinine,Units,PCORnet
+1,nmol/nmol,nanomole per nanomole,Units,PCORnet
+1,nmol/s,nanomole per second,Units,PCORnet
+1,nmol/s/L,nanomole per second per liter,Units,PCORnet
+1,nmol/umol{creat},nanomole per micromole  of creatinine,Units,PCORnet
+1,nmol{1/2cys}/mg{prot},nanomole of 1/2 cystine per milligram of protein,Units,PCORnet
+1,nmol{ATP},nanomole of ATP,Units,PCORnet
+1,nmol{BCE},nanomole bone collagen equivalent,Units,PCORnet
+1,nmol{BCE}/L,nanomole bone collagen equivalent per liter,Units,PCORnet
+1,nmol{BCE}/mmol{creat},nanomole bone collagen equivalent per millimole of creatinine,Units,PCORnet
+1,ns,nanosecond,Units,PCORnet
+1,nU/{RBC},nanoenzyme unit per red blood cell,Units,PCORnet
+1,nU/mL,nanoenzyme unit per milliliter,Units,PCORnet
+1,Ohm,Ohm,Units,PCORnet
+1,Ohm.m,Ohm meter,Units,PCORnet
+1,osm,osmole,Units,PCORnet
+1,osm/kg,osmole per kilogram,Units,PCORnet
+1,osm/L,osmole per liter,Units,PCORnet
+1,OT,Other,Units,PCORnet
+1,Pa,Pascal,Units,PCORnet
+1,pA,picoampere,Units,PCORnet
+1,pg,picogram,Units,PCORnet
+1,pg/{cell},picogram per cell,Units,PCORnet
+1,pg/{RBC},picogram per red blood cell,Units,PCORnet
+1,pg/dL,picogram per deciliter,Units,PCORnet
+1,pg/L,picogram per liter,Units,PCORnet
+1,pg/mg,picogram per milligram,Units,PCORnet
+1,pg/mg{creat},picogram per milligram of creatinine,Units,PCORnet
+1,pg/mL,picogram per milliliter,Units,PCORnet
+1,pg/mL{sLT},picogram per milliliter sulfidoleukotrienes,Units,PCORnet
+1,pg/mm,picogram per millimeter,Units,PCORnet
+1,pkat,picokatal,Units,PCORnet
+1,pL,picoliter,Units,PCORnet
+1,pm,picometer,Units,PCORnet
+1,pmol,picomole,Units,PCORnet
+1,pmol/(24.h),picomole per 24 hour,Units,PCORnet
+1,pmol/{RBC},picomole per red blood cell,Units,PCORnet
+1,pmol/d,picomole per day,Units,PCORnet
+1,pmol/dL,picomole per deciliter,Units,PCORnet
+1,pmol/g,picomole per gram,Units,PCORnet
+1,pmol/h/mg{prot},picomole per hour per milligram of protein,Units,PCORnet
+1,pmol/H/mg{protein},picomole per hour per milligram protein,Units,PCORnet
+1,pmol/h/mL,picomole per hour per milliliter,Units,PCORnet
+1,pmol/L,picomole per liter,Units,PCORnet
+1,pmol/mg{prot},picomole per milligram of protein,Units,PCORnet
+1,pmol/min,picomole per minute,Units,PCORnet
+1,pmol/min/mg{prot},picomole per minute per milligram of protein,Units,PCORnet
+1,pmol/mL,picomole per milliliter,Units,PCORnet
+1,pmol/mmol{creat},picomole per millimole of creatinine,Units,PCORnet
+1,pmol/umol,picomole per micromole,Units,PCORnet
+1,pmol/umol{creat},picomole per micromole of creatinine,Units,PCORnet
+1,ps,picosecond,Units,PCORnet
+1,pT,picotesla,Units,PCORnet
+1,S,Siemens,Units,PCORnet
+1,s,second,Units,PCORnet
+1,s/{control},second per control,Units,PCORnet
+1,Sv,Sievert,Units,PCORnet
+1,T,Tesla,Units,PCORnet
+1,t,metric ton,Units,PCORnet
+1,Torr,Torr,Units,PCORnet
+1,U,enzyme unit,Units,PCORnet
+1,U/(10.g){feces},enzyme unit per 10 gram of feces,Units,PCORnet
+1,U/(12.h),enzyme unit per 12 hour,Units,PCORnet
+1,U/(2.h),enzyme unit per 2 hour,Units,PCORnet
+1,U/(24.h),enzyme unit per 24 hour,Units,PCORnet
+1,U/10,enzyme unit per 10,Units,PCORnet
+1,U/10*10,enzyme unit per 10 billion,Units,PCORnet
+1,U/10*10{cells},enzyme unit per 10 billion cells,Units,PCORnet
+1,U/10*12,enzyme unit per trillion,Units,PCORnet
+1,U/10*12{RBCs},enzyme unit per trillion red blood cells,Units,PCORnet
+1,U/10*6,enzyme unit per million,Units,PCORnet
+1,U/10*9,enzyme unit per billion,Units,PCORnet
+1,U/d,enzyme unit per day,Units,PCORnet
+1,U/dL,enzyme unit per deciliter,Units,PCORnet
+1,U/g,enzyme unit per gram,Units,PCORnet
+1,U/g{creat},enzyme unit per gram of creatinine,Units,PCORnet
+1,U/g{Hb},enzyme unit per gram of hemoglobin,Units,PCORnet
+1,U/g{protein},enzyme unit per gram of protein,Units,PCORnet
+1,U/h,enzyme unit per hour,Units,PCORnet
+1,U/kg{Hb},enzyme unit per kilogram of hemoglobin,Units,PCORnet
+1,U/L,enzyme unit per liter,Units,PCORnet
+1,U/min,enzyme unit per minute,Units,PCORnet
+1,U/mL,enzyme unit per milliliter,Units,PCORnet
+1,U/mL{RBCs},enzyme unit per milliliter of red blood cells,Units,PCORnet
+1,U/mmol{creat},enzyme unit per millimole of creatinine,Units,PCORnet
+1,U/s,enzyme unit per second,Units,PCORnet
+1,u[IU],micro international unit,Units,PCORnet
+1,u[IU]/L,microinternational unit per liter,Units,PCORnet
+1,u[IU]/mL,micro international unit per milliliter,Units,PCORnet
+1,U{25Cel}/L,enzyme unit per liter at 25 deg Celsius,Units,PCORnet
+1,U{37Cel}/L,enzyme unit per liter at 37 deg Celsius,Units,PCORnet
+1,ueq,microequivalent,Units,PCORnet
+1,ueq/L,microequivalent per liter,Units,PCORnet
+1,ueq/mL,microequivalent per milliliter,Units,PCORnet
+1,ug,microgram,Units,PCORnet
+1,ug/(100.g),microgram per 100 gram,Units,PCORnet
+1,ug/(24.h),microgram per 24 hour,Units,PCORnet
+1,ug/(8.h),microgram per 8 hour,Units,PCORnet
+1,ug/[sft_i],microgram per square foot (international),Units,PCORnet
+1,ug/{specimen},microgram per specimen,Units,PCORnet
+1,ug/d,microgram per day,Units,PCORnet
+1,ug/dL,microgram per deciliter,Units,PCORnet
+1,ug/dL{RBCs},microgram per deciliter of red blood cells,Units,PCORnet
+1,ug/g,microgram per gram,Units,PCORnet
+1,ug/g{creat},microgram per gram of creatinine,Units,PCORnet
+1,ug/g{dry_tissue},microgram per gram of dry tissue,Units,PCORnet
+1,ug/g{dry_wt},microgram per gram of dry weight,Units,PCORnet
+1,ug/g{feces},microgram  per gram of feces,Units,PCORnet
+1,ug/g{hair},microgram per gram of hair,Units,PCORnet
+1,ug/g{Hb},microgram per gram of hemoglobin,Units,PCORnet
+1,ug/g{tissue},microgram per gram of tissue,Units,PCORnet
+1,ug/h,microgram per hour,Units,PCORnet
+1,ug/kg,microgram per kilogram,Units,PCORnet
+1,ug/kg/(8.h),microgram per kilogram per 8 hour,Units,PCORnet
+1,ug/kg/d,microgram per kilogram per day,Units,PCORnet
+1,ug/kg/h,microgram per kilogram per hour,Units,PCORnet
+1,ug/kg/min,microgram per kilogram per minute,Units,PCORnet
+1,ug/L,microgram per liter,Units,PCORnet
+1,ug/L/(24.h),microgram per liter per 24 hour,Units,PCORnet
+1,ug/L{RBCs},microgram per liter of red blood cells,Units,PCORnet
+1,ug/m2,microgram per square meter,Units,PCORnet
+1,ug/m3,microgram per cubic meter,Units,PCORnet
+1,ug/mg,microgram per milligram,Units,PCORnet
+1,ug/mg{creat},microgram per milligram of creatinine,Units,PCORnet
+1,ug/min,microgram per minute,Units,PCORnet
+1,ug/mL,microgram per milliliter,Units,PCORnet
+1,ug/mL{class},microgram per milliliter class,Units,PCORnet
+1,ug/mL{eqv},microgram per milliliter equivalent,Units,PCORnet
+1,ug/mmol,microgram per millimole,Units,PCORnet
+1,ug/mmol{creat},microgram per millimole of creatinine,Units,PCORnet
+1,ug/ng,microgram per nanogram,Units,PCORnet
+1,ug{FEU}/mL,microgram fibrinogen equivalent unit per milliliter,Units,PCORnet
+1,ukat,microkatal,Units,PCORnet
+1,uL,microliter,Units,PCORnet
+1,uL/(2.h),microliter per 2 hour,Units,PCORnet
+1,uL/h,microliter per hour,Units,PCORnet
+1,um,micrometer,Units,PCORnet
+1,um/s,microns per second,Units,PCORnet
+1,umol,micromole,Units,PCORnet
+1,umol/(2.h),micromole per 2 hour,Units,PCORnet
+1,umol/(24.h),micromole per 24 hour,Units,PCORnet
+1,umol/(8.h),micromole per 8 hour,Units,PCORnet
+1,umol/10*6{RBC},micromole per million red blood cell,Units,PCORnet
+1,umol/d,micromole per day,Units,PCORnet
+1,umol/dL,micromole per deciliter,Units,PCORnet
+1,umol/dL{GF},micromole per deciliter of glomerular filtrate,Units,PCORnet
+1,umol/g,micromole per gram,Units,PCORnet
+1,umol/g{creat},micromole per gram of creatinine,Units,PCORnet
+1,umol/g{Hb},micromole per gram of hemoglobin,Units,PCORnet
+1,umol/h,micromole per hour,Units,PCORnet
+1,umol/kg,micromole per kilogram,Units,PCORnet
+1,umol/kg{feces},micromole per kilogram of feces,Units,PCORnet
+1,umol/L,micromole per liter,Units,PCORnet
+1,umol/L/h,micromole per liter per hour,Units,PCORnet
+1,umol/L{RBCs},micromole per liter of red blood cells,Units,PCORnet
+1,umol/mg,micromole per milligram,Units,PCORnet
+1,umol/mg{creat},micromole per milligram of creatinine,Units,PCORnet
+1,umol/min,micromole per minute,Units,PCORnet
+1,umol/min/g,micromole per minute per gram,Units,PCORnet
+1,umol/min/g{mucosa},micromole per minute per gram of mucosa,Units,PCORnet
+1,umol/min/g{prot},micromole per minute per gram of protein,Units,PCORnet
+1,umol/min/L,micromole per minute per liter,Units,PCORnet
+1,umol/mL,micromole per milliliter,Units,PCORnet
+1,umol/mL/min,micromole per milliliter per minute,Units,PCORnet
+1,umol/mmol,micromole per millimole,Units,PCORnet
+1,umol/mmol{creat},micromole per millimole of creatinine,Units,PCORnet
+1,umol/mol,micromole per mole,Units,PCORnet
+1,umol/mol{creat},micromole per mole of creatinine,Units,PCORnet
+1,umol/mol{Hb},micromole per mole of hemoglobin,Units,PCORnet
+1,umol/umol,micromole per micromole,Units,PCORnet
+1,umol/umol{creat},micromole per micromole of creatinine,Units,PCORnet
+1,umol{BCE}/mol,micromole bone collagen equivalent per mole,Units,PCORnet
+1,UN,Unknown,Units,PCORnet
+1,uOhm,microOhm,Units,PCORnet
+1,us,microsecond,Units,PCORnet
+1,uU/g,micro enzyme unit per gram,Units,PCORnet
+1,uU/L,micro enzyme unit per liter,Units,PCORnet
+1,uU/mL,micro enzyme unit per milliliter,Units,PCORnet
+1,uV,microvolt,Units,PCORnet
+1,V,volt,Units,PCORnet
+1,Wb,Weber,Units,PCORnet
+1,wk,week,Units,PCORnet

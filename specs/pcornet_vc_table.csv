@@ -1,9 +1,9 @@
-﻿check_id,schema,table,acceptable_vocabularies,concept_field,filter_logic
-procsall-cid,cdm,procedures,"ICD10CM,CPT4,ICD9CM,ICD10,ICD9,ICD10PCS,ICD9Proc,HCPCS, SNOMED",px,
-immsall-doseunitcid,cdm,immunization,UCUM,vx_dose_unit,
-deathall-cause,cdm,death_cause,"ICD9,ICD9CM,ICD10,ICD10CM",death_cause,
-condsall-cid,cdm,diagnosis,"ICD9,ICD9CM,ICD10,ICD10CM",dx,
-drugspresc-cid,cdm,prescribing,"RxNorm, RxNorm Extension, NDC",rxnorm_cui,
-immsall-cid,cdm,immunization,"CVX,NDC,CPT4,HCPCS,RxNorm",vx_code,
-drugspresc-doseunitcid,cdm,prescribing,UCUM,rx_dose_ordered_unit,
-labsall-cid,cdm,lab_result_cm,LOINC,lab_loinc,
+﻿check_id,check_description,schema,table,acceptable_vocabularies,concept_field,filter_logic
+procsall-cid,Procedures,cdm,procedures,"ICD10CM,CPT4,ICD9CM,ICD10,ICD9,ICD10PCS,ICD9Proc,HCPCS, SNOMED",px,
+immsall-doseunitcid,Immunization Dose Unit,cdm,immunization,UCUM,vx_dose_unit,
+deathall-cause,Cause of Death,cdm,death_cause,"ICD9,ICD9CM,ICD10,ICD10CM",death_cause,
+condsall-cid,Diagnoses,cdm,diagnosis,"ICD9,ICD9CM,ICD10,ICD10CM",dx,
+drugspresc-cid,Prescribed Drugs,cdm,prescribing,"RxNorm, RxNorm Extension, NDC",rxnorm_cui,
+immsall-cid,Immunizations,cdm,immunization,"CVX,NDC,CPT4,HCPCS,RxNorm",vx_code,
+drugspresc-doseunitcid,Prescription Dose Unit,cdm,prescribing,UCUM,rx_dose_ordered_unit,
+labsall-cid,Labs,cdm,lab_result_cm,LOINC,lab_loinc,

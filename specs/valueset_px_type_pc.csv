@@ -1,0 +1,11 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,09,ICD-9-CM,Procedures,PCORnet
+1,10,ICD-10-CM,Procedures,PCORnet
+1,11,ICD-11-CM,Procedures,PCORnet
+1,CH,CPT or HCPCS,Procedures,PCORnet
+1,LC,LOINC,Procedures,PCORnet
+1,ND,NDC,Procedures,PCORnet
+1,RE,Revenue,Procedures,PCORnet
+1,NI,No Information,Procedures,PCORnet
+1,UN,Unknown,Procedures,PCORnet
+1,OT,Other,Procedures,PCORnet

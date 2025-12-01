@@ -1,0 +1,15 @@
+﻿concept_id,concept_name,domain_id,vocabulary_id
+AS,Asexual,Demographic,PCORnet
+BI,Bisexual,Demographic,PCORnet
+GA,Gay,Demographic,PCORnet
+LE,Lesbian,Demographic,PCORnet
+QU,Queer,Demographic,PCORnet
+HO,"Lesbian, Gay, or Homosexual",Demographic,PCORnet
+QS,Questioning,Demographic,PCORnet
+ST,Straight,Demographic,PCORnet
+SE,Something Else,Demographic,PCORnet
+MU,Multiple sexual orientations,Demographic,PCORnet
+DC,Decline to answer,Demographic,PCORnet
+NI,No information,Demographic,PCORnet
+UN,Unknown,Demographic,PCORnet
+OT,Other,Demographic,PCORnet

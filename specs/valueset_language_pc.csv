@@ -1,0 +1,377 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,AAR,Afar,Demographic,PCORnet
+1,ABK,Abkhazian,Demographic,PCORnet
+1,ACE,Achinese,Demographic,PCORnet
+1,ACH,Acoli,Demographic,PCORnet
+1,ADA,Adangme,Demographic,PCORnet
+1,ADY,Adyghe;  Adygei,Demographic,PCORnet
+1,AFR,Afrikaans,Demographic,PCORnet
+1,AIN,Ainu,Demographic,PCORnet
+1,AKA,Akan,Demographic,PCORnet
+1,ALE,Aleut,Demographic,PCORnet
+1,ALT,Southern  Altai,Demographic,PCORnet
+1,AMH,Amharic,Demographic,PCORnet
+1,ANP,Angika,Demographic,PCORnet
+1,ARA,Arabic,Demographic,PCORnet
+1,ARG,Aragonese,Demographic,PCORnet
+1,ARN,Mapudungun;  Mapuche,Demographic,PCORnet
+1,ARP,Arapaho,Demographic,PCORnet
+1,ARW,Arawak,Demographic,PCORnet
+1,ASL,American Sign Language,Demographic,PCORnet
+1,ASM,Assamese,Demographic,PCORnet
+1,AST,Asturian;  Bable;  Leonese;  Asturleonese,Demographic,PCORnet
+1,AVA,Avaric,Demographic,PCORnet
+1,AWA,Awadhi,Demographic,PCORnet
+1,AYM,Aymara,Demographic,PCORnet
+1,AZE,Azerbaijani,Demographic,PCORnet
+1,BAK,Bashkir,Demographic,PCORnet
+1,BAL,Baluchi,Demographic,PCORnet
+1,BAM,Bambara,Demographic,PCORnet
+1,BAN,Balinese,Demographic,PCORnet
+1,BAS,Basa,Demographic,PCORnet
+1,BEJ,Beja;  Bedawiyet,Demographic,PCORnet
+1,BEL,Belarusian,Demographic,PCORnet
+1,BEM,Bemba,Demographic,PCORnet
+1,BEN,Bengali,Demographic,PCORnet
+1,BHO,Bhojpuri,Demographic,PCORnet
+1,BIK,Bikol,Demographic,PCORnet
+1,BIN,Bini;  Edo,Demographic,PCORnet
+1,BIS,Bislama,Demographic,PCORnet
+1,BLA,Siksika,Demographic,PCORnet
+1,BOD,Tibetan,Demographic,PCORnet
+1,BOS,Bosnian,Demographic,PCORnet
+1,BRA,Braj,Demographic,PCORnet
+1,BRE,Breton,Demographic,PCORnet
+1,BUA,Buriat,Demographic,PCORnet
+1,BUG,Buginese,Demographic,PCORnet
+1,BUL,Bulgarian,Demographic,PCORnet
+1,BYN,Bilin;  Blin,Demographic,PCORnet
+1,CAD,Caddo,Demographic,PCORnet
+1,CAR,Galibi  Carib,Demographic,PCORnet
+1,CAT,Catalan;  Valencian,Demographic,PCORnet
+1,CEB,Cebuano,Demographic,PCORnet
+1,CES,Czech,Demographic,PCORnet
+1,CHA,Chamorro,Demographic,PCORnet
+1,CHE,Chechen,Demographic,PCORnet
+1,CHK,Chuukese,Demographic,PCORnet
+1,CHM,Mari,Demographic,PCORnet
+1,CHN,Chinook  jargon,Demographic,PCORnet
+1,CHO,Choctaw,Demographic,PCORnet
+1,CHP,Chipewyan;  Dene  Suline,Demographic,PCORnet
+1,CHR,Cherokee,Demographic,PCORnet
+1,CHV,Chuvash,Demographic,PCORnet
+1,CHY,Cheyenne,Demographic,PCORnet
+1,CNR,Montenegrin,Demographic,PCORnet
+1,COR,Cornish,Demographic,PCORnet
+1,COS,Corsican,Demographic,PCORnet
+1,CRE,Cree,Demographic,PCORnet
+1,CRH,Crimean  Tatar;  Crimean  Turkish,Demographic,PCORnet
+1,CSB,Kashubian,Demographic,PCORnet
+1,CYM,Welsh,Demographic,PCORnet
+1,DAK,Dakota,Demographic,PCORnet
+1,DAN,Danish,Demographic,PCORnet
+1,DAR,Dargwa,Demographic,PCORnet
+1,DEL,Delaware,Demographic,PCORnet
+1,DEN,Slave  (Athapascan),Demographic,PCORnet
+1,DEU,German,Demographic,PCORnet
+1,DGR,Dogrib,Demographic,PCORnet
+1,DIN,Dinka,Demographic,PCORnet
+1,DIV,Dhivehi;  Dhivehi;  Maldivian,Demographic,PCORnet
+1,DOI,Dogri,Demographic,PCORnet
+1,DSB,Lower  Sorbian,Demographic,PCORnet
+1,DUA,Duala,Demographic,PCORnet
+1,DYU,Dyula,Demographic,PCORnet
+1,DZO,Dzongkha,Demographic,PCORnet
+1,EFI,Efik,Demographic,PCORnet
+1,EKA,Ekajuk,Demographic,PCORnet
+1,ELL,Modern  Greek  (1453–),Demographic,PCORnet
+1,ENG,English,Demographic,PCORnet
+1,EST,Estonian,Demographic,PCORnet
+1,EUS,Basque,Demographic,PCORnet
+1,EWE,Ewe,Demographic,PCORnet
+1,EWO,Ewondo,Demographic,PCORnet
+1,FAN,Fang,Demographic,PCORnet
+1,FAO,Faroese,Demographic,PCORnet
+1,FAS,Persian,Demographic,PCORnet
+1,FAT,Fanti,Demographic,PCORnet
+1,FIJ,Fijian,Demographic,PCORnet
+1,FIL,Filipino;  Pilipino,Demographic,PCORnet
+1,FIN,Finnish,Demographic,PCORnet
+1,FON,Fon,Demographic,PCORnet
+1,FRA,French,Demographic,PCORnet
+1,FRR,Northern  Frisian,Demographic,PCORnet
+1,FRS,Eastern  Frisian,Demographic,PCORnet
+1,FRY,Western  Frisian,Demographic,PCORnet
+1,FUL,Fulah,Demographic,PCORnet
+1,FUR,Friulian,Demographic,PCORnet
+1,GAA,Ga,Demographic,PCORnet
+1,GAY,Gayo,Demographic,PCORnet
+1,GBA,Gbaya,Demographic,PCORnet
+1,GIL,Gilbertese,Demographic,PCORnet
+1,GLA,Gaelic;  Scottish  Gaelic,Demographic,PCORnet
+1,GLE,Irish,Demographic,PCORnet
+1,GLG,Galician,Demographic,PCORnet
+1,GLV,Manx,Demographic,PCORnet
+1,GON,Gondi,Demographic,PCORnet
+1,GOR,Gorontalo,Demographic,PCORnet
+1,GRB,Grebo,Demographic,PCORnet
+1,GRN,Guarani,Demographic,PCORnet
+1,GSW,Swiss  German;  Alemannic;  Alsatian,Demographic,PCORnet
+1,GUJ,Gujarati,Demographic,PCORnet
+1,GWI,Gwich'in,Demographic,PCORnet
+1,HAI,Haida,Demographic,PCORnet
+1,HAT,Haitian;  Haitian  Creole,Demographic,PCORnet
+1,HAU,Hausa,Demographic,PCORnet
+1,HAW,Hawaiian,Demographic,PCORnet
+1,HEB,Hebrew,Demographic,PCORnet
+1,HER,Herero,Demographic,PCORnet
+1,HIL,Hiligaynon,Demographic,PCORnet
+1,HIN,Hindi,Demographic,PCORnet
+1,HMN,Hmong;  Mong,Demographic,PCORnet
+1,HMO,Hiri  Motu,Demographic,PCORnet
+1,HRV,Croatian,Demographic,PCORnet
+1,HSB,Upper  Sorbian,Demographic,PCORnet
+1,HUN,Hungarian,Demographic,PCORnet
+1,HUP,Hupa,Demographic,PCORnet
+1,HYE,Armenian,Demographic,PCORnet
+1,IBA,Iban,Demographic,PCORnet
+1,IBO,Igbo,Demographic,PCORnet
+1,III,Sichuan  Yi;  Nuosu,Demographic,PCORnet
+1,IKU,Inuktitut,Demographic,PCORnet
+1,ILO,Iloko,Demographic,PCORnet
+1,IND,Indonesian,Demographic,PCORnet
+1,INH,Ingush,Demographic,PCORnet
+1,IPK,Inupiaq,Demographic,PCORnet
+1,ISL,Icelandic,Demographic,PCORnet
+1,ITA,Italian,Demographic,PCORnet
+1,JAV,Javanese,Demographic,PCORnet
+1,JPN,Japanese,Demographic,PCORnet
+1,JPR,Judeo-Persian,Demographic,PCORnet
+1,JRB,Judeo-Arabic,Demographic,PCORnet
+1,KAA,Kara-Kalpak,Demographic,PCORnet
+1,KAB,Kabyle,Demographic,PCORnet
+1,KAC,Kachin;  Jingpho,Demographic,PCORnet
+1,KAL,Kalaallisut;  Greenlandic,Demographic,PCORnet
+1,KAM,Kamba,Demographic,PCORnet
+1,KAN,Kannada,Demographic,PCORnet
+1,KAS,Kashmiri,Demographic,PCORnet
+1,KAT,Georgian,Demographic,PCORnet
+1,KAU,Kanuri,Demographic,PCORnet
+1,KAZ,Kazakh,Demographic,PCORnet
+1,KBD,Kabardian,Demographic,PCORnet
+1,KHA,Khasi,Demographic,PCORnet
+1,KHM,Central  Khmer,Demographic,PCORnet
+1,KIK,Kikuyu;  Gikuyu,Demographic,PCORnet
+1,KIN,Kinyarwanda,Demographic,PCORnet
+1,KIR,Kirghiz;  Kyrgyz,Demographic,PCORnet
+1,KMB,Kimbundu,Demographic,PCORnet
+1,KOK,Konkani,Demographic,PCORnet
+1,KOM,Komi,Demographic,PCORnet
+1,KON,Kongo,Demographic,PCORnet
+1,KOR,Korean,Demographic,PCORnet
+1,KOS,Kosraean,Demographic,PCORnet
+1,KPE,Kpelle,Demographic,PCORnet
+1,KRC,Karachay-Balkar,Demographic,PCORnet
+1,KRL,Karelian,Demographic,PCORnet
+1,KRU,Kurukh,Demographic,PCORnet
+1,KUA,Kuanyama;  Kwanyama,Demographic,PCORnet
+1,KUM,Kumyk,Demographic,PCORnet
+1,KUR,Kurdish,Demographic,PCORnet
+1,KUT,Kutenai,Demographic,PCORnet
+1,LAD,Ladino,Demographic,PCORnet
+1,LAH,Lahnda,Demographic,PCORnet
+1,LAM,Lamba,Demographic,PCORnet
+1,LAO,Lao,Demographic,PCORnet
+1,LAV,Latvian,Demographic,PCORnet
+1,LEZ,Lezghian,Demographic,PCORnet
+1,LIM,Limburgan;  Limburger;  Limburgish,Demographic,PCORnet
+1,LIN,Lingala,Demographic,PCORnet
+1,LIT,Lithuanian,Demographic,PCORnet
+1,LOL,Mongo,Demographic,PCORnet
+1,LOZ,Lozi,Demographic,PCORnet
+1,LTZ,Luxembourgish;  Letzeburgesch,Demographic,PCORnet
+1,LUA,Luba-Lulua,Demographic,PCORnet
+1,LUB,Luba-Katanga,Demographic,PCORnet
+1,LUG,Ganda,Demographic,PCORnet
+1,LUI,Luiseno,Demographic,PCORnet
+1,LUN,Lunda,Demographic,PCORnet
+1,LUO,Luo  (Kenya  and  Tanzania),Demographic,PCORnet
+1,LUS,Lushai,Demographic,PCORnet
+1,MAD,Madurese,Demographic,PCORnet
+1,MAG,Magahi,Demographic,PCORnet
+1,MAH,Marshallese,Demographic,PCORnet
+1,MAI,Maithili,Demographic,PCORnet
+1,MAK,Makasar,Demographic,PCORnet
+1,MAL,Malayalam,Demographic,PCORnet
+1,MAN,Mandingo,Demographic,PCORnet
+1,MAR,Marathi,Demographic,PCORnet
+1,MAS,Masai,Demographic,PCORnet
+1,MDF,Moksha,Demographic,PCORnet
+1,MDR,Mandar,Demographic,PCORnet
+1,MEN,Mende,Demographic,PCORnet
+1,MIC,Mi'kmaq;  Micmac,Demographic,PCORnet
+1,MIN,Minangkabau,Demographic,PCORnet
+1,MKD,Macedonian,Demographic,PCORnet
+1,MLG,Malagasy,Demographic,PCORnet
+1,MLT,Maltese,Demographic,PCORnet
+1,MNC,Manchu,Demographic,PCORnet
+1,MNI,Manipuri,Demographic,PCORnet
+1,MOH,Mohawk,Demographic,PCORnet
+1,MON,Mongolian,Demographic,PCORnet
+1,MOS,Mossi,Demographic,PCORnet
+1,MRI,Maori,Demographic,PCORnet
+1,MSA,Malay,Demographic,PCORnet
+1,MUS,Creek,Demographic,PCORnet
+1,MWL,Mirandese,Demographic,PCORnet
+1,MWR,Marwari,Demographic,PCORnet
+1,MYA,Burmese,Demographic,PCORnet
+1,MYV,Erzya,Demographic,PCORnet
+1,NAP,Neapolitan,Demographic,PCORnet
+1,NAU,Nauru,Demographic,PCORnet
+1,NAV,Navajo;  Navaho,Demographic,PCORnet
+1,NBL,South  Ndebele,Demographic,PCORnet
+1,NDE,North  Ndebele,Demographic,PCORnet
+1,NDO,Ndonga,Demographic,PCORnet
+1,NDS,Low  German;  Low  Saxon,Demographic,PCORnet
+1,NEP,Nepali,Demographic,PCORnet
+1,NEW,Nepal  Bhasa;  Newari,Demographic,PCORnet
+1,NI,No  information,Demographic,PCORnet
+1,NIA,Nias,Demographic,PCORnet
+1,NIU,Niuean,Demographic,PCORnet
+1,NLD,Dutch;  Flemish,Demographic,PCORnet
+1,NNO,Norwegian  Nynorsk,Demographic,PCORnet
+1,NOB,Norwegian  Bokmål,Demographic,PCORnet
+1,NOG,Nogai,Demographic,PCORnet
+1,NOR,Norwegian,Demographic,PCORnet
+1,NQO,N'Ko,Demographic,PCORnet
+1,NSO,Pedi;  Sepedi;  Northern  Sotho,Demographic,PCORnet
+1,NYA,Chichewa;  Chewa;  Nyanja,Demographic,PCORnet
+1,NYM,Nyamwezi,Demographic,PCORnet
+1,NYN,Nyankole,Demographic,PCORnet
+1,NYO,Nyoro,Demographic,PCORnet
+1,NZI,Nzima,Demographic,PCORnet
+1,OCI,Occitan  (post  1500),Demographic,PCORnet
+1,OJI,Ojibwa,Demographic,PCORnet
+1,ORI,Oriya,Demographic,PCORnet
+1,ORM,Oromo,Demographic,PCORnet
+1,OSA,Osage,Demographic,PCORnet
+1,OSS,Ossetian;  Ossetic,Demographic,PCORnet
+1,OT,Other,Demographic,PCORnet
+1,PAG,Pangasinan,Demographic,PCORnet
+1,PAM,Pampanga;  Kapampangan,Demographic,PCORnet
+1,PAN,Panjabi;  Punjabi,Demographic,PCORnet
+1,PAP,Papiamento,Demographic,PCORnet
+1,PAU,Palauan,Demographic,PCORnet
+1,POL,Polish,Demographic,PCORnet
+1,PON,Pohnpeian,Demographic,PCORnet
+1,POR,Portuguese,Demographic,PCORnet
+1,PR,Patient Refused,Demographic,PCORnet
+1,PUS,Pushto;  Pashto,Demographic,PCORnet
+1,QUE,Quechua,Demographic,PCORnet
+1,RAJ,Rajasthani,Demographic,PCORnet
+1,RAP,Rapanui,Demographic,PCORnet
+1,RAR,Rarotongan;  Cook  Islands  Maori,Demographic,PCORnet
+1,ROH,Romansh,Demographic,PCORnet
+1,ROM,Romany,Demographic,PCORnet
+1,RON,Romanian;  Moldavian;  Moldovan,Demographic,PCORnet
+1,RUN,Rundi,Demographic,PCORnet
+1,RUP,Aromanian;  Arumanian;  Macedo-Romanian,Demographic,PCORnet
+1,RUS,Russian,Demographic,PCORnet
+1,SAD,Sandawe,Demographic,PCORnet
+1,SAG,Sango,Demographic,PCORnet
+1,SAH,Yakut,Demographic,PCORnet
+1,SAS,Sasak,Demographic,PCORnet
+1,SAT,Santali,Demographic,PCORnet
+1,SCN,Sicilian,Demographic,PCORnet
+1,SCO,Scots,Demographic,PCORnet
+1,SEL,Selkup,Demographic,PCORnet
+1,SHN,Shan,Demographic,PCORnet
+1,SID,Sidamo,Demographic,PCORnet
+1,SIN,Sinhala;  Sinhalese,Demographic,PCORnet
+1,SLK,Slovak,Demographic,PCORnet
+1,SLV,Slovenian,Demographic,PCORnet
+1,SMA,Southern  Sami,Demographic,PCORnet
+1,SME,Northern  Sami,Demographic,PCORnet
+1,SMJ,Lule  Sami,Demographic,PCORnet
+1,SMN,Inari  Sami,Demographic,PCORnet
+1,SMO,Samoan,Demographic,PCORnet
+1,SMS,Skolt  Sami,Demographic,PCORnet
+1,SNA,Shona,Demographic,PCORnet
+1,SND,Sindhi,Demographic,PCORnet
+1,SNK,Soninke,Demographic,PCORnet
+1,SOM,Somali,Demographic,PCORnet
+1,SOT,Southern  Sotho,Demographic,PCORnet
+1,SPA,Spanish;  Castilian,Demographic,PCORnet
+1,SQI,Albanian,Demographic,PCORnet
+1,SRD,Sardinian,Demographic,PCORnet
+1,SRN,Sranan  Tongo,Demographic,PCORnet
+1,SRP,Serbian,Demographic,PCORnet
+1,SRR,Serer,Demographic,PCORnet
+1,SSW,Swati,Demographic,PCORnet
+1,SUK,Sukuma,Demographic,PCORnet
+1,SUN,Sundanese,Demographic,PCORnet
+1,SUS,Susu,Demographic,PCORnet
+1,SWA,Swahili,Demographic,PCORnet
+1,SWE,Swedish,Demographic,PCORnet
+1,SYR,Syriac,Demographic,PCORnet
+1,TAH,Tahitian,Demographic,PCORnet
+1,TAM,Tamil,Demographic,PCORnet
+1,TAT,Tatar,Demographic,PCORnet
+1,TEL,Telugu,Demographic,PCORnet
+1,TEM,Timne,Demographic,PCORnet
+1,TER,Tereno,Demographic,PCORnet
+1,TET,Tetum,Demographic,PCORnet
+1,TGK,Tajik,Demographic,PCORnet
+1,TGL,Tagalog,Demographic,PCORnet
+1,THA,Thai,Demographic,PCORnet
+1,TIG,Tigre,Demographic,PCORnet
+1,TIR,Tigrinya,Demographic,PCORnet
+1,TIV,Tiv,Demographic,PCORnet
+1,TKL,Tokelau,Demographic,PCORnet
+1,TLI,Tlingit,Demographic,PCORnet
+1,TMH,Tamashek,Demographic,PCORnet
+1,TOG,Tonga  (Nyasa),Demographic,PCORnet
+1,TON,Tonga  (Tonga  Islands),Demographic,PCORnet
+1,TPI,Tok  Pisin,Demographic,PCORnet
+1,TSI,Tsimshian,Demographic,PCORnet
+1,TSN,Tswana,Demographic,PCORnet
+1,TSO,Tsonga,Demographic,PCORnet
+1,TUK,Turkmen,Demographic,PCORnet
+1,TUM,Tumbuka,Demographic,PCORnet
+1,TUR,Turkish,Demographic,PCORnet
+1,TVL,Tuvalua,Demographic,PCORnet
+1,TWI,Twi,Demographic,PCORnet
+1,TYV,Tuvinian,Demographic,PCORnet
+1,UDM,Udmurt,Demographic,PCORnet
+1,UIG,Uighur;  Uyghur,Demographic,PCORnet
+1,UKR,Ukrainian,Demographic,PCORnet
+1,UMB,Umbundu,Demographic,PCORnet
+1,UN,Unknown,Demographic,PCORnet
+1,URD,Urdu,Demographic,PCORnet
+1,UZB,Uzbek,Demographic,PCORnet
+1,VAI,Vai,Demographic,PCORnet
+1,VEN,Venda,Demographic,PCORnet
+1,VIE,Vietnamese,Demographic,PCORnet
+1,VOT,Votic,Demographic,PCORnet
+1,WAL,Wolaitta;  Wolaytta,Demographic,PCORnet
+1,WAR,Waray,Demographic,PCORnet
+1,WAS,Washo,Demographic,PCORnet
+1,WLN,Walloon,Demographic,PCORnet
+1,WOL,Wolof,Demographic,PCORnet
+1,XAL,Kalmyk;  Oirat,Demographic,PCORnet
+1,XHO,Xhosa,Demographic,PCORnet
+1,YAO,Yao,Demographic,PCORnet
+1,YAP,Yapese,Demographic,PCORnet
+1,YID,Yiddish,Demographic,PCORnet
+1,YOR,Yoruba,Demographic,PCORnet
+1,ZAP,Zapotec,Demographic,PCORnet
+1,ZEN,Zenaga,Demographic,PCORnet
+1,ZGH,Standard  Moroccan  Tamazight,Demographic,PCORnet
+1,ZHA,Zhuang;  Chuang,Demographic,PCORnet
+1,ZHO,Chinese,Demographic,PCORnet
+1,ZUL,Zulu,Demographic,PCORnet
+1,ZUN,Zuni,Demographic,PCORnet
+1,ZZA,Zaza;  Dimili;  Dimli;  Kirdki;  Kirmanjki;  Zazaki,Demographic,PCORnet
+1,NI,No Information,Demographic,PCORnet
+1,OT,Other,Demographic,PCORnet
+1,UN,Unknown,Demographic,PCORnet

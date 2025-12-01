@@ -1,0 +1,172 @@
+﻿concept_id,concept_code,concept_name,domain_id,vocabulary_id
+1,1,MEDICARE,Encounter,PCORnet
+1,11,Medicare Managed Care (Includes Medicare Advantage Plans),Encounter,PCORnet
+1,111,Medicare HMO,Encounter,PCORnet
+1,1111,Medicare Chronic Condition Special Needs Plan (C-SNP),Encounter,PCORnet
+1,1112,Medicare Institutional Special Needs Plan (I-SNP),Encounter,PCORnet
+1,112,Medicare PPO,Encounter,PCORnet
+1,113,Medicare POS,Encounter,PCORnet
+1,119,Medicare Managed Care Other,Encounter,PCORnet
+1,12,Medicare (Non-managed Care),Encounter,PCORnet
+1,121,Medicare FFS,Encounter,PCORnet
+1,122,Medicare Drug Benefit,Encounter,PCORnet
+1,123,Medicare Medical Savings Account (MSA),Encounter,PCORnet
+1,129,Medicare Non-managed Care Other,Encounter,PCORnet
+1,13,Medicare Hospice,Encounter,PCORnet
+1,14,Dual Eligibility Medicare/Medicaid Organization,Encounter,PCORnet
+1,141,Dual Eligible Special Needs Plan (D-SNP),Encounter,PCORnet
+1,142,Fully Integrated Dual Eligible Special Needs Plan (FIDE-SNP),Encounter,PCORnet
+1,19,Medicare Other,Encounter,PCORnet
+1,191,Medicare Pharmacy Benefit Manager,Encounter,PCORnet
+1,2,MEDICAID,Encounter,PCORnet
+1,21,Medicaid (Managed Care),Encounter,PCORnet
+1,211,Medicaid HMO,Encounter,PCORnet
+1,212,Medicaid PPO,Encounter,PCORnet
+1,213,Medicaid PCCM (Primary Care Case Management),Encounter,PCORnet
+1,219,Medicaid Managed Care Other,Encounter,PCORnet
+1,22,Medicaid (Non-managed Care Plan),Encounter,PCORnet
+1,23,Medicaid/SCHIP,Encounter,PCORnet
+1,24,Medicaid Applicant,Encounter,PCORnet
+1,25,Medicaid - Out of State,Encounter,PCORnet
+1,26,Medicaid – Long Term Care,Encounter,PCORnet
+1,29,Medicaid Other,Encounter,PCORnet
+1,291,Medicaid Pharmacy Benefit Manager,Encounter,PCORnet
+1,299,Medicaid - Dental,Encounter,PCORnet
+1,3,OTHER GOVERNMENT (Federal/State/Local) (excluding Department of Corrections),Encounter,PCORnet
+1,31,Department of Defense,Encounter,PCORnet
+1,311,TRICARE (CHAMPUS),Encounter,PCORnet
+1,3111,TRICARE Prime—HMO,Encounter,PCORnet
+1,3112,TRICARE Extra—PPO,Encounter,PCORnet
+1,3113,TRICARE Standard - Fee For Service,Encounter,PCORnet
+1,3114,TRICARE For Life--Medicare Supplement,Encounter,PCORnet
+1,3115,TRICARE Reserve Select,Encounter,PCORnet
+1,3116,Uniformed Services Family Health Plan (USFHP) -- HMO,Encounter,PCORnet
+1,3119,Department of Defense - (other),Encounter,PCORnet
+1,312,Military Treatment Facility,Encounter,PCORnet
+1,3121,Enrolled Prime—HMO,Encounter,PCORnet
+1,3122,Non-enrolled Space Available,Encounter,PCORnet
+1,3123,TRICARE For Life (TFL),Encounter,PCORnet
+1,313,Dental --Stand Alone,Encounter,PCORnet
+1,32,Department of Veterans Affairs,Encounter,PCORnet
+1,321,Veteran care-Care provided to Veterans,Encounter,PCORnet
+1,3211,Direct Care-Care provided in VA facilities,Encounter,PCORnet
+1,3212,Indirect Care-Care provided outside VA facilities,Encounter,PCORnet
+1,32121,Fee Basis,Encounter,PCORnet
+1,32122,Foreign Fee/Foreign Medical Program (FMP),Encounter,PCORnet
+1,32123,Contract Nursing Home/Community Nursing Home,Encounter,PCORnet
+1,32124,State Veterans Home,Encounter,PCORnet
+1,32125,Sharing Agreements,Encounter,PCORnet
+1,32126,Other Federal Agency,Encounter,PCORnet
+1,32127,Dental Care,Encounter,PCORnet
+1,32128,Vision Care,Encounter,PCORnet
+1,322,Non-veteran care,Encounter,PCORnet
+1,3221,Civilian Health and Medical Program for the VA (CHAMPVA),Encounter,PCORnet
+1,3222,Spina Bifida Health Care Program (SB),Encounter,PCORnet
+1,3223,Children of Women Vietnam Veterans (CWVV),Encounter,PCORnet
+1,3229,Other non-veteran care,Encounter,PCORnet
+1,33,Indian Health Service or Tribe,Encounter,PCORnet
+1,331,Indian Health Service – Regular,Encounter,PCORnet
+1,332,Indian Health Service – Contract,Encounter,PCORnet
+1,333,Indian Health Service - Managed Care,Encounter,PCORnet
+1,334,Indian Tribe - Sponsored Coverage,Encounter,PCORnet
+1,34,HRSA Program,Encounter,PCORnet
+1,341,Title V (MCH Block Grant),Encounter,PCORnet
+1,342,Migrant Health Program,Encounter,PCORnet
+1,343,Ryan White Act,Encounter,PCORnet
+1,344,Disaster-related (includes Covid-19),Encounter,PCORnet
+1,349,Other,Encounter,PCORnet
+1,35,Black Lung,Encounter,PCORnet
+1,36,State Government,Encounter,PCORnet
+1,361,State SCHIP program (codes for individual states),Encounter,PCORnet
+1,362,Specific state programs (list/ local code),Encounter,PCORnet
+1,369,"State, not otherwise specified (other state)",Encounter,PCORnet
+1,37,Local Government,Encounter,PCORnet
+1,371,Local - Managed care,Encounter,PCORnet
+1,3711,HMO,Encounter,PCORnet
+1,3712,PPO,Encounter,PCORnet
+1,3713,POS,Encounter,PCORnet
+1,372,FFS/Indemnity,Encounter,PCORnet
+1,379,"Local, not otherwise specified (other local, county)",Encounter,PCORnet
+1,38,"Other Government (Federal, State, Local not specified)",Encounter,PCORnet
+1,381,"Federal, State, Local not specified managed care",Encounter,PCORnet
+1,3811,"Federal, State, Local not specified - HMO",Encounter,PCORnet
+1,3812,"Federal, State, Local not specified - PPO",Encounter,PCORnet
+1,3813,"Federal, State, Local not specified - POS",Encounter,PCORnet
+1,3819,"Federal, State, Local not specified - not specified managed care",Encounter,PCORnet
+1,382,"Federal, State, Local not specified - FFS",Encounter,PCORnet
+1,389,"Federal, State, Local not specified - Other",Encounter,PCORnet
+1,39,Other Federal,Encounter,PCORnet
+1,391,Federal Employee Health Plan – Use when known.,Encounter,PCORnet
+1,4,DEPARTMENTS OF CORRECTIONS,Encounter,PCORnet
+1,41,Corrections Federal,Encounter,PCORnet
+1,42,Corrections State,Encounter,PCORnet
+1,43,Corrections Local,Encounter,PCORnet
+1,44,Corrections Unknown Level,Encounter,PCORnet
+1,5,PRIVATE HEALTH INSURANCE,Encounter,PCORnet
+1,51,Managed Care (Private),Encounter,PCORnet
+1,511,Commercial Managed Care - HMO,Encounter,PCORnet
+1,512,Commercial Managed Care - PPO,Encounter,PCORnet
+1,513,Commercial Managed Care - POS,Encounter,PCORnet
+1,514,Exclusive Provider Organization,Encounter,PCORnet
+1,515,Gatekeeper PPO (GPPO),Encounter,PCORnet
+1,516,Commercial Managed Care - Pharmacy Benefit Manager,Encounter,PCORnet
+1,517,Commercial Managed Care - Dental,Encounter,PCORnet
+1,519,"Managed Care, Other (non HMO)",Encounter,PCORnet
+1,52,Private Health Insurance - Indemnity,Encounter,PCORnet
+1,521,Commercial Indemnity,Encounter,PCORnet
+1,522,Self-insured (ERISA) Administrative Services Only (ASO) plan,Encounter,PCORnet
+1,523,Medicare supplemental policy (as second payer),Encounter,PCORnet
+1,524,Indemnity Insurance - Dental,Encounter,PCORnet
+1,529,Private health insurance—other commercial Indemnity,Encounter,PCORnet
+1,53,"Managed Care (private) or private health insurance (indemnity), not otherwise specified",Encounter,PCORnet
+1,54,Organized Delivery System,Encounter,PCORnet
+1,55,Small Employer Purchasing Group,Encounter,PCORnet
+1,56,Specialized Stand-Alone Plan,Encounter,PCORnet
+1,561,Dental,Encounter,PCORnet
+1,562,Vision,Encounter,PCORnet
+1,59,Other Private Insurance,Encounter,PCORnet
+1,6,BLUE CROSS/BLUE SHIELD,Encounter,PCORnet
+1,61,BC Managed Care,Encounter,PCORnet
+1,611,BC Managed Care – HMO,Encounter,PCORnet
+1,612,BC Managed Care – PPO,Encounter,PCORnet
+1,613,BC Managed Care – POS,Encounter,PCORnet
+1,614,BC Managed Care - Dental,Encounter,PCORnet
+1,619,BC Managed Care – Other,Encounter,PCORnet
+1,62,BC Insurance Indemnity,Encounter,PCORnet
+1,621,BC Indemnity,Encounter,PCORnet
+1,622,BC Self-insured (ERISA) Administrative Services Only (ASO)Plan,Encounter,PCORnet
+1,623,BC Medicare Supplemental Plan,Encounter,PCORnet
+1,629,BC Indemnity - Dental,Encounter,PCORnet
+1,7,"MANAGED CARE, UNSPECIFIED (to be used only if one can't distinguish public from private)",Encounter,PCORnet
+1,71,HMO,Encounter,PCORnet
+1,72,PPO,Encounter,PCORnet
+1,73,POS,Encounter,PCORnet
+1,79,Other Managed Care,Encounter,PCORnet
+1,8,NO PAYMENT from an Organization/Agency/Program/Private Payer Listed,Encounter,PCORnet
+1,81,Self-pay (Includes applicants for insurance and Medicaid applicants),Encounter,PCORnet
+1,82,No Charge,Encounter,PCORnet
+1,821,Charity,Encounter,PCORnet
+1,822,Professional Courtesy,Encounter,PCORnet
+1,823,Research/Clinical Trial,Encounter,PCORnet
+1,83,Refusal to Pay/Bad Debt,Encounter,PCORnet
+1,84,Hill Burton Free Care,Encounter,PCORnet
+1,85,Research/Donor,Encounter,PCORnet
+1,89,"No Payment, Other",Encounter,PCORnet
+1,9,MISCELLANEOUS/OTHER,Encounter,PCORnet
+1,91,Foreign National,Encounter,PCORnet
+1,92,Other (Non-government),Encounter,PCORnet
+1,93,Disability Insurance,Encounter,PCORnet
+1,94,Long-term Care Insurance,Encounter,PCORnet
+1,95,Worker's Compensation,Encounter,PCORnet
+1,951,Worker's Comp HMO,Encounter,PCORnet
+1,953,Worker's Comp Fee-for-Service,Encounter,PCORnet
+1,954,Worker’s Comp Other Managed Care,Encounter,PCORnet
+1,959,"Worker's Comp, Other unspecified",Encounter,PCORnet
+1,96,Auto Insurance (includes no fault),Encounter,PCORnet
+1,97,Legal Liability / Liability Insurance,Encounter,PCORnet
+1,98,Other specified but not otherwise classifiable (includes Hospice - Unspecified plan),Encounter,PCORnet
+1,99,No Typology Code available for payment source,Encounter,PCORnet
+1,9999,Unavailable / No Payer Specified / Blank,Encounter,PCORnet
+1,NI,No information,Encounter,PCORnet
+1,OT,Other,Encounter,PCORnet
+1,UN,Unknown,Encounter,PCORnet

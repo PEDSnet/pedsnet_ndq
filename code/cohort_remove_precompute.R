@@ -36,6 +36,7 @@ remove_precompute <- function(checkpoint){
                                     your results_schema: ', paste(ck3_list, collapse = ', '))))
 
     req_tbls <- list('DEMOGRAPHIC',
+                     'DEATH',
                      'DIAGNOSIS',
                      'DISPENSING',
                      'ENCOUNTER',

@@ -24,12 +24,12 @@ source(file.path('setup', 'argos_edits.R'))
 library(ndq)
 
 ###' `Set site name` ###
-site <- 'umo' ## if a site column exists in your CDM,
+site <- 'lphi_10pct' ## if a site column exists in your CDM,
                   ## make sure this matches how it is represented there
 
 # Establish connection to database
 sf_cdm <- initialize_session(session_name = 'ndq_assessment',
-                             db_conn = Sys.getenv('PEDSNET_BASE_CONFIG'),
+                             db_conn = Sys.getenv('PEDSNET_SNOW_CONFIG'),
                              is_json = TRUE,
                              cdm_schema = 'UMO_SYNTHETIC_DATA_SHARE_VIEW', ## replace with location of CDM data
                              results_schema = 'TEST_SCHEMA',
@@ -54,7 +54,7 @@ set_argos_default(sf_cdm)
 config('qry_site', site)
 config('cdm_case', 'upper')
 
-config('current_version','synth')
+config('current_version','10pct_sample')
 
 config('table_names', list(
 
@@ -68,7 +68,7 @@ config('table_names', list(
   enrollment = 'ENROLLMENT',
   harvest = 'HARVEST',
   hash_token = 'HASH_TOKEN',
-  immunizaiotn = 'IMMUNIZATION',
+  immunization = 'IMMUNIZATION',
   lab_result_cm = 'LAB_RESULT_CM',
   lds_address_history = 'LDS_ADDRESS_HISTORY',
   med_admin = 'MED_ADMIN',

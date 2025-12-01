@@ -118,7 +118,7 @@ initialize_session <- function(session_name,
                                        result_dir = results_drop_wd))
 
   # Print session information
-  db_str <- DBI::dbGetInfo(config('db_src'))
+  db_str <- DBI::dbGetInfo(argos_session$config('db_src'))
   cli::cli_div(theme = list(span.code = list(color = 'blue')))
 
   cli::cli_inform(paste0('Connected to: ', db_str$dbname, '@', db_str$host))

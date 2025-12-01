@@ -6,7 +6,7 @@ drugs-route,drug route,cdm,prescribing,rx_route,raw_rx_route,rx_start_date,
 condsall,conditions,cdm,diagnosis,dx,raw_dx,admit_date,
 labsall,all labs,cdm,lab_result_cm,lab_loinc,raw_lab_name,result_date,
 labs-units,lab units,cdm,lab_result_cm,result_unit,raw_unit,result_date,result_num != 9999 & !is.na(result_num)
-immsall,immunizations,cdm,immunization,vx_code,immunization_source_value,immunization_date,
+immsall,immunizations,cdm,immunization,vx_code,raw_vx_name,vx_record_date,
 immsall-doseunits,immunization dose unit,cdm,immunization,vx_dose_unit,raw_vx_dose_unit,vx_record_date,
 immsall-route,immunization route,cdm,immunization,vx_route,raw_vx_route,vx_record_date,
 procsall,all procedures,cdm,procedures,px,raw_px,px_date,

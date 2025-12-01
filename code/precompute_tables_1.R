@@ -4,6 +4,7 @@ set_argos_default(sf_cdm)
 
 #### create site view
 req_tbls <- list('DEMOGRAPHIC',
+                 'DEATH',
                  'DIAGNOSIS',
                  'DISPENSING',
                  'ENCOUNTER',
@@ -29,7 +30,7 @@ for(i in req_tbls){
   }else{
     view_sql <- paste0(
       "CREATE VIEW PCORNET_TEST.UMO_SYNTHETIC_DATA_SHARE_VIEW.", i,
-      " AS SELECT * FROM UMO_SYNTHETIC_DATA_SHARE.SYNTHETIC_DATA_SHARE.", i
+      " AS SELECT * FROM LPHI_TULANE_SAMPLE_DATA_SHARE.BVTULANE.", i
     )
 
     dbExecute(conn = sf_cdm$config('db_src'), view_sql)
@@ -115,12 +116,12 @@ valid_demo <- cdm_tbl('demographic') %>%
 sf_rslt$output_tbl(valid_demo, 'geocode_cohort')
 
 ## Geocoding metrics (with cohort)
-geocode_tbls <- prep_geocodes(person_tbl = valid_demo)
-
-sf_rslt$output_tbl(geocode_tbls$state_level, 'fips_state')
-sf_rslt$output_tbl(geocode_tbls$county_level, 'fips_county')
-sf_rslt$output_tbl(geocode_tbls$lohis_state, 'lohis_state')
-sf_rslt$output_tbl(geocode_tbls$lohis_county, 'lohis_county')
+# geocode_tbls <- prep_geocodes(person_tbl = valid_demo)
+#
+# sf_rslt$output_tbl(geocode_tbls$state_level, 'fips_state')
+# sf_rslt$output_tbl(geocode_tbls$county_level, 'fips_county')
+# sf_rslt$output_tbl(geocode_tbls$lohis_state, 'lohis_state')
+# sf_rslt$output_tbl(geocode_tbls$lohis_county, 'lohis_county')
 
 ## Expected Concepts Present
 pcd <- cdm_tbl('procedures') %>% add_site() %>% filter(site == site_nm) %>%

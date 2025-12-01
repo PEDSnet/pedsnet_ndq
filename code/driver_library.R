@@ -7,11 +7,11 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 ## Data Cycle Changes
 
 set_argos_default(sf_cdm)
-dc_output <- check_dc(dc_tbl = read_codeset('pcornet_dc_table', 'cccccc') %>%
-                        filter(check_id != 'immsall'),
+dc_output <- check_dc(dc_tbl = read_codeset('pcornet_dc_table', 'cccccc'), #%>%
+                        #filter(check_id != 'immsall'),
                       omop_or_pcornet = 'pcornet',
-                      prev_db_string = 'synth',
-                      current_db_string = 'synth',
+                      prev_db_string = '10pct_sample',
+                      current_db_string = '10pct_sample',
                       prev_ct_src = 'cdm',
                       prev_db = sf_cdm$config('db_src'),
                       prev_rslt_tbl = 'dc_output',
@@ -50,7 +50,7 @@ output_tbl_append(vs_output, 'vs_output')
 
 ## no obsgen table, dropped gestational age cohort
 uc_output <- check_uc(uc_tbl = read_codeset('pcornet_uc_table', 'ccccc') %>%
-                        filter(!grepl('imms', check_id), check_id != 'gestage'),
+                        filter(check_id != 'gestage'),
                       omop_or_pcornet = 'pcornet',
                       by_year = FALSE,
                       produce_mapped_list = FALSE, ## not running this for now -- need to investigate a solution
@@ -65,7 +65,7 @@ output_tbl_append(uc_output, 'uc_output')
 # output_tbl(mapped_list, 'uc_grpd', file = TRUE)
 
 uc_output_year <- check_uc(uc_tbl = read_codeset('pcornet_uc_table', 'ccccc') %>%
-                             filter(!grepl('imms', check_id), check_id != 'gestage'),
+                             filter(check_id != 'gestage'),
                            omop_or_pcornet = 'pcornet',
                            by_year = TRUE,
                            produce_mapped_list = FALSE,
@@ -76,8 +76,8 @@ output_tbl_append(uc_output_year, 'uc_by_year')
 
 ## MF Visit ID
 
-mf_output <- check_mf_visitid(mf_tbl = read_codeset('pcornet_mf_table', 'ccccc') %>%
-                                filter(check_id != 'immsall-visitid'),
+mf_output <- check_mf_visitid(mf_tbl = read_codeset('pcornet_mf_table', 'ccccc'), #%>%
+                                #filter(check_id != 'immsall-visitid'),
                               omop_or_pcornet = 'pcornet',
                               visit_tbl = cdm_tbl('encounter'),
                               check_string = 'mf_visitid')
@@ -87,29 +87,29 @@ output_tbl_append(mf_output, 'mf_visitid_output')
 ## Best Mapped Concepts
 
 ## didnt sent provider table
-bmc_output <- check_bmc(bmc_tbl = read_codeset('pcornet_bmc_table', 'ccccc') %>%
-                          filter(!grepl('fips|gestage|provop', check_id)),
-                        omop_or_pcornet = 'pcornet',
-                        concept_tbl = NULL,
-                        check_string='bmc')
+# bmc_output <- check_bmc(bmc_tbl = read_codeset('pcornet_bmc_table', 'ccccc') %>%
+#                           filter(!grepl('fips|gestage', check_id)),
+#                         omop_or_pcornet = 'pcornet',
+#                         concept_tbl = NULL,
+#                         check_string='bmc')
 
-bmc_output2 <- check_bmc(bmc_tbl = read_codeset('pcornet_bmc_table', 'ccccc') %>%
-                          filter(grepl('fips', check_id)), ## dropped gestage cht for now
-                        omop_or_pcornet = 'omop',
-                        concept_tbl = NULL,
-                        check_string='bmc')
+# bmc_output2 <- check_bmc(bmc_tbl = read_codeset('pcornet_bmc_table', 'ccccc') %>%
+#                           filter(grepl('fips', check_id)), ## dropped gestage cht for now
+#                         omop_or_pcornet = 'omop',
+#                         concept_tbl = NULL,
+#                         check_string='bmc')
 
-bmc_counts_final <- bmc_output$bmc_counts %>% union(bmc_output2$bmc_counts)
-bmc_concepts_final <- bmc_output$bmc_concepts %>% union(bmc_output2$bmc_concepts)
+# bmc_counts_final <- bmc_output$bmc_counts #%>% union(bmc_output2$bmc_counts)
+# bmc_concepts_final <- bmc_output$bmc_concepts #%>% union(bmc_output2$bmc_concepts)
 
-output_tbl_append(bmc_counts_final, 'bmc_output', file = TRUE)
-output_tbl_append(bmc_concepts_final, 'bmc_concepts', file = TRUE)
+# output_tbl_append(bmc_counts_final, 'bmc_output', file = TRUE)
+# output_tbl_append(bmc_concepts_final, 'bmc_concepts', file = TRUE)
 
 ## Expected Concepts Present
 
 ecp_output <- check_ecp(ecp_tbl = read_codeset('pcornet_ecp_table', 'ccccc') %>%
                           filter(!grepl('state|county', check_id),
-                                 cohort_table != 'nephrology_specialties',
+                                 #cohort_table != 'nephrology_specialties',
                                  cohort_table != 'geocode_cohort'),
                         omop_or_pcornet = 'pcornet',
                         check_string = 'ecp')
@@ -127,7 +127,7 @@ source(file.path(getwd(), 'code', 'precompute_tables_2.R'))
 ## Clinical Fact Documentation
 ####### All Visits
 cfd_output_all <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') %>%
-                            filter(check_id != 'icu', check_id != 'immsall'),
+                            filter(check_id != 'icu'),
                           visit_type_filter = 'all',
                           visit_type_tbl = read_codeset('pcornet_cfd_visits', 'cc'),
                           omop_or_pcornet = 'pcornet',
@@ -135,8 +135,8 @@ cfd_output_all <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc')
                           check_string='cfd') %>%
   mutate(check_name = stringr::str_replace_all(check_name, '_all', ''))
 ####### Inpatient Visits
-cfd_output_ip <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') %>%
-                           filter(check_id != 'immsall'),
+cfd_output_ip <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc'), #%>%
+                           #filter(check_id != 'immsall'),
                          visit_type_filter = 'inpatient',
                          visit_type_tbl = read_codeset('pcornet_cfd_visits', 'cc'),
                          omop_or_pcornet = 'pcornet',
@@ -145,8 +145,8 @@ cfd_output_ip <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') 
   mutate(check_name = stringr::str_replace_all(check_name, '_inpatient', '-visip'))
 
 ####### Inpatient Visits > 2 Days
-cfd_output_lip <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') %>%
-                              filter(check_id != 'immsall'),
+cfd_output_lip <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc'), #%>%
+                              #filter(check_id != 'immsall'),
                           visit_type_filter = 'long_inpatient',
                           visit_type_tbl = read_codeset('pcornet_cfd_visits', 'cc'),
                           omop_or_pcornet = 'pcornet',
@@ -156,7 +156,7 @@ cfd_output_lip <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc')
 
 ####### Outpatient Visits
 cfd_output_op <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') %>%
-                             filter(check_id != 'icu', check_id != 'immsall'),
+                             filter(check_id != 'icu'),
                          visit_type_filter = 'outpatient',
                          visit_type_tbl = read_codeset('pcornet_cfd_visits', 'cc'),
                          omop_or_pcornet = 'pcornet',
@@ -165,20 +165,18 @@ cfd_output_op <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') 
   mutate(check_name = stringr::str_replace_all(check_name, '_outpatient', '-visop'))
 
 ####### Primary Care Visits (Specialty)
-# cfd_output_pc <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') %>%
-#                              filter(check_id != 'icu', check_id != 'immsall'),
-#                          visit_type_filter = 'primary_care',
-#                          visit_type_tbl = read_codeset('pedsnet_cfd_visits', 'ci') %>%
-#                            select(-visit_source_concept_id),
-#                          omop_or_pcornet = 'omop',
-#                          visit_tbl=results_tbl('gp_specialties') %>%
-#                            filter(visit_source_concept_id != 2000001590),
-#                          check_string='cfd') %>%
-#   mutate(check_name = stringr::str_replace_all(check_name, '_primary_care', '-vispc'))
+cfd_output_pc <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') %>%
+                             filter(check_id != 'icu'),
+                         visit_type_filter = 'primary_care',
+                         visit_type_tbl = read_codeset('pcornet_cfd_visits', 'cc'),
+                         omop_or_pcornet = 'pcornet',
+                         visit_tbl=results_tbl('gp_specialties'),
+                         check_string='cfd') %>%
+  mutate(check_name = stringr::str_replace_all(check_name, '_primary_care', '-vispc'))
 
 ####### Emergency Department Visits
 cfd_output_ed <- check_cfd(cfd_tbl = read_codeset('pcornet_cfd_table', 'ccccc') %>%
-                             filter(check_id != 'icu', check_id != 'immsall'),
+                             filter(check_id != 'icu'),
                          visit_type_filter = 'emergency',
                          visit_type_tbl = read_codeset('pcornet_cfd_visits', 'cc'),
                          omop_or_pcornet = 'pcornet',
@@ -201,9 +199,9 @@ cfd_combined <- cfd_output_all %>%
   union(cfd_output_ip) %>%
   union(cfd_output_lip) %>%
   union(cfd_output_op) %>%
-  union(cfd_output_ed) #%>%
+  union(cfd_output_ed) %>%
   #union(cfd_output_cld) #%>%
-  #union(cfd_output_pc)
+  union(cfd_output_pc)
 
 output_tbl_append(cfd_combined, 'cfd_output')
 
@@ -215,13 +213,13 @@ output_tbl(cfd_mapping_file, 'cfd_mappings')
 ## Domain Concordance
 
 dcon_output_pt <- check_dcon(dcon_tbl = read_codeset('pcornet_dcon_table', 'cccccccccd') %>%
-                               filter(!grepl('vis', check_id), !grepl('spec', check_id)),
+                               filter(!grepl('vis', check_id)),
                              compute_level = 'patient',
                              omop_or_pcornet = 'pcornet',
                              check_string='dcon')
 
 dcon_output_visit <- check_dcon(dcon_tbl = read_codeset('pcornet_dcon_table', 'cccccccccd') %>%
-                                  filter(grepl('vis', check_id), !grepl("gp", check_id)),
+                                  filter(grepl('vis', check_id)),
                                 compute_level = 'visit',
                                 omop_or_pcornet = 'pcornet',
                                 check_string='dcon')
@@ -233,7 +231,7 @@ dcon_meta <- dcon_output_pt[[2]] %>%
   union(dcon_output_visit[[2]])
 
 output_tbl_append(dcon_combined, 'dcon_output')
-output_tbl(dcon_meta, 'dcon_meta', file = TRUE)
+sf_rslt$output_tbl(dcon_meta, 'dcon_meta')
 
 ## Date Plausibility
 
@@ -241,6 +239,8 @@ dp_output <- check_dp(dp_tbl = read_codeset('pcornet_dp_table', 'ccccc'),
                       omop_or_pcornet = 'pcornet',
                       visit_tbl = cdm_tbl('encounter'),
                       dob_tbl = cdm_tbl('demographic'),
+                      death_tbl = cdm_tbl('death'),
+                      post_death_buffer = 30L,
                       check_string = 'dp')
 
 output_tbl_append(dp_output, 'dp_output')
@@ -256,7 +256,7 @@ source(file.path(getwd(), 'code', 'precompute_tables_3.R'))
 ## Facts Over Time
 
 fot_output <- check_fot(fot_tbl = read_codeset('pcornet_fot_table', 'cccc') %>%
-                          filter(schema == 'cdm', check_id != 'immsall'),
+                          filter(table != 'c19_imm', !grepl('sdoh|promis', check_id)),
                         omop_or_pcornet = 'pcornet',
                         compute_method = 'group',
                         time_span = list('2009-01-01', today()),
@@ -274,7 +274,7 @@ fot_visit_denom <- fot_output %>%
 
 fot_w_denom <- fot_output %>% left_join(fot_visit_denom)
 
-output_tbl_append(fot_w_denom, 'fot_output', file = TRUE)
+output_tbl_append(fot_w_denom, 'fot_output')
 
 ######### CLEANUP CHECKPOINT #################
 remove_precompute(checkpoint = 3)

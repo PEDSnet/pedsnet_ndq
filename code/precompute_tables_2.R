@@ -3,7 +3,7 @@ site_nm <- config('qry_site')
 
 ## Patient Facts
 drugs <- select(cdm_tbl('prescribing'), patid, encounterid) %>%
-  union(select(cdm_tbl('dispensing'), patid, encounterid)) %>%
+  union(select(cdm_tbl('dispensing'), patid) %>% mutate(encounterid = NA_character_)) %>%
   union(select(cdm_tbl('med_admin'), patid, encounterid)) %>%
   add_site() %>% filter(site == site_nm)
 
@@ -53,14 +53,18 @@ sf_rslt$output_tbl(site_iptwo, 'ip_two')
 
 onco_spec_prep <- find_specialty(visits = cdm_tbl('encounter') %>%
                                    add_site() %>% filter(site == site_nm),
-                                 specialty_conceptset = load_codeset('oncology'))
-output_tbl(onco_spec_prep, 'oncology_specialties')
+                                 specialty_conceptset = load_codeset('oncology')) %>%
+  select(site, patid, encounterid, enc_type, admit_date, visit_specialty_concept_id)
+
+sf_rslt$output_tbl(onco_spec_prep, 'oncology_specialties')
 
 gp_spec_prep <- find_specialty(visits = cdm_tbl('encounter') %>%
                                    add_site() %>% filter(site == site_nm),
                                specialty_conceptset = load_codeset('general_practice_specialties')) %>%
-  filter(enc_type == 'AV')
-output_tbl(gp_spec_prep, 'gp_specialties')
+  filter(enc_type == 'AV') %>%
+  select(site, patid, encounterid, enc_type, admit_date, visit_specialty_concept_id)
+
+sf_rslt$output_tbl(gp_spec_prep, 'gp_specialties')
 
 
 wc_codes_dx <- cdm_tbl('diagnosis') %>%

@@ -1,6 +1,6 @@
 check_id,check_description,schema,table,date_field,filter_logic
-immsall,all immunizations,cdm,immunization,immunization_date,
-immscovid19,covid19 immunizations,result,c19_imm,immunization_date,
+immsall,all immunizations,cdm,immunization,vx_record_date,
+immscovid19,covid19 immunizations,result,c19_imm,vx_record_date,
 visall,all visits,cdm,encounter,admit_date,
 visofc,outpatient visits,cdm,encounter,admit_date,enc_type == 'AV'
 visth,telehealth visits,cdm,encounter,admit_date,enc_type == 'TH'

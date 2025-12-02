@@ -6,7 +6,6 @@
 # devtools::install_github('PEDSnet/argos')
 # devtools::install_github('PEDSnet/ndq')
 # devtools::install_github('ssdqa/ssdqa.gen')
-library(argos)
 library(srcr)
 library(dplyr)
 library(tidyr)
@@ -16,6 +15,7 @@ library(DBI)
 library(dbplyr)
 library(lubridate)
 library(ssdqa.gen)
+library(argos)
 
 # Source file with wrapper function
 source(file.path('setup', 'argos_wrapper.R'))

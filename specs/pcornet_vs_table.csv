@@ -1,11 +1,10 @@
 check_id,check_description,schema,table,valueset_name,concept_field,filter_logic,vocabulary_field
 demog-race,Race,cdm,demographic,valueset_race_pc,race,,
 demog-eth,Ethnicity,cdm,demographic,valueset_ethnicity_pc,hispanic,,
-visall-enctype,Encounter Type,cdm,encounter,valueset_enc_type,enc_type,,
+visall-enctype,Encounter Type,cdm,encounter,valueset_enc_type_pc,enc_type,,
 demog-sex,Sex,cdm,demographic,valueset_sex_pc,sex,,
 dxtype,Diagnosis Code Type,cdm,diagnosis,valueset_dx_type_pc,dx_type,,
 facilityspec,Facility Type,cdm,encounter,valueset_facility_type_pc,facility_type,,
-provspec,Provider Specialty,cdm,provider,valueset_provider_spec_pc,provider_specialty_primary,,
 genderid,Gender Identity,cdm,demographic,valueset_gender_id_pc,gender_identity,,
 language,Preferred Language,cdm,demographic,valueset_language_pc,pat_pref_language_spoken,,
 payer,Payer Type,cdm,encounter,valueset_payer_type_pc,payer_type_primary,,

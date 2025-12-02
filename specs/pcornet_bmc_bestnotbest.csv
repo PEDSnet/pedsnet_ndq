@@ -2,9 +2,10 @@ check_name,concept,best_notbest,default_to
 csop,NI,0,best
 csop,UN,0,best
 csop,OT,0,best
-demog-eth,UN,0,best
-demog-eth,NI,0,best
-demog-eth,R,0,best
+eth,UN,0,best
+eth,NI,0,best
+eth,R,0,best
+eth,,0,best
 provop,193200000X,0,best
 provop,193400000X,0,best
 provop,171W00000X,0,best
@@ -16,9 +17,10 @@ provop,UN,0,best
 provop,363L00000X,0,best
 provop,164W00000X,0,best
 provop,363A00000X,0,best
-demog-race,UN,0,best
-demog-race,NI,0,best
-demog-race,R,0,best
+race,UN,0,best
+race,NI,0,best
+race,R,0,best
+race,,0,best
 drugsip-rxnorm,Quant Branded Drug,1,notbest
 drugsip-rxnorm,Branded Drug,1,notbest
 drugsip-rxnorm,Branded Pack,1,notbest

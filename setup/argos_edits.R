@@ -32,7 +32,7 @@ argos$public_methods$load_codeset <- function(name, col_types = 'iccc', table_na
                                        full_path = full_path),
                      name = table_name,
                      overwrite = TRUE,
-                     indexes = indexes,
+                     indexes = NULL,
                      .chunk_size = .chunk_size)
 
   if (self$config('cache_enabled')) {
@@ -150,6 +150,7 @@ assignInNamespace('add_site',
                                         id_col = "patid")
                     get_argos_default()$add_site(f_tbl, site_tbl, id_col),
                   'argos')
+
 
 
 # assignInNamespace('pick_schema',

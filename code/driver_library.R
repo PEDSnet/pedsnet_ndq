@@ -89,7 +89,7 @@ output_tbl_append(mf_output, 'mf_visitid_output')
 ## didnt sent provider table
 bmc_output <- check_bmc(bmc_tbl = read_codeset('pcornet_bmc_table', 'ccccc') %>%
                           filter(!grepl('fips|gestage|drug', check_id)),
-                        best_notbest_tbl = read_codeset('pcornet_best_notbest', 'cccc'),
+                        best_notbest_tbl = read_codeset('pcornet_bmc_bestnotbest', 'ccic'),
                         omop_or_pcornet = 'pcornet',
                         concept_tbl = NULL,
                         check_string='bmc')

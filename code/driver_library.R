@@ -100,6 +100,7 @@ bmc_output2 <- check_bmc(bmc_tbl = read_codeset('pedsnet_bmc_table', 'ccccc') %>
 bmc_counts_final <- bmc_output %>% union(bmc_output2)
 
 output_tbl_append(bmc_counts_final, 'bmc_output', file = TRUE)
+output_tbl(read_codeset('pedsnet_bmc_bestnotbest', 'ccic'), 'bmc_concepts')
 
 ## Expected Concepts Present
 

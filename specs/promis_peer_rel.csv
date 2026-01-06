@@ -1,0 +1,18 @@
+concept_id,concept_code,concept_name,vocabulary_id
+40764930,62169-8,Other kids wanted to be with me in past 7 days [PROMIS],LOINC
+40764928,62167-2,My friends and I helped each other out in past 7 days [PROMIS],LOINC
+1176382,90664-4,Other kids wanted to be my child's friend in past 7 days [PROMIS.PARENTPROXY],LOINC
+1176218,90671-9,My child was good at making friends in past 7 days [PROMIS.PARENTPROXY],LOINC
+1175383,90675-0,My child was able to count on his/her friends in past 7 days [PROMIS.PARENTPROXY],LOINC
+40764917,62156-5,I felt accepted by other kids my age in past 7 days [PROMIS],LOINC
+40764924,62163-1,I was able to count on my friends in past 7 days [PROMIS],LOINC
+40764927,62166-4,I was good at making friends in past 7 days [PROMIS],LOINC
+40764931,62170-6,Other kids wanted to talk to me in past 7 days [PROMIS],LOINC
+1175859,90669-3,Other kids wanted to talk to my child in past 7 days [PROMIS.PARENTPROXY],LOINC
+1176340,90672-7,My child felt accepted by other kids his/her age in past 7 days [PROMIS.PARENTPROXY],LOINC
+1175332,90960-6,PROMIS pediatric short form - peer relationships 8a - version 2.0 raw score,LOINC
+40764926,62165-6,I was able to talk about everything with my friends in past 7 days [PROMIS],LOINC
+1175510,90945-7,PROMIS parent proxy short form - peer relationship 7a - version 2.0 raw score,LOINC
+46236701,77841-5,PROMIS pediatric short form - peer relationships 8a - version 1.0 raw score,LOINC
+1175796,90670-1,My child and his/her friends helped each other out in past 7 days [PROMIS.PARENTPROXY],LOINC
+1175212,90673-5,Other kids wanted to be with my child in past 7 days [PROMIS.PARENTPROXY],LOINC

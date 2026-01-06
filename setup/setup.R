@@ -5,7 +5,7 @@
 # Load required packages
 # devtools::install_github('PEDSnet/argos')
 # devtools::install_github('PEDSnet/ndq')
-# devtools::install_github('ssdqa/ssdqa.gen')
+# devtools::install_github('ssdqa/squba.gen')
 library(argos)
 library(srcr)
 library(ndq)

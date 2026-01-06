@@ -80,7 +80,7 @@ output_tbl(mf_visitid_pp, 'mf_visitid_output_pp')
 
 ## Best Mapped Concepts
 #### Standard Processing
-bmc_pp <- process_bmc(bmc_results = 'bmc_output', #'bmc_gen_output',
+bmc_pp <- process_bmc(bmc_results = 'bmc_output',
                       rslt_source = 'remote')
 bmc_concepts_pp<-results_tbl('bmc_concepts')%>%
   collect()%>%

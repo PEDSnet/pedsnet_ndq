@@ -1,11 +1,11 @@
 check_id,check_description,schema,table,concept_field,concept_table_field,filter_logic
-drugsip-rxnorm,inpatient admin,cdm,drug_exposure,drug_concept_id,concept_class_id,drug_type_concept_id %in% c(38000180)
-drugspresc-rxnorm,prescriptions,cdm,drug_exposure,drug_concept_id,concept_class_id,drug_type_concept_id %in% c(38000177)
-race,race,cdm,person,race_concept_id,concept_name,
-eth,ethnicity,cdm,person,ethnicity_concept_id,concept_name,
-provop,outpatient provider specialty,result,op_prov_spec,specialty_concept_id,concept_name,
-csop,outpatient care site specialty,result,op_cs_spec,specialty_concept_id,concept_name,
-adtall-servcid,ADT service_concept_id,cdm,adt_occurrence,service_concept_id,concept_name,
-fips_tract,FIPS Census Tract,result,fips_tract,ndigit_fips,ndigit_fips,
-fips_blgr,FIPS Block Group,result,fips_block_group,ndigit_fips,ndigit_fips,
-gestage,gestational age (when first visit occurs at <= 2 years old),result,gest_age_cohort,ga_group,ga_group,
+drugsip-rxnorm,"Drugs, inpatient administration",cdm,drug_exposure,drug_concept_id,concept_class_id,drug_type_concept_id %in% c(38000180)
+drugspresc-rxnorm,"Drugs, prescriptions",cdm,drug_exposure,drug_concept_id,concept_class_id,drug_type_concept_id %in% c(38000177)
+demog-race,Race,cdm,person,race_concept_id,concept_name,
+demog-eth,Ethnicity,cdm,person,ethnicity_concept_id,concept_name,
+provop,Specialty at outpatient visits (provider),result,op_prov_spec,specialty_concept_id,concept_name,
+csop,Specialty at outpatient visits (care site),result,op_cs_spec,specialty_concept_id,concept_name,
+adtall-servcid,ADT service,cdm,adt_occurrence,service_concept_id,concept_name,
+tract,FIPS Census Tract,result,loc_fips,ndigit_fips_tct,ndigit_fips_tct,
+blgr,FIPS Census Block Group,result,loc_fips,ndigit_fips_bg,ndigit_fips_bg,
+gestage,Gestational Age (when first visit occurs at <= 2 years old),result,gest_age_cohort,ga_group,ga_group,

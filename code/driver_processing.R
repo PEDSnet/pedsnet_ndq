@@ -1,14 +1,22 @@
 
+dc_output_newdomains<-results_tbl('dc_output')%>%
+  filter(database_version=='v60')%>%
+  select(check_name, domain)
+dc_output_local<-results_tbl('dc_output')%>%
+  select(-domain)%>%
+  left_join(dc_output_newdomains, by = 'check_name')%>%
+  collect()
+dc_meta_local<-results_tbl('dc_meta')%>%collect()
 ## Data Cycle Changes
 #### Standard Processing
-dc_pp <- process_dc(dc_ct_results = 'dc_output',
-                    dc_meta_results = 'dc_meta',
-                    rslt_source = 'remote')
+dc_pp <- process_dc(dc_ct_results = dc_output_local,
+                    dc_meta_results = dc_meta_local,
+                    rslt_source = 'local')
 
 # output_tbl(dc_pp, 'dc_output_pp')
 
 #### Detect Anomalies FOR (PLOTTING IN SHINY)
-dc_anom <- ssdqa.gen::compute_dist_anomalies(df_tbl=filter(dc_pp, site!='total'),
+dc_anom <- squba.gen::compute_dist_anomalies(df_tbl=filter(dc_pp, site!='total'),
                                              grp_vars=c('check_type', 'application'),
                                              var_col='prop_total_change',
                                              denom_cols = NULL)
@@ -20,8 +28,12 @@ dc_anom_pp <- ssdqa.gen::detect_outliers(df_tbl = dc_anom,
                                          column_eligible = 'analysis_eligible',
                                          column_variable = 'application')
 
-dc_anom_suppress <- dc_suppress_outlier(bind_rows(dc_anom_pp,
-                                                  filter(dc_pp,site=='total')))
+# For dev run, no outliers
+# dc_anom_suppress <- dc_suppress_outlier(bind_rows(dc_anom_pp,
+#                                                   filter(dc_pp,site=='total')))
+dc_anom_suppress<-dc_anom_pp%>%
+  bind_rows(filter(dc_pp,site=='total'))%>%
+  mutate(plot_prop=prop_total_change)
 
 output_tbl(dc_anom_suppress, 'dc_output_pp')
 
@@ -55,6 +67,10 @@ uc_year_pp <- process_uc(uc_results = 'uc_by_year',
 
 output_tbl(uc_year_pp, 'uc_by_year_pp')
 
+# Grouped concepts
+uc_grpd<-results_tbl('uc_grpd')%>%collect()
+output_tbl(uc_grpd, 'uc_grpd_pp')
+
 ## MF Visit ID
 
 mf_visitid_pp <- process_mf_visitid(mf_visitid_results = 'mf_visitid_output',
@@ -65,21 +81,29 @@ output_tbl(mf_visitid_pp, 'mf_visitid_output_pp')
 ## Best Mapped Concepts
 #### Standard Processing
 bmc_pp <- process_bmc(bmc_results = 'bmc_output', #'bmc_gen_output',
-                      bmc_concepts_labelled = 'bmc_concepts', ## with `include` column added that indicates not best concepts with 0
                       rslt_source = 'remote')
+bmc_concepts_pp<-results_tbl('bmc_concepts')%>%
+  collect()%>%
+  rename(check_name_prev=check_name)%>%
+  mutate(check_name=paste0('bmc_',check_name_prev))%>%
+  select(-check_name_prev)
+output_tbl(bmc_concepts_pp,
+           name='bmc_concepts_rev')
 
-output_tbl(bmc_pp$bmc_output_pp, 'bmc_output_pp')
-output_tbl(bmc_pp$bmc_concepts_pp, 'bmc_output_concepts_pp')
+#output_tbl(bmc_pp$bmc_output_pp, 'bmc_output_pp')
+#output_tbl(bmc_pp$bmc_concepts_pp, 'bmc_output_concepts_pp')
+output_tbl(bmc_pp, 'bmc_output_pp')
+output_tbl(bmc_concepts_pp, 'bmc_output_concepts_pp')
 
 #### Detect Anomalies
-bmc_anom <- ssdqa.gen::compute_dist_anomalies(df_tbl= bmc_pp$bmc_output_pp %>% filter(include == 1L),
-                                              grp_vars=c('check_name', 'check_desc',
+bmc_anom <- squba.gen::compute_dist_anomalies(df_tbl= bmc_pp%>%filter(best_notbest==1L),
+                                              grp_vars=c('check_name', 'check_description',
                                                          'check_type', 'check_name_app',
                                                          'database_version'),
                                               var_col='best_row_prop',
-                                              denom_cols = 'total_rows')
+                                              denom_cols = c('total_rows','check_name'))
 
-bmc_anom_pp <- ssdqa.gen::detect_outliers(df_tbl = bmc_anom,
+bmc_anom_pp <- squba.gen::detect_outliers(df_tbl = bmc_anom,
                                           tail_input = 'both',
                                           p_input = 0.9,
                                           column_analysis = 'best_row_prop',
@@ -93,12 +117,12 @@ ecp_pp <- process_ecp(ecp_results = 'ecp_output',
                       rslt_source = 'remote')
 
 ecp_pp_labs <- ecp_pp %>%
-  left_join(read_codeset('ecp_cat_new', 'cc'))
+  left_join(read_codeset('ecp_cat_new_new', 'cc'))
 
 output_tbl(ecp_pp_labs, 'ecp_output_pp')
 
 #### Detect Anomalies
-ecp_anom <- ssdqa.gen::compute_dist_anomalies(df_tbl= ecp_pp,
+ecp_anom <- squba.gen::compute_dist_anomalies(df_tbl= ecp_pp_labs,
                                               grp_vars=c('check_name'),
                                               var_col='prop_with_concept',
                                               denom_cols = NULL)
@@ -124,9 +148,9 @@ dcon_pp <- process_dcon(dcon_results = 'dcon_output',
                         rslt_source = 'remote')
 
 dcon_pp_labs <- dcon_pp %>%
-  mutate(description_full = gsub('and', '/', check_desc))
+  mutate(description_full = gsub('and', '/', check_description))
 
-output_tbl(dcon_pp, 'dcon_output_pp')
+output_tbl(dcon_pp_labs, 'dcon_output_pp')
 
 ## Facts Over Time
 
@@ -139,3 +163,26 @@ fot_pp <- process_fot(fot_results = 'fot_output',
 output_tbl(fot_pp$fot_heuristic_pp, 'fot_heuristic_pp')
 output_tbl(fot_pp$fot_heuristic_summary_pp, 'fot_heuristic_summary_pp')
 output_tbl(fot_pp$fot_ratios, 'fot_ratios_pp')
+
+## Date Plausibility
+dp_pp<-process_dp(dp_results = 'dp_output',
+                  rslt_source='remote')
+# dp_pp_desc<-dp_pp%>%
+#   left_join(read_codeset('dp_name_desc', col_types='cccc'), by = c('check_description', 'check_name', 'implausible_type'))
+output_tbl(dp_pp,
+           name='dp_output_pp')
+
+dp_anom <- squba.gen::compute_dist_anomalies(df_tbl= dp_pp,
+                                             grp_vars=c('check_name', 'implausible_type', 'check_name_app'),
+                                             var_col='prop_implausible',
+                                             denom_cols = NULL)
+
+dp_anom_pp <- squba.gen::detect_outliers(df_tbl=dp_anom,
+                                         tail_input = 'both',
+                                         p_input = 0.9,
+                                         column_analysis = 'prop_implausible',
+                                         column_eligible = 'analysis_eligible',
+                                         column_variable =c('check_name', 'implausible_type', 'check_name_app'))
+output_tbl(dp_anom_pp,
+           'dp_anom_pp')
+

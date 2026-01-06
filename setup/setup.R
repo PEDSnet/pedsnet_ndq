@@ -16,7 +16,7 @@ library(stringr)
 library(DBI)
 library(dbplyr)
 library(lubridate)
-library(ssdqa.gen)
+library(squba.gen)
 
 # Source file with wrapper function
 source(file.path('setup', 'argos_wrapper.R'))
@@ -30,7 +30,7 @@ initialize_session(session_name = 'ndq_assessment',
                    db_conn = Sys.getenv('PEDSNET_BASE_CONFIG'),
                    is_json = TRUE,
                    cdm_schema = paste0(site, '_pedsnet'), ## replace with location of CDM data
-                   results_schema = 'dqa_rox', ## replace with location of results schema
+                   results_schema = 'dqa_rox_dev', ## replace with location of results schema
                                                ## MUST BE STORED ON SAME DATABASE AS CDM
                    retain_intermediates = FALSE,
                    db_trace = FALSE, ## set to TRUE for SQL code to print to the console (like verbose)
@@ -40,7 +40,7 @@ initialize_session(session_name = 'ndq_assessment',
 
 config('qry_site', site)
 
-config('current_version','v57') ## set current instantiation PEDSnet version
+config('current_version','v60') ## set current instantiation PEDSnet version
 
 # location of prior CDM or results data (for data cycle changes check)
 # config('db_src_prev', srcr(Sys.getenv('PEDSNET_PREV_CONFIG')))

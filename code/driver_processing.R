@@ -1,19 +1,21 @@
-
-dc_output_newdomains<-results_tbl('dc_output')%>%
-  filter(database_version=='v60')%>%
-  select(check_name, domain)
-dc_output_local<-results_tbl('dc_output')%>%
-  select(-domain)%>%
-  left_join(dc_output_newdomains, by = 'check_name')%>%
-  collect()
-dc_meta_local<-results_tbl('dc_meta')%>%collect()
+# domain replacement was for dev run, see if results look as expected without it
+# dc_output_newdomains<-results_tbl('dc_output')%>%
+#   filter(database_version=='v60')%>%
+#   select(check_name, domain)
+# dc_output_local<-results_tbl('dc_output')%>%
+#   select(-domain)%>%
+#   left_join(dc_output_newdomains, by = 'check_name')%>%
+#   collect()
 ## Data Cycle Changes
-#### Standard Processing
-dc_pp <- process_dc(dc_ct_results = dc_output_local,
-                    dc_meta_results = dc_meta_local,
-                    rslt_source = 'local')
 
-# output_tbl(dc_pp, 'dc_output_pp')
+#### Standard Processing
+# add check_description field into dc output
+dc_meta_local<-results_tbl('dc_meta')%>%select(check_name, check_description)%>%collect()
+dc_pp <- process_dc(dc_ct_results = 'dc_output',
+                    dc_meta_results = 'dc_meta',
+                    rslt_source = 'remote')%>%
+  left_join(dc_meta_local, by = 'check_name')
+
 
 #### Detect Anomalies FOR (PLOTTING IN SHINY)
 dc_anom <- squba.gen::compute_dist_anomalies(df_tbl=filter(dc_pp, site!='total'),
@@ -21,14 +23,14 @@ dc_anom <- squba.gen::compute_dist_anomalies(df_tbl=filter(dc_pp, site!='total')
                                              var_col='prop_total_change',
                                              denom_cols = NULL)
 
-dc_anom_pp <- ssdqa.gen::detect_outliers(df_tbl = dc_anom,
+dc_anom_pp <- squba.gen::detect_outliers(df_tbl = dc_anom,
                                          tail_input = 'both',
                                          p_input = 0.9,
                                          column_analysis = 'prop_total_change',
                                          column_eligible = 'analysis_eligible',
                                          column_variable = 'application')
 
-# For dev run, no outliers
+# For v60
 # dc_anom_suppress <- dc_suppress_outlier(bind_rows(dc_anom_pp,
 #                                                   filter(dc_pp,site=='total')))
 dc_anom_suppress<-dc_anom_pp%>%
@@ -82,18 +84,19 @@ output_tbl(mf_visitid_pp, 'mf_visitid_output_pp')
 #### Standard Processing
 bmc_pp <- process_bmc(bmc_results = 'bmc_output',
                       rslt_source = 'remote')
-bmc_concepts_pp<-results_tbl('bmc_concepts')%>%
-  collect()%>%
-  rename(check_name_prev=check_name)%>%
-  mutate(check_name=paste0('bmc_',check_name_prev))%>%
-  select(-check_name_prev)
-output_tbl(bmc_concepts_pp,
-           name='bmc_concepts_rev')
+bmc_conceptlevel<-results_tbl('bmc_output')%>%collect()
+# bmc_concepts_pp<-results_tbl('bmc_concepts')%>%
+#   collect()%>%
+#   rename(check_name_prev=check_name)%>%
+#   mutate(check_name=paste0('bmc_',check_name_prev))%>%
+#   select(-check_name_prev)
+# output_tbl(bmc_concepts_pp,
+#            name='bmc_concepts_rev')
 
 #output_tbl(bmc_pp$bmc_output_pp, 'bmc_output_pp')
 #output_tbl(bmc_pp$bmc_concepts_pp, 'bmc_output_concepts_pp')
 output_tbl(bmc_pp, 'bmc_output_pp')
-output_tbl(bmc_concepts_pp, 'bmc_output_concepts_pp')
+output_tbl(bmc_conceptlevel, 'bmc_output_concepts_pp')
 
 #### Detect Anomalies
 bmc_anom <- squba.gen::compute_dist_anomalies(df_tbl= bmc_pp%>%filter(best_notbest==1L),
@@ -135,7 +138,7 @@ ecp_anom_pp <- ssdqa.gen::detect_outliers(df_tbl = ecp_anom,
                                           column_variable = 'check_name')
 output_tbl(ecp_anom_pp, 'ecp_anom_pp')
 
-## Patient Facts
+## Clinical Fact Documentation
 
 cfd_pp <- process_cfd(cfd_results = 'cfd_output',
                       rslt_source = 'remote')

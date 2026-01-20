@@ -1,0 +1,139 @@
+---
+title: "geocode_improvement"
+format: html
+---
+
+```{r}
+
+library(argos)
+library(srcr)
+library(ggplot2)
+library(stringr)
+library(dplyr)
+
+source('../setup/argos_wrapper.R')
+
+initialize_session(session_name = 'ndq_assessment',
+                   db_conn = Sys.getenv('PEDSNET_56'),
+                   is_json = TRUE,
+                   cdm_schema = 'dcc_pedsnet',
+                   results_schema = 'dqa_rox', 
+                   retain_intermediates = FALSE,
+                   db_trace = FALSE, 
+                   results_tag = '')
+```
+
+```{r}
+
+## v56
+config('db_src', srcr(Sys.getenv('PEDSNET_56')))
+bmc56 <- results_tbl('bmc_gen_output') %>%
+  filter(grepl('fips', check_name)) %>% collect() %>%
+  select(site, database_version, concept, concept_rows, total_rows,
+         row_proportions, check_desc)
+
+ecp56 <- results_tbl('ecp_output') %>%
+  filter(concept_group %in% c('2020_cbg', '2020_tract')) %>% collect() %>%
+  select(site, database_version, concept_pt_ct, total_pt_ct, prop_with_concept, check_name)
+
+## v57
+config('db_src', srcr(Sys.getenv('PEDSNET_57')))
+
+bmc57 <- results_tbl('bmc_gen_output') %>%
+  filter(grepl('fips', check_name)) %>% collect() %>%
+  select(site, database_version, concept, concept_rows, total_rows,
+         row_proportions, check_desc)
+
+ecp57 <- results_tbl('ecp_output') %>%
+  filter(concept_group %in% c('2020_cbg', '2020_tract')) %>% collect() %>%
+  select(site, database_version, concept_pt_ct, total_pt_ct, prop_with_concept, check_name)
+
+## v58
+config('db_src', srcr(Sys.getenv('PEDSNET_58')))
+
+bmc58 <- results_tbl('bmc_output') %>%
+  filter(grepl('fips', check_name)) %>% collect() %>%
+  select(site, database_version, concept, concept_rows, total_rows,
+         row_proportions, check_desc)
+
+ecp58 <- results_tbl('ecp_output') %>%
+  filter(check_name %in% c('ecp_tract-2020', 'ecp_blgr-2020')) %>% collect() %>%
+  select(site, database_version, concept_pt_ct, total_pt_ct, prop_with_concept, old_check_name) %>%
+  rename('check_name' = 'old_check_name')
+
+## combo
+bmcall <- bmc56 %>% union(bmc57) %>% union(bmc58) %>%
+  mutate(database_version = case_when(database_version == 'v56' ~ 'January 2025',
+                                      database_version == 'v57' ~ 'April 2025',
+                                      database_version == 'v58' ~ 'July 2025'),
+         database_version = factor(database_version, levels = c('January 2025', 
+                                                                'April 2025', 'July 2025'))) 
+bmcnet <- bmcall %>% group_by(database_version, check_desc, concept) %>%
+  summarise(site = 'PEDSnet Total',
+            concept_rows = sum(concept_rows),
+            total_rows = sum(total_rows)) %>%
+  mutate(row_proportions = concept_rows / total_rows)
+
+ecpall <- ecp56 %>% union(ecp57) %>% union(ecp58) %>%
+  mutate(database_version = case_when(database_version == 'v56' ~ 'January 2025',
+                                      database_version == 'v57' ~ 'April 2025',
+                                      database_version == 'v58' ~ 'July 2025'),
+         database_version = factor(database_version, levels = c('January 2025', 
+                                                                'April 2025', 'July 2025'))) 
+ecpnet <- ecpall %>% group_by(database_version, check_name) %>%
+  summarise(site = 'PEDSnet Total',
+            concept_pt_ct = sum(concept_pt_ct),
+            total_pt_ct = sum(total_pt_ct)) %>%
+  mutate(prop_with_concept = concept_pt_ct / total_pt_ct)
+
+```
+
+## ECP Block Group & Tract (2020)
+
+Proportion of patients with at least one valid geocode at the tract or block group level for their current location (location_id in the person table)
+
+```{r}
+
+ecpall %>%
+  mutate(check_name = ifelse(check_name == 'ecp_block_group_2020',
+                             'Census Block Group (2020)', 'Census Tract (2020)')) %>%
+  ggplot(aes(x = database_version, y = prop_with_concept, group = site)) +
+  # geom_line(color = 'black', alpha = 0.2) +
+  geom_line(data = ecpnet %>% mutate(check_name = ifelse(check_name == 'ecp_block_group_2020',
+                             'Census Block Group (2020)', 'Census Tract (2020)')), 
+            color = '#0D4254', size = 1) +
+  facet_wrap(~check_name) +
+  theme_bw() +
+  # ylim(0.65, 1) +
+  labs(x = 'Database Version',
+       y = 'Patient Proportion') +
+  ggtitle('Patients with a Current Geocoded Location')
+
+```
+
+## BMC Block Group or Tract (2020)
+
+Proportion of locations in the location_fips table that has a valid geocode (based on the length of the string) at the tract or block group level
+
+```{r}
+
+bmcall %>%
+  mutate(keep = case_when(check_desc == 'FIPS Census Tract' & concept == 11 ~ TRUE,
+                          check_desc == 'FIPS Block Group' & concept == 12 ~ TRUE,
+                          TRUE ~ FALSE)) %>%
+  filter(keep) %>%
+  ggplot(aes(x = database_version, y = row_proportions, group = site)) +
+  geom_line(color = 'black', alpha = 0.2) +
+  geom_line(data = bmcnet %>% 
+              mutate(keep = case_when(check_desc == 'FIPS Census Tract' & concept == 11 ~ TRUE,
+                     check_desc == 'FIPS Block Group' & concept == 12 ~ TRUE,
+                     TRUE ~ FALSE)) %>% filter(keep), 
+            color = 'red', size = 1) +
+  facet_wrap(~check_desc) +
+  ylim(0, 1) +
+  theme_bw() +
+  labs(x = 'Database Version',
+       y = 'FIPS Row Proportion') +
+  ggtitle('Geocoded Rows in Location FIPS Table')
+
+```

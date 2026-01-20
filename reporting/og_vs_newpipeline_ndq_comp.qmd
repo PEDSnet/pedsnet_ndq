@@ -1,0 +1,476 @@
+---
+title: "Comparing OG vs New Pipeline Nemours NDQ Results"
+format: 
+  html:
+    embed-resources: true
+    html-table-processing: none
+---
+
+```{r setup, include=FALSE}
+
+setwd('..')
+source('setup/setup.R')
+
+library(gt)
+
+unloadNamespace('squba.gen')
+unloadNamespace('plotly')
+
+ndq_sess$config('qry_site', 'nemours')
+
+compare_results <- function(og_tbl,
+                            new_tbl,
+                            check_string = NULL){
+  
+  site_nm <- config('qry_site')
+  
+  og_tbl <- og_tbl %>%
+    filter(site == site_nm) %>%
+    collect()
+  
+  colnames(og_tbl) <- paste0(colnames(og_tbl), '_og')
+  
+  new_tbl <- new_tbl %>%
+    filter(site == site_nm) %>%
+    collect()
+  
+  colnames(new_tbl) <- paste0(colnames(new_tbl), '_new')
+  
+  if(check_string == 'bmc'){
+    comp_tbl <- og_tbl %>%
+      left_join(new_tbl, by = c('check_name_og' = 'check_name_new',
+                                'concept_og' = 'concept_new'))
+  }else if(check_string == 'cfd'){
+    comp_tbl <- og_tbl %>%
+      left_join(new_tbl, by = c('check_name_og' = 'check_name_new',
+                                'visit_type_og' = 'visit_type_new'))
+  }else if(check_string == 'dcon'){
+    comp_tbl <- og_tbl %>%
+      left_join(new_tbl, by = c('check_name_og' = 'check_name_new',
+                                'cohort_label_og' = 'cohort_label_new'))
+  }else if(check_string == 'vc'){
+    comp_tbl <- og_tbl %>%
+      left_join(new_tbl, by = c('check_name_og' = 'check_name_new',
+                                'vocabulary_id_og' = 'vocabulary_id_new'))
+  }else if(check_string == 'vs'){
+    comp_tbl <- og_tbl %>%
+      left_join(new_tbl, by = c('check_name_og' = 'check_name_new',
+                                'concepts_og' = 'concepts_new'))
+  }else{
+    comp_tbl <- og_tbl %>%
+      left_join(new_tbl, by = c('check_name_og' = 'check_name_new'))
+  }
+  
+}
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+```
+
+# Data Cycle Changes
+
+Each check is looking at the counts of different tables for the current data model version. It also technically looks at previous, but I removed that since we already know they are the same.
+
+- total_ct = row count
+- total_pt_ct = patient count
+
+```{r}
+
+dc_comp <- compare_results(og_tbl = results_tbl('dc_output') %>% 
+                             filter(database_version == 'v60') %>%
+                             select(site, check_name, total_ct, total_pt_ct),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'dc_output'))%>%
+                             filter(database_version == 'v60') %>%
+                             select(site, check_name, total_ct, total_pt_ct),
+                           check_string = 'dc') %>%
+  select(-c(site_og, site_new))
+
+dc_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_ct_og', 'total_ct_new'),
+             rows = total_ct_og != total_ct_new,
+             colors = 'yellow') %>%
+  data_color(columns = c('total_pt_ct_og', 'total_pt_ct_new'),
+             rows = total_pt_ct_og != total_pt_ct_new,
+             colors = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Best Mapped Concepts
+
+Basically just looks at a distribution of concepts that exist in the data, then we mark which ones are best/not best.
+
+- total_rows: total N rows in the domain
+- total_pts: total N patients in the domain
+- concept_rows: N rows specifically associated with the concept of interest
+- concept_pts: N patients specifically associated with the concept of interest
+
+```{r}
+
+bmc_comp <- compare_results(og_tbl = results_tbl('bmc_output') %>% 
+                             filter(database_version == 'v60') %>%
+                              select(site, check_name, concept, total_rows, total_pts,
+                                     concept_rows, concept_pts),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'bmc_output'))%>%
+                             filter(database_version == 'v60') %>%
+                              select(site, check_name, concept, total_rows, total_pts,
+                                     concept_rows, concept_pts),
+                           check_string = 'bmc') %>%
+  select(-c(site_og, site_new))
+
+bmc_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_rows_og', 'total_rows_new'),
+             rows = total_rows_og != total_rows_new,
+             colors = 'yellow') %>%
+  data_color(columns = c('total_pts_og', 'total_pts_new'),
+             rows = total_pts_og != total_pts_new,
+             colors = 'yellow') %>%
+  data_color(columns = c('concept_rows_og', 'concept_rows_new'),
+             rows = concept_rows_og != concept_rows_new,
+             colors = 'yellow') %>%
+  data_color(columns = c('concept_pts_og', 'concept_pts_new'),
+             rows = concept_pts_og != concept_pts_new,
+             colors = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Clinical Fact Documentation
+
+Looks to see whether or not visits of various types have an associated clinical fact. It computes counts with/without -- only included one here because thats really all we need to see for this purpose.
+
+- total_visits: total N of visits of that type
+- total_pts: total N of patients with a visit of that type
+- no_fact_visits: total N of visits WITHOUT a fact 
+- no_fact_pts: total N of patients WITHOUT a visit with a fact
+
+```{r}
+
+cfd_comp <- compare_results(og_tbl = results_tbl('cfd_output') %>% 
+                             filter(database_version == 'v60') %>%
+                              select(site, check_name, visit_type, total_visits, total_pts,
+                                     no_fact_visits, no_fact_pts),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'cfd_output'))%>%
+                             filter(database_version == 'v60') %>%
+                              select(site, check_name, visit_type, total_visits, total_pts,
+                                     no_fact_visits, no_fact_pts),
+                           check_string = 'cfd') %>%
+  select(-c(site_og, site_new))
+
+cfd_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_visits_og', 'total_visits_new'),
+             rows = total_visits_og != total_visits_new,
+             colors = 'yellow') %>%
+  data_color(columns = c('total_pts_og', 'total_pts_new'),
+             rows = total_pts_og != total_pts_new,
+             colors = 'yellow') %>%
+  data_color(columns = c('no_fact_visits_og', 'no_fact_visits_new'),
+             rows = no_fact_visits_og != no_fact_visits_new,
+             colors = 'yellow') %>%
+  data_color(columns = c('no_fact_pts_og', 'no_fact_pts_new'),
+             rows = no_fact_pts_og != no_fact_pts_new,
+             colors = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Expected Concepts Present
+
+Looks to see if different variables are present in the data
+
+- total_pt_ct: the count of patients for the cohort we're looking at
+- concept_pt_ct: patients with the variable of interest
+
+```{r}
+
+ecp_comp <- compare_results(og_tbl = results_tbl('ecp_output') %>% 
+                             filter(database_version == 'v60') %>%
+                              select(site, check_name, total_pt_ct, concept_pt_ct),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'ecp_output'))%>%
+                             filter(database_version == 'v60') %>%
+                              select(site, check_name, total_pt_ct, concept_pt_ct),
+                           check_string = 'ecp') %>%
+  select(-c(site_og, site_new))
+
+ecp_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_pt_ct_og', 'total_pt_ct_new'),
+             rows = total_pt_ct_og != total_pt_ct_new,
+             colors = 'yellow') %>%
+  data_color(columns = c('concept_pt_ct_og', 'concept_pt_ct_new'),
+             rows = concept_pt_ct_og != concept_pt_ct_new,
+             colors = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Domain Concordance
+
+Looking at the concordance / overlap between two cohorts
+
+- value: the count of patients meeting criteria for that cohort
+
+```{r}
+
+dcon_comp <- compare_results(og_tbl = results_tbl('dcon_output') %>% 
+                             filter(database_version == 'v60') %>%
+                              select(site, check_name, cohort_label, value),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'dcon_output'))%>%
+                             filter(database_version == 'v60') %>%
+                              select(site, check_name, cohort_label, value),
+                           check_string = 'dcon') %>%
+  select(-c(site_og, site_new))
+
+dcon_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('value_og', 'value_new'),
+             rows = value_og != value_new,
+             color = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Date Plausibility
+
+Looking to see whether dates are plausible based on 4 different comparators
+
+- total_rows: total N of rows in the domain
+- implausible_row: N of rows with an implausible date
+
+```{r}
+
+dp_comp <- compare_results(og_tbl = results_tbl('dp_output') %>% 
+                            # filter(database_version == 'v60') %>%
+                              select(site, check_name, total_rows, implausible_row),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'dp_output'))%>%
+                             #filter(database_version == 'v60') %>%
+                              select(site, check_name, total_rows, implausible_row),
+                           check_string = 'dp') %>%
+  select(-c(site_og, site_new))
+
+dp_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_rows_og', 'total_rows_new'),
+             rows = total_rows_og != total_rows_new,
+             color = 'yellow') %>%
+    data_color(columns = c('implausible_row_og', 'implausible_row_new'),
+             rows = implausible_row_og != implausible_row_new,
+             color = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Missing Field: Visit ID
+
+Looking at visit_occurrence_id compliance -- is it non-null and does it also exist in the visit_occurrence table
+
+- total_ct: total N of rows in the domain
+- total_visits: total N of visits in the domain
+- missing_visits_total: N of missing visits (either NA or FK violation)
+
+FYI -- Immunization is supposed to have a lot of violations that's normal due to the registry data that's populated here.
+
+```{r}
+
+mf_comp <- compare_results(og_tbl = results_tbl('mf_visitid_output') %>% 
+                            # filter(database_version == 'v60') %>%
+                              select(site, check_name, total_ct, total_visits,
+                                     missing_visits_total),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'mf_visitid_output'))%>%
+                             #filter(database_version == 'v60') %>%
+                              select(site, check_name, total_ct, total_visits,
+                                     missing_visits_total),
+                           check_string = 'mf') %>%
+  select(-c(site_og, site_new))
+
+mf_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_ct_og', 'total_ct_new'),
+             rows = total_ct_og != total_ct_new,
+             color = 'yellow') %>%
+    data_color(columns = c('total_visits_og', 'total_visits_new'),
+             rows = total_visits_og != total_visits_new,
+             color = 'yellow') %>%
+  data_color(columns = c('missing_visits_total_og', 'missing_visits_total_new'),
+             rows = missing_visits_total_og != missing_visits_total_new,
+             color = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Unmapped Concepts
+
+Looks at unmapped (NA, mapped to a concept_id that indicates an unknown value) concepts
+
+- total_rows: total N of rows in the domain
+- unmapped_rows: N of unmapped rows in the domain
+
+```{r}
+
+uc_comp <- compare_results(og_tbl = results_tbl('uc_output') %>% 
+                            # filter(database_version == 'v60') %>%
+                              select(site, check_name, total_rows, unmapped_rows),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'uc_output'))%>%
+                             #filter(database_version == 'v60') %>%
+                              select(site, check_name, total_rows, unmapped_rows),
+                           check_string = 'mf') %>%
+  select(-c(site_og, site_new))
+
+uc_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_rows_og', 'total_rows_new'),
+             rows = total_rows_og != total_rows_new,
+             color = 'yellow') %>%
+    data_color(columns = c('unmapped_rows_og', 'unmapped_rows_new'),
+             rows = unmapped_rows_og != unmapped_rows_new,
+             color = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Vocabulary Conformance
+
+Makes sure the concepts in the domain align with vocabulary specs in the network
+
+- total_denom_ct: total N of rows in the domain
+- total_concept_ct: total N of distinct concepts in the domain
+- total_viol_ct: N of rows assc with the vocabulary listed
+- total_concept_viol_ct: N of concepts assc with the vocabulary listed
+
+```{r}
+
+vc_comp <- compare_results(og_tbl = results_tbl('vc_output') %>% 
+                            # filter(database_version == 'v60') %>%
+                              select(site, check_name, vocabulary_id, total_viol_ct,
+                                     total_viol_concept_ct, total_denom_ct,
+                                     total_concept_ct),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'vc_output'))%>%
+                             #filter(database_version == 'v60') %>%
+                              select(site, check_name, vocabulary_id, total_viol_ct,
+                                     total_viol_concept_ct, total_denom_ct,
+                                     total_concept_ct),
+                           check_string = 'vc') %>%
+  select(-c(site_og, site_new))
+
+vc_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_viol_ct_og', 'total_viol_ct_new'),
+             rows = total_viol_ct_og != total_viol_ct_new,
+             color = 'yellow') %>%
+  data_color(columns = c('total_viol_concept_ct_og', 'total_viol_concept_ct_new'),
+             rows = total_viol_concept_ct_og != total_viol_concept_ct_new,
+             color = 'yellow') %>%
+    data_color(columns = c('total_denom_ct_og', 'total_denom_ct_new'),
+             rows = total_denom_ct_og != total_denom_ct_new,
+             color = 'yellow') %>%
+  data_color(columns = c('total_concept_ct_og', 'total_concept_ct_new'),
+             rows = total_concept_ct_og != total_concept_ct_new,
+             color = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```
+
+# Valueset Conformance
+
+Checks that certain fields are in compliance with preset valuesets
+
+- total_denom_ct: total N of rows in the domain
+- total_viol_ct: N of rows assc with the concept listed (-999 means no violation was identified, so its just 0)
+
+```{r}
+
+vs_comp <- compare_results(og_tbl = results_tbl('vs_output') %>% 
+                            # filter(database_version == 'v60') %>%
+                              select(site, check_name, concepts, total_viol_ct,
+                                     total_denom_ct),
+                           new_tbl = results_tbl(in_schema('dqa_rox_trino',
+                                                           'vs_output'))%>%
+                             #filter(database_version == 'v60') %>%
+                              select(site, check_name, concepts, total_viol_ct, 
+                                     total_denom_ct),
+                           check_string = 'vs') %>%
+  select(-c(site_og, site_new))
+
+vs_comp %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+               select(check_name, check_application, full_description),
+             by = c('check_name_og' = 'check_name')) %>%
+  gt() %>%
+  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                    columns = !c('check_name_og', 'check_application', 
+                                 'full_description')) %>%
+  data_color(columns = c('total_viol_ct_og', 'total_viol_ct_new'),
+             rows = total_viol_ct_og != total_viol_ct_new,
+             color = 'yellow') %>%
+    data_color(columns = c('total_denom_ct_og', 'total_denom_ct_new'),
+             rows = total_denom_ct_og != total_denom_ct_new,
+             color = 'yellow') %>%
+  opt_interactive(use_pagination = TRUE)
+
+```

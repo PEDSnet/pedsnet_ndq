@@ -287,22 +287,22 @@ remove_precompute(checkpoint = 3)
 
 check_type_mapping <- tibble('check_type_short' = c('dc', 'ecp', 'bmc', 'dcon',
                                                     'cfd', 'mf_visitid', 'fot', 'uc',
-                                                    'vc', 'vs'),
+                                                    'vc', 'vs', 'dp'),
                              'check_type' = c('Data Cycle Changes', 'Expected Concepts Present',
                                               'Best Mapped Concepts', 'Domain Concordance',
                                               'Person Facts/Records', 'Missing Field: Visit ID', 'Facts Over Time',
                                               'Unmapped Concepts', 'Vocabulary Conformance',
-                                              'Value Set Conformance'),
+                                              'Value Set Conformance', 'Date Plausibility'),
                              'check_category' = c('Consistency', 'Correctness', 'Correctness',
                                                   'Concordance', 'Completeness', 'Completeness',
                                                   'Consistency', 'Completeness', 'Conformance',
-                                                  'Conformance'))
+                                                  'Conformance', 'Correctness'))
 
 new_mapping <- create_check_metadata(check_tbls = c('dc_output', 'ecp_output',
                                                     'bmc_output', 'dcon_output',
                                                     'cfd_output', 'mf_visitid_output',
                                                     'fot_output', 'uc_output',
-                                                    'vc_output', 'vs_output'),
+                                                    'vc_output', 'vs_output', 'dp_output'),
                                      metadata_file = read_codeset('dqa_check_descriptions', 'cc') %>%
                                        left_join(check_type_mapping) %>% mutate(check_type_long = check_type,
                                                                                 check_type = check_type_short), #%>%

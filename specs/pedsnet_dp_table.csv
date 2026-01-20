@@ -1,4 +1,4 @@
-﻿check_id,check_description,schema,table,date_field,filter_logic
+check_id,check_description,schema,table,date_field,filter_logic
 drugsall,Drugs,cdm,drug_exposure,drug_exposure_start_date,
 drugspresc,"Drugs, prescriptions",cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000177
 drugsip,"Drugs, inpatient administrations",cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000180
@@ -7,5 +7,5 @@ condsorder,"Conditions, ordered",cdm,condition_occurrence,condition_start_date,"
 condsbill,"Conditions, billing",cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000096, 2000000102,2000000093, 2000000099,2000001282, 2000001285)"
 procsall,Procedures,cdm,procedure_occurrence,procedure_date,
 procsbill,"Procedures, billing",cdm,procedure_occurrence,procedure_date,"procedure_type_concept_id %in% c(44786630,44786631)"
-procsord,"Procedures, ordered",cdm,procedure_occurrence,procedure_date,"procedure_type_concept_id %in% c(2000001494,38000275)"
+procsorder,"Procedures, ordered",cdm,procedure_occurrence,procedure_date,"procedure_type_concept_id %in% c(2000001494,38000275)"
 labsall,Labs,cdm,measurement_labs,measurement_date,

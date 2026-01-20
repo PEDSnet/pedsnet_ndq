@@ -25,23 +25,26 @@ bmc_thresh <- bmc_pp %>%
 chk_list$bmc <- bmc_thresh
 
 ## DCC
-# dc_pp <- process_dc(dc_ct_results = 'dc_output',
-#                     dc_meta_results = 'dc_meta',
-#                     rslt_source = 'remote')
-#
-# dc_thresh <- dc_pp %>%
-#   filter(site == config('qry_site')) %>%
-#   mutate(threshold = ifelse(prop_total_change < 0, 0.5, 1),
-#          direction = ifelse(prop_total_change < 0, '<', '>'),
-#          pass_fail = case_when(prop_total_change < 0 & prop_total_change < threshold ~ 'FAIL',
-#                                prop_total_change > 0 & prop_total_change > threshold ~ 'FAIL',
-#                                TRUE ~ 'PASS'),
-#          check_description = paste0('DCC - ', check_description)) %>%
-#   select(site, check_name, check_description, prop_total_change, direction,
-#          threshold, pass_fail) %>%
-#   rename('value' = 'prop_total_change')
-#
-# chk_list$dc <- dc_thresh
+dc_pp <- process_dc(dc_ct_results = 'dc_output',
+                    dc_meta_results = 'dc_meta',
+                    rslt_source = 'remote') #%>%
+  # inner_join(read_codeset('dqa_check_descriptions', 'ccc'),
+  #            by = c('check_name')) %>%
+  # rename('check_description' = 'check_application')
+
+dc_thresh <- dc_pp %>%
+  filter(site == config('qry_site')) %>%
+  mutate(threshold = ifelse(prop_total_change < 0, -0.5, 1),
+         direction = ifelse(prop_total_change < 0, '>', '<'),
+         pass_fail = case_when(prop_total_change < 0 & prop_total_change < threshold ~ 'FAIL',
+                               prop_total_change > 0 & prop_total_change > threshold ~ 'FAIL',
+                               TRUE ~ 'PASS'),
+         check_description = paste0('DCC - ', check_description)) %>%
+  select(site, check_name, check_description, prop_total_change, direction,
+         threshold, pass_fail) %>%
+  rename('value' = 'prop_total_change')
+
+chk_list$dc <- dc_thresh
 
 ## VC
 vc_pp <- process_vc(vc_results = 'vc_output',

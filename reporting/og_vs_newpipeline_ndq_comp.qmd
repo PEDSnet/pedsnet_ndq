@@ -7,7 +7,7 @@ format:
 ---
 
 ```{r setup, include=FALSE}
-
+ 
 setwd('..')
 source('setup/setup.R')
 
@@ -16,7 +16,7 @@ library(gt)
 unloadNamespace('squba.gen')
 unloadNamespace('plotly')
 
-ndq_sess$config('qry_site', 'nemours')
+config('qry_site', 'nemours')
 
 compare_results <- function(og_tbl,
                             new_tbl,
@@ -71,8 +71,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 Each check is looking at the counts of different tables for the current data model version. It also technically looks at previous, but I removed that since we already know they are the same.
 
-- total_ct = row count
-- total_pt_ct = patient count
+**Key:** - `total_ct` = row count - `total_pt_ct` = patient count
 
 ```{r}
 
@@ -86,21 +85,55 @@ dc_comp <- compare_results(og_tbl = results_tbl('dc_output') %>%
                            check_string = 'dc') %>%
   select(-c(site_og, site_new))
 
-dc_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_ct_og', 'total_ct_new'),
-             rows = total_ct_og != total_ct_new,
-             colors = 'yellow') %>%
-  data_color(columns = c('total_pt_ct_og', 'total_pt_ct_new'),
-             rows = total_pt_ct_og != total_pt_ct_new,
-             colors = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+dc_problems <- dc_comp %>%
+  filter(total_ct_og != total_ct_new | total_pt_ct_og != total_pt_ct_new)
+
+# Display summary
+cat(paste0("**", nrow(dc_problems), " discrepancies found out of ", nrow(dc_comp), " total checks**\n\n"))
+
+if(nrow(dc_problems) > 0) {
+  dc_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(
+        cell_fill(color = "#ffcccc"),
+        cell_text(weight = "bold")
+      ),
+      locations = cells_body(
+        columns = c('total_ct_og', 'total_ct_new'),
+        rows = total_ct_og != total_ct_new
+      )
+    ) %>%
+    tab_style(
+      style = list(
+        cell_fill(color = "#ffcccc"),
+        cell_text(weight = "bold")
+      ),
+      locations = cells_body(
+        columns = c('total_pt_ct_og', 'total_pt_ct_new'),
+        rows = total_pt_ct_og != total_pt_ct_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -108,10 +141,7 @@ dc_comp %>%
 
 Basically just looks at a distribution of concepts that exist in the data, then we mark which ones are best/not best.
 
-- total_rows: total N rows in the domain
-- total_pts: total N patients in the domain
-- concept_rows: N rows specifically associated with the concept of interest
-- concept_pts: N patients specifically associated with the concept of interest
+**Key:** - `total_rows`: total N rows in the domain - `total_pts`: total N patients in the domain - `concept_rows`: N rows specifically associated with the concept of interest - `concept_pts`: N patients specifically associated with the concept of interest
 
 ```{r}
 
@@ -127,27 +157,64 @@ bmc_comp <- compare_results(og_tbl = results_tbl('bmc_output') %>%
                            check_string = 'bmc') %>%
   select(-c(site_og, site_new))
 
-bmc_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_rows_og', 'total_rows_new'),
-             rows = total_rows_og != total_rows_new,
-             colors = 'yellow') %>%
-  data_color(columns = c('total_pts_og', 'total_pts_new'),
-             rows = total_pts_og != total_pts_new,
-             colors = 'yellow') %>%
-  data_color(columns = c('concept_rows_og', 'concept_rows_new'),
-             rows = concept_rows_og != concept_rows_new,
-             colors = 'yellow') %>%
-  data_color(columns = c('concept_pts_og', 'concept_pts_new'),
-             rows = concept_pts_og != concept_pts_new,
-             colors = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+bmc_problems <- bmc_comp %>%
+  filter(total_rows_og != total_rows_new | total_pts_og != total_pts_new |
+         concept_rows_og != concept_rows_new | concept_pts_og != concept_pts_new)
+
+cat(paste0("**", nrow(bmc_problems), " discrepancies found out of ", nrow(bmc_comp), " total checks**\n\n"))
+
+if(nrow(bmc_problems) > 0) {
+  bmc_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      concept_og = "Concept",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'concept_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_rows_og', 'total_rows_new'),
+        rows = total_rows_og != total_rows_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_pts_og', 'total_pts_new'),
+        rows = total_pts_og != total_pts_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('concept_rows_og', 'concept_rows_new'),
+        rows = concept_rows_og != concept_rows_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('concept_pts_og', 'concept_pts_new'),
+        rows = concept_pts_og != concept_pts_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -155,10 +222,7 @@ bmc_comp %>%
 
 Looks to see whether or not visits of various types have an associated clinical fact. It computes counts with/without -- only included one here because thats really all we need to see for this purpose.
 
-- total_visits: total N of visits of that type
-- total_pts: total N of patients with a visit of that type
-- no_fact_visits: total N of visits WITHOUT a fact 
-- no_fact_pts: total N of patients WITHOUT a visit with a fact
+**Key:** - `total_visits`: total N of visits of that type - `total_pts`: total N of patients with a visit of that type - `no_fact_visits`: total N of visits WITHOUT a fact - `no_fact_pts`: total N of patients WITHOUT a visit with a fact
 
 ```{r}
 
@@ -174,27 +238,64 @@ cfd_comp <- compare_results(og_tbl = results_tbl('cfd_output') %>%
                            check_string = 'cfd') %>%
   select(-c(site_og, site_new))
 
-cfd_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_visits_og', 'total_visits_new'),
-             rows = total_visits_og != total_visits_new,
-             colors = 'yellow') %>%
-  data_color(columns = c('total_pts_og', 'total_pts_new'),
-             rows = total_pts_og != total_pts_new,
-             colors = 'yellow') %>%
-  data_color(columns = c('no_fact_visits_og', 'no_fact_visits_new'),
-             rows = no_fact_visits_og != no_fact_visits_new,
-             colors = 'yellow') %>%
-  data_color(columns = c('no_fact_pts_og', 'no_fact_pts_new'),
-             rows = no_fact_pts_og != no_fact_pts_new,
-             colors = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+cfd_problems <- cfd_comp %>%
+  filter(total_visits_og != total_visits_new | total_pts_og != total_pts_new |
+         no_fact_visits_og != no_fact_visits_new | no_fact_pts_og != no_fact_pts_new)
+
+cat(paste0("**", nrow(cfd_problems), " discrepancies found out of ", nrow(cfd_comp), " total checks**\n\n"))
+
+if(nrow(cfd_problems) > 0) {
+  cfd_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      visit_type_og = "Visit Type",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'visit_type_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_visits_og', 'total_visits_new'),
+        rows = total_visits_og != total_visits_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_pts_og', 'total_pts_new'),
+        rows = total_pts_og != total_pts_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('no_fact_visits_og', 'no_fact_visits_new'),
+        rows = no_fact_visits_og != no_fact_visits_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('no_fact_pts_og', 'no_fact_pts_new'),
+        rows = no_fact_pts_og != no_fact_pts_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -202,8 +303,7 @@ cfd_comp %>%
 
 Looks to see if different variables are present in the data
 
-- total_pt_ct: the count of patients for the cohort we're looking at
-- concept_pt_ct: patients with the variable of interest
+**Key:** - `total_pt_ct`: the count of patients for the cohort we're looking at - `concept_pt_ct`: patients with the variable of interest
 
 ```{r}
 
@@ -217,21 +317,48 @@ ecp_comp <- compare_results(og_tbl = results_tbl('ecp_output') %>%
                            check_string = 'ecp') %>%
   select(-c(site_og, site_new))
 
-ecp_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_pt_ct_og', 'total_pt_ct_new'),
-             rows = total_pt_ct_og != total_pt_ct_new,
-             colors = 'yellow') %>%
-  data_color(columns = c('concept_pt_ct_og', 'concept_pt_ct_new'),
-             rows = concept_pt_ct_og != concept_pt_ct_new,
-             colors = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+ecp_problems <- ecp_comp %>%
+  filter(total_pt_ct_og != total_pt_ct_new | concept_pt_ct_og != concept_pt_ct_new)
+
+cat(paste0("**", nrow(ecp_problems), " discrepancies found out of ", nrow(ecp_comp), " total checks**\n\n"))
+
+if(nrow(ecp_problems) > 0) {
+  ecp_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_pt_ct_og', 'total_pt_ct_new'),
+        rows = total_pt_ct_og != total_pt_ct_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('concept_pt_ct_og', 'concept_pt_ct_new'),
+        rows = concept_pt_ct_og != concept_pt_ct_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -239,7 +366,7 @@ ecp_comp %>%
 
 Looking at the concordance / overlap between two cohorts
 
-- value: the count of patients meeting criteria for that cohort
+**Key:** - `value`: the count of patients meeting criteria for that cohort
 
 ```{r}
 
@@ -253,18 +380,42 @@ dcon_comp <- compare_results(og_tbl = results_tbl('dcon_output') %>%
                            check_string = 'dcon') %>%
   select(-c(site_og, site_new))
 
-dcon_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('value_og', 'value_new'),
-             rows = value_og != value_new,
-             color = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+dcon_problems <- dcon_comp %>%
+  filter(value_og != value_new)
+
+cat(paste0("**", nrow(dcon_problems), " discrepancies found out of ", nrow(dcon_comp), " total checks**\n\n"))
+
+if(nrow(dcon_problems) > 0) {
+  dcon_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      cohort_label_og = "Cohort Label",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'cohort_label_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('value_og', 'value_new'),
+        rows = value_og != value_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -272,8 +423,7 @@ dcon_comp %>%
 
 Looking to see whether dates are plausible based on 4 different comparators
 
-- total_rows: total N of rows in the domain
-- implausible_row: N of rows with an implausible date
+**Key:** - `total_rows`: total N of rows in the domain - `implausible_row`: N of rows with an implausible date
 
 ```{r}
 
@@ -287,21 +437,48 @@ dp_comp <- compare_results(og_tbl = results_tbl('dp_output') %>%
                            check_string = 'dp') %>%
   select(-c(site_og, site_new))
 
-dp_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_rows_og', 'total_rows_new'),
-             rows = total_rows_og != total_rows_new,
-             color = 'yellow') %>%
-    data_color(columns = c('implausible_row_og', 'implausible_row_new'),
-             rows = implausible_row_og != implausible_row_new,
-             color = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+dp_problems <- dp_comp %>%
+  filter(total_rows_og != total_rows_new | implausible_row_og != implausible_row_new)
+
+cat(paste0("**", nrow(dp_problems), " discrepancies found out of ", nrow(dp_comp), " total checks**\n\n"))
+
+if(nrow(dp_problems) > 0) {
+  dp_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_rows_og', 'total_rows_new'),
+        rows = total_rows_og != total_rows_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('implausible_row_og', 'implausible_row_new'),
+        rows = implausible_row_og != implausible_row_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -309,11 +486,9 @@ dp_comp %>%
 
 Looking at visit_occurrence_id compliance -- is it non-null and does it also exist in the visit_occurrence table
 
-- total_ct: total N of rows in the domain
-- total_visits: total N of visits in the domain
-- missing_visits_total: N of missing visits (either NA or FK violation)
+**Key:** - `total_ct`: total N of rows in the domain - `total_visits`: total N of visits in the domain - `missing_visits_total`: N of missing visits (either NA or FK violation)
 
-FYI -- Immunization is supposed to have a lot of violations that's normal due to the registry data that's populated here.
+**Note:** Immunization is supposed to have a lot of violations - that's normal due to the registry data that's populated here.
 
 ```{r}
 
@@ -329,24 +504,56 @@ mf_comp <- compare_results(og_tbl = results_tbl('mf_visitid_output') %>%
                            check_string = 'mf') %>%
   select(-c(site_og, site_new))
 
-mf_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_ct_og', 'total_ct_new'),
-             rows = total_ct_og != total_ct_new,
-             color = 'yellow') %>%
-    data_color(columns = c('total_visits_og', 'total_visits_new'),
-             rows = total_visits_og != total_visits_new,
-             color = 'yellow') %>%
-  data_color(columns = c('missing_visits_total_og', 'missing_visits_total_new'),
-             rows = missing_visits_total_og != missing_visits_total_new,
-             color = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+mf_problems <- mf_comp %>%
+  filter(total_ct_og != total_ct_new | total_visits_og != total_visits_new |
+         missing_visits_total_og != missing_visits_total_new)
+
+cat(paste0("**", nrow(mf_problems), " discrepancies found out of ", nrow(mf_comp), " total checks**\n\n"))
+
+if(nrow(mf_problems) > 0) {
+  mf_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_ct_og', 'total_ct_new'),
+        rows = total_ct_og != total_ct_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_visits_og', 'total_visits_new'),
+        rows = total_visits_og != total_visits_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('missing_visits_total_og', 'missing_visits_total_new'),
+        rows = missing_visits_total_og != missing_visits_total_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -354,8 +561,7 @@ mf_comp %>%
 
 Looks at unmapped (NA, mapped to a concept_id that indicates an unknown value) concepts
 
-- total_rows: total N of rows in the domain
-- unmapped_rows: N of unmapped rows in the domain
+**Key:** - `total_rows`: total N of rows in the domain - `unmapped_rows`: N of unmapped rows in the domain
 
 ```{r}
 
@@ -369,21 +575,48 @@ uc_comp <- compare_results(og_tbl = results_tbl('uc_output') %>%
                            check_string = 'mf') %>%
   select(-c(site_og, site_new))
 
-uc_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_rows_og', 'total_rows_new'),
-             rows = total_rows_og != total_rows_new,
-             color = 'yellow') %>%
-    data_color(columns = c('unmapped_rows_og', 'unmapped_rows_new'),
-             rows = unmapped_rows_og != unmapped_rows_new,
-             color = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+uc_problems <- uc_comp %>%
+  filter(total_rows_og != total_rows_new | unmapped_rows_og != unmapped_rows_new)
+
+cat(paste0("**", nrow(uc_problems), " discrepancies found out of ", nrow(uc_comp), " total checks**\n\n"))
+
+if(nrow(uc_problems) > 0) {
+  uc_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_rows_og', 'total_rows_new'),
+        rows = total_rows_og != total_rows_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('unmapped_rows_og', 'unmapped_rows_new'),
+        rows = unmapped_rows_og != unmapped_rows_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -391,10 +624,7 @@ uc_comp %>%
 
 Makes sure the concepts in the domain align with vocabulary specs in the network
 
-- total_denom_ct: total N of rows in the domain
-- total_concept_ct: total N of distinct concepts in the domain
-- total_viol_ct: N of rows assc with the vocabulary listed
-- total_concept_viol_ct: N of concepts assc with the vocabulary listed
+**Key:** - `total_denom_ct`: total N of rows in the domain - `total_concept_ct`: total N of distinct concepts in the domain - `total_viol_ct`: N of rows assc with the vocabulary listed - `total_concept_viol_ct`: N of concepts assc with the vocabulary listed
 
 ```{r}
 
@@ -412,27 +642,66 @@ vc_comp <- compare_results(og_tbl = results_tbl('vc_output') %>%
                            check_string = 'vc') %>%
   select(-c(site_og, site_new))
 
-vc_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_viol_ct_og', 'total_viol_ct_new'),
-             rows = total_viol_ct_og != total_viol_ct_new,
-             color = 'yellow') %>%
-  data_color(columns = c('total_viol_concept_ct_og', 'total_viol_concept_ct_new'),
-             rows = total_viol_concept_ct_og != total_viol_concept_ct_new,
-             color = 'yellow') %>%
-    data_color(columns = c('total_denom_ct_og', 'total_denom_ct_new'),
-             rows = total_denom_ct_og != total_denom_ct_new,
-             color = 'yellow') %>%
-  data_color(columns = c('total_concept_ct_og', 'total_concept_ct_new'),
-             rows = total_concept_ct_og != total_concept_ct_new,
-             color = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+vc_problems <- vc_comp %>%
+  filter(total_viol_ct_og != total_viol_ct_new | 
+         total_viol_concept_ct_og != total_viol_concept_ct_new |
+         total_denom_ct_og != total_denom_ct_new | 
+         total_concept_ct_og != total_concept_ct_new)
+
+cat(paste0("**", nrow(vc_problems), " discrepancies found out of ", nrow(vc_comp), " total checks**\n\n"))
+
+if(nrow(vc_problems) > 0) {
+  vc_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      vocabulary_id_og = "Vocabulary ID",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'vocabulary_id_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_viol_ct_og', 'total_viol_ct_new'),
+        rows = total_viol_ct_og != total_viol_ct_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_viol_concept_ct_og', 'total_viol_concept_ct_new'),
+        rows = total_viol_concept_ct_og != total_viol_concept_ct_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_denom_ct_og', 'total_denom_ct_new'),
+        rows = total_denom_ct_og != total_denom_ct_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_concept_ct_og', 'total_concept_ct_new'),
+        rows = total_concept_ct_og != total_concept_ct_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```
 
@@ -440,8 +709,7 @@ vc_comp %>%
 
 Checks that certain fields are in compliance with preset valuesets
 
-- total_denom_ct: total N of rows in the domain
-- total_viol_ct: N of rows assc with the concept listed (-999 means no violation was identified, so its just 0)
+**Key:** - `total_denom_ct`: total N of rows in the domain - `total_viol_ct`: N of rows assc with the concept listed (-999 means no violation was identified, so its just 0)
 
 ```{r}
 
@@ -457,20 +725,48 @@ vs_comp <- compare_results(og_tbl = results_tbl('vs_output') %>%
                            check_string = 'vs') %>%
   select(-c(site_og, site_new))
 
-vs_comp %>%
-  inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-               select(check_name, check_application, full_description),
-             by = c('check_name_og' = 'check_name')) %>%
-  gt() %>%
-  tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                    columns = !c('check_name_og', 'check_application', 
-                                 'full_description')) %>%
-  data_color(columns = c('total_viol_ct_og', 'total_viol_ct_new'),
-             rows = total_viol_ct_og != total_viol_ct_new,
-             color = 'yellow') %>%
-    data_color(columns = c('total_denom_ct_og', 'total_denom_ct_new'),
-             rows = total_denom_ct_og != total_denom_ct_new,
-             color = 'yellow') %>%
-  opt_interactive(use_pagination = TRUE)
+# Filter for problem rows only
+vs_problems <- vs_comp %>%
+  filter(total_viol_ct_og != total_viol_ct_new | total_denom_ct_og != total_denom_ct_new)
+
+cat(paste0("**", nrow(vs_problems), " discrepancies found out of ", nrow(vs_comp), " total checks**\n\n"))
+
+if(nrow(vs_problems) > 0) {
+  vs_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    gt() %>%
+    cols_label(
+      check_name_og = "Check Name",
+      concepts_og = "Concepts",
+      check_application = "Application",
+      full_description = "Description"
+    ) %>%
+    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
+                      columns = !c('check_name_og', 'concepts_og', 'check_application', 
+                                   'full_description')) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_viol_ct_og', 'total_viol_ct_new'),
+        rows = total_viol_ct_og != total_viol_ct_new
+      )
+    ) %>%
+    tab_style(
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
+      locations = cells_body(
+        columns = c('total_denom_ct_og', 'total_denom_ct_new'),
+        rows = total_denom_ct_og != total_denom_ct_new
+      )
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+} else {
+  cat("✅ **No discrepancies found - all checks match!**\n")
+}
 
 ```

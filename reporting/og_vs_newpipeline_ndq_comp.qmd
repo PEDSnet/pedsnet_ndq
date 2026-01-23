@@ -18,6 +18,9 @@ unloadNamespace('plotly')
 
 config('qry_site', 'nemours')
 
+# Initialize list to collect all problems for export
+all_problems <- list()
+
 compare_results <- function(og_tbl,
                             new_tbl,
                             check_string = NULL){
@@ -63,6 +66,25 @@ compare_results <- function(og_tbl,
   
 }
 
+# Function to calculate percentage difference
+calc_pct_diff <- function(legacy, new) {
+  ifelse(legacy == 0 & new == 0, 0,
+         ifelse(legacy == 0, NA,
+                round(((new - legacy) / legacy) * 100, 1)))
+}
+
+# Function to get severity indicator
+get_severity <- function(check_category) {
+  case_when(
+    check_category == "Correctness" ~ "🔴 High",
+    check_category == "Consistency" ~ "🟡 Medium",
+    check_category == "Completeness" ~ "🟡 Medium",
+    check_category == "Concordance" ~ "🟠 Medium-High",
+    check_category == "Conformance" ~ "🟡 Medium",
+    TRUE ~ "⚪ Unknown"
+  )
+}
+
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 ```
@@ -71,7 +93,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 Each check is looking at the counts of different tables for the current data model version. It also technically looks at previous, but I removed that since we already know they are the same.
 
-**Key:** - `total_ct` = row count - `total_pt_ct` = patient count
+**Key:** - `total_ct` = row count - `total_pt_ct` = patient count - `Δ` = difference (new - legacy) - `Δ%` = percent change
 
 ```{r}
 
@@ -87,50 +109,77 @@ dc_comp <- compare_results(og_tbl = results_tbl('dc_output') %>%
 
 # Filter for problem rows only
 dc_problems <- dc_comp %>%
-  filter(total_ct_og != total_ct_new | total_pt_ct_og != total_pt_ct_new)
+  filter(total_ct_og != total_ct_new | total_pt_ct_og != total_pt_ct_new) %>%
+  mutate(
+    total_ct_diff = total_ct_new - total_ct_og,
+    total_ct_pct = calc_pct_diff(total_ct_og, total_ct_new),
+    total_pt_ct_diff = total_pt_ct_new - total_pt_ct_og,
+    total_pt_ct_pct = calc_pct_diff(total_pt_ct_og, total_pt_ct_new)
+  )
 
 # Display summary
 cat(paste0("**", nrow(dc_problems), " discrepancies found out of ", nrow(dc_comp), " total checks**\n\n"))
 
 if(nrow(dc_problems) > 0) {
+  # Add to global problems list
+  all_problems$dc <- dc_problems %>%
+    inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
+                 select(check_name, check_application, check_category, full_description),
+               by = c('check_name_og' = 'check_name')) %>%
+    mutate(check_type = "Data Cycle Changes") %>%
+    select(check_type, check_name_og, check_application, check_category, everything())
+  
   dc_problems %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
+    mutate(severity = get_severity(check_category)) %>%
+    select(severity, check_name_og, check_application, 
+           total_ct_og, total_ct_new, total_ct_diff, total_ct_pct,
+           total_pt_ct_og, total_pt_ct_new, total_pt_ct_diff, total_pt_ct_pct,
+           full_description) %>%
     gt() %>%
     cols_label(
+      severity = "Priority",
       check_name_og = "Check Name",
       check_application = "Application",
+      total_ct_og = "Legacy",
+      total_ct_new = "New",
+      total_ct_diff = "Δ",
+      total_ct_pct = "Δ%",
+      total_pt_ct_og = "Legacy",
+      total_pt_ct_new = "New",
+      total_pt_ct_diff = "Δ",
+      total_pt_ct_pct = "Δ%",
       full_description = "Description"
     ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'check_application', 
-                                   'full_description')) %>%
+    tab_spanner(label = "Row Count", columns = c(total_ct_og, total_ct_new, total_ct_diff, total_ct_pct)) %>%
+    tab_spanner(label = "Patient Count", columns = c(total_pt_ct_og, total_pt_ct_new, total_pt_ct_diff, total_pt_ct_pct)) %>%
     tab_style(
-      style = list(
-        cell_fill(color = "#ffcccc"),
-        cell_text(weight = "bold")
-      ),
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
       locations = cells_body(
-        columns = c('total_ct_og', 'total_ct_new'),
+        columns = c(total_ct_og, total_ct_new, total_ct_diff, total_ct_pct),
         rows = total_ct_og != total_ct_new
       )
     ) %>%
     tab_style(
-      style = list(
-        cell_fill(color = "#ffcccc"),
-        cell_text(weight = "bold")
-      ),
+      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
       locations = cells_body(
-        columns = c('total_pt_ct_og', 'total_pt_ct_new'),
+        columns = c(total_pt_ct_og, total_pt_ct_new, total_pt_ct_diff, total_pt_ct_pct),
         rows = total_pt_ct_og != total_pt_ct_new
       )
     ) %>%
+    fmt_number(columns = c(total_ct_og, total_ct_new, total_ct_diff, 
+                           total_pt_ct_og, total_pt_ct_new, total_pt_ct_diff),
+               decimals = 0) %>%
+    fmt_number(columns = c(total_ct_pct, total_pt_ct_pct),
+               decimals = 1,
+               pattern = "{x}%") %>%
     tab_options(
       table.font.size = px(14),
       row.striping.include_table_body = TRUE
     ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    opt_interactive(use_pagination = FALSE, use_search = TRUE, use_compact_mode = TRUE)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -767,6 +816,77 @@ if(nrow(vs_problems) > 0) {
     opt_interactive(use_pagination = FALSE, use_search = TRUE)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
+}
+
+```
+
+------------------------------------------------------------------------
+
+# 📊 Summary & Export
+
+```{r}
+
+# Combine all problems into a single dataframe
+if(length(all_problems) > 0) {
+  
+  all_problems_df <- bind_rows(all_problems)
+  
+  # Create summary by check type and severity
+  summary_stats <- all_problems_df %>%
+    group_by(check_type, check_category) %>%
+    summarise(
+      n_problems = n(),
+      .groups = 'drop'
+    ) %>%
+    arrange(desc(n_problems))
+  
+  cat("## Executive Summary\n\n")
+  cat(paste0("**Total Discrepancies Found: ", nrow(all_problems_df), "**\n\n"))
+  
+  summary_stats %>%
+    mutate(severity = get_severity(check_category)) %>%
+    select(severity, check_type, check_category, n_problems) %>%
+    gt() %>%
+    cols_label(
+      severity = "Priority",
+      check_type = "Check Type",
+      check_category = "Category",
+      n_problems = "# Issues"
+    ) %>%
+    tab_style(
+      style = cell_fill(color = "#ffe6e6"),
+      locations = cells_body(rows = grepl("🔴", severity))
+    ) %>%
+    tab_style(
+      style = cell_fill(color = "#fff4e6"),
+      locations = cells_body(rows = grepl("🟠", severity))
+    ) %>%
+    tab_style(
+      style = cell_fill(color = "#fffee6"),
+      locations = cells_body(rows = grepl("🟡", severity))
+    ) %>%
+    tab_options(
+      table.font.size = px(14),
+      row.striping.include_table_body = TRUE
+    )
+  
+  # Export to CSV
+  output_file <- file.path("..", "results", paste0("pipeline_discrepancies_", format(Sys.Date(), "%Y%m%d"), ".csv"))
+  
+  # Ensure results directory exists
+  if(!dir.exists(file.path("..", "results"))) {
+    dir.create(file.path("..", "results"), recursive = TRUE)
+  }
+  
+  write.csv(all_problems_df, output_file, row.names = FALSE)
+  
+  cat("\n\n")
+  cat(paste0("📁 **Full discrepancy list exported to:** `results/pipeline_discrepancies_", format(Sys.Date(), "%Y%m%d"), ".csv`\n\n"))
+  cat("This CSV contains all discrepancies with full details for issue tracking and team review.\n")
+  
+} else {
+  cat("## 🎉 No Discrepancies Found!\n\n")
+  cat("The new development pipeline matches the legacy pipeline perfectly across all checks.\n")
 }
 
 ```

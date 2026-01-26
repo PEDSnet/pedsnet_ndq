@@ -12,6 +12,7 @@ setwd('..')
 source('setup/setup.R')
 
 library(gt)
+library(htmltools)
 
 unloadNamespace('squba.gen')
 unloadNamespace('plotly')
@@ -85,6 +86,81 @@ get_severity <- function(check_category) {
   )
 }
 
+# Function to create compact card display
+create_card_display <- function(data, metrics_info) {
+  html_output <- ""
+  
+  for(i in 1:nrow(data)) {
+    row <- data[i,]
+    
+    # Card container with light border
+    html_output <- paste0(html_output, 
+      "<div style='border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #fafafa; margin-bottom: 20px;'>")
+    
+    # Header row with priority, name, and application
+    html_output <- paste0(html_output,
+      "<div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;'>",
+      "<div style='display: flex; gap: 16px; align-items: center;'>",
+      "<span style='font-size: 14px; font-weight: bold;'>", row$severity, "</span>",
+      "<span style='font-weight: bold; font-size: 16px;'>", row$check_name_og, "</span>",
+      "<span style='color: #666; font-size: 14px;'>", row$check_application, "</span>",
+      "</div></div>")
+    
+    # Description
+    html_output <- paste0(html_output,
+      "<div style='margin-bottom: 12px; padding: 8px; background-color: white; border-radius: 4px; font-size: 14px; color: #333;'>",
+      row$full_description, "</div>")
+    
+    # Metrics section
+    html_output <- paste0(html_output,
+      "<div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;'>")
+    
+    for(metric in metrics_info) {
+      legacy_col <- paste0(metric$base, "_og")
+      new_col <- paste0(metric$base, "_new")
+      diff_col <- paste0(metric$base, "_diff")
+      pct_col <- paste0(metric$base, "_pct")
+      
+      if(all(c(legacy_col, new_col) %in% names(row))) {
+        legacy_val <- ifelse(is.na(row[[legacy_col]]), "N/A", format(row[[legacy_col]], big.mark = ",", scientific = FALSE))
+        new_val <- ifelse(is.na(row[[new_col]]), "N/A", format(row[[new_col]], big.mark = ",", scientific = FALSE))
+        
+        diff_val <- ""
+        if(diff_col %in% names(row)) {
+          diff_value <- row[[diff_col]]
+          if(length(diff_value) > 0 && !is.na(diff_value)) {
+            diff_sign <- ifelse(diff_value > 0, "+", "")
+            diff_val <- paste0(" (", diff_sign, format(diff_value, big.mark = ",", scientific = FALSE))
+            
+            if(pct_col %in% names(row)) {
+              pct_value <- row[[pct_col]]
+              if(length(pct_value) > 0 && !is.na(pct_value)) {
+                diff_val <- paste0(diff_val, ", ", ifelse(pct_value > 0, "+", ""), pct_value, "%")
+              }
+            }
+            diff_val <- paste0(diff_val, ")")
+          }
+        }
+        
+        # Highlight if different
+        is_different <- row[[legacy_col]] != row[[new_col]]
+        bg_color <- ifelse(is_different, "#ffe6e6", "white")
+        
+        html_output <- paste0(html_output,
+          "<div style='padding: 8px; background-color: ", bg_color, "; border-radius: 4px; border: 1px solid #eee;'>",
+          "<div style='font-size: 12px; color: #666; margin-bottom: 4px;'>", metric$label, "</div>",
+          "<div style='font-weight: bold;'>", legacy_val, " → ", new_val, "</div>",
+          "<div style='font-size: 13px; color: #666;'>", diff_val, "</div>",
+          "</div>")
+      }
+    }
+    
+    html_output <- paste0(html_output, "</div></div>")
+  }
+  
+  return(htmltools::HTML(html_output))
+}
+
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 ```
@@ -129,57 +205,21 @@ if(nrow(dc_problems) > 0) {
     mutate(check_type = "Data Cycle Changes") %>%
     select(check_type, check_name_og, check_application, check_category, everything())
   
-  dc_problems %>%
+  # Prepare data for card display
+  display_data <- dc_problems %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
                  select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    mutate(severity = get_severity(check_category)) %>%
-    select(severity, check_name_og, check_application, 
-           total_ct_og, total_ct_new, total_ct_diff, total_ct_pct,
-           total_pt_ct_og, total_pt_ct_new, total_pt_ct_diff, total_pt_ct_pct,
-           full_description) %>%
-    gt() %>%
-    cols_label(
-      severity = "Priority",
-      check_name_og = "Check Name",
-      check_application = "Application",
-      total_ct_og = "Legacy",
-      total_ct_new = "New",
-      total_ct_diff = "Δ",
-      total_ct_pct = "Δ%",
-      total_pt_ct_og = "Legacy",
-      total_pt_ct_new = "New",
-      total_pt_ct_diff = "Δ",
-      total_pt_ct_pct = "Δ%",
-      full_description = "Description"
-    ) %>%
-    tab_spanner(label = "Row Count", columns = c(total_ct_og, total_ct_new, total_ct_diff, total_ct_pct)) %>%
-    tab_spanner(label = "Patient Count", columns = c(total_pt_ct_og, total_pt_ct_new, total_pt_ct_diff, total_pt_ct_pct)) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c(total_ct_og, total_ct_new, total_ct_diff, total_ct_pct),
-        rows = total_ct_og != total_ct_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c(total_pt_ct_og, total_pt_ct_new, total_pt_ct_diff, total_pt_ct_pct),
-        rows = total_pt_ct_og != total_pt_ct_new
-      )
-    ) %>%
-    fmt_number(columns = c(total_ct_og, total_ct_new, total_ct_diff, 
-                           total_pt_ct_og, total_pt_ct_new, total_pt_ct_diff),
-               decimals = 0) %>%
-    fmt_number(columns = c(total_ct_pct, total_pt_ct_pct),
-               decimals = 1,
-               pattern = "{x}%") %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE, use_compact_mode = TRUE)
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_ct", label = "Row Count"),
+    list(base = "total_pt_ct", label = "Patient Count")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -214,53 +254,38 @@ bmc_problems <- bmc_comp %>%
 cat(paste0("**", nrow(bmc_problems), " discrepancies found out of ", nrow(bmc_comp), " total checks**\n\n"))
 
 if(nrow(bmc_problems) > 0) {
-  bmc_problems %>%
+  # Add to global problems list
+  all_problems$bmc <- bmc_problems %>%
+    mutate(
+      total_rows_diff = total_rows_new - total_rows_og,
+      total_rows_pct = calc_pct_diff(total_rows_og, total_rows_new),
+      total_pts_diff = total_pts_new - total_pts_og,
+      total_pts_pct = calc_pct_diff(total_pts_og, total_pts_new),
+      concept_rows_diff = concept_rows_new - concept_rows_og,
+      concept_rows_pct = calc_pct_diff(concept_rows_og, concept_rows_new),
+      concept_pts_diff = concept_pts_new - concept_pts_og,
+      concept_pts_pct = calc_pct_diff(concept_pts_og, concept_pts_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      concept_og = "Concept",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'concept_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_rows_og', 'total_rows_new'),
-        rows = total_rows_og != total_rows_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_pts_og', 'total_pts_new'),
-        rows = total_pts_og != total_pts_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('concept_rows_og', 'concept_rows_new'),
-        rows = concept_rows_og != concept_rows_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('concept_pts_og', 'concept_pts_new'),
-        rows = concept_pts_og != concept_pts_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Best Mapped Concepts") %>%
+    select(check_type, check_name_og, concept_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$bmc %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_rows", label = "Total Rows"),
+    list(base = "total_pts", label = "Total Patients"),
+    list(base = "concept_rows", label = "Concept Rows"),
+    list(base = "concept_pts", label = "Concept Patients")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -295,53 +320,38 @@ cfd_problems <- cfd_comp %>%
 cat(paste0("**", nrow(cfd_problems), " discrepancies found out of ", nrow(cfd_comp), " total checks**\n\n"))
 
 if(nrow(cfd_problems) > 0) {
-  cfd_problems %>%
+  # Add to global problems list
+  all_problems$cfd <- cfd_problems %>%
+    mutate(
+      total_visits_diff = total_visits_new - total_visits_og,
+      total_visits_pct = calc_pct_diff(total_visits_og, total_visits_new),
+      total_pts_diff = total_pts_new - total_pts_og,
+      total_pts_pct = calc_pct_diff(total_pts_og, total_pts_new),
+      no_fact_visits_diff = no_fact_visits_new - no_fact_visits_og,
+      no_fact_visits_pct = calc_pct_diff(no_fact_visits_og, no_fact_visits_new),
+      no_fact_pts_diff = no_fact_pts_new - no_fact_pts_og,
+      no_fact_pts_pct = calc_pct_diff(no_fact_pts_og, no_fact_pts_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      visit_type_og = "Visit Type",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'visit_type_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_visits_og', 'total_visits_new'),
-        rows = total_visits_og != total_visits_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_pts_og', 'total_pts_new'),
-        rows = total_pts_og != total_pts_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('no_fact_visits_og', 'no_fact_visits_new'),
-        rows = no_fact_visits_og != no_fact_visits_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('no_fact_pts_og', 'no_fact_pts_new'),
-        rows = no_fact_pts_og != no_fact_pts_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Clinical Fact Documentation") %>%
+    select(check_type, check_name_og, visit_type_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$cfd %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_visits", label = "Total Visits"),
+    list(base = "total_pts", label = "Total Patients"),
+    list(base = "no_fact_visits", label = "Visits Without Fact"),
+    list(base = "no_fact_pts", label = "Patients Without Fact")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -373,38 +383,32 @@ ecp_problems <- ecp_comp %>%
 cat(paste0("**", nrow(ecp_problems), " discrepancies found out of ", nrow(ecp_comp), " total checks**\n\n"))
 
 if(nrow(ecp_problems) > 0) {
-  ecp_problems %>%
+  # Add to global problems list
+  all_problems$ecp <- ecp_problems %>%
+    mutate(
+      total_pt_ct_diff = total_pt_ct_new - total_pt_ct_og,
+      total_pt_ct_pct = calc_pct_diff(total_pt_ct_og, total_pt_ct_new),
+      concept_pt_ct_diff = concept_pt_ct_new - concept_pt_ct_og,
+      concept_pt_ct_pct = calc_pct_diff(concept_pt_ct_og, concept_pt_ct_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_pt_ct_og', 'total_pt_ct_new'),
-        rows = total_pt_ct_og != total_pt_ct_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('concept_pt_ct_og', 'concept_pt_ct_new'),
-        rows = concept_pt_ct_og != concept_pt_ct_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Expected Concepts Present") %>%
+    select(check_type, check_name_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$ecp %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_pt_ct", label = "Total Patients"),
+    list(base = "concept_pt_ct", label = "Patients with Concept")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -436,32 +440,29 @@ dcon_problems <- dcon_comp %>%
 cat(paste0("**", nrow(dcon_problems), " discrepancies found out of ", nrow(dcon_comp), " total checks**\n\n"))
 
 if(nrow(dcon_problems) > 0) {
-  dcon_problems %>%
+  # Add to global problems list
+  all_problems$dcon <- dcon_problems %>%
+    mutate(
+      value_diff = value_new - value_og,
+      value_pct = calc_pct_diff(value_og, value_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      cohort_label_og = "Cohort Label",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'cohort_label_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('value_og', 'value_new'),
-        rows = value_og != value_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Domain Concordance") %>%
+    select(check_type, check_name_og, cohort_label_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$dcon %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "value", label = "Patient Count")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -493,38 +494,32 @@ dp_problems <- dp_comp %>%
 cat(paste0("**", nrow(dp_problems), " discrepancies found out of ", nrow(dp_comp), " total checks**\n\n"))
 
 if(nrow(dp_problems) > 0) {
-  dp_problems %>%
+  # Add to global problems list
+  all_problems$dp <- dp_problems %>%
+    mutate(
+      total_rows_diff = total_rows_new - total_rows_og,
+      total_rows_pct = calc_pct_diff(total_rows_og, total_rows_new),
+      implausible_row_diff = implausible_row_new - implausible_row_og,
+      implausible_row_pct = calc_pct_diff(implausible_row_og, implausible_row_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_rows_og', 'total_rows_new'),
-        rows = total_rows_og != total_rows_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('implausible_row_og', 'implausible_row_new'),
-        rows = implausible_row_og != implausible_row_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Date Plausibility") %>%
+    select(check_type, check_name_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$dp %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_rows", label = "Total Rows"),
+    list(base = "implausible_row", label = "Implausible Rows")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -561,45 +556,35 @@ mf_problems <- mf_comp %>%
 cat(paste0("**", nrow(mf_problems), " discrepancies found out of ", nrow(mf_comp), " total checks**\n\n"))
 
 if(nrow(mf_problems) > 0) {
-  mf_problems %>%
+  # Add to global problems list
+  all_problems$mf <- mf_problems %>%
+    mutate(
+      total_ct_diff = total_ct_new - total_ct_og,
+      total_ct_pct = calc_pct_diff(total_ct_og, total_ct_new),
+      total_visits_diff = total_visits_new - total_visits_og,
+      total_visits_pct = calc_pct_diff(total_visits_og, total_visits_new),
+      missing_visits_total_diff = missing_visits_total_new - missing_visits_total_og,
+      missing_visits_total_pct = calc_pct_diff(missing_visits_total_og, missing_visits_total_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_ct_og', 'total_ct_new'),
-        rows = total_ct_og != total_ct_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_visits_og', 'total_visits_new'),
-        rows = total_visits_og != total_visits_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('missing_visits_total_og', 'missing_visits_total_new'),
-        rows = missing_visits_total_og != missing_visits_total_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Missing Field Visit ID") %>%
+    select(check_type, check_name_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$mf %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_ct", label = "Total Rows"),
+    list(base = "total_visits", label = "Total Visits"),
+    list(base = "missing_visits_total", label = "Missing Visits")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -631,38 +616,32 @@ uc_problems <- uc_comp %>%
 cat(paste0("**", nrow(uc_problems), " discrepancies found out of ", nrow(uc_comp), " total checks**\n\n"))
 
 if(nrow(uc_problems) > 0) {
-  uc_problems %>%
+  # Add to global problems list
+  all_problems$uc <- uc_problems %>%
+    mutate(
+      total_rows_diff = total_rows_new - total_rows_og,
+      total_rows_pct = calc_pct_diff(total_rows_og, total_rows_new),
+      unmapped_rows_diff = unmapped_rows_new - unmapped_rows_og,
+      unmapped_rows_pct = calc_pct_diff(unmapped_rows_og, unmapped_rows_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_rows_og', 'total_rows_new'),
-        rows = total_rows_og != total_rows_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('unmapped_rows_og', 'unmapped_rows_new'),
-        rows = unmapped_rows_og != unmapped_rows_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Unmapped Concepts") %>%
+    select(check_type, check_name_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$uc %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_rows", label = "Total Rows"),
+    list(base = "unmapped_rows", label = "Unmapped Rows")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -701,53 +680,38 @@ vc_problems <- vc_comp %>%
 cat(paste0("**", nrow(vc_problems), " discrepancies found out of ", nrow(vc_comp), " total checks**\n\n"))
 
 if(nrow(vc_problems) > 0) {
-  vc_problems %>%
+  # Add to global problems list
+  all_problems$vc <- vc_problems %>%
+    mutate(
+      total_viol_ct_diff = total_viol_ct_new - total_viol_ct_og,
+      total_viol_ct_pct = calc_pct_diff(total_viol_ct_og, total_viol_ct_new),
+      total_viol_concept_ct_diff = total_viol_concept_ct_new - total_viol_concept_ct_og,
+      total_viol_concept_ct_pct = calc_pct_diff(total_viol_concept_ct_og, total_viol_concept_ct_new),
+      total_denom_ct_diff = total_denom_ct_new - total_denom_ct_og,
+      total_denom_ct_pct = calc_pct_diff(total_denom_ct_og, total_denom_ct_new),
+      total_concept_ct_diff = total_concept_ct_new - total_concept_ct_og,
+      total_concept_ct_pct = calc_pct_diff(total_concept_ct_og, total_concept_ct_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      vocabulary_id_og = "Vocabulary ID",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'vocabulary_id_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_viol_ct_og', 'total_viol_ct_new'),
-        rows = total_viol_ct_og != total_viol_ct_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_viol_concept_ct_og', 'total_viol_concept_ct_new'),
-        rows = total_viol_concept_ct_og != total_viol_concept_ct_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_denom_ct_og', 'total_denom_ct_new'),
-        rows = total_denom_ct_og != total_denom_ct_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_concept_ct_og', 'total_concept_ct_new'),
-        rows = total_concept_ct_og != total_concept_ct_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Vocabulary Conformance") %>%
+    select(check_type, check_name_og, vocabulary_id_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$vc %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_denom_ct", label = "Total Denominator"),
+    list(base = "total_concept_ct", label = "Total Concepts"),
+    list(base = "total_viol_ct", label = "Violation Rows"),
+    list(base = "total_viol_concept_ct", label = "Violation Concepts")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }
@@ -781,39 +745,32 @@ vs_problems <- vs_comp %>%
 cat(paste0("**", nrow(vs_problems), " discrepancies found out of ", nrow(vs_comp), " total checks**\n\n"))
 
 if(nrow(vs_problems) > 0) {
-  vs_problems %>%
+  # Add to global problems list
+  all_problems$vs <- vs_problems %>%
+    mutate(
+      total_viol_ct_diff = total_viol_ct_new - total_viol_ct_og,
+      total_viol_ct_pct = calc_pct_diff(total_viol_ct_og, total_viol_ct_new),
+      total_denom_ct_diff = total_denom_ct_new - total_denom_ct_og,
+      total_denom_ct_pct = calc_pct_diff(total_denom_ct_og, total_denom_ct_new)
+    ) %>%
     inner_join(read_codeset('dqa_check_descriptions', 'ccc') %>%
-                 select(check_name, check_application, full_description),
+                 select(check_name, check_application, check_category, full_description),
                by = c('check_name_og' = 'check_name')) %>%
-    gt() %>%
-    cols_label(
-      check_name_og = "Check Name",
-      concepts_og = "Concepts",
-      check_application = "Application",
-      full_description = "Description"
-    ) %>%
-    tab_spanner_delim(delim = '_', split = 'last', limit = 1, reverse = TRUE,
-                      columns = !c('check_name_og', 'concepts_og', 'check_application', 
-                                   'full_description')) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_viol_ct_og', 'total_viol_ct_new'),
-        rows = total_viol_ct_og != total_viol_ct_new
-      )
-    ) %>%
-    tab_style(
-      style = list(cell_fill(color = "#ffcccc"), cell_text(weight = "bold")),
-      locations = cells_body(
-        columns = c('total_denom_ct_og', 'total_denom_ct_new'),
-        rows = total_denom_ct_og != total_denom_ct_new
-      )
-    ) %>%
-    tab_options(
-      table.font.size = px(14),
-      row.striping.include_table_body = TRUE
-    ) %>%
-    opt_interactive(use_pagination = FALSE, use_search = TRUE)
+    mutate(check_type = "Valueset Conformance") %>%
+    select(check_type, check_name_og, concepts_og, check_application, check_category, everything())
+  
+  # Prepare data for card display
+  display_data <- all_problems$vs %>%
+    mutate(severity = get_severity(check_category))
+  
+  # Define metrics to display
+  metrics_info <- list(
+    list(base = "total_denom_ct", label = "Total Denominator"),
+    list(base = "total_viol_ct", label = "Violation Count")
+  )
+  
+  # Display as cards
+  create_card_display(display_data, metrics_info)
 } else {
   cat("✅ **No discrepancies found - all checks match!**\n")
 }

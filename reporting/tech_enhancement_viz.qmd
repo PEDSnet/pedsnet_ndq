@@ -1,0 +1,165 @@
+---
+title: "PCORnet 10% Sample NDQ Results"
+subtitle: "In Support of PCORnet Tech Enhancements Grant"
+author: "PEDSnet Data Coordinating Center"
+date: today
+format: 
+  html:
+    embed-resources: true
+    html-table-processing: none
+---
+
+```{r, include=FALSE}
+
+library(argos)
+library(srcr)
+library(ggplot2)
+library(stringr)
+library(dplyr)
+
+source('../setup/argos_wrapper.R')
+
+sf_rslt <- initialize_session(session_name = 'ndq_assessment',
+                              db_conn = Sys.getenv('PEDSNET_RSLT_CONFIG'),
+                              is_json = TRUE,
+                              cdm_schema = 'UMO_SYNTHETIC_DATA_SHARE_VIEW', 
+                              results_schema = 'TEST_SCHEMA',
+                              retain_intermediates = FALSE,
+                              db_trace = FALSE, 
+                              results_tag = '')
+
+set_argos_default(sf_rslt)
+
+get_rslt <- function(dat){
+  
+  results_tbl(dat) %>%
+    collect() %>%
+    mutate(site = case_when(site == 'lphi_10pct' ~ 'Site A',
+                            site == 'umo_10pct' ~ 'Site B',
+                            site == 'wcm_10pct' ~ 'Site D',
+                            site == 'chop' ~ 'Site C',
+                            TRUE ~ site))
+  
+}
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+```
+
+## Unmapped Concepts
+
+This check is evaluating how many rows in each domain are NULL or unmapped (ex: NI, OT, UN). A higher proportion here indicates a high level of missing or unmapped values, so a lower value is preferred.
+
+There is generally homogeneity across the sample dataset, with the exception of immunization-based facts that tend to differ across sites. The highest incidence of unmapped values tends to occur in metadata fields like units and routes of administration, with lower levels of unmapped values in the primary code fields (ex: `dx` in the diagnosis table).
+
+```{r, fig.height=8}
+
+uc_opt <- get_rslt('uc_output_pp') 
+
+ggplot(uc_opt, aes(x = site, y = unmapped_prop, fill=site)) +
+          geom_bar(stat='identity')+
+          facet_wrap(~check_description, scales="free_x",
+                     labeller = label_wrap_gen(width = 20))+
+          theme_bw()+
+          theme(legend.position="none")+
+          scale_fill_brewer(palette = 'Dark2') +
+          #scale_fill_manual(values=site_colors)+
+          labs(x="Site",
+               y="Proportion Unmapped Concepts")
+
+```
+
+## Expected Concepts Present
+::: {.callout-note}
+Please note that concept sets used in this check may need to be refined for a full rollout. These results may not reflect the full availability of some variables due to site-specific coding practices that may not have been accounted for.
+:::
+
+This check evaluates the presence of clinical concepts that you would expect to exist within an EHR dataset. These can be things like common laboratory tests or routine procedures, but additional variables can be evaluated on an as-needed basis.
+
+Here again we generally see homogeneity across the sample dataset. Common labs, like hemoglobin or sodium tests, have good population within the cohort. Low fact density in this check could indicate an issue with the concept set used to identify the variable or could point to differences in site treatment practices. 
+
+```{r, fig.height=8}
+
+ecp_opt <- get_rslt('ecp_output_pp') #%>%
+  # filter(check_name %in% c('ecp_labshgb', 'ecp_labsplt', 'ecp_labssodium',
+  #                          'ecp_labsalt', 'ecp_labsanc', 'ecp_labscreat'))
+
+ggplot(ecp_opt,
+       aes(x=site, y=prop_with_concept, fill=site))+
+  geom_bar(stat="identity")+
+  scale_fill_brewer(palette = 'Dark2') +
+  #scale_fill_manual(values=site_colors)+
+  theme_bw()+
+  labs(y="Proportion",
+       title="Proportion of Patients with Expected Concept")+
+  theme(legend.position = "none")+
+  facet_wrap(~check_description,
+             labeller = label_wrap_gen(width = 20))+
+  coord_flip()
+
+```
+
+## Clinical Fact Documentation
+
+This check investigates the proportion of visits (stratified into subclasses based on `enc_type`) with associated clinical facts. You would expect, for example, for most if not all inpatient visits to have an associated diagnosis record. Deviations from this pattern may be indicative of visit misclassification or a foreign key linkage issue.
+
+In these results, inpatient (both all inpatient visits and those restricted to > 2 days in length) and ED visits have good fact population. However, outpatient visit fact density could be improved. This could potentially be due to visits that may be better classified as "Other Ambulatory" (OA), which are not always expected to have many associated clinical facts, being classified as AV or TH. 
+
+```{r, fig.height=8, fig.width=8}
+
+cfd_opt <- get_rslt('cfd_output_pp') %>%
+  mutate(visit_type = case_when(visit_type == 'all' ~ 'All Visits',
+                                visit_type == 'emergency' ~ 'Emergency Department',
+                                visit_type == 'inpatient' ~ 'Inpatient Admission',
+                                visit_type == 'long_inpatient' ~ 'Inpatient Admission \n> 2 Days',
+                                visit_type == 'outpatient' ~ 'Outpatient',
+                                visit_type == 'primary_care' ~ 'Primary Care'))
+
+ggplot(cfd_opt,
+       aes(x = site, y = check_description, fill = fact_visits_prop)) +
+  geom_tile() +
+  theme_bw() +
+  facet_wrap(~visit_type) +
+  labs(x = 'Site',
+       y = 'Domain',
+       fill = 'Proportion',
+       title = 'Proportion of Visits with Fact by Visit Type')
+
+```
+
+## Domain Concordance
+::: {.callout-note}
+Please note that concept sets used in this check may need to be refined for a full rollout. These results may not reflect the full availability of some variables due to site-specific coding practices that may not have been accounted for.
+:::
+
+This check evaluates two distinct but related cohorts and determines the patient overlap between these two groups. It is intended to interrogate the plausibility and internal validity of the dataset by investigating whether two groups that are expected to be related display an expected level of overlap.
+
+Some diagnosis concept sets used to identify relevant cohorts will need to be adjusted, as some couplets (like Fracture Diagnosis / Imaging Procedure) did not have any patients meeting the diagnosis criteria despite that being an unlikely reality. 
+
+The Outpatient Visit / Outpatient Condition Type couplet demonstrates that there is an unusually high incidence of outpatient visits not being associated with a diagnosis with the same enc_type. Inpatient and ED visits do not display this same level of incongruity.
+
+The CKD Diagnosis / Antihypertensive Drug couplet also displays some unusual behavior, as we generally observe a higher proportion of patients only in cohort 2 due to the myriad of treatment targets for antihypertensive medication not related to CKD. This could be related to the concept set used for the drug cohort or be reflective of the sampling method used to retrieve the 10% dataset.
+
+```{r, fig.height=8, fig.width=8}
+
+dcon_opt <- get_rslt('dcon_output_pp') %>%
+  filter(site != 'total',
+         cohort %in% c("cohort_2_only", "combined", "cohort_1_only")) %>%
+  mutate(cohort = factor(cohort, levels = c('cohort_1_only', 'combined',
+                                            'cohort_2_only'),
+                         labels = c('Cohort 1 Only', 'Combined', 
+                         'Cohort 2 Only')))
+
+ggplot(dcon_opt, aes(x=site,y=prop,fill=cohort)) +
+  geom_bar(stat='identity',
+           position = position_fill(reverse = TRUE)) +
+  theme_bw()+
+  labs(x="Site",
+       y="Proportion",
+       fill = 'Cohort')+
+  facet_wrap(~check_description,
+             labeller = label_wrap_gen())+
+  scale_fill_manual(values = c("#FF4D6FFF", "#F9C000FF", "#579EA4FF")) +
+  coord_flip()
+
+```

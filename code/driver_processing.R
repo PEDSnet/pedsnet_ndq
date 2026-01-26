@@ -124,7 +124,7 @@ dcon_pp <- process_dcon(dcon_results = 'dcon_output',
                         rslt_source = 'remote')
 
 dcon_pp_labs <- dcon_pp %>%
-  mutate(description_full = gsub('and', '/', check_desc))
+  mutate(description_full = gsub('and', '/', check_description))
 
 output_tbl(dcon_pp, 'dcon_output_pp')
 

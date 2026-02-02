@@ -1,7 +1,7 @@
 ﻿check_id,check_description,schema,table,filter_logic
 condsall-visitid,Conditions (excluding problem list),cdm,condition_occurrence,"!condition_type_concept_id %in% c(2000000089, 2000000090, 2000000091)"
 drugsall-visitid,Drugs,cdm,drug_exposure,
-drugspresc-visitid,"Drugs, prescription or inpatient administration",cdm,drug_exposure,!drug_type_concept_id == 38000175
+drugspresc-visitid,"Drugs, prescription or inpatient administration",cdm,drug_exposure,"drug_type_concept_id %in% c(38000177, 38000180)"
 procsall-visitid,Procedures,cdm,procedure_occurrence,
 labsall-visitid,Labs,cdm,measurement_labs,
 immsall-visitid,Immunizations,cdm,immunization,

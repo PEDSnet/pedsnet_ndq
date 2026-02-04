@@ -18,3 +18,5 @@ procsbill,"Procedures, billing",cdm,procedure_occurrence,procedure_concept_id,pr
 payers-payerclass,Payer Class,result,payer_with_date,payer_class,plan_name,visit_start_date,
 payers-payertype,Payer Type,result,payer_with_date,payer_type,plan_name,visit_start_date,
 gestage,Gestational Age (when first visit occurs at <= 2 years old),result,gest_age_cohort,pn_gestational_age,ga_group,birth_date,
+pth,Parathyroid Lab Results,result,pth_labs,value_as_number,value_source_value,measurement_date,
+procsall-scid,Procedures (source concept),cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,

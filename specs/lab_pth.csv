@@ -1,0 +1,136 @@
+concept_id,concept_name,concept_code,vocabulary_id
+1175563,Parathyrin.1-84 [Mass/volume] in Serum or Plasma by Immunoassay,90741-0,LOINC
+3003823,Parathyrin.intact and Calcium panel - Serum or Plasma,24346-9,LOINC
+3002665,Parathyrin.mid molecule and Calcium panel - Serum or Plasma,24347-7,LOINC
+3005063,Parathyrin.C-terminal [Mass/volume] in Serum or Plasma,2730-0,LOINC
+3000067,Parathyrin.intact [Mass/volume] in Serum or Plasma,2731-8,LOINC
+3002863,Parathyrin.mid molecule [Mass/volume] in Serum or Plasma,2732-6,LOINC
+3001693,Parathyrin.N-terminal [Mass/volume] in Serum or Plasma,2733-4,LOINC
+3024182,Parathyrin.mid molecule [Moles/volume] in Serum or Plasma,29390-2,LOINC
+3052519,Parathyrin.biointact [Moles/volume] in Serum or Plasma,47093-0,LOINC
+3052320,Parathyrin.intact [Moles/volume] in Serum or Plasma --10 minutes post excision,47176-3,LOINC
+3052201,Parathyrin.intact [Moles/volume] in Serum or Plasma --5 minutes post excision,47177-1,LOINC
+3052240,Parathyrin.intact [Moles/volume] in Serum or Plasma --baseline,47178-9,LOINC
+3052510,Parathyrin [Moles/volume] in Serum or Plasma --10 minutes post excision,47179-7,LOINC
+3053156,Parathyrin [Moles/volume] in Serum or Plasma --baseline,47180-5,LOINC
+3053259,Parathyrin [Mass/volume] in Serum or Plasma --2 hours post dose calcium,47717-4,LOINC
+3048801,Parathyrin [Mass/volume] in Serum or Plasma --4 hours post dose calcium,47718-2,LOINC
+3050084,Parathyrin [Mass/volume] in Serum or Plasma --pre dose calcium,47719-0,LOINC
+3048905,Parathyrin.intact [Mass/volume] in Serum or Plasma --post excision,49036-7,LOINC
+3049520,Parathyrin [Interpretation] in Serum or Plasma Narrative,49288-4,LOINC
+40771462,Parathyrin.intact [Mass/volume] in Serum or Plasma --20 minutes post excision,68917-4,LOINC
+42869132,Parathyrin.intact intraoperative percent change in Serum or Plasma,70664-8,LOINC
+43054946,Parathyrin.intact intraoperative panel - Serum or Plasma,72203-3,LOINC
+36303406,Parathyrin.intact [Mass/volume] in Tissue fine needle aspirate,88106-0,LOINC
+36033040,Parathyrin.1-84|Moment in time|Serum or Plasma|Immunoassay,LG51038-4,LOINC
+1621307,"Parathyrin.intact|Moment in time|Body fluid, unspecified",LG51141-6,LOINC
+40795355,Parathyrin.intact | Body fluid,LP101407-7,LOINC
+42870889,Parathyrin.intact intraoperative percent change | Bld-Ser-Plas,LP149586-2,LOINC
+1177070,Parathyrin.1-84 | Bld-Ser-Plas,LP270109-4,LOINC
+40797758,Parathyroid | Ultrasound (US),LP56118-0,LOINC
+40797759,Parathyroid | Radnuc.SPECT,LP56119-8,LOINC
+40777934,Parathyroid | Radnuc,LP56120-6,LOINC
+40774594,Parathyroid | Magnetic Resonance Imaging (MRI),LP56121-4,LOINC
+4019462,Calcium/phosphate parathyroid challenge test,104564005,SNOMED
+4061034,Hormone radioassay - parathyroid,169181004,SNOMED
+44804911,Parathyroid immunoglobulin G antibody measurement,7.82931E+14,SNOMED
+3025974,Calcium/Phosphate parathyroid-challenge test [Mass Ratio] in Serum,1380-5,LOINC
+3024040,Parathyrin [Interpretation] in Serum or Plasma,14865-0,LOINC
+3010566,Parathyrin.intact [Moles/volume] in Serum or Plasma,14866-8,LOINC
+3034504,Parathyrin.C-terminal [Moles/volume] in Serum or Plasma,15088-8,LOINC
+3024757,Parathyrin.intact [Mass/volume] in Serum or Plasma --30 minutes post XXX challenge,16162-0,LOINC
+3025350,Parathyrin.intact [Mass/volume] in Serum or Plasma --1 hour post XXX challenge,16163-8,LOINC
+3011890,Parathyrin.intact [Mass/volume] in Serum or Plasma --2 hours post XXX challenge,16164-6,LOINC
+3036741,Parathyrin.intact [Mass/volume] in Serum or Plasma --5 minutes post excision,38157-4,LOINC
+3033973,Parathyrin.intact [Mass/volume] in Serum or Plasma --baseline,38158-2,LOINC
+3041496,Parathyrin.intact [Mass/volume] in Serum or Plasma --10 minutes post excision,40929-2,LOINC
+3029044,Parathyrin.intact [Mass/volume] in Serum or Plasma --1st specimen,50525-5,LOINC
+3032801,Parathyrin.intact [Mass/volume] in Serum or Plasma --2nd specimen,50526-3,LOINC
+3031604,Parathyrin.intact [Mass/volume] in Serum or Plasma --3rd specimen,50527-1,LOINC
+3030413,Parathyrin.intact [Mass/volume] in Serum or Plasma --4th specimen,50528-9,LOINC
+3028961,Parathyrin.intact [Mass/volume] in Serum or Plasma --5th specimen,50529-7,LOINC
+3033035,Parathyrin.intact [Mass/volume] in Serum or Plasma --6th specimen,50530-5,LOINC
+3029689,Parathyrin.intact [Mass/volume] in Serum or Plasma --7th specimen,50531-3,LOINC
+3031018,Parathyrin.intact [Mass/volume] in Serum or Plasma --8th specimen,50532-1,LOINC
+36031886,Parathyrin.1-84 [Moles/volume] in Serum or Plasma by Immunoassay,95768-8,LOINC
+1616938,Parathyrin.intact [Moles/volume] in Body fluid,97762-9,LOINC
+36209261,VA C and P exam.thyroid/parathyroid diseases | {Setting},LP261008-9,LOINC
+36306915,Parathyrin.intact | Tissue FNA,LP264874-1,LOINC
+36307397,Parathyroid gland | Computed tomography,LP265502-7,LOINC
+37021972,Parathyrin.intact and Calcium panel | Serum or Plasma | Chemistry Panels,LP387010-4,LOINC
+37022938,Parathyrin.intact intraoperative panel | Serum or Plasma | Chemistry Panels,LP387011-2,LOINC
+37041688,Parathyrin.mid molecule and Calcium panel | Serum or Plasma | Chemistry Panels,LP387012-0,LOINC
+37067587,Parathyrin | Serum or Plasma | Chemistry - challenge,LP387130-0,LOINC
+37067958,Parathyrin.intact | Serum or Plasma | Chemistry - challenge,LP387131-8,LOINC
+37073078,Calcium/Phosphate parathyroid-challenge test | Serum | Chemistry - challenge,LP387211-8,LOINC
+40793304,Parathyrin | Bld-Ser-Plas,LP43697-9,LOINC
+40780169,Parathyrin.intact | Bld-Ser-Plas,LP43698-7,LOINC
+40793326,Parathyrin.c-terminal | Bld-Ser-Plas,LP43860-3,LOINC
+40780719,Parathyrin.mid molecule | Bld-Ser-Plas,LP48732-9,LOINC
+40783990,Parathyrin.n-terminal | Bld-Ser-Plas,LP48736-0,LOINC
+40797269,Parathyrin.biointact | Bld-Ser-Plas,LP49820-1,LOINC
+37393129,Plasma parathyroid hormone level,1013021000000104,SNOMED
+37393415,Parathyroid antibody level,1016711000000103,SNOMED
+35610554,Parathyroid hormone level,1094371000000101,SNOMED
+4013966,"Parathyroid hormone measurement, functional N-terminal",113081006,SNOMED
+4141751,Parathyroid hormone measurement,3352000,SNOMED
+4212898,Plasma parathyroid hormone level,391554001,SNOMED
+4320801,"Parathyroid hormone measurement, C-terminal",70148007,SNOMED
+4336237,Parathyroid hormone (PTH) immunochemiluminescent measurement,8698005,SNOMED
+3015954,Parathyrin.biointact [Mass/volume] in Serum or Plasma,32045-7,LOINC
+3030656,Parathyrin.intact [Moles/volume] in Serum or Plasma --1 hour post XXX challenge,33845-9,LOINC
+3044817,Parathyrin.intact [Moles/volume] in Serum or Plasma --2 hours post XXX challenge,33846-7,LOINC
+3044845,Parathyrin.intact [Moles/volume] in Serum or Plasma --30 minutes post XXX challenge,33847-5,LOINC
+3030899,Parathyrin.intact [Mass or Moles/volume] in Serum or Plasma,35219-5,LOINC
+3034551,Parathyrin [Mass/volume] in Serum or Plasma --baseline,35566-9,LOINC
+3035525,Parathyrin [Mass/volume] in Serum or Plasma --10 minutes post excision,35567-7,LOINC
+40761952,Parathyrin.intact [Mass/volume] in Serum or Plasma --post XXX challenge,58858-2,LOINC
+40762896,Parathyrin.intact [Mass/volume] in Body fluid,59835-9,LOINC
+36303407,Parathyrin.intact goal [Mass/volume] Serum or Plasma,86917-2,LOINC
+40653498,"Parathyrin|Impression/interpretation of study|Moment in time|Blood, Serum or Plasma",LG2657-7,LOINC
+40655251,Parathyrin.C-terminal|Moment in time|Serum or Plasma,LG45204-1,LOINC
+40655253,Parathyrin.mid molecule|Moment in time|Serum or Plasma,LG45269-4,LOINC
+40655250,Parathyrin.biointact|Moment in time|Serum or Plasma,LG47481-3,LOINC
+40655252,Parathyrin.intact|Moment in time|Serum or Plasma,LG47482-1,LOINC
+37080179,Parathyrin.intact^1H post XXX challenge|Moment in time|Serum or Plasma,LG50318-1,LOINC
+37080185,Parathyrin^baseline|Moment in time|Serum or Plasma,LG50319-9,LOINC
+37080178,Parathyrin.intact^10M post excision|Moment in time|Serum or Plasma,LG50805-7,LOINC
+37080180,Parathyrin.intact^2H post XXX challenge|Moment in time|Serum or Plasma,LG50806-5,LOINC
+37080181,Parathyrin.intact^30M post XXX challenge|Moment in time|Serum or Plasma,LG50807-3,LOINC
+37080182,Parathyrin.intact^5M post excision|Moment in time|Serum or Plasma,LG50808-1,LOINC
+37080183,Parathyrin.intact^baseline|Moment in time|Serum or Plasma,LG50809-9,LOINC
+37080184,Parathyrin^10M post excision|Moment in time|Serum or Plasma,LG50810-7,LOINC
+21497269,Parathyroid gland | Ultrasound (US),LP217099-3,LOINC
+21496054,Parathyroid gland | SPECT+CT,LP217100-9,LOINC
+21496053,Parathyroid gland | SPECT,LP217101-7,LOINC
+21496224,Parathyroid gland | NM,LP217102-5,LOINC
+21496612,Parathyroid gland | MR,LP217103-3,LOINC
+36209315,Parathyroid gland | Ultrasound,LP250401-9,LOINC
+36207300,Parathyroid gland | Magnetic resonance,LP250402-7,LOINC
+37022114,Parathyroid Hormones-,LP31659-3,LOINC
+37060493,Parathyrin | Serum or Plasma | Chemistry - non-challenge,LP381348-4,LOINC
+37051564,Parathyrin.1-84 | Serum or Plasma | Chemistry - non-challenge,LP381349-2,LOINC
+37067150,Parathyrin.biointact | Serum or Plasma | Chemistry - non-challenge,LP381350-0,LOINC
+37050410,Parathyrin.C-terminal | Serum or Plasma | Chemistry - non-challenge,LP381351-8,LOINC
+37061675,Parathyrin.intact | Body fluid | Chemistry - non-challenge,LP381352-6,LOINC
+37068810,Parathyrin.intact | Serum or Plasma | Chemistry - non-challenge,LP381353-4,LOINC
+37041004,Parathyrin.intact | Tissue FNA | Chemistry - non-challenge,LP381354-2,LOINC
+37056698,Parathyrin.intact intraoperative percent change | Serum or Plasma | Chemistry - non-challenge,LP381355-9,LOINC
+37048322,Parathyrin.mid molecule | Serum or Plasma | Chemistry - non-challenge,LP381356-7,LOINC
+37046575,Parathyrin.N-terminal | Serum or Plasma | Chemistry - non-challenge,LP381357-5,LOINC
+37208838,PTH (parathyroid hormone) mass concentration in plasma,1109561000000106,SNOMED
+37208840,PTH (parathyroid hormone) mass concentration in serum,1109581000000102,SNOMED
+37208841,Intact PTH (parathyroid hormone) mass concentration in serum by second-generation method,1109591000000100,SNOMED
+37208843,PTH (parathyroid hormone) substance concentration in plasma,1109611000000108,SNOMED
+37208844,Whole PTH (parathyroid hormone) substance concentration in plasma by third-generation method,1109621000000102,SNOMED
+37208845,PTH (parathyroid hormone) substance concentration in serum,1109631000000100,SNOMED
+37208898,Intact PTH (parathyroid hormone) mass concentration in plasma by second-generation method,1110171000000103,SNOMED
+37208902,Whole PTH (parathyroid hormone) mass concentration in plasma by third-generation method,1110211000000100,SNOMED
+37208903,Whole PTH (parathyroid hormone) mass concentration in serum by third-generation method,1110221000000106,SNOMED
+37208905,Intact PTH (parathyroid hormone) substance concentration in plasma using second-generation method,1110241000000104,SNOMED
+37208916,Intact PTH (parathyroid hormone) substance concentration in serum using second-generation method,1110351000000109,SNOMED
+37208917,Whole PTH (parathyroid hormone) substance concentration in serum by third-generation method,1110361000000107,SNOMED
+4039696,Measurement of parathyrin antibody,117924003,SNOMED
+4154637,Serum parathyroid hormone measurement,271541003,SNOMED
+4197612,Parathyroid antibody measurement,313510008,SNOMED
+37398205,Serum parathyroid hormone level,9.97221E+14,SNOMED

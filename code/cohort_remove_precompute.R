@@ -6,7 +6,7 @@ remove_precompute <- function(checkpoint){
   ck1_list <- c('c19_dx_lab_current', 'c19_dx_lab_prev', 'payer_with_date',
                'op_prov_spec', 'op_cs_spec','pdl_pts', 'ip_admit', 'geocode_cohort',
                 'fips_tract', 'fips_block_group', 'lohis_tract','lohis_block_group',
-               'gest_age_cohort')
+               'gest_age_cohort', 'pth_labs')
 
   ck2_list <- c('procs_drugs', 'procs_drugs_labs', 'icu_transfer', 'payer_w_pid',
                 'ip_two', 'nephrology_specialties', 'oncology_specialties')

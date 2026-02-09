@@ -45,7 +45,7 @@ pth_labs <- cdm_tbl('measurement') %>%
   add_site() %>% filter(site == site_nm) %>%
   inner_join(load_codeset('lab_pth'), by = c('measurement_concept_id' = 'concept_id')) %>%
   select(site, person_id, visit_occurrence_id, measurement_concept_id, measurement_source_concept_id,
-         value_as_number, value_as_concept_id, value_source_value, measurement_source_value)
+         value_as_number, value_as_concept_id, value_source_value, measurement_source_value, measurement_date)
 
 output_tbl(pth_labs, 'pth_labs')
 

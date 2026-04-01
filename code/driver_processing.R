@@ -43,17 +43,38 @@ output_tbl(dc_anom_suppress, 'dc_output_pp')
 
 vc_pp <- process_vc(vc_results = 'vc_output',
                     rslt_source = 'remote')
+vc_pp_viol_all<-vc_pp$vc_processed%>%
+  distinct(site, table_application, measurement_column,
+           check_type, check_name, total_denom_ct,
+           check_description) %>%
+  full_join(vc_pp$vc_violations)%>%
+  mutate(tot_ct=case_when(is.na(tot_ct)~0,
+                          TRUE~tot_ct),
+         tot_prop=case_when(is.na(tot_prop)~0,
+                            TRUE~tot_prop),
+         check_name_app=paste0(check_name, "_rows"))
 
 output_tbl(vc_pp$vc_processed, 'vc_output_pp')
-output_tbl(vc_pp$vc_violations, 'vc_violations')
+output_tbl(vc_pp_viol_all, 'vc_violations_pp')
 
 ## Valueset Conformance
 
 vs_pp <- process_vs(vs_results = 'vs_output',
                     rslt_source = 'remote')
+# adding "0" rows
+vs_pp_viol_all<-vs_pp$vs_processed%>%
+  distinct(site, table_application, measurement_column,
+           check_type, check_name, total_denom_ct,
+           check_description) %>%
+  full_join(vs_pp$vs_violations)%>%
+  mutate(tot_ct=case_when(is.na(tot_ct)~0,
+                          TRUE~tot_ct),
+         tot_prop=case_when(is.na(tot_prop)~0,
+                            TRUE~tot_prop),
+         check_name_app=paste0(check_name, "_rows"))
 
 output_tbl(vs_pp$vs_processed, 'vs_output_pp')
-output_tbl(vs_pp$vs_violations, 'vs_violations')
+output_tbl(vs_pp_viol_all, 'vs_violations_pp')
 
 ## Unmapped Concepts
 

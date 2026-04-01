@@ -7,7 +7,7 @@ dc_ln <- summarize_large_n(dq_output = results_tbl('dc_output_pp') %>%
                            check_string = 'dc',
                            num_col = 'prop_total_change',
                            grp_vars = c('domain', 'check_name', 'application',
-                                        'check_type', 'check_name_app'),
+                                        'check_type', 'check_name_app', 'check_description'),
                            shape='wide')
 
 output_tbl(dc_ln %>% bind_rows(results_tbl('dc_output_pp') %>%

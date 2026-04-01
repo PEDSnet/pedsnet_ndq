@@ -18,29 +18,29 @@ library(dbplyr)
 library(lubridate)
 library(squba.gen)
 
-# Source file with wrapper function
-source(file.path('setup', 'argos_wrapper.R'))
-
 ###' `Set site name` ###
-site <- 'my_site' ## if a site column exists in your CDM,
+site <- 'dcc' ## if a site column exists in your CDM,
                   ## make sure this matches how it is represented there
 
 # Establish connection to database
-initialize_session(session_name = 'ndq_assessment',
-                   db_conn = Sys.getenv('PEDSNET_BASE_CONFIG'),
-                   is_json = TRUE,
-                   cdm_schema = paste0(site, '_pedsnet'), ## replace with location of CDM data
-                   results_schema = 'dqa_rox', ## replace with location of results schema
-                                               ## MUST BE STORED ON SAME DATABASE AS CDM
-                   retain_intermediates = FALSE,
-                   db_trace = FALSE, ## set to TRUE for SQL code to print to the console (like verbose)
-                   results_tag = '')
+ndq_assessment<-argos$new('ndq_assessment')$init_session(
+  db_src = Sys.getenv('PEDSNET_BASE_CONFIG'), ## path to json file containing db connection info
+  base_dir = Sys.getenv('NDQ_ROOT'), ## path to this working directory
+  cdm_schema = paste0(site, '_pedsnet'), ## replace with location of CDM data
+  results_schema = 'dqa_rox', ## replace with location of results schema
+                              ## MUST BE STORED ON SAME DATABASE AS CDM
+  retain_intermediates = FALSE,
+  db_trace = FALSE, ## set to TRUE for SQL code to print to the console (like verbose)
+  results_name_tag = ''
+)
+
+set_argos_default(ndq_assessment)
 
 ###' `Set additional configs` ###
 
 config('qry_site', site)
 
-config('current_version','v60') ## set current instantiation PEDSnet version
+config('current_version','v61') ## set current instantiation PEDSnet version
 
 # location of prior CDM or results data (for data cycle changes check)
 # config('db_src_prev', srcr(Sys.getenv('PEDSNET_PREV_CONFIG')))

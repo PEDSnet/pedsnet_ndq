@@ -161,7 +161,7 @@ initialize_session <- function(session_name,
   ## Drop path to base directory if present
   specs_drop_wd <- str_remove(specs_subdirectory, base_directory)
   results_drop_wd <- str_remove(results_subdirectory, base_directory)
-  get_argos_default()$config('subdirs', list(spec_dir = specs_drop_wd,
+  get_argos_default()$config('subdirs', list(specs = specs_drop_wd,
                                              result_dir = results_drop_wd))
 
   # Print session information

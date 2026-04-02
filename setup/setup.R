@@ -16,10 +16,11 @@ library(stringr)
 library(DBI)
 library(dbplyr)
 library(lubridate)
-library(ssdqa.gen)
+# library(ssdqa.gen)
+library(here)
 
 # Source file with wrapper function
-source(file.path('setup', 'argos_wrapper.R'))
+source(here('setup', 'argos_wrapper.R'))
 
 ###' `Set site name` ###
 site <- 'my_site' ## if a site column exists in your CDM,
@@ -27,7 +28,7 @@ site <- 'my_site' ## if a site column exists in your CDM,
 
 # Establish connection to database
 initialize_session(session_name = 'ndq_assessment',
-                   db_conn = Sys.getenv('PEDSNET_BASE_CONFIG'),
+                   db_conn = 'postgres',
                    is_json = TRUE,
                    cdm_schema = paste0(site, '_pedsnet'), ## replace with location of CDM data
                    results_schema = 'dqa_rox', ## replace with location of results schema

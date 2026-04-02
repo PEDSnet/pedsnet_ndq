@@ -1,5 +1,15 @@
 ---
-title: "Comparing OG vs New Pipeline Nemours NDQ Results"
+title: "`r paste0('Pipeline Comparison: ', params$site, ' (', params$db_version, ')')`"
+params:
+  site: "lurie"
+  db_version: "v61"
+  sites:
+    - colorado
+    - seattle
+    - stanford
+    - cchmc
+    - lurie
+    - chop
 format: 
   html:
     embed-resources: true
@@ -17,7 +27,9 @@ library(htmltools)
 unloadNamespace('squba.gen')
 unloadNamespace('plotly')
 
-config('qry_site', 'nemours')
+db_version <- params$db_version
+
+config('qry_site', params$site)
 
 # Initialize list to collect all problems for export
 all_problems <- list()
@@ -174,11 +186,11 @@ Each check is looking at the counts of different tables for the current data mod
 ```{r}
 
 dc_comp <- compare_results(og_tbl = results_tbl('dc_output') %>% 
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                              select(site, check_name, total_ct, total_pt_ct),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'dc_output'))%>%
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                              select(site, check_name, total_ct, total_pt_ct),
                            check_string = 'dc') %>%
   select(-c(site_og, site_new))
@@ -235,12 +247,12 @@ Basically just looks at a distribution of concepts that exist in the data, then 
 ```{r}
 
 bmc_comp <- compare_results(og_tbl = results_tbl('bmc_output') %>% 
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                               select(site, check_name, concept, total_rows, total_pts,
                                      concept_rows, concept_pts),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'bmc_output'))%>%
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                               select(site, check_name, concept, total_rows, total_pts,
                                      concept_rows, concept_pts),
                            check_string = 'bmc') %>%
@@ -301,12 +313,12 @@ Looks to see whether or not visits of various types have an associated clinical 
 ```{r}
 
 cfd_comp <- compare_results(og_tbl = results_tbl('cfd_output') %>% 
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                               select(site, check_name, visit_type, total_visits, total_pts,
                                      no_fact_visits, no_fact_pts),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'cfd_output'))%>%
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                               select(site, check_name, visit_type, total_visits, total_pts,
                                      no_fact_visits, no_fact_pts),
                            check_string = 'cfd') %>%
@@ -367,11 +379,11 @@ Looks to see if different variables are present in the data
 ```{r}
 
 ecp_comp <- compare_results(og_tbl = results_tbl('ecp_output') %>% 
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                               select(site, check_name, total_pt_ct, concept_pt_ct),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'ecp_output'))%>%
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                               select(site, check_name, total_pt_ct, concept_pt_ct),
                            check_string = 'ecp') %>%
   select(-c(site_og, site_new))
@@ -424,11 +436,11 @@ Looking at the concordance / overlap between two cohorts
 ```{r}
 
 dcon_comp <- compare_results(og_tbl = results_tbl('dcon_output') %>% 
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                               select(site, check_name, cohort_label, value),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'dcon_output'))%>%
-                             filter(database_version == 'v60') %>%
+                             filter(database_version == db_version) %>%
                               select(site, check_name, cohort_label, value),
                            check_string = 'dcon') %>%
   select(-c(site_og, site_new))
@@ -478,11 +490,11 @@ Looking to see whether dates are plausible based on 4 different comparators
 ```{r}
 
 dp_comp <- compare_results(og_tbl = results_tbl('dp_output') %>% 
-                            # filter(database_version == 'v60') %>%
+                            # filter(database_version == db_version) %>%
                               select(site, check_name, total_rows, implausible_row),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'dp_output'))%>%
-                             #filter(database_version == 'v60') %>%
+                             #filter(database_version == db_version) %>%
                               select(site, check_name, total_rows, implausible_row),
                            check_string = 'dp') %>%
   select(-c(site_og, site_new))
@@ -537,12 +549,12 @@ Looking at visit_occurrence_id compliance -- is it non-null and does it also exi
 ```{r}
 
 mf_comp <- compare_results(og_tbl = results_tbl('mf_visitid_output') %>% 
-                            # filter(database_version == 'v60') %>%
+                            # filter(database_version == db_version) %>%
                               select(site, check_name, total_ct, total_visits,
                                      missing_visits_total),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'mf_visitid_output'))%>%
-                             #filter(database_version == 'v60') %>%
+                             #filter(database_version == db_version) %>%
                               select(site, check_name, total_ct, total_visits,
                                      missing_visits_total),
                            check_string = 'mf') %>%
@@ -600,11 +612,11 @@ Looks at unmapped (NA, mapped to a concept_id that indicates an unknown value) c
 ```{r}
 
 uc_comp <- compare_results(og_tbl = results_tbl('uc_output') %>% 
-                            # filter(database_version == 'v60') %>%
+                            # filter(database_version == db_version) %>%
                               select(site, check_name, total_rows, unmapped_rows),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'uc_output'))%>%
-                             #filter(database_version == 'v60') %>%
+                             #filter(database_version == db_version) %>%
                               select(site, check_name, total_rows, unmapped_rows),
                            check_string = 'mf') %>%
   select(-c(site_og, site_new))
@@ -657,13 +669,13 @@ Makes sure the concepts in the domain align with vocabulary specs in the network
 ```{r}
 
 vc_comp <- compare_results(og_tbl = results_tbl('vc_output') %>% 
-                            # filter(database_version == 'v60') %>%
+                            # filter(database_version == db_version) %>%
                               select(site, check_name, vocabulary_id, total_viol_ct,
                                      total_viol_concept_ct, total_denom_ct,
                                      total_concept_ct),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'vc_output'))%>%
-                             #filter(database_version == 'v60') %>%
+                             #filter(database_version == db_version) %>%
                               select(site, check_name, vocabulary_id, total_viol_ct,
                                      total_viol_concept_ct, total_denom_ct,
                                      total_concept_ct),
@@ -727,12 +739,12 @@ Checks that certain fields are in compliance with preset valuesets
 ```{r}
 
 vs_comp <- compare_results(og_tbl = results_tbl('vs_output') %>% 
-                            # filter(database_version == 'v60') %>%
+                            # filter(database_version == db_version) %>%
                               select(site, check_name, concepts, total_viol_ct,
                                      total_denom_ct),
                            new_tbl = results_tbl(in_schema('dqa_rox_trino',
                                                            'vs_output'))%>%
-                             #filter(database_version == 'v60') %>%
+                             #filter(database_version == db_version) %>%
                               select(site, check_name, concepts, total_viol_ct, 
                                      total_denom_ct),
                            check_string = 'vs') %>%
@@ -828,7 +840,9 @@ if(length(all_problems) > 0) {
     )
   
   # Export to CSV
-  output_file <- file.path("..", "results", paste0("pipeline_discrepancies_", format(Sys.Date(), "%Y%m%d"), ".csv"))
+  site_nm <- config('qry_site')
+
+  output_file <- file.path("..", "results", paste0("pipeline_discrepancies_", site_nm, "_", db_version, "_", format(Sys.Date(), "%Y%m%d"), ".csv"))
   
   # Ensure results directory exists
   if(!dir.exists(file.path("..", "results"))) {
@@ -838,7 +852,7 @@ if(length(all_problems) > 0) {
   write.csv(all_problems_df, output_file, row.names = FALSE)
   
   cat("\n\n")
-  cat(paste0("📁 **Full discrepancy list exported to:** `results/pipeline_discrepancies_", format(Sys.Date(), "%Y%m%d"), ".csv`\n\n"))
+  cat(paste0("📁 **Full discrepancy list exported to:** `results/pipeline_discrepancies_", site_nm, "_", db_version, "_", format(Sys.Date(), "%Y%m%d"), ".csv`\n\n"))
   cat("This CSV contains all discrepancies with full details for issue tracking and team review.\n")
   
 } else {

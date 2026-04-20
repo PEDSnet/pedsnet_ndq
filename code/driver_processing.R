@@ -78,6 +78,10 @@ uc_year_pp <- process_uc(uc_results = 'uc_by_year',
 
 output_tbl(uc_year_pp, 'uc_by_year_pp')
 
+# Grouped concepts
+uc_grpd<-results_tbl('uc_grpd')%>%collect()
+output_tbl(uc_grpd, 'uc_grpd_pp')
+
 ## MF Visit ID
 
 mf_visitid_pp <- process_mf_visitid(mf_visitid_results = 'mf_visitid_output',

@@ -1,0 +1,8 @@
+check_id,check_description,schema,table,concept_field,source_value_field,date_field,filter_logic
+drugs-doseunits,Prescription Dose Unit,cdm,drug_exposure,dose_unit_concept_id,dose_unit_source_value,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugs-dose,Prescription Dosage,cdm,drug_exposure,effective_drug_dose,eff_drug_dose_source_value,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugs-end,Prescription End Date,cdm,drug_exposure,drug_exposure_end_date,drug_exposure_end_date,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugs-refill,Prescription Refills,cdm,drug_exposure,refills,refills,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugs-quantity,Prescription Quantity,cdm,drug_exposure,quantity,quantity,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugs-dayssupply,Prescription Days Supply,cdm,drug_exposure,days_supply,days_supply,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugs-freq,Prescription Frequency,cdm,drug_exposure,frequency,frequency,drug_exposure_start_date,drug_type_concept_id == 38000177

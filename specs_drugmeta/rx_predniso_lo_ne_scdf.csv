@@ -1,0 +1,27 @@
+concept_id,concept_name,concept_code,vocabulary_id,concept_class_id
+42479078,Methylprednisolone Prefilled Syringe,OMOP419845,RxNorm Extension,Clinical Drug Form
+40143531,prednisone Oral Capsule,746379,RxNorm,Clinical Drug Form
+35149489,prednisolone Oral Powder,OMOP4806548,RxNorm Extension,Clinical Drug Form
+42873418,prednisone Delayed Release Oral Tablet,1303124,RxNorm,Clinical Drug Form
+40073185,prednisolone Disintegrating Oral Tablet,379264,RxNorm,Clinical Drug Form
+40923904,Methylprednisolone Oral Capsule,OMOP2121866,RxNorm Extension,Clinical Drug Form
+41236314,prednisolone Oral Capsule,OMOP2434276,RxNorm Extension,Clinical Drug Form
+42970587,prednisolone Injection,OMOP4697013,RxNorm Extension,Clinical Drug Form
+41111375,Methylprednisolone Extended Release Oral Tablet,OMOP2309337,RxNorm Extension,Clinical Drug Form
+35606532,methylprednisolone Injection,1743703,RxNorm,Clinical Drug Form
+40060705,methylprednisolone Injectable Suspension,372866,RxNorm,Clinical Drug Form
+40060728,methylprednisolone Oral Tablet,372868,RxNorm,Clinical Drug Form
+40073197,prednisolone Injectable Suspension,373568,RxNorm,Clinical Drug Form
+40073190,prednisolone Delayed Release Oral Tablet,373572,RxNorm,Clinical Drug Form
+40073454,prednisolone Oral Solution,373575,RxNorm,Clinical Drug Form
+40073458,prednisolone Oral Tablet,373578,RxNorm,Clinical Drug Form
+40073191,prednisolone Injectable Solution,373579,RxNorm,Clinical Drug Form
+40073529,prednisone Oral Solution,373583,RxNorm,Clinical Drug Form
+40073531,prednisone Oral Tablet,373585,RxNorm,Clinical Drug Form
+40060701,methylprednisolone Injectable Solution,376656,RxNorm,Clinical Drug Form
+21158588,Methylprednisolone Oral Suspension,OMOP387765,RxNorm Extension,Clinical Drug Form
+42482154,prednisolone Prefilled Syringe,OMOP420227,RxNorm Extension,Clinical Drug Form
+40149642,prednisolone Oral Suspension,792956,RxNorm,Clinical Drug Form
+43168161,prednisolone Effervescent Oral Tablet,OMOP449773,RxNorm Extension,Clinical Drug Form
+43697439,Methylprednisolone Oral Solution,OMOP901035,RxNorm Extension,Clinical Drug Form
+40986252,prednisolone Extended Release Oral Tablet,OMOP2184214,RxNorm Extension,Clinical Drug Form

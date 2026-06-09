@@ -1,0 +1,48 @@
+﻿concept_id,concept_name,concept_code,vocabulary_id
+746313,tirzepatide Injection,2644395,RxNorm
+42705840,exenatide Injectable Suspension,1242962,RxNorm
+44506519,Lixisenatide Injectable Solution,1440054,RxNorm
+44816084,albiglutide Prefilled Syringe,1534799,RxNorm
+45774437,dulaglutide Prefilled Syringe,1551294,RxNorm
+46234470,dulaglutide Auto-Injector,1649584,RxNorm
+46234110,liraglutide Pen Injector,1653594,RxNorm
+46234117,exenatide Injection,1653611,RxNorm
+46234120,exenatide Pen Injector,1653616,RxNorm
+46275422,albiglutide Pen Injector,1659115,RxNorm
+40220851,lixisenatide Pen Injector,1803885,RxNorm
+1718598,insulin glargine / lixisenatide Pen Injector,1858993,RxNorm
+1718705,insulin degludec / liraglutide Pen Injector,1860166,RxNorm
+793110,exenatide Auto-Injector,1990865,RxNorm
+793146,semaglutide Pen Injector,1991305,RxNorm
+37496831,semaglutide Oral Tablet,2200643,RxNorm
+1537021,semaglutide Auto-Injector,2553500,RxNorm
+779711,tirzepatide Auto-Injector,2601731,RxNorm
+40129515,exenatide Injectable Solution,604749,RxNorm
+40159896,exenatide Prefilled Syringe,847909,RxNorm
+40170914,liraglutide Prefilled Syringe,897121,RxNorm
+36892499,liraglutide Auto-Injector,OMOP1000354,RxNorm Extension
+44029890,dulaglutide Injectable Solution,OMOP1024521,RxNorm Extension
+44081621,exenatide Injectable Solution,OMOP1076252,RxNorm Extension
+44094514,liraglutide Injectable Solution,OMOP1089145,RxNorm Extension
+40955718,albiglutide Prefilled Syringe,OMOP2153680,RxNorm Extension
+41298305,Lixisenatide Injectable Solution,OMOP2496267,RxNorm Extension
+21036596,insulin degludec / liraglutide Prefilled Syringe,OMOP266115,RxNorm Extension
+36404173,insulin degludec / liraglutide Injectable Solution,OMOP3096215,RxNorm Extension
+36409559,albiglutide Injectable Solution,OMOP3101601,RxNorm Extension
+42478932,liraglutide Prefilled Syringe,OMOP417351,RxNorm Extension
+42479624,exenatide Prefilled Syringe,OMOP417669,RxNorm Extension
+42482011,Lixisenatide Prefilled Syringe,OMOP418938,RxNorm Extension
+42481389,albiglutide Injection,OMOP418957,RxNorm Extension
+42480782,dulaglutide Prefilled Syringe,OMOP418961,RxNorm Extension
+43174525,exenatide Injectable Suspension,OMOP440521,RxNorm Extension
+42963168,dulaglutide Pen Injector,OMOP4689651,RxNorm Extension
+994760,semaglutide Injectable Solution,OMOP4821274,RxNorm Extension
+782681,Insulin Glargine / Lixisenatide Injectable Solution,OMOP4830512,RxNorm Extension
+2909342,liraglutide Cartridge,OMOP5126105,RxNorm Extension
+2919075,exenatide Cartridge,OMOP5135892,RxNorm Extension
+42614439,exenatide Cartridge,OMOP5159513,RxNorm Extension
+42613205,liraglutide Cartridge,OMOP5160382,RxNorm Extension
+36923653,tirzepatide Injectable Solution,OMOP5206315,RxNorm Extension
+43269399,dulaglutide Injection,OMOP557441,RxNorm Extension
+43280431,liraglutide Injection,OMOP558929,RxNorm Extension
+43281756,Lixisenatide Injection,OMOP574057,RxNorm Extension

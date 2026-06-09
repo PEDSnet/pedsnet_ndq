@@ -1,0 +1,15 @@
+concept_id,concept_name,concept_code,vocabulary_id,concept_class_id
+37498448,methylphenidate Chewable Extended Release Oral Tablet,2270756,RxNorm,Clinical Drug Form
+40066578,methylphenidate Oral Tablet,372861,RxNorm,Clinical Drug Form
+40066571,methylphenidate Extended Release Oral Tablet,372862,RxNorm,Clinical Drug Form
+40066568,methylphenidate Extended Release Oral Capsule,374655,RxNorm,Clinical Drug Form
+40127423,dexmethylphenidate Extended Release Oral Capsule,577227,RxNorm,Clinical Drug Form
+35872089,methylphenidate Injectable Solution,OMOP5028023,RxNorm Extension,Clinical Drug Form
+42900942,methylphenidate Extended Release Suspension,1312582,RxNorm,Clinical Drug Form
+1537421,dexmethylphenidate / serdexmethylphenidate Oral Capsule,2562189,RxNorm,Clinical Drug Form
+40055995,dexmethylphenidate Oral Tablet,378713,RxNorm,Clinical Drug Form
+40221082,methylphenidate Transdermal System,1805912,RxNorm,Clinical Drug Form
+1592618,methylphenidate Disintegrating Oral Tablet,1926839,RxNorm,Clinical Drug Form
+40149543,dexmethylphenidate Extended Release Oral Tablet,791090,RxNorm,Clinical Drug Form
+40066567,methylphenidate Chewable Tablet,476365,RxNorm,Clinical Drug Form
+40066577,methylphenidate Oral Solution,476368,RxNorm,Clinical Drug Form

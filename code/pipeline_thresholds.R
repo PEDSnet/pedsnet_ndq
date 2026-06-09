@@ -27,10 +27,11 @@ chk_list$bmc <- bmc_thresh
 ## DCC
 dc_pp <- process_dc(dc_ct_results = 'dc_output',
                     dc_meta_results = 'dc_meta',
-                    rslt_source = 'remote') #%>%
-  # inner_join(read_codeset('dqa_check_descriptions', 'ccc'),
-  #            by = c('check_name')) %>%
-  # rename('check_description' = 'check_application')
+                    rslt_source = 'remote') %>%
+  filter(application == 'rows') %>%
+  inner_join(read_codeset('dqa_check_descriptions', 'ccc'),
+             by = c('check_name')) %>%
+  rename('check_description' = 'check_application')
 
 dc_thresh <- dc_pp %>%
   filter(site == config('qry_site')) %>%
@@ -135,7 +136,7 @@ chk_list$dp <- dp_thresh
 all_checks <- purrr::reduce(.x = chk_list,
                             .f = dplyr::union)
 
-output_tbl_append(all_checks, 'dqa_pipeline_passfail')
+#output_tbl_append(all_checks, 'dqa_pipeline_passfail')
 
 fails <- all_checks %>% filter(pass_fail == 'FAIL')
 

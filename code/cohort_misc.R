@@ -42,7 +42,7 @@ calc_days_between_dates <-
         paste0("julianday(", date_col_2, ") - julianday(", date_col_1, ")")
     }else if(class(db) %in% 'PrestoConnection'){
       sql_code <-
-        paste0("date_diff(day, ", date_col_1, ", ", date_col_2, ")")
+        paste0("date_diff('day', ", date_col_1, ", ", date_col_2, ")")
     }
     return(sql_code)
   }

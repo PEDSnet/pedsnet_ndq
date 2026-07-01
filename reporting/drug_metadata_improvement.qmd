@@ -1,0 +1,509 @@
+---
+title: "Drug Metadata Improvement Tracking"
+format: 
+  html:
+    embed-resources: true
+    html-table-processing: none
+    toc: true
+---
+
+```{r setup, include=FALSE}
+
+library(argos)
+library(srcr)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(RPostgres)
+library(ggplot2)
+
+pg_conn <- argos$new('pg_dq')$init_session(db_src =
+                                             srcr::srcr(Sys.getenv('PEDSNET_BASE_CONFIG_NDQ')),
+                                           base_dir = getwd(),
+                                           cdm_schema = 'pedsnet_dcc_v62',
+                                           results_schema = 'dqa_rox',
+                                           vocabulary_schema = 'vocabulary',
+                                           subdirs = list('specs' = 'specs_drugmeta',
+                                                          'results' = 'results'),
+                                           cdm = 'pedsnet',
+                                           retain_intermediates = TRUE,
+                                           cache_enabled = FALSE,
+                                           results_name_tag = '')
+
+set_argos_default(pg_conn)
+
+prettify_ggplot <- function(){
+
+    theme_bw() +
+    theme(text = element_text(family = 'Montserrat',
+                              size = 10),
+          legend.title = element_text(family = 'Montserrat-Bold'))
+  
+}
+
+uc_drug_plot <- function(dat){
+
+  dat_pivot <- dat %>%
+    select(site, check_description, database_version, unmapped_prop) %>%
+    mutate(unmapped_prop = 1 - unmapped_prop) %>%
+    pivot_wider(names_from = database_version,
+                values_from = unmapped_prop)
+  
+  dat_pivot %>%
+    ggplot() +
+    geom_segment(aes(x = v61, xend = v62,
+                     y = site, yend = site)) +
+    geom_point(aes(x = v61, y = site), size = 2, color = '#8BBBB2') +
+    geom_point(aes(x = v62, y = site), size = 2, color = '#945870') +
+    facet_wrap(~check_description, labeller = label_wrap_gen()) +
+    prettify_ggplot() +
+    labs(y = 'Site',
+         x = 'Prop. Populated')
+} 
+
+
+qd_metadata_plot <- function(dat,
+                             dose = FALSE){
+  
+  if(dose){
+    dat %>%
+      filter(metadata_type == 'dose') %>%
+      left_join(vocabulary_tbl('concept') %>%
+                  select(concept_id, concept_name),
+                by = c('dose_unit_concept_id' = 'concept_id')) %>%
+      collect() %>%
+      mutate(concept_name = ifelse(is.na(dose_unit_concept_id), 'NA', concept_name)) %>%
+      group_by(site, concept_name) %>%
+      slice_head(n = 1) %>%
+      arrange(site, concept_name) %>%
+      ggplot(aes(x = site)) +
+      geom_boxplot(aes(ymin = min_val, lower = q1_val, middle = med_val, 
+                       upper = q3_val, ymax = max_val,
+                       group = interaction(concept_name, site)),
+                   stat = 'identity') +
+      facet_wrap(~concept_name) +
+      prettify_ggplot() +
+      coord_flip()
+  }else{
+    dat %>%
+      filter(metadata_type != 'dose') %>%
+      mutate(metadata_type = case_when(metadata_type == 'rx_length' ~ 
+                                         'rx length in days \n(end date - start date)',
+                                       TRUE ~ metadata_type)) %>%
+      collect() %>%
+      group_by(site, metadata_type) %>%
+      slice_head(n = 1) %>%
+      arrange(site, metadata_type) %>%
+      ggplot(aes(x = site)) +
+      geom_boxplot(aes(ymin = min_val, lower = q1_val, middle = med_val, 
+                       upper = q3_val, ymax = max_val,
+                       group = interaction(metadata_type, site)),
+                   stat = 'identity') +
+      facet_wrap(~metadata_type, scale = 'free_x') +
+      prettify_ggplot() +
+      coord_flip()
+  }
+  
+}
+
+qd_dat <- results_tbl('qd_example_drugs')
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+options(scipen = 999)
+
+```
+
+# Full Drug Table Assessment
+
+## Population of Key Variables
+
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_drug_metadata') %>% collect() %>%
+               filter(!grepl('and|&', check_description)))
+
+```
+
+## Population of Key Variable Groups
+
+These variables are often needed in combination in order to facilitate dose computation or to determine how long a patient was taking a medication.
+
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_drug_metadata') %>% collect() %>%
+               filter(grepl('and|&', check_description)))
+
+```
+
+# Common Drug Assessment
+
+## Albuterol
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_albuterol'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_albuterol'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_albuterol'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_albuterol'),
+                 dose = FALSE)
+
+```
+
+## Amoxicillin
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_amoxicillin_scdf'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_amoxicillin_scdf'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_amoxicillin_scdf'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_amoxicillin_scdf'),
+                 dose = FALSE)
+
+```
+
+## Bactrim
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_bactrim'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_bactrim'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_bactrim'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_bactrim'),
+                 dose = FALSE)
+
+```
+
+## Fluoxetine (Prozac)
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_fluoxetine_scdf'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_fluoxetine_scdf'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_fluoxetine_scdf'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_fluoxetine_scdf'),
+                 dose = FALSE)
+
+```
+
+## GLP1
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_glp1ra_scdf'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_glp1ra_scdf'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_glp1ra_scdf'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_glp1ra_scdf'),
+                 dose = FALSE)
+
+```
+
+## Hydroxyurea
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_hydroxyurea'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_hydroxyurea'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_hydroxyurea'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_hydroxyurea'),
+                 dose = FALSE)
+
+```
+
+## Insulin
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'insulin'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'insulin'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'insulin'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'insulin'),
+                 dose = FALSE)
+
+```
+
+## Methylphenidate (Ritalin/Concerta)
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_methylphenidate_scdf'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_methylphenidate_scdf'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_methylphenidate_scdf'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_methylphenidate_scdf'),
+                 dose = FALSE)
+
+```
+
+## Prednisone / Prednisolone
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_predniso_lo_ne_scdf'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_predniso_lo_ne_scdf'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_predniso_lo_ne_scdf'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_predniso_lo_ne_scdf'),
+                 dose = FALSE)
+
+```
+
+## RAASi
+
+### Population of Key Variables
+```{r, fig.height=8}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(!grepl('and|&', check_description),
+                      drug_type == 'rx_raasi'))
+
+```
+
+### Population of Key Variable Groups
+```{r}
+
+uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
+               filter(grepl('and|&', check_description),
+                      drug_type == 'rx_raasi'))
+
+```
+
+### Value Plausibility
+#### Dose by Unit
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_raasi'),
+                 dose = TRUE)
+
+```
+
+#### Metadata Distributions
+```{r, fig.height=7}
+
+qd_metadata_plot(dat = qd_dat %>% filter(drug_type == 'rx_raasi'),
+                 dose = FALSE)
+
+```

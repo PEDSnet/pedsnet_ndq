@@ -1,0 +1,56 @@
+concept_id,concept_code,concept_name,vocabulary_id
+40756790,17.70,Intravenous infusion of clofarabine,ICD9Proc
+2008271,99.25,Injection or infusion of cancer chemotherapeutic substance,ICD9Proc
+42740896,90768,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); concurrent infusion (List separately in addition to code for primary procedure) (Deprecated)",CPT4
+42739887,99555,"Home infusion for chemotherapy, per diem (Deprecated)",CPT4
+42739883,99551,"Home infusion for pain management (intravenous or subcutaneous), per diem (Deprecated)",CPT4
+42740826,90760,"Intravenous infusion, hydration; initial, up to 1 hour (Deprecated)",CPT4
+45889421,1009350,"Injection/infusion of neurolytic substance (eg, alcohol, phenol, iced saline solutions), with or without other therapeutic substance",CPT4
+45890434,1013439,Injection and Intravenous Infusion Chemotherapy and Other Highly Complex Drug or Highly Complex Biologic Agent Administration,CPT4
+2313932,93623,Programmed stimulation and pacing after intravenous drug infusion (List separately in addition to code for primary procedure),CPT4
+45888168,1019330,"Intravenous infusion, hydration",CPT4
+42738323,90780,"Intravenous infusion for therapy/diagnosis, administered by physician or under direct supervision of physician; up to one hour (Deprecated)",CPT4
+42738324,90781,"Intravenous infusion for therapy/diagnosis, administered by physician or under direct supervision of physician; each additional hour, up to eight (8) hours (List separately in addition to code for primary procedure) (Deprecated)",CPT4
+2212141,80408,"Aldosterone suppression evaluation panel (eg, saline infusion) This panel must include the following: Aldosterone (82088 x 2) Renin (84244 x 2)",CPT4
+2212075,79403,"Radiopharmaceutical therapy, radiolabeled monoclonal antibody by intravenous infusion",CPT4
+2110613,62281,"Injection/infusion of neurolytic substance (eg, alcohol, phenol, iced saline solutions), with or without other therapeutic substance; epidural, cervical or thoracic",CPT4
+2110614,62282,"Injection/infusion of neurolytic substance (eg, alcohol, phenol, iced saline solutions), with or without other therapeutic substance; epidural, lumbar, sacral (caudal)",CPT4
+2110612,62280,"Injection/infusion of neurolytic substance (eg, alcohol, phenol, iced saline solutions), with or without other therapeutic substance; subarachnoid",CPT4
+2108328,37195,"Thrombolysis, cerebral, by intravenous infusion",CPT4
+2108273,36640,"Arterial catheterization for prolonged infusion therapy (chemotherapy), cutdown",CPT4
+2108097,36260,"Insertion of implantable intra-arterial infusion pump (eg, for chemotherapy of liver)",CPT4
+2313798,92977,"Thrombolysis, coronary; by intravenous infusion",CPT4
+42733191,36531,Revision of implantable intravenous infusion pump (Deprecated),CPT4
+42733189,36530,Insertion of implantable intravenous infusion pump (Deprecated),CPT4
+2111051,67221,"Destruction of localized lesion of choroid (eg, choroidal neovascularization); photodynamic therapy (includes intravenous infusion)",CPT4
+2314229,96413,"Chemotherapy administration, intravenous infusion technique; up to 1 hour, single or initial substance/drug",CPT4
+2314232,96416,"Chemotherapy administration, intravenous infusion technique; initiation of prolonged chemotherapy infusion (more than 8 hours), requiring use of a portable or implantable pump",CPT4
+2314231,96415,"Chemotherapy administration, intravenous infusion technique; each additional hour (List separately in addition to code for primary procedure)",CPT4
+2314233,96417,"Chemotherapy administration, intravenous infusion technique; each additional sequential infusion (different substance/drug), up to 1 hour (List separately in addition to code for primary procedure)",CPT4
+2314236,96423,"Chemotherapy administration, intra-arterial; infusion technique, each additional hour (List separately in addition to code for primary procedure)",CPT4
+2314235,96422,"Chemotherapy administration, intra-arterial; infusion technique, up to 1 hour",CPT4
+2314237,96425,"Chemotherapy administration, intra-arterial; infusion technique, initiation of prolonged infusion (more than 8 hours), requiring the use of a portable or implantable pump",CPT4
+2314205,96361,"Intravenous infusion, hydration; each additional hour (List separately in addition to code for primary procedure)",CPT4
+2314204,96360,"Intravenous infusion, hydration; initial, 31 minutes to 1 hour",CPT4
+2314207,96366,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); each additional hour (List separately in addition to code for primary procedure)",CPT4
+2314206,96365,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); initial, up to 1 hour",CPT4
+2314209,96368,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); concurrent infusion (List separately in addition to code for primary procedure)",CPT4
+2314208,96367,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); additional sequential infusion of a new drug/substance, up to 1 hour (List separately in addition to code for primary procedure)",CPT4
+2314218,96379,"Unlisted therapeutic, prophylactic, or diagnostic intravenous or intra-arterial injection or infusion",CPT4
+45887887,1013447,"Chemotherapy administration, intravenous infusion technique",CPT4
+2110199,58340,Catheterization and introduction of saline or contrast material for saline infusion sonohysterography (SIS) or hysterosalpingography,CPT4
+42732724,96412,"Chemotherapy administration, intravenous; infusion technique, one to 8 hours, each additional hour (List separately in addition to code for primary procedure) (Deprecated)",CPT4
+42732723,96410,"Chemotherapy administration, intravenous; infusion technique, up to one hour (Deprecated)",CPT4
+42732725,96414,"Chemotherapy administration, intravenous; infusion technique, initiation of prolonged infusion (more than 8 hours), requiring the use of a portable or implantable pump (Deprecated)",CPT4
+42732718,36532,Removal of implantable intravenous infusion pump (Deprecated),CPT4
+40757114,93463,"Pharmacologic agent administration (eg, inhaled nitric oxide, intravenous infusion of nitroprusside, dobutamine, milrinone, or other agent) including assessing hemodynamic measurements before, during, after and repeat pharmacologic agent administration...",CPT4
+45888764,1019331,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug)",CPT4
+42741027,90761,"Intravenous infusion, hydration; each additional hour, up to 8 hours (List separately in addition to code for primary procedure) (Deprecated)",CPT4
+2211766,76831,"Saline infusion sonohysterography (SIS), including color flow Doppler, when performed",CPT4
+45889804,1019103,"Hydration, Therapeutic, Prophylactic, Diagnostic Injections and Infusions, and Chemotherapy and Other Highly Complex Drug or Highly Complex Biologic Agent Administration",CPT4
+45888604,1019108,"Therapeutic, Prophylactic, and Diagnostic Injections and Infusions (Excludes Chemotherapy and Other Highly Complex Drug or Highly Complex Biologic Agent Administration)",CPT4
+42740993,90779,"Unlisted therapeutic, prophylactic or diagnostic intravenous or intra-arterial injection or infusion (Deprecated)",CPT4
+42740992,90765,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); initial, up to 1 hour (Deprecated)",CPT4
+42739927,99566,"Home infusion for uninterrupted, long-term intravenous treatment (eg, epoprostenol), per diem (Deprecated)",CPT4
+42740960,90766,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); each additional hour, up to 8 hours (List separately in addition to code for primary procedure) (Deprecated)",CPT4
+42740928,90767,"Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); additional sequential infusion, up to 1 hour (List separately in addition to code for primary procedure) (Deprecated)",CPT4

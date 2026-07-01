@@ -37,3 +37,16 @@ result,c19_dx_lab_current,result,c19_dx_lab_prev,,COVID19,condscovid19-labscovid
 cdm,care_site,cdm,care_site,,Care Sites,csall,Care Sites
 cdm,provider,cdm,provider,,Providers,provall,Providers
 cdm,specialty,cdm,specialty,,Specialties,specall,Specialties
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000000104,Visits,visadmin,"Visits, administrative"
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000001589,Visits,vistestimg,"Visits, testing and imaging"
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000001587,Visits,visopsrg,"Visits, outpatient surgery"
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000001591,Visits,visdial,"Visits, dialysis"
+cdm,visit_occurrence,cdm,visit_occurrence,visit_concept_id == 2000001592,Visits,visinfuse,"Visits, infusion"
+cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 32849,Drugs,drugshie,"Drugs, HIE"
+cdm,drug_exposure,cdm,drug_exposure,drug_type_concept_id == 32810,Drugs,drugsclaims,"Drugs, claims"
+cdm,visit_detail,cdm,visit_detail,,Visits,visdtall,Visit Detail
+cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000000104,Visits,visdtadmin,"Visit Detail, administrative"
+cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000001589,Visits,visdttestimg,"Visit Detail, testing and imaging"
+cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000001587,Visits,visdtopsrg,"Visit Detail, outpatient surgery"
+cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000001591,Visits,visdtdial,"Visit Detail, dialysis"
+cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000001592,Visits,visdtinfuse,"Visit Detail, infusion"

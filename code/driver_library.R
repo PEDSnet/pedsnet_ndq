@@ -9,8 +9,8 @@ source(file.path(getwd(), 'code', 'precompute_tables_1.R'))
 # dc_output <- check_dc(dc_tbl = read_codeset('pedsnet_dc_table', 'cccccc') %>%
 #                         filter(!check_id %in% c('ml', 'mv', 'ma', 'co_ml_covid')),
 #                       omop_or_pcornet = 'omop',
-#                       prev_db_string = 'v59',
-#                       current_db_string = 'v60',
+#                       prev_db_string = 'v60',
+#                       current_db_string = 'v61',
 #                       prev_ct_src = 'cdm',
 #                       prev_db = config('db_src'),
 #                       prev_rslt_tbl = 'dc_output',
@@ -224,16 +224,25 @@ dcon_output_pt <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccc
                              check_string='dcon')
 
 dcon_output_visit <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccccccccd') %>%
-                                  filter(grepl('vis', check_id)),
+                                  filter(grepl('vis', check_id),
+                                         !grepl('visdt', check_id)),
                                 compute_level = 'visit',
                                 omop_or_pcornet = 'omop',
                                 check_string='dcon')
 
+dcon_output_detail <- check_dcon(dcon_tbl = read_codeset('pedsnet_dcon_table', 'cccccccccd') %>%
+                                  filter(grepl('visdt', check_id)),
+                                compute_level = 'visit_detail',
+                                omop_or_pcornet = 'omop',
+                                check_string='dcon')
+
 dcon_combined <- dcon_output_pt[[1]] %>%
-  union(dcon_output_visit[[1]])
+  union(dcon_output_visit[[1]]) %>%
+  union(dcon_output_detail[[1]])
 
 dcon_meta <- dcon_output_pt[[2]] %>%
-  union(dcon_output_visit[[2]])
+  union(dcon_output_visit[[2]]) %>%
+  union(dcon_output_detail[[2]])
 
 output_tbl_append(dcon_combined, 'dcon_output', file = TRUE)
 output_tbl(dcon_meta, 'dcon_meta', file = TRUE)

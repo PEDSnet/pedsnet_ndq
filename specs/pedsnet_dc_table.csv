@@ -8,13 +8,6 @@ cdm,immunization,cdm,immunization,,Immunizations,immsall,Immunizations
 cdm,visit_occurrence,cdm,visit_occurrence,,Visits,visall,Visits
 cdm,measurement_vitals,cdm,measurement_vitals,,Vitals,vitalsall,Vital Signs
 cdm,measurement_labs,cdm,measurement_labs,,Labs,labsall,Labs
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)",Conditions,condsop,"Conditions, outpatient"
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000092, 2000000093, 2000000094, 2000000098, 2000000099, 2000000100)",Conditions,condsip,"Conditions, inpatient"
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000001280, 2000001281, 2000001282, 2000001283, 2000001284, 2000001285)",Conditions,condsed,"Conditions, ED"
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000096, 2000000097, 2000000102, 2000000103)",Conditions,condsop-condsbill,"Conditions, outpatient billing"
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000095, 2000000101)",Conditions,condsop-condsorder,"Conditions, outpatient ordered"
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000092, 2000000098)",Conditions,condsip-condsorder,"Conditions, inpatient ordered"
-cdm,condition_occurrence,cdm,condition_occurrence,"condition_type_concept_id %in% c(2000000099, 2000000100, 2000000093, 2000000094)",Conditions,condsip-condsbill,"Conditions, inpatient billing"
 cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000078,ADT,adtpicu,ADT to PICU
 cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000080,ADT,adtnicu,ADT to NICU
 cdm,adt_occurrence,cdm,adt_occurrence,service_concept_id == 2000000079,ADT,adtcicu,ADT to CICU

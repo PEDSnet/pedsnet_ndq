@@ -16,13 +16,8 @@ adtnicu,ADT to NICU,ADT,cdm,adt_occurrence,adt_date,service_concept_id == 200000
 adtcicu,ADT to CICU,ADT,cdm,adt_occurrence,adt_date,service_concept_id == 2000000079
 drugspresc,"Drugs, prescriptions",Drugs,cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000177
 drugsip,"Drugs, inpatient administration",Drugs,cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000180
-condsop,"Conditions, outpatient",Conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000095, 2000000096, 2000000097, 2000000101, 2000000102, 2000000103)"
-condsip,"Conditions, inpatient",Conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000092, 2000000093, 2000000094, 2000000098, 2000000099, 2000000100)"
-condsed,"Conditions, ED",Conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000001280, 2000001281, 2000001282, 2000001283, 2000001284, 2000001285)"
-condsopbill,"Conditions, outpatient billing",Conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000096, 2000000097, 2000000102, 2000000103)"
-condsoporder,"Conditions, outpatient ordered",Conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000095, 2000000101)"
-condsiporder,"Conditions, inpatient ordered",Conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000092, 2000000098)"
-condsipbill,"Conditions, inpatient billing",Conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(2000000099, 2000000100, 2000000093, 2000000094)"
+condsbill,"Conditions, billed",Conditions,cdm,condition_occurrence,condition_start_date,condition_type_concept_id == 32019
+condsorder,"Conditions, ordered",Conditions,cdm,condition_occurrence,condition_start_date,condition_type_concept_id == 32020
 labsall-visofc,"Labs, outpatient",Labs,result,voml,measurement_date,
 drugsip-visofc,"Drugs, outpatient administration",Drugs,result,vodi,drug_exposure_start_date,
 drugspresc-visip,"Drugs, inpatient prescriptions",Drugs,result,vipdp,drug_exposure_start_date,

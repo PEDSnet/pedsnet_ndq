@@ -43,3 +43,5 @@ cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000001589,Visits,v
 cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000001587,Visits,visdtopsrg,"Visit Detail, outpatient surgery"
 cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000001591,Visits,visdtdial,"Visit Detail, dialysis"
 cdm,visit_detail,cdm,visit_detail,visit_detail_concept_id == 2000001592,Visits,visdtinfuse,"Visit Detail, infusion"
+cdm,condition_occurrence,cdm,condition_occurrence,condition_type_concept_id == 32019,Conditions,condsbill,"Conditions, billed"
+cdm,condition_occurrence,cdm,condition_occurrence,condition_type_concept_id == 32020,Conditions,condsorder,"Conditions, ordered"

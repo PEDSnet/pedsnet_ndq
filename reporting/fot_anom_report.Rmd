@@ -1,0 +1,40 @@
+---
+title: "FOT Anomaly Detection"
+author: "PEDSnet DCC"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(argos)
+library(srcr)
+
+source('../code/cohort_fot_anom.R')
+ndq_session<-argos$new('ndq_session')$init_session(
+  db_src = Sys.getenv('PEDSNET_BASE_CONFIG'),
+  base_dir = Sys.getenv('NDQ_ROOT'),
+  results_schema = 'dqa_rox', 
+  retain_intermediates = FALSE,
+  db_trace = FALSE, 
+  results_name_tag = ''
+)
+set_argos_default(ndq_session)
+```
+
+```{r}
+rslt_fot_tbl<-results_tbl('fot_anom_tst')%>%collect()
+sites<-rslt_fot_tbl%>%arrange(site)%>%distinct(site)%>%pull()
+checks<-rslt_fot_tbl%>%distinct(check_name)%>%pull()
+rslt_plt<-list()
+for(i in 1:length(checks)){
+  for(k in 1:length(sites)){
+  dat_to_plot<-rslt_fot_tbl%>%filter(site==sites[k],
+                                     check_name==checks[i])
+  print(plot_fot_anom(dat_to_plot))
+  }
+  k<-0
+}
+```

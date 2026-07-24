@@ -22,7 +22,7 @@ library(squba.gen)
 source(file.path('setup', 'argos_wrapper.R'))
 
 ###' `Set site name` ###
-site <- 'my_site' ## if a site column exists in your CDM,
+site <- 'dcc' ## if a site column exists in your CDM,
                   ## make sure this matches how it is represented there
 
 # Establish connection to database
@@ -40,7 +40,7 @@ initialize_session(session_name = 'ndq_assessment',
 
 config('qry_site', site)
 
-config('current_version','v60') ## set current instantiation PEDSnet version
+config('current_version','v62') ## set current instantiation PEDSnet version
 
 # location of prior CDM or results data (for data cycle changes check)
 # config('db_src_prev', srcr(Sys.getenv('PEDSNET_PREV_CONFIG')))

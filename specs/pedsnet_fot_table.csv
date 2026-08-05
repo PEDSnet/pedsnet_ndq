@@ -16,8 +16,8 @@ adtnicu,ADT to NICU,ADT,cdm,adt_occurrence,adt_date,service_concept_id == 200000
 adtcicu,ADT to CICU,ADT,cdm,adt_occurrence,adt_date,service_concept_id == 2000000079
 drugspresc,"Drugs, prescriptions",Drugs,cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000177
 drugsip,"Drugs, inpatient administration",Drugs,cdm,drug_exposure,drug_exposure_start_date,drug_type_concept_id == 38000180
-condsbill,"Conditions, billed",Conditions,cdm,condition_occurrence,condition_start_date,condition_type_concept_id == 32019
-condsorder,"Conditions, ordered",Conditions,cdm,condition_occurrence,condition_start_date,condition_type_concept_id == 32020
+condsbill,"Conditions, billed",Conditions,cdm,condition_occurrence,condition_start_date,"condition_type_concept_id %in% c(32874, 32852)"
+condsorder,"Conditions, ordered",Conditions,cdm,condition_occurrence,condition_start_date,condition_type_concept_id == 32833
 labsall-visofc,"Labs, outpatient",Labs,result,voml,measurement_date,
 drugsip-visofc,"Drugs, outpatient administration",Drugs,result,vodi,drug_exposure_start_date,
 drugspresc-visip,"Drugs, inpatient prescriptions",Drugs,result,vipdp,drug_exposure_start_date,

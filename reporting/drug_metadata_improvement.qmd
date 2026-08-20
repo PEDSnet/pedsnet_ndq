@@ -118,10 +118,15 @@ options(scipen = 999)
 
 ## Population of Key Variables
 
-```{r, fig.height=8}
+```{r}
 
 uc_drug_plot(dat = results_tbl('uc_drug_metadata') %>% collect() %>%
-               filter(!grepl('and|&', check_description)))
+               filter(!grepl('and|&', check_description),
+                      check_description %in% c('Prescription End Date',
+                                               'Prescription Dosage',
+                                               'Prescription Dose Unit'))) +
+  geom_vline(xintercept = 0.8,
+             linetype = 'dotted')
 
 ```
 
@@ -132,7 +137,11 @@ These variables are often needed in combination in order to facilitate dose comp
 ```{r}
 
 uc_drug_plot(dat = results_tbl('uc_drug_metadata') %>% collect() %>%
-               filter(grepl('and|&', check_description)))
+               filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description))) +
+  xlim(0, 1) +
+  geom_vline(xintercept = 0.7,
+             linetype = 'dotted')
 
 ```
 
@@ -154,6 +163,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_albuterol'))
 
 ```
@@ -191,6 +201,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_amoxicillin_scdf'))
 
 ```
@@ -228,6 +239,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_bactrim'))
 
 ```
@@ -265,6 +277,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_fluoxetine_scdf'))
 
 ```
@@ -302,6 +315,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_glp1ra_scdf'))
 
 ```
@@ -339,6 +353,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_hydroxyurea'))
 
 ```
@@ -376,6 +391,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'insulin'))
 
 ```
@@ -413,6 +429,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_methylphenidate_scdf'))
 
 ```
@@ -450,6 +467,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_predniso_lo_ne_scdf'))
 
 ```
@@ -487,6 +505,7 @@ uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
 
 uc_drug_plot(dat = results_tbl('uc_example_drugs') %>% collect() %>%
                filter(grepl('and|&', check_description),
+                      !grepl('Supply', check_description),
                       drug_type == 'rx_raasi'))
 
 ```

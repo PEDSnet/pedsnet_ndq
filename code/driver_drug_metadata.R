@@ -12,7 +12,7 @@ for(k in site_list){
 
 ## still have to do the cs and texas (not ready yet)
 site_nm <- k
-db_version <- 'v61'
+db_version <- 'v62'
 
 source(Sys.getenv('PEDSNET_TRINO_HTTR'))
 
@@ -131,10 +131,10 @@ total_n <- uc_drugmeta %>% distinct(total_rows) %>% pull()
 rqds <- cdm_tbl('drug_exposure') %>%
   filter(drug_type_concept_id == 38000177,
          site == site_nm) %>%
-  filter(!is.na(refills) & !is.na(quantity) & !is.na(days_supply)) %>%
+  filter(!is.na(refills) & !is.na(quantity) & !is.na(frequency)) %>%
   group_by(site) %>%
   summarise(unmapped_rows = n()) %>%
-  mutate(check_description = 'Prescription Refills, Quantity, and Days Supply',
+  mutate(check_description = 'Prescription Refills, Quantity, and Frequency',
          check_name = 'uc_drugs-refquantdays',
          database_version = db_version,
          check_type = 'uc',
@@ -209,10 +209,10 @@ for(i in drug_list){
   total_n <- uc_drugmeta %>% distinct(total_rows) %>% pull()
 
   rqds <- results_tbl('temp_drug_tbl') %>%
-    filter(!is.na(refills) & !is.na(quantity) & !is.na(days_supply)) %>%
+    filter(!is.na(refills) & !is.na(quantity) & !is.na(frequency)) %>%
     group_by(site) %>%
     summarise(unmapped_rows = n()) %>%
-    mutate(check_description = 'Prescription Refills, Quantity, and Days Supply',
+    mutate(check_description = 'Prescription Refills, Quantity, and Frequency',
            check_name = 'uc_drugs-refquantdays',
            database_version = db_version,
            check_type = 'uc',

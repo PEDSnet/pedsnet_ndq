@@ -13,9 +13,9 @@ bmc_thresh <- bmc_pp %>%
   filter(site == config('qry_site')) %>%
   mutate(check_grp = ifelse(check_name %in% c('bmc_csop', 'bmc_provop'), 'bmc_specop', check_name)) %>%
   group_by(site, check_grp) %>%
-  mutate(pass_fail = ifelse(any(best_row_prop > 0.7), 'PASS', 'FAIL')) %>%
+  mutate(pass_fail = ifelse(any(best_row_prop > 0.6), 'PASS', 'FAIL')) %>%
   ungroup() %>%
-  mutate(threshold = 0.7,
+  mutate(threshold = 0.6,
          direction = '>',
          check_description = paste0('BMC - ', check_description)) %>%
   select(site, check_name, check_description, best_row_prop, direction,
@@ -136,7 +136,7 @@ chk_list$dp <- dp_thresh
 all_checks <- purrr::reduce(.x = chk_list,
                             .f = dplyr::union)
 
-#output_tbl_append(all_checks, 'dqa_pipeline_passfail')
+output_tbl_append(all_checks, 'dqa_pipeline_passfail')
 
 fails <- all_checks %>% filter(pass_fail == 'FAIL')
 

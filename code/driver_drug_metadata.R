@@ -12,7 +12,7 @@ for(k in site_list){
 
 ## still have to do the cs and texas (not ready yet)
 site_nm <- k
-db_version <- 'v62'
+db_version <- 'v63'
 
 source(Sys.getenv('PEDSNET_TRINO_HTTR'))
 
@@ -20,7 +20,7 @@ dm_conn <- argos$new('dm_dq')$init_session(db_src = srcr::srcr(Sys.getenv('PEDSN
                                            base_dir = getwd(),
                                            cdm_schema = paste0('pedsnet_dcc_', db_version),
                                            results_schema = 'dqa_rox',
-                                           vocabulary_schema = 'v61_vocabulary',
+                                           vocabulary_schema = paste0(db_version, '_vocabulary'),
                                            subdirs = list('specs' = 'specs_drugmeta',
                                                           'results' = 'results'),
                                            cdm = 'pedsnet',
@@ -30,7 +30,7 @@ dm_conn <- argos$new('dm_dq')$init_session(db_src = srcr::srcr(Sys.getenv('PEDSN
 
 pg_conn <- argos$new('pg_dq')$init_session(db_src = srcr::srcr(Sys.getenv('PEDSNET_BASE_CONFIG_NDQ')),
                                            base_dir = getwd(),
-                                           cdm_schema = 'pedsnet_dcc_v62',
+                                           cdm_schema = 'pedsnet_dcc_v63',
                                            results_schema = 'dqa_rox',
                                            vocabulary_schema = 'v61_vocabulary',
                                            subdirs = list('specs' = 'specs_drugmeta',
@@ -109,6 +109,53 @@ argos$public_methods$load_codeset <- function(name,
   codes
 }
 
+.sqlCreateTableAs <-  function(con, name, sql, with = NULL, ...) {
+  name <- DBI::dbQuoteIdentifier(con, name)
+  print(name)
+  DBI::SQL(paste0(
+    "CREATE TABLE ", name, "\n",
+    if (!is.null(with)) paste0(with, "\n"),
+    "AS\n",
+    sql
+  ))
+}
+
+setMethod("sqlCreateTableAs", signature("PrestoConnection"), .sqlCreateTableAs)
+
+assignInNamespace(
+  ".compute_tbl_presto",
+  function(x, name, temporary = FALSE, ..., cte = FALSE) {
+    if (rlang::is_bare_character(x) || dbplyr::is.ident(x) || dbplyr::is.sql(x)) {
+      name <- unname(name)
+    }
+    if (identical(cte, TRUE)) {
+      if (inherits(x$lazy_query, "lazy_base_remote_query")) {
+        stop(
+          "No operations need to be computed. Aborting compute.",
+          call. = FALSE
+        )
+      }
+      con <- dbplyr::remote_con(x)
+      # We need to speicify sql_options here so that use_presto_cte is passed to
+      # db_sql_render correctly
+      # (see https://github.com/tidyverse/dbplyr/issues/1394)
+      sql <- dbplyr::db_sql_render(
+        con = dbplyr::remote_con(x), sql = x,
+        sql_options = dbplyr::sql_options(), use_presto_cte = FALSE
+      )
+      con@session$addCTE(name, sql, replace = TRUE)
+    } else {
+      sql <- dbplyr::db_sql_render(
+        dbplyr::remote_con(x), x, use_presto_cte = TRUE
+      )
+      name <- dbplyr::db_compute(
+        dbplyr::remote_con(x), name, sql, temporary = temporary, ...
+      )
+    }
+    name
+  }, ns='RPresto'
+)
+
 ## Overall Metadata Presence
 uc_drugmeta <- check_uc(uc_tbl = read_codeset('drugmeta_uc_table', 'cccc') %>%
                           filter(check_id == 'drugs-doseunits'),
@@ -118,7 +165,7 @@ uc_drugmeta <- check_uc(uc_tbl = read_codeset('drugmeta_uc_table', 'cccc') %>%
 
 uc_drugmeta2 <- check_uc(uc_tbl = read_codeset('drugmeta_uc_table', 'cccc') %>%
                            filter(check_id != 'drugs-doseunits'),
-                        unmapped_values = NA,
+                        unmapped_values = c(NA, ' '),
                         omop_or_pcornet = 'omop',
                         by_year = FALSE,
                         produce_mapped_list = FALSE)
@@ -135,7 +182,7 @@ rqds <- cdm_tbl('drug_exposure') %>%
   group_by(site) %>%
   summarise(unmapped_rows = n()) %>%
   mutate(check_description = 'Prescription Refills, Quantity, and Frequency',
-         check_name = 'uc_drugs-refquantdays',
+         check_name = 'uc_drugs-refquantfreq',
          database_version = db_version,
          check_type = 'uc',
          total_rows = as.numeric(total_n),
@@ -161,6 +208,58 @@ uc_drugmeta %>%
   union(rqds) %>%
   union(dsdu) %>%
   output_tbl_append('uc_drug_metadata')
+
+sig_ref <- cdm_tbl('drug_exposure') %>%
+  filter(drug_type_concept_id == 38000177) %>%
+  select(site, sig, quantity, refills) %>%
+  filter(!is.na(sig) & sig != ' ') %>%
+  mutate(raw_sig = regexp_extract(sig, '(?<=SIG>)(.*?)(?=<\\/SIG)'),
+         raw_quantity = regexp_extract(sig, '(?<=QUANTITY>)(.*?)(?=<\\/QUANTITY)'),
+         raw_refills = regexp_extract(sig, '(?<=REFILLS>)(.*?)(?=<\\/REFILLS)')) %>%
+  mutate(raw_sig = ifelse(raw_sig == '' | raw_sig == '@', NA_character_, raw_sig),
+         raw_quantity = ifelse(raw_quantity == '' | raw_quantity == '@', NA_character_, raw_quantity),
+         raw_refills = ifelse(raw_refills == '' | raw_refills == '@', NA_character_, raw_refills))
+
+sig_total_n <- sig_ref %>% summarise(tot = n()) %>% pull(tot)
+
+rawsig_ump <- sig_ref %>%
+  filter(!is.na(raw_sig)) %>%
+  summarise(unmapped_row = n()) %>%
+  mutate(check_description = 'Parsed SIG Value',
+         check_name = 'sig-raw_sig') %>% collect()
+
+rawqt_ump <- sig_ref %>%
+  filter(!is.na(raw_quantity)) %>%
+  summarise(unmapped_row = n()) %>%
+  mutate(check_description = 'Parsed Quantity Value',
+         check_name = 'sig-raw_qt') %>% collect()
+
+rawqt_qt_ump <- sig_ref %>%
+  filter(!is.na(raw_quantity) & is.na(quantity)) %>%
+  summarise(unmapped_row = n()) %>%
+  mutate(check_description = 'Parsed Quantity is present where Quantity isnt',
+         check_name = 'sig-struc_qt') %>% collect()
+
+rawrf_ump <- sig_ref %>%
+  filter(!is.na(raw_refills)) %>%
+  summarise(unmapped_row = n()) %>%
+  mutate(check_description = 'Parsed Refills Value',
+         check_name = 'sig-raw_rf') %>% collect()
+
+rawrf_rf_ump <- sig_ref %>%
+  filter(!is.na(raw_refills) & is.na(refills)) %>%
+  summarise(unmapped_row = n()) %>%
+  mutate(check_description = 'Parsed Refill is present where Refill isnt',
+         check_name = 'sig-struc_rf') %>% collect()
+
+rawsig_ump %>%
+  union(rawqt_ump) %>%
+  union(rawqt_qt_ump) %>%
+  union(rawrf_ump) %>%
+  union(rawrf_rf_ump) %>%
+  mutate(total_denom = as.numeric(sig_total_n),
+         prop = unmapped_row / total_denom) %>%
+  output_tbl('sig_parse_drug_meta')
 
 
 ## Specific Drug Types (Plausibility)
@@ -198,7 +297,7 @@ for(i in drug_list){
                             mutate(table = 'temp_drug_tbl',
                                    schema = 'result') %>%
                              filter(check_id != 'drugs-doseunits'),
-                          unmapped_values = NA,
+                          unmapped_values = c(NA, ' '),
                           omop_or_pcornet = 'omop',
                           by_year = FALSE,
                           produce_mapped_list = FALSE) %>%
@@ -213,7 +312,7 @@ for(i in drug_list){
     group_by(site) %>%
     summarise(unmapped_rows = n()) %>%
     mutate(check_description = 'Prescription Refills, Quantity, and Frequency',
-           check_name = 'uc_drugs-refquantdays',
+           check_name = 'uc_drugs-refquantfreq',
            database_version = db_version,
            check_type = 'uc',
            total_rows = as.numeric(total_n),
@@ -254,7 +353,29 @@ for(i in drug_list){
               sd_val = as.numeric(sd(effective_drug_dose))) %>%
     mutate(drug_type = i,
            dose_unit_concept_id = as.integer(dose_unit_concept_id),
-           metadata_type = 'dose') %>% collect()
+           metadata_type = 'dose')
+
+  low_whisk <- results_tbl('temp_drug_tbl') %>%
+    mutate(dose_unit_concept_id = ifelse(dose_unit_concept_id %in% c(44814650L, 0L, 44814653L, 44814649L),
+                                         0, dose_unit_concept_id)) %>%
+    filter(!is.na(effective_drug_dose)) %>%
+    group_by(site, dose_unit_concept_id) %>%
+    left_join(dose_range %>% ungroup() %>% distinct(dose_unit_concept_id, q1_val, q3_val)) %>%
+    filter(effective_drug_dose <= (q1_val - (1.5 * (q3_val - q1_val)))) %>%
+    summarise(low_whisk = as.numeric(max(effective_drug_dose)))
+
+  upper_whisk <- results_tbl('temp_drug_tbl') %>%
+    mutate(dose_unit_concept_id = ifelse(dose_unit_concept_id %in% c(44814650L, 0L, 44814653L, 44814649L),
+                                         0, dose_unit_concept_id)) %>%
+    filter(!is.na(effective_drug_dose)) %>%
+    group_by(site, dose_unit_concept_id) %>%
+    left_join(dose_range %>% distinct(dose_unit_concept_id, q1_val, q3_val)) %>%
+    filter(effective_drug_dose >= (q3_val + (1.5 * (q3_val - q1_val)))) %>%
+    summarise(upper_whisk = as.numeric(min(effective_drug_dose)))
+
+  dose_range_final <- dose_range %>%
+    left_join(low_whisk) %>%
+    left_join(upper_whisk) %>% collect()
 
   col_list <- c('refills', 'quantity', 'days_supply', 'rx_length')
 
@@ -274,15 +395,37 @@ for(i in drug_list){
                 sd_val = as.numeric(sd(!!sym(j)))) %>%
       mutate(drug_type = i,
              metadata_type = j,
-             dose_unit_concept_id = NA_integer_) %>% collect()
+             dose_unit_concept_id = NA_integer_)
 
-    col_rslt[[j]] <- col_range
+    low_whisk <- results_tbl('temp_drug_tbl') %>%
+      mutate(rx_length = date_diff('day', drug_exposure_start_date, drug_exposure_end_date),
+             metadata_type = j) %>%
+      filter(!is.na(!!sym(j))) %>%
+      group_by(site) %>%
+      left_join(col_range %>% distinct(metadata_type, q1_val, q3_val)) %>%
+      filter(!!sym(j) <= (q1_val - (1.5 * (q3_val - q1_val)))) %>%
+      summarise(low_whisk = as.numeric(max(!!sym(j))))
+
+    upper_whisk <- results_tbl('temp_drug_tbl') %>%
+      mutate(rx_length = date_diff('day', drug_exposure_start_date, drug_exposure_end_date),
+             metadata_type = j) %>%
+      filter(!is.na(!!sym(j))) %>%
+      group_by(site) %>%
+      left_join(col_range %>% distinct(metadata_type, q1_val, q3_val)) %>%
+      filter(!!sym(j) >= (q3_val + (1.5 * (q3_val - q1_val)))) %>%
+      summarise(upper_whisk = as.numeric(min(!!sym(j))))
+
+    col_range_final <- col_range %>%
+      left_join(low_whisk) %>%
+      left_join(upper_whisk) %>% collect()
+
+    col_rslt[[j]] <- col_range_final
   }
 
   col_int <- purrr::reduce(col_rslt,
                            dplyr::union)
 
-  col_final <- dose_range %>%
+  col_final <- dose_range_final %>%
     union(col_int)
 
   uc_rslt[[i]] <- uc_final

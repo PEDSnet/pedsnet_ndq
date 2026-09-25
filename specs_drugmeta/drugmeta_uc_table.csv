@@ -6,3 +6,4 @@ drugs-refill,Prescription Refills,cdm,drug_exposure,refills,refills,drug_exposur
 drugs-quantity,Prescription Quantity,cdm,drug_exposure,quantity,quantity,drug_exposure_start_date,drug_type_concept_id == 38000177
 drugs-dayssupply,Prescription Days Supply,cdm,drug_exposure,days_supply,days_supply,drug_exposure_start_date,drug_type_concept_id == 38000177
 drugs-freq,Prescription Frequency,cdm,drug_exposure,frequency,frequency,drug_exposure_start_date,drug_type_concept_id == 38000177
+drugs-sig,Prescription SIG,cdm,drug_exposure,sig,sig,drug_exposure_start_date,drug_type_concept_id == 38000177

@@ -60,7 +60,7 @@ dc_anom_d_pp <- squba.gen::detect_outliers(df_tbl = dc_anom_d,
 dc_anom_suppress_d <- dc_suppress_outlier(bind_rows(dc_anom_d_pp,
                                                   filter(dc_d_pp,site=='total')))
 
-output_tbl(dc_anom_suppress, 'dc_output_d_pp')
+output_tbl(dc_anom_suppress_d, 'dc_output_d_pp')
 
 
 ## Vocabulary Conformance
@@ -337,7 +337,7 @@ cfd_pp <- process_cfd(cfd_results = cfd_output,
 output_tbl(cfd_pp, 'cfd_output_pp')
 
 ### dashboard
-cfd_output_d <- results_tbl('cfd_output')%>%filter(site!='nationa_v63')%>%collect()
+cfd_output_d <- results_tbl('cfd_output')%>%filter(site!='national_v63')%>%collect()
 cfd_d_pp <- process_cfd(cfd_results = cfd_output_d,
                         rslt_source = 'local')
 

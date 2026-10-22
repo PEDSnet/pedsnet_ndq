@@ -257,6 +257,17 @@ dp_output <- check_dp(dp_tbl = read_codeset('pedsnet_dp_table', 'ccccc'),
 
 output_tbl_append(dp_output, 'dp_output', file = TRUE)
 
+## Quantitative Variable Distribution
+qvd_output <- check_qvd(qvd_tbl = read_codeset('pedsnet_qvd_table', 'cccc'),
+                        qvd_cohort = cdm_tbl('person') %>%
+                          filter(gender_concept_id == 8532) %>%
+                          select(site, person_id),
+                        compute_trimmed = TRUE,
+                        omop_or_pcornet = 'omop',
+                        check_string = 'qvd')
+
+output_tbl_append(qvd_output, 'qvd_output', file = TRUE)
+
 ######### CLEANUP CHECKPOINT #################
 remove_precompute(checkpoint = 2)
 ##############################################
@@ -296,27 +307,29 @@ remove_precompute(checkpoint = 3)
 
 check_type_mapping <- tibble('check_type_short' = c('dc', 'ecp', 'bmc', 'dcon',
                                                     'cfd', 'mf_visitid', 'fot', 'uc',
-                                                    'vc', 'vs', 'dp'),
+                                                    'vc', 'vs', 'dp', 'qvd'),
                              'check_type' = c('Data Cycle Changes', 'Expected Concepts Present',
                                               'Best Mapped Concepts', 'Domain Concordance',
                                               'Person Facts/Records', 'Missing Field: Visit ID', 'Facts Over Time',
                                               'Unmapped Concepts', 'Vocabulary Conformance',
-                                              'Value Set Conformance', 'Date Plausibility'),
+                                              'Value Set Conformance', 'Date Plausibility',
+                                              'Quantitative Variable Distribution'),
                              'check_category' = c('Consistency', 'Correctness', 'Correctness',
                                                   'Concordance', 'Completeness', 'Completeness',
                                                   'Consistency', 'Completeness', 'Conformance',
-                                                  'Conformance', 'Correctness'))
+                                                  'Conformance', 'Correctness', 'Plausibility'))
 
 new_mapping <- create_check_metadata(check_tbls = c('dc_output', 'ecp_output',
                                                     'bmc_output', 'dcon_output',
                                                     'cfd_output', 'mf_visitid_output',
                                                     'fot_output', 'uc_output',
-                                                    'vc_output', 'vs_output', 'dp_output'),
+                                                    'vc_output', 'vs_output', 'dp_output',
+                                                    'qvd_output'),
                                      metadata_file = read_codeset('dqa_check_descriptions', 'cc') %>%
                                        left_join(check_type_mapping) %>% mutate(check_type_long = check_type,
                                                                                 check_type = check_type_short), #%>%
                                        # select(-c(check_type_short)),
                                      rslt_source = 'remote') %>% mutate(check_type = check_type_long) %>%
   select(-check_type_long)
-
+# copy_to_new(df = new_mapping, name = 'dqa_check_metadata')
 output_tbl(new_mapping, 'dqa_check_metadata')

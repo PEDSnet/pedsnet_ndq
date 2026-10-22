@@ -21,3 +21,4 @@ gestage,Gestational Age (when first visit occurs at <= 2 years old),result,gest_
 pth,Parathyroid Lab Results,result,pth_labs,value_as_number,value_source_value,measurement_date,
 procsall-scid,Procedures (source concept),cdm,procedure_occurrence,procedure_concept_id,procedure_source_value,procedure_date,
 anthro-units,"Anthropometrics, units",cdm,measurement_anthro,unit_concept_id,unit_source_value,measurement_date,"!measurement_concept_id %in% c(2000000041,2000000042,2000000043)"
+demog-lang,"Language",cdm,person,language_concept_id,language_source_value,birth_date,

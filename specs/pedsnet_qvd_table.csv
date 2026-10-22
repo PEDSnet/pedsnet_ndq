@@ -1,0 +1,6 @@
+check_id,check_description,concept_field,value_field,schema,table,codeset_name,filter_logic
+ht,Height,measurement_concept_id,value_as_number,cdm,measurement_anthro,NA,measurement_concept_id == 3023540 & measurement_age_in_months > 96 & measurement_age_in_months < 108
+wt,Weight,measurement_concept_id,value_as_number,cdm,measurement_anthro,NA,measurement_concept_id == 3013762 & measurement_age_in_months > 96 & measurement_age_in_months < 108
+sbp,SBP,measurement_concept_id,value_as_number,cdm,measurement_vitals,NA,"measurement_concept_id %in% c(3018586, 3035856, 3009395, 3004249) & measurement_age_in_months > 96 & measurement_age_in_months < 108"
+labshgb,Hemoglobin,measurement_concept_id,value_as_number,cdm,measurement_labs,ecp_hemoglobin,measurement_age_in_months > 96 & measurement_age_in_months < 108
+labscreat,Serum Creatinine,measurement_concept_id,value_as_number,cdm,measurement_labs,ecp_creatinine_serum,measurement_age_in_months > 96 & measurement_age_in_months < 108
